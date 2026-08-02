@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sponsors &amp; Exhibitors | IPRECON 2027 — IEEE International Power and Renewable Energy Conference</title>
+  <meta name="description" content="Sponsorship & exhibitor opportunities for IPRECON 2027 — India's first IEEE Club of 6 Technical Paper Conference at College of Engineering Karunagappally, Kerala, India." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Variables ──────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --brand:    #211021;
+      --purple:   #8e24aa;
+      --purple-d: #6a1b9a;
+      --gold:     #d4af37;
+      --gold-d:   #c9a227;
+      --white:    #ffffff;
+      --off:      #fdf5fd;
+      --text:     #2d1f2d;
+      --muted:    #5a4a5a;
+      --light:    #f8f4f8;
+      --border:   #e0cce0;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text); background: #fff; }
+    img  { max-width: 100%; display: block; }
+    a    { text-decoration: none; color: inherit; }
+
+    /* ── Scroll progress bar ───────────────────── */
+    #scroll-bar {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+      z-index: 9999; transition: width 0.08s linear;
+    }
+
+    /* ════════ HEADER ════════ */
+    .header-top-bar {
+      background: var(--brand);
+      padding: 7px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; color: rgba(255,255,255,0.65);
+      letter-spacing: 0.04em;
+    }
+    .header-top-bar span { display: flex; align-items: center; gap: 8px; }
+    .header-top-bar i    { color: var(--gold); font-size: 11px; }
+    .header-top-bar a    { color: rgba(255,255,255,0.65); transition: color 0.2s; }
+    .header-top-bar a:hover { color: var(--gold); }
+
+    .site-header {
+      background: #fff;
+      padding: 18px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 3px solid var(--brand);
+    }
+    .header-brand { display: flex; align-items: center; gap: 18px; }
+    .header-conf-logo { height: 72px; width: auto; }
+    .header-brand-text {
+      display: flex; flex-direction: column; justify-content: center; gap: 2px;
+      border-left: 1px solid var(--border);
+      padding-left: 18px;
+    }
+    .header-brand-text .conf-name {
+      font-size: 20px; font-weight: 800;
+      color: var(--brand); letter-spacing: 0.02em; line-height: 1;
+    }
+    .header-brand-text .conf-full {
+      font-size: 12px; color: var(--muted); font-weight: 400;
+      letter-spacing: 0.02em; line-height: 1.4;
+    }
+    .header-edition-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-d));
+      color: white; font-size: 10.5px; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-top: 6px; width: fit-content;
+    }
+    .header-sponsors { display: flex; align-items: center; gap: 0; }
+    .header-sp-group {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 0 24px; border-right: 1px solid var(--border);
+    }
+    .header-sp-group:last-child { border-right: none; padding-right: 0; }
+    .header-sp-group .sp-label {
+      font-size: 9.5px; color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 600;
+    }
+    .header-sp-group img { height: 36px; width: auto; opacity: 0.8; transition: opacity 0.2s; }
+    .header-sp-group img:hover { opacity: 1; }
+
+    /* ════════ NAVBAR ════════ */
+    .navbar {
+      background: var(--brand);
+      position: sticky; top: 0; z-index: 1000;
+      border-bottom: 2px solid rgba(142,36,170,0.5);
+      transition: box-shadow 0.3s;
+    }
+    .navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.45); }
+    .nav-container {
+      max-width: 1300px; margin: 0 auto; padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand-logo-wrap {
+      display: flex; align-items: center; gap: 12px;
+      flex-shrink: 0; height: 58px;
+      opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+    }
+    .navbar.scrolled .brand-logo-wrap { opacity: 1; visibility: visible; }
+    .brand-logo { height: 46px; width: auto; display: block; }
+    .nav-items { display: flex; list-style: none; }
+    .nav-item { position: relative; }
+    .nav-item > a,
+    .nav-item > span.nav-link {
+      display: flex; align-items: center; gap: 5px;
+      padding: 0 16px; height: 58px;
+      color: rgba(255,255,255,0.78);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      cursor: pointer; white-space: nowrap;
+      border-bottom: 3px solid transparent; margin-bottom: -2px;
+      transition: color 0.22s, border-color 0.22s;
+    }
+    .nav-item > a:hover,
+    .nav-item > span.nav-link:hover,
+    .nav-item:hover > span.nav-link { color: #fff; border-bottom-color: var(--gold); }
+    .nav-item > a.active { color: #fff; border-bottom-color: var(--gold); }
+    .nav-item > span.nav-link::after {
+      content: '\f107'; font-family: 'Font Awesome 6 Free';
+      font-weight: 900; font-size: 10px; margin-left: 3px;
+    }
+    .dropdown-content {
+      display: none; position: absolute; top: 100%; left: 0;
+      background: var(--brand); min-width: 270px;
+      border-top: 2px solid var(--purple);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.45); z-index: 200;
+    }
+    .nav-item:hover .dropdown-content { display: block; }
+    .dropdown-item {
+      display: block; padding: 11px 20px;
+      color: rgba(255,255,255,0.7);
+      font-size: 11.5px; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      border-left: 3px solid transparent; transition: all 0.18s;
+    }
+    .dropdown-item:hover {
+      background: rgba(142,36,170,0.18); color: #fff;
+      border-left-color: var(--gold); padding-left: 26px;
+    }
+    .dropdown-item.active { color: var(--gold); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: rgba(255,255,255,0.85); border-radius: 2px; transition: all 0.3s;
+    }
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; top: 58px;
+      background: var(--brand); z-index: 999; overflow-y: auto; padding: 16px;
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a {
+      display: block; padding: 11px 14px;
+      color: rgba(255,255,255,0.78); font-size: 12.5px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--gold); }
+    .mob-section {
+      font-size: 10px; color: var(--gold);
+      padding: 14px 14px 4px; letter-spacing: 0.14em;
+      font-weight: 700; text-transform: uppercase;
+    }
+
+    /* ════════ PAGE HERO / BREADCRUMB ════════ */
+    .page-hero {
+      background: var(--brand);
+      padding: 66px 60px 60px;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg, transparent, transparent 60px,
+        rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
+    .page-hero .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4);
+      color: var(--gold); font-size: 11px; font-weight: 600;
+      padding: 6px 16px; border-radius: 3px;
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 22px;
+    }
+    .page-hero h1 {
+      font-size: clamp(30px, 4.5vw, 48px); font-weight: 800; color: #fff;
+      line-height: 1.15; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.01em;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--gold); }
+    .page-hero p {
+      font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 640px; margin: 0 auto;
+    }
+    .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 13px 26px; border-radius: 4px; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand); }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(212,175,55,0.35); }
+    .btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.35); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .breadcrumb {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 28px; font-size: 12px; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.3); }
+    .breadcrumb .current { color: var(--gold); }
+
+    /* ════════ SECTION COMMONS ════════ */
+    .section-wrap { max-width: 1200px; margin: 0 auto; }
+    .sec-head { text-align: center; margin-bottom: 48px; }
+    .sec-label-tag {
+      display: block; font-size: 11px; color: var(--purple);
+      letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px;
+    }
+    .sec-title {
+      font-size: clamp(26px, 3.5vw, 38px); font-weight: 800;
+      color: var(--brand); line-height: 1.2;
+      display: inline-block; padding-bottom: 14px; position: relative;
+    }
+    .sec-title::after {
+      content: ''; position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%); width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+    }
+    .sec-sub { font-size: 14.5px; color: var(--muted); line-height: 1.7; max-width: 620px; margin: 16px auto 0; }
+
+    /* ════════ ANNOUNCEMENTS MARQUEE ════════ */
+    .marquee-strip {
+      background: var(--off); border-bottom: 1px solid var(--border);
+      padding: 10px 0; overflow: hidden;
+      position: sticky; top: 58px; z-index: 999;
+    }
+    .marquee-track { display: flex; gap: 52px; animation: mLeft 32s linear infinite; width: max-content; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes mLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+    .marquee-item i { color: var(--purple); font-size: 11px; }
+    .marquee-item strong { color: var(--brand); font-weight: 600; }
+    .marquee-sep { color: #d0b0d0; }
+
+    /* ════════ INTRO / ABOUT SPONSORSHIP ════════ */
+    #about-spon { padding: 80px 60px; background: #fff; }
+    .spon-layout { display: flex; gap: 64px; align-items: flex-start; }
+    .spon-text { flex: 0 0 58%; }
+    .spon-text p { font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 18px; text-align: justify; }
+    .spon-text p strong { color: var(--text); font-weight: 600; }
+    .spon-text p:last-child { margin-bottom: 0; }
+    .why-box { flex: 1; background: var(--brand); border-radius: 12px; padding: 32px 30px; }
+    .why-box h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .why-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .why-list li { display: flex; gap: 13px; align-items: flex-start; font-size: 13.5px; color: rgba(255,255,255,0.8); line-height: 1.55; }
+    .why-list li i { color: var(--gold); font-size: 14px; margin-top: 3px; flex-shrink: 0; }
+
+    /* ════════ FEATURED PARTNER (edition-card style) ════════ */
+    #featured { padding: 80px 60px; background: var(--brand); position: relative; overflow: hidden; }
+    #featured::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
+    }
+    .featured-wrap { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; }
+    #featured .sec-title { color: white; }
+    #featured .sec-title::after { background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.3)); }
+    #featured .sec-label-tag { color: var(--gold); }
+    #featured .sec-sub { color: rgba(255,255,255,0.6); }
+    .feat-card {
+      display: flex; gap: 40px; align-items: center;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 40px;
+    }
+    .feat-logo {
+      flex: 0 0 240px; background: rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 34px; display: flex; align-items: center; justify-content: center;
+      min-height: 180px;
+    }
+    .feat-logo img { max-height: 130px; }
+    .feat-logo .feat-num { font-size: 34px; font-weight: 800; color: rgba(255,255,255,0.85); text-align: center; line-height: 1.1; }
+    .feat-body { flex: 1; }
+    .feat-tag {
+      display: inline-block; font-size: 11px; color: var(--gold);
+      font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .feat-body h3 { font-size: 24px; font-weight: 800; color: white; margin-bottom: 8px; }
+    .feat-body h3 em { font-style: normal; color: var(--gold); }
+    .feat-theme {
+      font-size: 13.5px; font-style: italic; color: rgba(255,255,255,0.7);
+      border-left: 3px solid var(--gold); padding-left: 14px; margin: 14px 0 18px; line-height: 1.6;
+    }
+    .feat-body p { font-size: 14px; color: rgba(255,255,255,0.72); line-height: 1.8; margin-bottom: 18px; }
+    .feat-meta { display: flex; flex-wrap: wrap; gap: 10px; }
+    .feat-chip {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(142,36,170,0.2); border: 1px solid rgba(142,36,170,0.4);
+      color: rgba(255,255,255,0.82); font-size: 12px; font-weight: 500;
+      padding: 7px 14px; border-radius: 20px;
+    }
+    .feat-chip i { color: var(--gold); font-size: 11px; }
+
+    /* ════════ TIER TABLE ════════ */
+    #tiers { padding: 80px 60px; background: var(--light); }
+    .tier-scroll-note { text-align: center; font-size: 12px; color: var(--purple); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 16px; display: none; }
+    .tier-table-wrap { max-width: 1120px; margin: 0 auto; overflow-x: auto; border-radius: 14px; box-shadow: 0 14px 40px rgba(33,16,33,0.1); }
+    table.tier-table { width: 100%; border-collapse: collapse; background: #fff; min-width: 760px; }
+    .tier-table thead th {
+      background: var(--brand); color: #fff; padding: 22px 18px; text-align: center; vertical-align: top;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .tier-table thead th:first-child { text-align: left; }
+    .tier-table thead th:last-child { border-right: none; }
+    .tier-name { font-size: 16px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .tier-name.diamond { color: #b9e6ff; }
+    .tier-name.gold    { color: var(--gold); }
+    .tier-name.silver  { color: #d8d8e0; }
+    .tier-name.bronze  { color: #e0a884; }
+    .tier-price-usd { font-size: 20px; font-weight: 800; color: #fff; margin-top: 10px; }
+    .tier-price-inr { font-size: 11.5px; color: rgba(255,255,255,0.6); margin-top: 3px; }
+    .tier-head-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); }
+    .tier-table tbody td {
+      padding: 13px 18px; text-align: center; font-size: 13px; color: var(--text);
+      border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);
+    }
+    .tier-table tbody td:first-child { text-align: left; font-weight: 500; color: var(--muted); }
+    .tier-table tbody td:last-child { border-right: none; }
+    .tier-table tbody tr:nth-child(even) td { background: var(--off); }
+    .tier-table tbody tr:hover td { background: #f3e8f5; }
+    .yes { color: var(--purple-d); font-size: 15px; }
+    .no  { color: #cbb5cb; font-size: 14px; }
+
+    /* ════════ ADDITIONAL OPPORTUNITIES ════════ */
+    #additional { padding: 80px 60px; background: #fff; }
+    .add-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; max-width: 1120px; margin: 0 auto; }
+    .add-card {
+      background: var(--off); border: 1px solid var(--border); border-radius: 12px;
+      padding: 30px 24px; text-align: center;
+      transition: transform 0.28s, box-shadow 0.28s, border-color 0.28s;
+    }
+    .add-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(33,16,33,0.12); border-color: rgba(142,36,170,0.3); }
+    .add-icon {
+      width: 52px; height: 52px; border-radius: 12px; margin: 0 auto 18px;
+      background: #f3e8f5; display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: var(--purple); transition: background 0.28s, color 0.28s;
+    }
+    .add-card:hover .add-icon { background: var(--purple); color: #fff; }
+    .add-card h3 { font-size: 15.5px; font-weight: 700; color: var(--brand); margin-bottom: 12px; }
+    .add-usd { font-size: 22px; font-weight: 800; color: var(--purple-d); line-height: 1; }
+    .add-inr { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+    /* ════════ SISTER CONFERENCES ════════ */
+    #sisters { padding: 84px 60px; background: var(--brand); position: relative; overflow: hidden; }
+    #sisters::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
+    }
+    #sisters::after {
+      content: ''; position: absolute; top: -140px; left: 50%; transform: translateX(-50%);
+      width: 620px; height: 620px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(142,36,170,0.28), transparent 68%);
+      pointer-events: none;
+    }
+    #sisters .section-wrap { position: relative; z-index: 2; }
+    #sisters .sec-title { color: #fff; }
+    #sisters .sec-title::after { background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.3)); }
+    #sisters .sec-label-tag { color: var(--gold); }
+    #sisters .sec-sub { color: rgba(255,255,255,0.6); }
+    .sister-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1120px; margin: 0 auto; }
+    .sister-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; overflow: hidden; text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .sister-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease;
+    }
+    .sister-card:hover { transform: translateY(-8px); box-shadow: 0 22px 50px rgba(0,0,0,0.45); border-color: rgba(212,175,55,0.4); }
+    .sister-card:hover::before { transform: scaleX(1); }
+    .sister-logo-box {
+      margin: 28px 28px 0; height: 120px;
+      display: flex; align-items: center; justify-content: center;
+      background: #fff; border-radius: 12px; padding: 22px 26px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+    }
+    .sister-logo-box img { max-height: 72px; max-width: 100%; width: auto; object-fit: contain; }
+    .sister-body { padding: 22px 26px 28px; }
+    .sister-abbr {
+      font-size: 21px; font-weight: 800; letter-spacing: 0.05em; margin-bottom: 8px;
+      background: linear-gradient(90deg, #fff, #f3d98a);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .sister-role {
+      display: inline-block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3);
+      padding: 4px 12px; border-radius: 20px; margin-bottom: 14px;
+    }
+    .sister-card h3 { font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,0.75); line-height: 1.55; margin-bottom: 16px; min-height: 42px; }
+    .sister-loc {
+      font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 500;
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .sister-loc i { color: var(--gold); font-size: 11px; }
+
+    /* ════════ SPONSOR FORM ════════ */
+    #sponsor-form { padding: 80px 60px; background: #fff; }
+    .form-wrap { max-width: 780px; margin: 0 auto; background: var(--off); border: 1px solid var(--border); border-radius: 16px; padding: 44px 40px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-field { display: flex; flex-direction: column; gap: 7px; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label { font-size: 12px; font-weight: 600; color: var(--brand); letter-spacing: 0.03em; }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      font-family: 'Poppins', sans-serif; font-size: 13.5px; color: var(--text);
+      padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px rgba(142,36,170,0.12); }
+    .form-field textarea { resize: vertical; min-height: 110px; }
+    .form-submit { grid-column: 1 / -1; margin-top: 6px; }
+    .form-submit button {
+      width: 100%; font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--purple), var(--purple-d)); color: #fff;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 15px; border: none; border-radius: 8px; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .form-submit button:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(142,36,170,0.35); }
+    .form-note { font-size: 12.5px; color: var(--muted); text-align: center; margin-top: 20px; line-height: 1.6; }
+
+    /* ════════ HELPDESK ════════ */
+    .helpdesk {
+      max-width: 780px; margin: 30px auto 0;
+      background: var(--brand); border-radius: 14px; padding: 30px 34px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    }
+    .helpdesk-text h4 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .helpdesk-text p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+    .helpdesk-contacts { display: flex; flex-direction: column; gap: 10px; }
+    .helpdesk-contacts a {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 13px; color: rgba(255,255,255,0.85); font-weight: 500; transition: color 0.2s;
+    }
+    .helpdesk-contacts a:hover { color: var(--gold); }
+    .helpdesk-contacts i { color: var(--gold); width: 16px; text-align: center; }
+
+    /* ════════ FOOTER ════════ */
+    footer { background: #1a0e1a; padding: 68px 60px 36px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; max-width: 1200px; margin: 0 auto 48px; }
+    .footer-brand img { height: 44px; filter: brightness(0) invert(1); opacity: 0.78; margin-bottom: 16px; }
+    .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.8; margin-bottom: 24px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .soc-link {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5); font-size: 14px; transition: all 0.25s;
+    }
+    .soc-link:hover { background: var(--purple); border-color: var(--purple); color: white; transform: translateY(-2px); }
+    .footer-col h4 {
+      font-size: 12px; font-weight: 700; color: white;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: rgba(255,255,255,0.42); font-size: 13px; transition: color 0.22s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.28);
+    }
+
+    /* ════════ REVEAL ════════ */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    /* ════════ RESPONSIVE ════════ */
+    @media (max-width: 1100px) {
+      .site-header, .header-top-bar { padding-left: 28px; padding-right: 28px; }
+      .nav-container { padding: 0 20px; }
+      #about-spon, #featured, #tiers, #additional, #sisters, #sponsor-form, footer, .page-hero { padding-left: 32px; padding-right: 32px; }
+      .add-grid { grid-template-columns: repeat(2, 1fr); }
+      .sister-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 900px) {
+      .header-sponsors { display: none; }
+      .spon-layout { flex-direction: column; }
+      .spon-text { flex: none; width: 100%; }
+      .why-box { width: 100%; }
+      .feat-card { flex-direction: column; text-align: center; }
+      .feat-logo { flex: none; width: 100%; }
+      .feat-theme { text-align: left; }
+      .feat-meta { justify-content: center; }
+      .tier-scroll-note { display: block; }
+    }
+    @media (max-width: 768px) {
+      .header-top-bar { padding: 6px 18px; font-size: 11px; }
+      .header-top-bar .htb-right { display: none; }
+      .site-header { padding: 14px 18px; }
+      .header-conf-logo { height: 56px; }
+      .nav-items { display: none; }
+      .hamburger { display: flex; }
+      .nav-container { padding: 0 16px; }
+      .add-grid { grid-template-columns: 1fr 1fr; }
+      .sister-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+      #about-spon, #featured, #tiers, #additional, #sisters, #sponsor-form { padding-left: 20px; padding-right: 20px; }
+      .page-hero { padding: 48px 20px 44px; }
+      .helpdesk { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .add-grid { grid-template-columns: 1fr; }
+      .form-wrap { padding: 30px 22px; }
+    }
+  </style>
+</head>
+<body>
+<div id="scroll-bar"></div>
+
+<!-- ══════ HEADER ══════ -->
+<div class="header-top-bar">
+  <span>
+    <i class="fas fa-map-marker-alt"></i> College of Engineering Karunagappally, Kerala, India
+    &nbsp;&nbsp;
+    <i class="fas fa-calendar-alt"></i> September 2027
+    &nbsp;&nbsp;
+    <i class="fas fa-wifi"></i> Hybrid Conference
+  </span>
+  <span class="htb-right">
+    <a href="./contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+    &nbsp;&nbsp;
+    <a href="./registration.html"><i class="fas fa-user-plus"></i> Register</a>
+  </span>
+</div>
+
+<header class="site-header">
+  <div class="header-brand">
+    <img class="header-conf-logo" src="assets/img/iprecon26 black.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+    <div class="header-brand-text">
+      <span class="conf-name">September 2027</span>
+      <span class="conf-full">College of Engineering Karunagappally, Kerala, INDIA</span>
+      <div class="header-edition-badge"><i class="fas fa-star"></i> 5th Edition</div>
+    </div>
+  </div>
+  <div class="header-sponsors">
+    <div class="header-sp-group">
+      <span class="sp-label">Technical Co-Sponsor</span>
+      <img src="assets/img/ias_bw.png" alt="IEEE IAS" onerror="this.style.display='none'">
+    </div>
+    <div class="header-sp-group">
+      <span class="sp-label">Technical Co-Sponsor</span>
+      <img src="assets/img/pes BLACK.png" alt="IEEE PES" onerror="this.style.display='none'">
+    </div>
+    <div class="header-sp-group">
+      <span class="sp-label">Organized under</span>
+      <img src="assets/img/ieee blk.png" alt="IEEE" onerror="this.style.display='none'">
+    </div>
+  </div>
+</header>
+
+<!-- ══════ NAVBAR ══════ -->
+<nav class="navbar" id="mainNav">
+  <div class="nav-container">
+    <a href="./index.html" class="brand-logo-wrap">
+      <img class="brand-logo" src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+    </a>
+    <ul class="nav-items">
+      <li class="nav-item"><a href="./index.html">HOME</a></li>
+      <li class="nav-item">
+        <span class="nav-link">ABOUT</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./about-iprecon.html">IPRECON</a>
+          <a class="dropdown-item" href="./organizers.html">ORGANIZERS</a>
+          <a class="dropdown-item" href="./venue.html">VENUE</a>
+          <a class="dropdown-item" href="./kerala.html">KERALA</a>
+          <a class="dropdown-item" href="./accommodation.html">ACCOMMODATION</a>
+          <a class="dropdown-item" href="./visa.html">VISA</a>
+          <a class="dropdown-item active" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+          <a class="dropdown-item" href="./dei.html">DEI STATEMENT</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./committee.html">COMMITTEE</a></li>
+      <li class="nav-item">
+        <span class="nav-link">FOR AUTHORS</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./cfp.html">CALL FOR PAPERS</a>
+          <a class="dropdown-item" href="./submissions.html">SUBMISSIONS</a>
+          <a class="dropdown-item" href="./important-dates.html">IMPORTANT DATES</a>
+          <a class="dropdown-item" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+          <a class="dropdown-item" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+          <a class="dropdown-item" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
+          <a class="dropdown-item" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./speakers.html">SPEAKERS</a></li>
+      <li class="nav-item">
+        <span class="nav-link">PROGRAM</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./inaugural.html">INAUGURAL PROGRAM</a>
+          <a class="dropdown-item" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+          <a class="dropdown-item" href="./tutorials.html">TUTORIALS</a>
+          <a class="dropdown-item" href="./tracks.html">TRACKS</a>
+          <a class="dropdown-item" href="./special-sessions.html">SPECIAL SESSIONS</a>
+          <a class="dropdown-item" href="./keynote.html">KEYNOTE</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./registration.html">REGISTRATION</a></li>
+      <li class="nav-item"><a href="./contact.html">CONTACT</a></li>
+    </ul>
+    <button class="hamburger" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="./index.html">HOME</a>
+  <div class="mob-section">ABOUT</div>
+  <a href="./about-iprecon.html" style="padding-left:28px">IPRECON</a>
+  <a href="./organizers.html"    style="padding-left:28px">ORGANIZERS</a>
+  <a href="./venue.html"         style="padding-left:28px">VENUE</a>
+  <a href="./kerala.html"        style="padding-left:28px">KERALA</a>
+  <a href="./accommodation.html" style="padding-left:28px">ACCOMMODATION</a>
+  <a href="./visa.html"          style="padding-left:28px">VISA</a>
+  <a href="./sponsors.html"      style="padding-left:28px">SPONSORS &amp; EXHIBITORS</a>
+  <a href="./dei.html"           style="padding-left:28px">DEI STATEMENT</a>
+  <a href="./committee.html">COMMITTEE</a>
+  <div class="mob-section">FOR AUTHORS</div>
+  <a href="./cfp.html"                      style="padding-left:28px">CALL FOR PAPERS</a>
+  <a href="./submissions.html"              style="padding-left:28px">SUBMISSIONS</a>
+  <a href="./important-dates.html"          style="padding-left:28px">IMPORTANT DATES</a>
+  <a href="./camera-ready.html"             style="padding-left:28px">CAMERA READY INSTRUCTIONS</a>
+  <a href="./presentation-guidelines.html" style="padding-left:28px">PRESENTATION GUIDELINES</a>
+  <a href="./housing-support.html"          style="padding-left:28px">STUDENT HOUSING SUPPORT</a>
+  <a href="./travel-support.html"           style="padding-left:28px">STUDENT TRAVEL SUPPORT</a>
+  <a href="./speakers.html">SPEAKERS</a>
+  <div class="mob-section">PROGRAM</div>
+  <a href="./inaugural.html"             style="padding-left:28px">INAUGURAL PROGRAM</a>
+  <a href="./distinguished-lectures.html" style="padding-left:28px">DISTINGUISHED LECTURE PROGRAM</a>
+  <a href="./tutorials.html"             style="padding-left:28px">TUTORIALS</a>
+  <a href="./tracks.html"                style="padding-left:28px">TRACKS</a>
+  <a href="./special-sessions.html"      style="padding-left:28px">SPECIAL SESSIONS</a>
+  <a href="./keynote.html"               style="padding-left:28px">KEYNOTE</a>
+  <a href="./registration.html">REGISTRATION</a>
+  <a href="./contact.html">CONTACT</a>
+</div>
+
+<!-- ══════ ANNOUNCEMENTS MARQUEE ══════ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
+    <span class="marquee-sep">◆</span>
+    <!-- duplicate -->
+    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
+    <span class="marquee-sep">◆</span>
+  </div>
+</div>
+
+<!-- ══════ PAGE HERO ══════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow"><i class="fas fa-handshake"></i> India's First &amp; Only IEEE Club of 6 Conference</span>
+    <h1>Sponsors &amp; <em>Exhibitors</em></h1>
+    <p>2027 IEEE International Power and Renewable Energy Conference (IPRECON) — September 2027, College of Engineering Karunagappally, Kerala, India. Partner with IPRECON and align your brand with innovation, academic excellence, and the trusted IEEE name.</p>
+    <div class="hero-cta">
+      <a href="#sponsor-form" class="btn btn-gold"><i class="fas fa-handshake"></i> Become a Sponsor</a>
+      <a href="assets/IPRECON 2027 - Sponsorship Brochure.pdf" class="btn btn-outline"><i class="fas fa-file-pdf"></i> Download Prospectus</a>
+    </div>
+  </div>
+  <div class="breadcrumb">
+    <a href="./index.html">Home</a>
+    <i class="fas fa-chevron-right"></i>
+    <span class="current">Sponsors &amp; Exhibitors</span>
+  </div>
+</section>
+
+<!-- ══════ ABOUT SPONSORSHIP ══════ -->
+<section id="about-spon">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Partnership</div>
+      <h2 class="sec-title reveal">About IPRECON 2027</h2>
+      <p class="sec-sub reveal">Connect your organization with a global community of researchers, engineers, and industry professionals.</p>
+    </div>
+    <div class="spon-layout">
+      <div class="spon-text">
+        <p>IPRECON 2027 is a premier IEEE-sponsored international conference on power systems, renewable energy, and sustainable technologies, hosted at the College of Engineering Karunagappally, Kerala. As India's First and Only IEEE Club of 6 Technical Paper Conference, it unites ten IEEE Technical Societies under one roof.</p>
+        <p>Partnering with IPRECON 2027 connects your organization with a global community of researchers, engineers, and industry professionals — aligning your brand with innovation, academic excellence, and the trusted IEEE name.</p>
+        <p>IPRECON 2027 is part of the prestigious <strong>"Club of Six"</strong> IEEE IAS/PES international conferences in India.</p>
+      </div>
+      <div class="why-box">
+        <h3>Why Sponsor?</h3>
+        <ul class="why-list">
+          <li><i class="fas fa-users"></i> 300+ international researchers &amp; engineers</li>
+          <li><i class="fas fa-file-lines"></i> Peer-reviewed IEEE conference proceedings</li>
+          <li><i class="fas fa-globe"></i> Global industry–academia network</li>
+          <li><i class="fas fa-calendar-days"></i> 3-day premier technical conference</li>
+          <li><i class="fas fa-laptop"></i> Hybrid mode — worldwide reach</li>
+          <li><i class="fas fa-certificate"></i> IEEE PES &amp; IAS co-sponsored</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FEATURED PRESENTING PARTNER ══════ -->
+<section id="featured">
+  <div class="featured-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Flagship Opportunity</div>
+      <h2 class="sec-title reveal">Presenting Partner</h2>
+      <p class="sec-sub reveal">Take the marquee position at India's first &amp; only IEEE Club of 6 Technical Paper Conference.</p>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-logo">
+        <img src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'feat-num',textContent:'IPRECON 2027'}))">
+      </div>
+      <div class="feat-body">
+        <span class="feat-tag">5th Edition · Diamond Tier</span>
+        <h3>Partner with IPRECON <em>2027</em></h3>
+        <p class="feat-theme">"Advancing Power and Renewable Energy Systems through AI, Computing, and Emerging Technologies"</p>
+        <p>Align your brand with the fifth edition of India's first and only IEEE Club of 6 Technical Paper Conference, organized by the IEEE Student Branch of the College of Engineering Karunagappally with technical co-sponsorship from IEEE IAS and IEEE PES. As Diamond partner, your organization gains a 45–60 minute keynote/plenary session, an exhibition booth at the Welcome Reception, branding across banners, badges, and the program book, and a VIP table at the Networking Gala Dinner — reaching 300+ international researchers, engineers, and industry professionals in hybrid mode.</p>
+        <div class="feat-meta">
+          <span class="feat-chip"><i class="fas fa-gem"></i> Diamond · US$5,000</span>
+          <span class="feat-chip"><i class="fas fa-microphone"></i> 45–60 Min Keynote</span>
+          <span class="feat-chip"><i class="fas fa-store"></i> Exhibition Booth</span>
+          <span class="feat-chip"><i class="fas fa-champagne-glasses"></i> Gala VIP Table</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CORPORATE SPONSORSHIP TIERS ══════ -->
+<section id="tiers">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Sponsorship Tiers</div>
+      <h2 class="sec-title reveal">Corporate Sponsorship Tiers</h2>
+      <p class="sec-sub reveal">Choose the sponsorship level that best aligns with your organization's goals.</p>
+    </div>
+    <div class="tier-scroll-note"><i class="fas fa-arrows-left-right"></i> Scroll to compare tiers</div>
+    <div class="tier-table-wrap">
+      <table class="tier-table">
+        <thead>
+          <tr>
+            <th><span class="tier-head-label">Sponsorship Benefits</span></th>
+            <th>
+              <div class="tier-name diamond">Diamond</div>
+              <div class="tier-price-usd">US$5,000</div>
+              <div class="tier-price-inr">INR ₹4,60,000</div>
+            </th>
+            <th>
+              <div class="tier-name gold">Gold</div>
+              <div class="tier-price-usd">US$4,000</div>
+              <div class="tier-price-inr">INR ₹3,70,000</div>
+            </th>
+            <th>
+              <div class="tier-name silver">Silver</div>
+              <div class="tier-price-usd">US$3,000</div>
+              <div class="tier-price-inr">INR ₹2,80,000</div>
+            </th>
+            <th>
+              <div class="tier-name bronze">Bronze</div>
+              <div class="tier-price-usd">US$2,000</div>
+              <div class="tier-price-inr">INR ₹1,90,000</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Corporate name in program book</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td>
+          </tr>
+          <tr>
+            <td>Conference bag promotional material</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td>
+          </tr>
+          <tr>
+            <td>Corporate name on conference website</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td>
+          </tr>
+          <tr>
+            <td>Logo on conference eDM to participants</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-xmark no"></i></td>
+          </tr>
+          <tr>
+            <td>Logo displayed before conference start</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-xmark no"></i></td>
+          </tr>
+          <tr>
+            <td>45–60 Minute Keynote/Plenary Session</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-xmark no"></i></td><td><i class="fas fa-xmark no"></i></td>
+          </tr>
+          <tr>
+            <td>Exhibition booth at Welcome Reception (×1)</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-xmark no"></i></td><td><i class="fas fa-xmark no"></i></td>
+          </tr>
+          <tr>
+            <td>Logo in conference rundown</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-xmark no"></i></td><td><i class="fas fa-xmark no"></i></td>
+          </tr>
+          <tr>
+            <td>5× complimentary full conference passes</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-check yes"></i></td><td><i class="fas fa-xmark no"></i></td><td><i class="fas fa-xmark no"></i></td>
+          </tr>
+          <tr>
+            <td>Logo on banner &amp; delegate badge</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-xmark no"></i></td><td><i class="fas fa-xmark no"></i></td><td><i class="fas fa-xmark no"></i></td>
+          </tr>
+          <tr>
+            <td>A4 advertisement in program book</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-xmark no"></i></td><td><i class="fas fa-xmark no"></i></td><td><i class="fas fa-xmark no"></i></td>
+          </tr>
+          <tr>
+            <td>1-min company video during session breaks</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-xmark no"></i></td><td><i class="fas fa-xmark no"></i></td><td><i class="fas fa-xmark no"></i></td>
+          </tr>
+          <tr>
+            <td>Networking Gala Dinner — VIP table (×10 pax)</td>
+            <td><i class="fas fa-check yes"></i></td><td><i class="fas fa-xmark no"></i></td><td><i class="fas fa-xmark no"></i></td><td><i class="fas fa-xmark no"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tier-scroll-note"><i class="fas fa-arrows-left-right"></i> Scroll to compare tiers</div>
+  </div>
+</section>
+
+<!-- ══════ ADDITIONAL OPPORTUNITIES ══════ -->
+<section id="additional">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">More Options</div>
+      <h2 class="sec-title reveal">Additional Sponsorship Opportunities</h2>
+      <p class="sec-sub reveal">Targeted sponsorship options for specific conference elements.</p>
+    </div>
+    <div class="add-grid">
+      <div class="add-card">
+        <div class="add-icon"><i class="fas fa-mug-hot"></i></div>
+        <h3>Beverage Sponsor</h3>
+        <div class="add-usd">US$1,000</div>
+        <div class="add-inr">INR ₹1,00,000</div>
+      </div>
+      <div class="add-card">
+        <div class="add-icon"><i class="fas fa-gift"></i></div>
+        <h3>Souvenir Sponsor</h3>
+        <div class="add-usd">US$800</div>
+        <div class="add-inr">INR ₹80,000</div>
+      </div>
+      <div class="add-card">
+        <div class="add-icon"><i class="fas fa-store"></i></div>
+        <h3>Exhibition Booth (Dual)</h3>
+        <div class="add-usd">US$500</div>
+        <div class="add-inr">INR ₹50,000</div>
+      </div>
+      <div class="add-card">
+        <div class="add-icon"><i class="fas fa-shop"></i></div>
+        <h3>Exhibition Booth (Single)</h3>
+        <div class="add-usd">US$300</div>
+        <div class="add-inr">INR ₹30,000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ SISTER CONFERENCES ══════ -->
+<section id="sisters">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Club of 6</div>
+      <h2 class="sec-title reveal">Other Club of 6 Sister Conferences</h2>
+      <p class="sec-sub reveal">IPRECON is proud to be part of this elite group of IEEE power &amp; energy conferences.</p>
+    </div>
+    <div class="sister-grid">
+      <div class="sister-card">
+        <div class="sister-logo-box"><img src="assets/img/tpec.webp" alt="TPEC Logo" onerror="this.style.display='none'"></div>
+        <div class="sister-body">
+          <div class="sister-abbr">TPEC</div>
+          <div class="sister-role">Club of 6</div>
+          <h3>Texas Power and Energy Conference</h3>
+          <div class="sister-loc"><i class="fas fa-map-marker-alt"></i> College Station, TX, USA</div>
+        </div>
+      </div>
+      <div class="sister-card">
+        <div class="sister-logo-box"><img src="assets/img/iyce.webp" alt="IYCE Logo" onerror="this.style.display='none'"></div>
+        <div class="sister-body">
+          <div class="sister-abbr">IYCE</div>
+          <div class="sister-role">Club of 6</div>
+          <h3>International Youth Conference on Energy</h3>
+          <div class="sister-loc"><i class="fas fa-map-marker-alt"></i> Hungary &amp; Europe</div>
+        </div>
+      </div>
+      <div class="sister-card">
+        <div class="sister-logo-box"><img src="assets/img/peci.webp" alt="PECI Logo" onerror="this.style.display='none'"></div>
+        <div class="sister-body">
+          <div class="sister-abbr">PECI</div>
+          <div class="sister-role">Club of 6</div>
+          <h3>Power and Energy Conference</h3>
+          <div class="sister-loc"><i class="fas fa-map-marker-alt"></i> Urbana-Champaign, IL, USA</div>
+        </div>
+      </div>
+      <div class="sister-card">
+        <div class="sister-logo-box"><img src="assets/img/scems.jpg" alt="SCEMS Logo" onerror="this.style.display='none'"></div>
+        <div class="sister-body">
+          <div class="sister-abbr">SCEMS</div>
+          <div class="sister-role">Club of 6</div>
+          <h3>Student Conference on Electric Machines and Systems</h3>
+          <div class="sister-loc"><i class="fas fa-map-marker-alt"></i> South Korea</div>
+        </div>
+      </div>
+      <div class="sister-card">
+        <div class="sister-logo-box"><img src="assets/img/kpec.webp" alt="KPEC Logo" onerror="this.style.display='none'"></div>
+        <div class="sister-body">
+          <div class="sister-abbr">KPEC</div>
+          <div class="sister-role">Club of 6</div>
+          <h3>Kansas Power &amp; Energy Conference</h3>
+          <div class="sister-loc"><i class="fas fa-map-marker-alt"></i> Urbana-Champaign, IL, USA</div>
+        </div>
+      </div>
+      <div class="sister-card">
+        <div class="sister-logo-box"><img src="assets/img/ciycee.jpg" alt="CIYCEE Logo" onerror="this.style.display='none'"></div>
+        <div class="sister-body">
+          <div class="sister-abbr">CIYCEE</div>
+          <div class="sister-role">Club of 6</div>
+          <h3>China International Youth Conference on Electrical Engineering</h3>
+          <div class="sister-loc"><i class="fas fa-map-marker-alt"></i> Wuhan &amp; Chengdu, China</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ BECOME A SPONSOR FORM ══════ -->
+<section id="sponsor-form">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Get In Touch</div>
+      <h2 class="sec-title reveal">Become a Sponsor</h2>
+      <p class="sec-sub reveal">Fill in the form below and our team will get back to you shortly.</p>
+    </div>
+    <div class="form-wrap">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" placeholder="First Name">
+        </div>
+        <div class="form-field">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" placeholder="Last Name">
+        </div>
+        <div class="form-field">
+          <label for="org">Organization Name</label>
+          <input type="text" id="org" placeholder="Organization Name">
+        </div>
+        <div class="form-field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Email Address">
+        </div>
+        <div class="form-field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="Phone Number">
+        </div>
+        <div class="form-field">
+          <label for="stype">Sponsorship Type</label>
+          <select id="stype">
+            <option value="" disabled selected>Select a sponsorship tier</option>
+            <option>Diamond</option>
+            <option>Gold</option>
+            <option>Silver</option>
+            <option>Bronze</option>
+            <option>Beverage Sponsor</option>
+            <option>Souvenir Sponsor</option>
+            <option>Exhibition Booth (Dual)</option>
+            <option>Exhibition Booth (Single)</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label for="query">Your Query</label>
+          <textarea id="query" placeholder="Your Query"></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="button" onclick="document.getElementById('thankYou').style.display='block';">Submit Inquiry</button>
+        </div>
+      </div>
+      <p class="form-note" id="thankYou" style="display:none;">
+        <strong>Thank You for Your Interest!</strong><br>
+        Our sponsorship team will contact you within 48 hours.
+      </p>
+    </div>
+
+    <!-- Helpdesk -->
+    <div class="helpdesk">
+      <div class="helpdesk-text">
+        <h4>Need Sponsorship Support?</h4>
+        <p>For further questions regarding Sponsorship support, please contact the IPRECON Sponsorship Helpdesk.</p>
+      </div>
+      <div class="helpdesk-contacts">
+        <a href="mailto:sponsorship@iprecon.org"><i class="fas fa-envelope"></i> sponsorship@iprecon.org</a>
+        <a href="tel:+919311401568"><i class="fas fa-phone"></i> +91 93114 01568</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+      <p>2027 IEEE International Power and Renewable Energy Conference — 5th edition. Organized by IEEE Student Branch, College of Engineering Karunagappally, Kerala, India.</p>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/ieeeceksb/"       class="soc-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com/IEEE_SB_CEK"                  class="soc-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.linkedin.com/company/ieeesbcek/" class="soc-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/ieee_sb_cek/"    class="soc-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Paper Submission</h4>
+      <ul>
+        <li><a href="./cfp.html">Call for Papers</a></li>
+        <li><a href="./submissions.html">Submit a Paper</a></li>
+        <li><a href="https://www.ieee.org/conferences/publishing/templates" target="_blank" rel="noopener">Paper Template</a></li>
+        <li><a href="./important-dates.html">Important Dates</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="https://ieeesbcek.org" target="_blank" rel="noopener">IEEE SB CEK</a></li>
+        <li><a href="./committee.html">Team</a></li>
+        <li><a href="./about-iprecon.html">Legacy</a></li>
+        <li><a href="./organizers.html">Organizers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Travel &amp; Info</h4>
+      <ul>
+        <li><a href="./venue.html">Transportation</a></li>
+        <li><a href="./accommodation.html">Hotels</a></li>
+        <li><a href="./kerala.html">Tourism</a></li>
+        <li><a href="./contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Built with ❤️ &nbsp;|&nbsp; IEEE Student Branch CEK &copy; 2027</span>
+    <span>College of Engineering Karunagappally, Kerala, India</span>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+'use strict';
+gsap.registerPlugin(ScrollTrigger);
+
+/* Scroll progress + navbar shadow + logo reveal */
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('scroll-bar').style.width = pct + '%';
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+/* Mobile nav */
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+/* Reveals */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* Page-hero entrance */
+gsap.fromTo('.page-hero-inner > *',
+  { opacity: 0, y: 22 },
+  { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', delay: 0.1 }
+);
+
+/* About sponsorship stagger */
+gsap.fromTo('.spon-text p',
+  { opacity: 0, x: -20 },
+  { opacity: 1, x: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out',
+    scrollTrigger: { trigger: '.spon-text', start: 'top 82%', once: true } }
+);
+gsap.fromTo('.why-box',
+  { opacity: 0, x: 20 },
+  { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out',
+    scrollTrigger: { trigger: '.why-box', start: 'top 82%', once: true } }
+);
+
+/* Featured partner card slide in */
+gsap.fromTo('.feat-card',
+  { opacity: 0, y: 40 },
+  { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+    scrollTrigger: { trigger: '.feat-card', start: 'top 85%', once: true } }
+);
+
+/* Tier table */
+gsap.fromTo('.tier-table-wrap',
+  { opacity: 0, y: 30 },
+  { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+    scrollTrigger: { trigger: '.tier-table-wrap', start: 'top 85%', once: true } }
+);
+
+/* Additional cards */
+gsap.fromTo('.add-card',
+  { opacity: 0, y: 26 },
+  { opacity: 1, y: 0, duration: 0.55, stagger: 0.1, ease: 'power2.out',
+    scrollTrigger: { trigger: '.add-grid', start: 'top 84%', once: true } }
+);
+
+/* Sister cards */
+gsap.fromTo('.sister-card',
+  { opacity: 0, y: 26 },
+  { opacity: 1, y: 0, duration: 0.55, stagger: 0.09, ease: 'power2.out',
+    scrollTrigger: { trigger: '.sister-grid', start: 'top 84%', once: true } }
+);
+
+/* Form */
+gsap.fromTo('.form-wrap',
+  { opacity: 0, y: 30 },
+  { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+    scrollTrigger: { trigger: '.form-wrap', start: 'top 85%', once: true } }
+);
+
+/* Smooth anchor scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>

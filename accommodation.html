@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accommodation | IPRECON 2027 — IEEE International Power and Renewable Energy Conference</title>
+  <meta name="description" content="Accommodation and travel information for IPRECON 2027 delegates near College of Engineering Karunagappally, Kollam, Kerala, India." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Variables ──────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --brand:    #211021;
+      --purple:   #8e24aa;
+      --purple-d: #6a1b9a;
+      --gold:     #d4af37;
+      --gold-d:   #c9a227;
+      --white:    #ffffff;
+      --off:      #fdf5fd;
+      --text:     #2d1f2d;
+      --muted:    #5a4a5a;
+      --light:    #f8f4f8;
+      --border:   #e0cce0;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text); background: #fff; }
+    img  { max-width: 100%; display: block; }
+    a    { text-decoration: none; color: inherit; }
+
+    /* ── Scroll progress bar ───────────────────── */
+    #scroll-bar {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+      z-index: 9999; transition: width 0.08s linear;
+    }
+
+    /* ════════════════════════════════════════════
+       HEADER — two-row design
+    ════════════════════════════════════════════ */
+    .header-top-bar {
+      background: var(--brand);
+      padding: 7px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; color: rgba(255,255,255,0.65);
+      letter-spacing: 0.04em;
+    }
+    .header-top-bar span { display: flex; align-items: center; gap: 8px; }
+    .header-top-bar i    { color: var(--gold); font-size: 11px; }
+    .header-top-bar a    { color: rgba(255,255,255,0.65); transition: color 0.2s; }
+    .header-top-bar a:hover { color: var(--gold); }
+
+    .site-header {
+      background: #fff;
+      padding: 18px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 3px solid var(--brand);
+    }
+
+    .header-brand {
+      display: flex; align-items: center; gap: 18px;
+    }
+    .header-conf-logo { height: 72px; width: auto; }
+    .header-brand-text {
+      display: flex; flex-direction: column; gap: 2px;
+      border-left: 1px solid var(--border);
+      padding-left: 18px;
+    }
+    .header-brand-text .conf-name {
+      font-size: 20px; font-weight: 800;
+      color: var(--brand); letter-spacing: 0.02em; line-height: 1;
+    }
+    .header-brand-text .conf-full {
+      font-size: 12px; color: var(--muted); font-weight: 400;
+      letter-spacing: 0.02em; line-height: 1.4;
+    }
+    .header-edition-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-d));
+      color: white; font-size: 10.5px; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-top: 6px; width: fit-content;
+    }
+
+    .header-sponsors {
+      display: flex; align-items: center; gap: 0;
+    }
+    .header-sp-group {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 0 24px;
+      border-right: 1px solid var(--border);
+    }
+    .header-sp-group:last-child { border-right: none; padding-right: 0; }
+    .header-sp-group .sp-label {
+      font-size: 9.5px; color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 600;
+    }
+    .header-sp-group img {
+      height: 36px; width: auto; opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .header-sp-group img:hover { opacity: 1; }
+
+    /* ════════════════════════════════════════════
+       NAVBAR
+    ════════════════════════════════════════════ */
+    .navbar {
+      background: var(--brand);
+      position: sticky; top: 0; z-index: 1000;
+      border-bottom: 2px solid rgba(142,36,170,0.5);
+      transition: box-shadow 0.3s;
+    }
+    .navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.45); }
+
+    .nav-container {
+      max-width: 1300px; margin: 0 auto;
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .brand-logo-wrap {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+    }
+    .navbar.scrolled .brand-logo-wrap {
+      opacity: 1;
+      visibility: visible;
+    }
+    .brand-logo {
+      height: 46px; width: auto; display: block;
+    }
+
+    .nav-items { display: flex; list-style: none; }
+
+    .nav-item { position: relative; }
+    .nav-item > a,
+    .nav-item > span.nav-link {
+      display: flex; align-items: center; gap: 5px;
+      padding: 0 16px; height: 58px;
+      color: rgba(255,255,255,0.78);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      cursor: pointer; white-space: nowrap;
+      border-bottom: 3px solid transparent; margin-bottom: -2px;
+      transition: color 0.22s, border-color 0.22s;
+    }
+    .nav-item > a:hover,
+    .nav-item > span.nav-link:hover,
+    .nav-item:hover > span.nav-link { color: #fff; border-bottom-color: var(--gold); }
+    .nav-item > span.nav-link::after {
+      content: '\f107'; font-family: 'Font Awesome 6 Free';
+      font-weight: 900; font-size: 10px; margin-left: 3px;
+    }
+
+    .dropdown-content {
+      display: none; position: absolute; top: 100%; left: 0;
+      background: var(--brand); min-width: 270px;
+      border-top: 2px solid var(--purple);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.45); z-index: 200;
+    }
+    .nav-item:hover .dropdown-content { display: block; }
+    .dropdown-item {
+      display: block; padding: 11px 20px;
+      color: rgba(255,255,255,0.7);
+      font-size: 11.5px; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      border-left: 3px solid transparent;
+      transition: all 0.18s;
+    }
+    .dropdown-item:hover {
+      background: rgba(142,36,170,0.18); color: #fff;
+      border-left-color: var(--gold); padding-left: 26px;
+    }
+    .dropdown-item.active { color: var(--gold); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: rgba(255,255,255,0.85); border-radius: 2px; transition: all 0.3s;
+    }
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; top: 58px;
+      background: var(--brand); z-index: 999;
+      overflow-y: auto; padding: 16px;
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a {
+      display: block; padding: 11px 14px;
+      color: rgba(255,255,255,0.78); font-size: 12.5px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--gold); }
+    .mob-section {
+      font-size: 10px; color: var(--gold);
+      padding: 14px 14px 4px; letter-spacing: 0.14em;
+      font-weight: 700; text-transform: uppercase;
+    }
+
+    /* ════════════════════════════════════════════
+       ANNOUNCEMENTS MARQUEE
+    ════════════════════════════════════════════ */
+    .marquee-strip {
+      background: var(--off); border-bottom: 1px solid var(--border);
+      padding: 10px 0; overflow: hidden;
+      position: sticky;
+      top: 58px;
+      z-index: 999;
+    }
+    .marquee-track {
+      display: flex; gap: 52px;
+      animation: mLeft 32s linear infinite; width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes mLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12.5px; color: var(--muted); white-space: nowrap;
+    }
+    .marquee-item i    { color: var(--purple); font-size: 11px; }
+    .marquee-item strong { color: var(--brand); font-weight: 600; }
+    .marquee-sep { color: #d0b0d0; }
+
+    /* ════════════════════════════════════════════
+       PAGE HERO / BREADCRUMB
+    ════════════════════════════════════════════ */
+    .page-hero {
+      background: var(--brand);
+      padding: 66px 60px 60px;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg, transparent, transparent 60px,
+        rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
+    .page-hero .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4);
+      color: var(--gold); font-size: 11px; font-weight: 600;
+      padding: 6px 16px; border-radius: 3px;
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 22px;
+    }
+    .page-hero h1 {
+      font-size: clamp(30px, 4.5vw, 48px); font-weight: 800; color: #fff;
+      line-height: 1.15; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.01em;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--gold); }
+    .page-hero p {
+      font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 640px; margin: 0 auto;
+    }
+    .breadcrumb {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.3); }
+    .breadcrumb .current { color: var(--gold); }
+
+    /* ════════════════════════════════════════════
+       SECTION COMMONS
+    ════════════════════════════════════════════ */
+    .section-wrap { max-width: 1200px; margin: 0 auto; }
+    .sec-head { text-align: center; margin-bottom: 44px; }
+    .sec-label-tag {
+      display: block;
+      font-size: 11px; color: var(--purple);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 10px;
+    }
+    .sec-title {
+      font-size: clamp(24px, 3.2vw, 34px); font-weight: 800;
+      color: var(--brand); line-height: 1.2;
+      display: inline-block; padding-bottom: 14px; position: relative;
+    }
+    .sec-title::after {
+      content: ''; position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+    }
+    .sec-sub {
+      font-size: 14.5px; color: var(--muted);
+      line-height: 1.7; max-width: 680px; margin: 16px auto 0;
+    }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--purple); color: #fff;
+      padding: 11px 22px; border-radius: 6px;
+      font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      border: 2px solid var(--purple); transition: all 0.28s ease;
+    }
+    .btn-primary:hover { background: transparent; color: var(--purple); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--brand);
+      padding: 11px 22px; border-radius: 6px;
+      font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      border: 2px solid var(--border); transition: all 0.28s ease;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--purple-d); transform: translateY(-2px); }
+
+    /* ════════════════════════════════════════════
+       QUICK STATS STRIP
+    ════════════════════════════════════════════ */
+    #quickstats { padding: 56px 60px 20px; background: #fff; }
+    .qs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1000px; margin: 0 auto; }
+    .qs-card {
+      background: var(--brand); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px;
+      padding: 28px 18px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px;
+      position: relative; overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .qs-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+    }
+    .qs-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(142,36,170,0.35), transparent 70%);
+      opacity: 0; transition: opacity 0.35s ease;
+    }
+    .qs-card:hover { transform: translateY(-6px); box-shadow: 0 18px 44px rgba(33,16,33,0.4); }
+    .qs-card:hover::after { opacity: 1; }
+    .qs-card .qs-icon {
+      width: 44px; height: 44px; border-radius: 50%; position: relative; z-index: 1;
+      background: rgba(212,175,55,0.12); color: var(--gold);
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .qs-card:hover .qs-icon { background: var(--gold); color: var(--brand); }
+    .qs-card .qs-num {
+      font-size: 22px; font-weight: 800; line-height: 1; position: relative; z-index: 1;
+      background: linear-gradient(90deg, #fff, #f3d98a);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .qs-card .qs-lbl { font-size: 11.5px; color: rgba(255,255,255,0.6); position: relative; z-index: 1; }
+
+    /* ════════════════════════════════════════════
+       BOOKING NOTICE
+    ════════════════════════════════════════════ */
+    #notice { padding: 34px 60px 10px; background: #fff; }
+    .notice-card {
+      max-width: 1000px; margin: 0 auto;
+      background: var(--off); border: 1px solid var(--border); border-left: 4px solid var(--gold);
+      border-radius: 12px; padding: 24px 28px;
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .notice-card i { color: var(--gold); font-size: 22px; margin-top: 2px; flex-shrink: 0; }
+    .notice-card h3 { font-size: 15px; font-weight: 700; color: var(--brand); margin-bottom: 6px; }
+    .notice-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* ════════════════════════════════════════════
+       HOTEL TIERS
+    ════════════════════════════════════════════ */
+    .hotels { padding: 54px 60px; }
+    .hotels:nth-of-type(even) { background: var(--light); }
+    .tier-head { display: flex; align-items: center; gap: 14px; max-width: 1200px; margin: 0 auto 30px; }
+    .tier-icon {
+      width: 50px; height: 50px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .tier-icon.lux { background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand); }
+    .tier-icon.mid { background: linear-gradient(135deg, var(--purple), var(--purple-d)); color: #fff; }
+    .tier-icon.budget { background: #f3e8f5; color: var(--purple); }
+    .tier-head h2 { font-size: 22px; font-weight: 800; color: var(--brand); }
+    .tier-head span { font-size: 12.5px; color: var(--muted); display: block; margin-top: 2px; }
+
+    .hotel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; max-width: 1200px; margin: 0 auto; }
+    .hotel-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 20px 20px 20px 4px;
+      overflow: hidden; display: flex; flex-direction: column;
+      box-shadow: 0 8px 26px rgba(33,16,33,0.07);
+      transition: transform 0.32s cubic-bezier(.2,.7,.2,1), box-shadow 0.32s ease, border-color 0.3s ease;
+      position: relative;
+    }
+    .hotel-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--purple), var(--gold));
+      z-index: 3; opacity: 0; transition: opacity 0.3s ease;
+    }
+    .hotel-card:hover { transform: translateY(-8px); box-shadow: 0 26px 54px rgba(33,16,33,0.18); border-color: rgba(142,36,170,0.35); }
+    .hotel-card:hover::before { opacity: 1; }
+
+    /* hotel image — taller, with diagonal clip */
+    .hotel-media { position: relative; height: 190px; overflow: hidden; }
+    .hotel-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .hotel-card:hover .hotel-media img { transform: scale(1.1); }
+    .hotel-media::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(20,14,26,0.55));
+    }
+    .hotel-media .h-fallback {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--purple-d), var(--brand));
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.35); font-size: 40px;
+    }
+    .hotel-media .h-badge {
+      position: absolute; top: 14px; right: 14px; z-index: 2;
+      background: rgba(33,16,33,0.85); backdrop-filter: blur(4px);
+      color: var(--gold); font-size: 10px; font-weight: 700;
+      padding: 6px 13px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .hotel-media .h-badge.near { background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand); }
+    /* stars float over image bottom-left */
+    .hotel-media .hotel-stars {
+      position: absolute; left: 16px; bottom: 12px; z-index: 2;
+      display: flex; gap: 2px; color: var(--gold); font-size: 12px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+
+    .hotel-card-body { padding: 20px 22px 22px; flex: 1; display: flex; flex-direction: column; }
+    .hotel-name { font-size: 16px; font-weight: 700; color: var(--brand); line-height: 1.32; margin-bottom: 12px; min-height: 42px; }
+    .hotel-dist { display: flex; gap: 8px; align-items: flex-start; font-size: 12.5px; color: var(--muted); line-height: 1.5; margin-bottom: 14px; }
+    .hotel-dist i { color: var(--purple); font-size: 12px; margin-top: 3px; flex-shrink: 0; }
+    .hotel-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 18px; }
+    .hotel-tag { background: #f3e8f5; color: var(--purple-d); font-size: 10.5px; font-weight: 600; padding: 4px 11px; border-radius: 20px; }
+    .hotel-tag.dist { background: #fff3e0; color: #e65100; }
+    .hotel-tag.near { background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand); }
+    .hotel-dir {
+      margin-top: auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--brand); color: #fff; padding: 11px 18px; border-radius: 10px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.02em; width: 100%;
+      border: 2px solid var(--brand); transition: all 0.26s ease;
+    }
+    .hotel-dir:hover { background: var(--purple); border-color: var(--purple); transform: translateY(-2px); }
+
+    /* ════════════════════════════════════════════
+       DISCOUNT BANNER
+    ════════════════════════════════════════════ */
+    .discount-band { max-width: 1200px; margin: 0 auto 40px; }
+    .discount-banner {
+      background: linear-gradient(135deg, var(--brand), var(--purple));
+      color: #fff; padding: 30px 36px; border-radius: 16px;
+      display: flex; align-items: center; gap: 24px;
+      position: relative; overflow: hidden;
+    }
+    .discount-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 41px);
+    }
+    .db-icon {
+      width: 58px; height: 58px; border-radius: 50%; flex-shrink: 0; position: relative; z-index: 1;
+      background: rgba(212,175,55,0.2); display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: var(--gold);
+    }
+    .db-text { flex: 1; position: relative; z-index: 1; }
+    .db-text h3 { font-size: 17px; font-weight: 700; margin-bottom: 5px; }
+    .db-text p { font-size: 13px; opacity: 0.9; line-height: 1.55; }
+    .db-btn {
+      position: relative; z-index: 1; flex-shrink: 0;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand);
+      padding: 12px 24px; border-radius: 8px; font-size: 12.5px; font-weight: 700;
+      letter-spacing: 0.03em; text-transform: uppercase; transition: all 0.28s ease;
+    }
+    .db-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(212,175,55,0.4); }
+
+    /* ════════════════════════════════════════════
+       TRAVEL CATEGORY (airports/rail/bus)
+    ════════════════════════════════════════════ */
+    .travel-cat { max-width: 1200px; margin: 0 auto 44px; }
+    .travel-cat-head { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+    .travel-cat-head .tc-ico { width: 44px; height: 44px; border-radius: 11px; background: #f3e8f5; color: var(--purple); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .travel-cat-head h3 { font-size: 19px; font-weight: 800; color: var(--brand); }
+    .hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+    .hub-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      display: flex; flex-direction: column;
+      box-shadow: 0 6px 22px rgba(33,16,33,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .hub-card:hover { transform: translateY(-6px); box-shadow: 0 20px 46px rgba(33,16,33,0.13); border-color: rgba(142,36,170,0.3); }
+    .hub-media { position: relative; height: 190px; overflow: hidden; }
+    .hub-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .hub-card:hover .hub-media img { transform: scale(1.1); }
+    .hub-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(20,14,26,0.6)); }
+    .hub-media .hub-fallback {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--purple-d), var(--brand));
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.35); font-size: 40px;
+    }
+    .hub-media .hub-code-chip {
+      position: absolute; top: 14px; right: 14px; z-index: 2;
+      background: rgba(33,16,33,0.85); backdrop-filter: blur(4px);
+      color: var(--gold); font-size: 11px; font-weight: 700;
+      padding: 6px 13px; border-radius: 20px; letter-spacing: 0.05em;
+    }
+    .hub-body { padding: 24px 26px 26px; display: flex; flex-direction: column; flex: 1; }
+    .hub-name { font-size: 17px; font-weight: 700; color: var(--brand); line-height: 1.35; margin-bottom: 12px; }
+    .hub-dist { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; color: var(--muted); line-height: 1.55; margin-bottom: 20px; }
+    .hub-dist i { color: #e65100; font-size: 13px; margin-top: 3px; flex-shrink: 0; }
+    .hub-dir {
+      margin-top: auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--purple); color: #fff; padding: 12px 18px; border-radius: 10px;
+      font-size: 12.5px; font-weight: 600; width: 100%;
+      border: 2px solid var(--purple); transition: all 0.26s ease;
+    }
+    .hub-dir:hover { background: transparent; color: var(--purple); transform: translateY(-2px); }
+    /* bus row cards */
+    .bus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .bus-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px;
+      display: flex; align-items: center; gap: 16px;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+    .bus-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(33,16,33,0.1); }
+    .bus-card .bus-ico { width: 46px; height: 46px; border-radius: 11px; background: #f3e8f5; color: var(--purple); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .bus-card .bus-info { flex: 1; }
+    .bus-card .bus-name { font-size: 13.5px; font-weight: 700; color: var(--brand); margin-bottom: 2px; }
+    .bus-card .bus-dist { font-size: 11.5px; color: var(--muted); }
+    .bus-card .bus-dist i { color: #e65100; margin-right: 4px; }
+    .bus-card .bus-go { flex-shrink: 0; width: 36px; height: 36px; border-radius: 9px; background: var(--purple); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; transition: all 0.26s ease; }
+    .bus-card .bus-go:hover { background: var(--purple-d); transform: translateY(-2px); }
+
+    /* ════════════════════════════════════════════
+       TRAVEL / HOW TO REACH
+    ════════════════════════════════════════════ */
+    #travel { padding: 76px 60px; background: #fff; }
+    .travel-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 1100px; margin: 0 auto; }
+    .travel-card {
+      background: var(--off); border: 1px solid var(--border); border-radius: 16px;
+      padding: 0; overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .travel-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(33,16,33,0.1); }
+    .travel-card-head {
+      display: flex; align-items: center; gap: 14px;
+      padding: 20px 24px; background: var(--brand); position: relative; overflow: hidden;
+    }
+    .travel-card-head::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--purple), var(--gold)); }
+    .travel-card-head .tc-icon {
+      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(212,175,55,0.14); color: var(--gold);
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+    }
+    .travel-card-head h3 { font-size: 16px; font-weight: 700; color: #fff; }
+    .travel-card-head .tc-from { font-size: 11.5px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+    .travel-card-body { padding: 22px 24px 24px; }
+    .travel-steps { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .travel-steps li { display: flex; gap: 14px; align-items: flex-start; }
+    .travel-steps .step-num {
+      flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px;
+      background: #f3e8f5; color: var(--purple); font-size: 12px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+    .travel-steps .step-text { font-size: 13px; color: var(--text); line-height: 1.6; }
+    .travel-steps .step-text strong { color: var(--brand); font-weight: 600; }
+    .travel-meta { display: flex; gap: 18px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+    .travel-meta span { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); font-weight: 500; }
+    .travel-meta i { color: var(--gold); font-size: 12px; }
+
+    /* ════════════════════════════════════════════
+       ON-CAMPUS / HOSTEL
+    ════════════════════════════════════════════ */
+    #campus { padding: 76px 60px; background: var(--brand); position: relative; overflow: hidden; }
+    #campus::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg, transparent, transparent 60px,
+        rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
+    }
+    .campus-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; text-align: center; }
+    .campus-inner .c-icon {
+      width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 20px;
+      background: rgba(212,175,55,0.12); display: flex; align-items: center; justify-content: center;
+      font-size: 26px; color: var(--gold);
+    }
+    .campus-inner h2 { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 14px; }
+    .campus-inner p { font-size: 14.5px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 28px; }
+    .campus-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand);
+      padding: 12px 26px; border-radius: 6px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      transition: all 0.28s ease;
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,175,55,0.4); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: rgba(255,255,255,0.85);
+      padding: 12px 26px; border-radius: 6px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      border: 2px solid rgba(255,255,255,0.35); transition: all 0.28s ease;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    /* ════════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════════ */
+    footer { background: #1a0e1a; padding: 68px 60px 36px; }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px; max-width: 1200px; margin: 0 auto 48px;
+    }
+    .footer-brand img {
+      height: 44px; filter: brightness(0) invert(1);
+      opacity: 0.78; margin-bottom: 16px;
+    }
+    .footer-brand p {
+      font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.8; margin-bottom: 24px;
+    }
+    .footer-socials { display: flex; gap: 10px; }
+    .soc-link {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5); font-size: 14px; transition: all 0.25s;
+    }
+    .soc-link:hover { background: var(--purple); border-color: var(--purple); color: white; transform: translateY(-2px); }
+    .footer-col h4 {
+      font-size: 12px; font-weight: 700; color: white;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 18px; padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: rgba(255,255,255,0.42); font-size: 13px; transition: color 0.22s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto;
+      padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12px; color: rgba(255,255,255,0.28);
+    }
+
+    /* ════════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════════ */
+    @media (max-width: 1100px) {
+      .site-header, .header-top-bar { padding-left: 28px; padding-right: 28px; }
+      .nav-container { padding: 0 20px; }
+      #quickstats, #notice, .hotels, #travel, #campus, footer, .page-hero { padding-left: 32px; padding-right: 32px; }
+      .qs-grid { grid-template-columns: repeat(2, 1fr); }
+      .hotel-grid { grid-template-columns: repeat(2, 1fr); }
+      .hub-grid { grid-template-columns: 1fr; }
+      .bus-grid { grid-template-columns: 1fr; }
+      .travel-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 900px) {
+      .header-sponsors { display: none; }
+    }
+    @media (max-width: 768px) {
+      .header-top-bar { padding: 6px 18px; font-size: 11px; }
+      .header-top-bar .htb-right { display: none; }
+      .site-header { padding: 14px 18px; }
+      .header-conf-logo { height: 56px; }
+      .nav-items { display: none; }
+      .hamburger { display: flex; }
+      .nav-container { padding: 0 16px; }
+      .qs-grid { grid-template-columns: 1fr 1fr; }
+      .hotel-grid { grid-template-columns: 1fr; }
+      .hub-grid { grid-template-columns: 1fr; }
+      .bus-grid { grid-template-columns: 1fr; }
+      .discount-banner { flex-direction: column; text-align: center; padding: 26px 22px; }
+      .db-btn { width: 100%; justify-content: center; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+      #quickstats, #notice, .hotels, #travel, #campus { padding-left: 20px; padding-right: 20px; }
+      .page-hero { padding: 48px 20px 44px; }
+      .notice-card { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+<div id="scroll-bar"></div>
+
+<!-- ══════════════════════════════════════
+     HEADER — two-row design
+══════════════════════════════════════ -->
+<div class="header-top-bar">
+  <span>
+    <i class="fas fa-map-marker-alt"></i> College of Engineering Karunagappally, Kerala, India
+    &nbsp;&nbsp;
+    <i class="fas fa-calendar-alt"></i> September 2027
+    &nbsp;&nbsp;
+    <i class="fas fa-wifi"></i> Hybrid Conference
+  </span>
+  <span class="htb-right">
+    <a href="./contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+    &nbsp;&nbsp;
+    <a href="./registration.html"><i class="fas fa-user-plus"></i> Register</a>
+  </span>
+</div>
+
+<header class="site-header">
+  <div class="header-brand">
+    <img class="header-conf-logo"
+         src="assets/img/iprecon26 black.png"
+         alt="IPRECON 2027"
+         onerror="this.style.display='none'">
+    <div class="header-brand-text">
+      <span class="conf-name">September 2027</span>
+      <span class="conf-full">College of Engineering Karunagappally, Kerala, INDIA</span>
+      <div class="header-edition-badge"><i class="fas fa-star"></i> 5th Edition</div>
+    </div>
+  </div>
+
+  <div class="header-sponsors">
+    <div class="header-sp-group">
+      <span class="sp-label">Technical Co-Sponsor</span>
+      <img src="assets/img/ias_bw.png"
+           alt="IEEE IAS"
+           onerror="this.style.display='none'">
+    </div>
+    <div class="header-sp-group">
+      <span class="sp-label">Technical Co-Sponsor</span>
+      <img src="assets/img/pes BLACK.png"
+           alt="IEEE PES"
+           onerror="this.style.display='none'">
+    </div>
+    <div class="header-sp-group">
+      <span class="sp-label">Organized under</span>
+      <img src="assets/img/ieee blk.png"
+           alt="IEEE"
+           onerror="this.style.display='none'">
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav class="navbar" id="mainNav">
+  <div class="nav-container">
+    <a href="./index.html" class="brand-logo-wrap">
+      <img class="brand-logo"
+           src="assets/img/iprecon26 white.png"
+           alt="IPRECON 2027"
+           onerror="this.style.display='none'">
+    </a>
+    <ul class="nav-items">
+      <li class="nav-item"><a href="./index.html">HOME</a></li>
+      <li class="nav-item">
+        <span class="nav-link">ABOUT</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./about-iprecon.html">IPRECON</a>
+          <a class="dropdown-item" href="./organizers.html">ORGANIZERS</a>
+          <a class="dropdown-item" href="./venue.html">VENUE</a>
+          <a class="dropdown-item" href="./kerala.html">KERALA</a>
+          <a class="dropdown-item active" href="./accommodation.html">ACCOMMODATION</a>
+          <a class="dropdown-item" href="./visa.html">VISA</a>
+          <a class="dropdown-item" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+          <a class="dropdown-item" href="./dei.html">DEI STATEMENT</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./committee.html">COMMITTEE</a></li>
+      <li class="nav-item">
+        <span class="nav-link">FOR AUTHORS</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./cfp.html">CALL FOR PAPERS</a>
+          <a class="dropdown-item" href="./submissions.html">SUBMISSIONS</a>
+          <a class="dropdown-item" href="./important-dates.html">IMPORTANT DATES</a>
+          <a class="dropdown-item" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+          <a class="dropdown-item" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+          <a class="dropdown-item" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
+          <a class="dropdown-item" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./speakers.html">SPEAKERS</a></li>
+      <li class="nav-item">
+        <span class="nav-link">PROGRAM</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./inaugural.html">INAUGURAL PROGRAM</a>
+          <a class="dropdown-item" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+          <a class="dropdown-item" href="./tutorials.html">TUTORIALS</a>
+          <a class="dropdown-item" href="./tracks.html">TRACKS</a>
+          <a class="dropdown-item" href="./special-sessions.html">SPECIAL SESSIONS</a>
+          <a class="dropdown-item" href="./keynote.html">KEYNOTE</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./registration.html">REGISTRATION</a></li>
+      <li class="nav-item"><a href="./contact.html">CONTACT</a></li>
+    </ul>
+    <button class="hamburger" id="menuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="./index.html">HOME</a>
+  <div class="mob-section">ABOUT</div>
+  <a href="./about-iprecon.html" style="padding-left:28px">IPRECON</a>
+  <a href="./organizers.html"    style="padding-left:28px">ORGANIZERS</a>
+  <a href="./venue.html"         style="padding-left:28px">VENUE</a>
+  <a href="./kerala.html"        style="padding-left:28px">KERALA</a>
+  <a href="./accommodation.html" style="padding-left:28px">ACCOMMODATION</a>
+  <a href="./visa.html"          style="padding-left:28px">VISA</a>
+  <a href="./sponsors.html"      style="padding-left:28px">SPONSORS &amp; EXHIBITORS</a>
+  <a href="./dei.html"           style="padding-left:28px">DEI STATEMENT</a>
+  <a href="./committee.html">COMMITTEE</a>
+  <div class="mob-section">FOR AUTHORS</div>
+  <a href="./cfp.html"                      style="padding-left:28px">CALL FOR PAPERS</a>
+  <a href="./submissions.html"              style="padding-left:28px">SUBMISSIONS</a>
+  <a href="./important-dates.html"          style="padding-left:28px">IMPORTANT DATES</a>
+  <a href="./camera-ready.html"             style="padding-left:28px">CAMERA READY INSTRUCTIONS</a>
+  <a href="./presentation-guidelines.html" style="padding-left:28px">PRESENTATION GUIDELINES</a>
+  <a href="./housing-support.html"          style="padding-left:28px">STUDENT HOUSING SUPPORT</a>
+  <a href="./travel-support.html"           style="padding-left:28px">STUDENT TRAVEL SUPPORT</a>
+  <a href="./speakers.html">SPEAKERS</a>
+  <div class="mob-section">PROGRAM</div>
+  <a href="./inaugural.html"             style="padding-left:28px">INAUGURAL PROGRAM</a>
+  <a href="./distinguished-lectures.html" style="padding-left:28px">DISTINGUISHED LECTURE PROGRAM</a>
+  <a href="./tutorials.html"             style="padding-left:28px">TUTORIALS</a>
+  <a href="./tracks.html"                style="padding-left:28px">TRACKS</a>
+  <a href="./special-sessions.html"      style="padding-left:28px">SPECIAL SESSIONS</a>
+  <a href="./keynote.html"               style="padding-left:28px">KEYNOTE</a>
+  <a href="./registration.html">REGISTRATION</a>
+  <a href="./contact.html">CONTACT</a>
+</div>
+
+<!-- ══════════════════════════════════════
+     ANNOUNCEMENTS MARQUEE
+══════════════════════════════════════ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
+    <span class="marquee-sep">◆</span>
+    <!-- duplicate -->
+    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
+    <span class="marquee-sep">◆</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow"><i class="fas fa-bed"></i> Stay &amp; Travel — Karunagappally</span>
+    <h1><em>Accommodation</em> &amp; Travel</h1>
+    <p>Comfortable stays near the College of Engineering Karunagappally and clear directions to reach the venue for IPRECON 2027 delegates.</p>
+  </div>
+  <div class="breadcrumb">
+    <a href="./index.html">Home</a>
+    <i class="fas fa-chevron-right"></i>
+    <span class="current">Accommodation</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     QUICK STATS
+══════════════════════════════════════ -->
+<section id="quickstats">
+  <div class="qs-grid">
+    <div class="qs-card reveal"><div class="qs-icon"><i class="fas fa-hotel"></i></div><div class="qs-num">6</div><div class="qs-lbl">Recommended Hotels</div></div>
+    <div class="qs-card reveal"><div class="qs-icon"><i class="fas fa-star"></i></div><div class="qs-num">5-Star</div><div class="qs-lbl">Lakefront Options</div></div>
+    <div class="qs-card reveal"><div class="qs-icon"><i class="fas fa-location-dot"></i></div><div class="qs-num">3 km</div><div class="qs-lbl">Nearest Hotel to Venue</div></div>
+    <div class="qs-card reveal"><div class="qs-icon"><i class="fas fa-plane"></i></div><div class="qs-num">85 km</div><div class="qs-lbl">To Trivandrum Airport</div></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ACCOMMODATION — heading + discount banner
+══════════════════════════════════════ -->
+<section class="hotels">
+  <div class="sec-head">
+    <div class="sec-label-tag">Where to Stay</div>
+    <h2 class="sec-title reveal">Accommodation Options</h2>
+    <p class="sec-sub reveal">Recommended nearby hotels for IPRECON 2027 delegates. We have partnered with select properties to offer discounted rates for conference attendees.</p>
+  </div>
+
+  <div class="discount-band">
+    <div class="discount-banner reveal">
+      <div class="db-icon"><i class="fas fa-percent"></i></div>
+      <div class="db-text">
+        <h3>Discounted Rates Available for Delegates</h3>
+        <p>We can arrange special discounted accommodation for IPRECON 2027 attendees. Please contact the organizing committee before booking to avail exclusive conference rates.</p>
+      </div>
+      <a href="./contact.html" class="db-btn"><i class="fas fa-envelope"></i> Contact Organizers</a>
+    </div>
+  </div>
+
+  <!-- Tier 1: Premium & Lakefront -->
+  <div class="tier-head">
+    <div class="tier-icon lux"><i class="fas fa-crown"></i></div>
+    <div>
+      <h2>Premium &amp; Lakefront</h2>
+      <span>Luxury 4–5 star stays by the beach &amp; Ashtamudi Lake</span>
+    </div>
+  </div>
+  <div class="hotel-grid">
+
+    <div class="hotel-card">
+      <div class="hotel-media">
+        <img src="assets/img/accommodation/quilon-beach-hotel.webp" alt="The Quilon Beach Hotel" onerror="this.parentElement.querySelector('.h-fallback').style.display='flex';this.style.display='none'">
+        <div class="h-fallback" style="display:none"><i class="fas fa-hotel"></i></div>
+        <div class="h-badge">5-Star</div>
+        <div class="hotel-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="hotel-card-body">
+        <div class="hotel-name">The Quilon Beach Hotel &amp; Convention Centre</div>
+        <div class="hotel-dist"><i class="fas fa-location-dot"></i> Pallithottam-Beach Rd, Thamarakulam, Kollam</div>
+        <div class="hotel-tags"><span class="hotel-tag">Beachfront</span><span class="hotel-tag dist">~27 km from venue</span></div>
+        <a class="hotel-dir" href="https://maps.google.com/?q=The+Quilon+Beach+Hotel+Kollam" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Directions</a>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-media">
+        <img src="assets/img/accommodation/hotel-raviz.jpg" alt="The Raviz Kollam" onerror="this.parentElement.querySelector('.h-fallback').style.display='flex';this.style.display='none'">
+        <div class="h-fallback" style="display:none"><i class="fas fa-hotel"></i></div>
+        <div class="h-badge">5-Star</div>
+        <div class="hotel-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="hotel-card-body">
+        <div class="hotel-name">The Raviz Kollam</div>
+        <div class="hotel-dist"><i class="fas fa-location-dot"></i> Ashtamudi Lake, Kollam</div>
+        <div class="hotel-tags"><span class="hotel-tag">Heritage Lakefront</span><span class="hotel-tag dist">~28 km from venue</span></div>
+        <a class="hotel-dir" href="https://maps.google.com/?q=The+Raviz+Kollam" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Directions</a>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-media">
+        <img src="assets/img/accommodation/hotel-allseason.jpg" alt="Hotel Allseason" onerror="this.parentElement.querySelector('.h-fallback').style.display='flex';this.style.display='none'">
+        <div class="h-fallback" style="display:none"><i class="fas fa-hotel"></i></div>
+        <div class="h-badge">4-Star</div>
+        <div class="hotel-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="hotel-card-body">
+        <div class="hotel-name">Hotel Allseason</div>
+        <div class="hotel-dist"><i class="fas fa-location-dot"></i> Ashtamudi Lake, Mathilil, Kollam</div>
+        <div class="hotel-tags"><span class="hotel-tag">Lakefront</span><span class="hotel-tag dist">~25 km from venue</span></div>
+        <a class="hotel-dir" href="https://maps.google.com/?q=Hotel+Allseason+Kollam" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Directions</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ACCOMMODATION — Resort, City & Nearby
+══════════════════════════════════════ -->
+<section class="hotels">
+  <!-- Tier 2: Resort, City & Nearby -->
+  <div class="tier-head">
+    <div class="tier-icon mid"><i class="fas fa-building"></i></div>
+    <div>
+      <h2>Resort, City &amp; Nearby</h2>
+      <span>Comfortable stays close to the city and the venue</span>
+    </div>
+  </div>
+  <div class="hotel-grid">
+
+    <div class="hotel-card">
+      <div class="hotel-media">
+        <img src="assets/img/accommodation/club-mahindra.webp" alt="Club Mahindra Ashtamudi" onerror="this.parentElement.querySelector('.h-fallback').style.display='flex';this.style.display='none'">
+        <div class="h-fallback" style="display:none"><i class="fas fa-hotel"></i></div>
+        <div class="h-badge">4-Star Resort</div>
+        <div class="hotel-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="hotel-card-body">
+        <div class="hotel-name">Club Mahindra Ashtamudi</div>
+        <div class="hotel-dist"><i class="fas fa-location-dot"></i> Ashtamudi, Kollam</div>
+        <div class="hotel-tags"><span class="hotel-tag">Lake View</span><span class="hotel-tag dist">~28 km from venue</span></div>
+        <a class="hotel-dir" href="https://maps.google.com/?q=Club+Mahindra+Ashtamudi+Kollam" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Directions</a>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-media">
+        <img src="assets/img/accommodation/zodiac-regency.jpg" alt="Zodiac Regency" onerror="this.parentElement.querySelector('.h-fallback').style.display='flex';this.style.display='none'">
+        <div class="h-fallback" style="display:none"><i class="fas fa-hotel"></i></div>
+        <div class="h-badge">3-Star</div>
+        <div class="hotel-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="hotel-card-body">
+        <div class="hotel-name">Zodiac Regency</div>
+        <div class="hotel-dist"><i class="fas fa-location-dot"></i> Vadayattukotta Rd, Chinnakada, Kollam</div>
+        <div class="hotel-tags"><span class="hotel-tag">City Centre</span><span class="hotel-tag dist">~27 km from venue</span></div>
+        <a class="hotel-dir" href="https://maps.google.com/?q=Zodiac+Regency+Kollam" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Directions</a>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-media">
+        <img src="assets/img/accommodation/grande-muscat.webp" alt="Hotel Grande Muscat" onerror="this.parentElement.querySelector('.h-fallback').style.display='flex';this.style.display='none'">
+        <div class="h-fallback" style="display:none"><i class="fas fa-hotel"></i></div>
+        <div class="h-badge near">Nearest to Venue</div>
+        <div class="hotel-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="hotel-card-body">
+        <div class="hotel-name">Hotel Grande Muscat</div>
+        <div class="hotel-dist"><i class="fas fa-location-dot"></i> KC Centre, Karunagappally, Kollam</div>
+        <div class="hotel-tags"><span class="hotel-tag near">Nearest to Venue</span><span class="hotel-tag dist">~3 km from venue</span></div>
+        <a class="hotel-dir" href="https://maps.google.com/?q=Hotel+Grande+Muscat+Karunagappally" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Directions</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center;margin-top:34px">
+    <a href="https://www.google.com/maps/search/hotels+near+College+of+Engineering+Karunagappally+Kollam" target="_blank" rel="noopener" class="btn-primary"><i class="fas fa-map-location-dot"></i> View Nearby Hotels on Google Maps</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TRAVEL INFORMATION
+══════════════════════════════════════ -->
+<section id="travel">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Getting to the Venue</div>
+      <h2 class="sec-title reveal">Travel Information</h2>
+      <p class="sec-sub reveal">College of Engineering Karunagappally is well-connected by air, rail, and road. Here are the nearest transportation hubs to help you plan your journey.</p>
+    </div>
+
+    <!-- Airports -->
+    <div class="travel-cat">
+      <div class="travel-cat-head">
+        <div class="tc-ico"><i class="fas fa-plane"></i></div>
+        <h3>Nearest Airports</h3>
+      </div>
+      <div class="hub-grid">
+        <div class="hub-card">
+          <div class="hub-media">
+            <img src="assets/img/accommodation/trivandrum-airport.jpg" alt="Trivandrum International Airport" onerror="this.parentElement.querySelector('.hub-fallback').style.display='flex';this.style.display='none'">
+            <div class="hub-fallback" style="display:none"><i class="fas fa-plane-departure"></i></div>
+            <div class="hub-code-chip">TRV</div>
+          </div>
+          <div class="hub-body">
+            <div class="hub-name">Trivandrum International Airport</div>
+            <div class="hub-dist"><i class="fas fa-location-dot"></i> 85 km from venue (~2 hrs via NH-66)</div>
+            <a class="hub-dir" href="https://www.google.com/maps/dir/Trivandrum+International+Airport/College+of+Engineering+Karunagappally" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Get Directions</a>
+          </div>
+        </div>
+        <div class="hub-card">
+          <div class="hub-media">
+            <img src="assets/img/accommodation/cochin-airport.jpg" alt="Cochin International Airport" onerror="this.parentElement.querySelector('.hub-fallback').style.display='flex';this.style.display='none'">
+            <div class="hub-fallback" style="display:none"><i class="fas fa-plane-departure"></i></div>
+            <div class="hub-code-chip">COK</div>
+          </div>
+          <div class="hub-body">
+            <div class="hub-name">Cochin International Airport</div>
+            <div class="hub-dist"><i class="fas fa-location-dot"></i> 160 km from venue (~3.5 hrs via NH-66)</div>
+            <a class="hub-dir" href="https://www.google.com/maps/dir/Cochin+International+Airport/College+of+Engineering+Karunagappally" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Get Directions</a>
+          </div>
+        </div>
+        <div class="hub-card">
+          <div class="hub-media">
+            <img src="assets/img/accommodation/calicut-airport.jpg" alt="Calicut International Airport" onerror="this.parentElement.querySelector('.hub-fallback').style.display='flex';this.style.display='none'">
+            <div class="hub-fallback" style="display:none"><i class="fas fa-plane-departure"></i></div>
+            <div class="hub-code-chip">CCJ</div>
+          </div>
+          <div class="hub-body">
+            <div class="hub-name">Calicut International Airport</div>
+            <div class="hub-dist"><i class="fas fa-location-dot"></i> 297 km from venue (~6 hrs via NH-66)</div>
+            <a class="hub-dir" href="https://www.google.com/maps/dir/Calicut+International+Airport/College+of+Engineering+Karunagappally" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Get Directions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Railway Stations -->
+    <div class="travel-cat">
+      <div class="travel-cat-head">
+        <div class="tc-ico"><i class="fas fa-train"></i></div>
+        <h3>Nearest Railway Stations</h3>
+      </div>
+      <div class="hub-grid">
+        <div class="hub-card">
+          <div class="hub-media">
+            <img src="assets/img/accommodation/karunagappally-station.jpg" alt="Karunagappally Railway Station" onerror="this.parentElement.querySelector('.hub-fallback').style.display='flex';this.style.display='none'">
+            <div class="hub-fallback" style="display:none"><i class="fas fa-train"></i></div>
+            <div class="hub-code-chip">KPY</div>
+          </div>
+          <div class="hub-body">
+            <div class="hub-name">Karunagappally Railway Station</div>
+            <div class="hub-dist"><i class="fas fa-location-dot"></i> 3 km from venue (~5 mins)</div>
+            <a class="hub-dir" href="https://www.google.com/maps/dir/Karunagappalli+Railway+Station/College+of+Engineering+Karunagappally" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Get Directions</a>
+          </div>
+        </div>
+        <div class="hub-card">
+          <div class="hub-media">
+            <img src="assets/img/accommodation/kayamkulam-junction.jpg" alt="Kayamkulam Junction" onerror="this.parentElement.querySelector('.hub-fallback').style.display='flex';this.style.display='none'">
+            <div class="hub-fallback" style="display:none"><i class="fas fa-train"></i></div>
+            <div class="hub-code-chip">KYJ</div>
+          </div>
+          <div class="hub-body">
+            <div class="hub-name">Kayamkulam Junction Railway Station</div>
+            <div class="hub-dist"><i class="fas fa-location-dot"></i> 20 km from venue (~30 mins)</div>
+            <a class="hub-dir" href="https://www.google.com/maps/dir/Kayamkulam+Junction+Railway+Station/College+of+Engineering+Karunagappally" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Get Directions</a>
+          </div>
+        </div>
+        <div class="hub-card">
+          <div class="hub-media">
+            <img src="assets/img/accommodation/kollam-junction.jpg" alt="Kollam Junction" onerror="this.parentElement.querySelector('.hub-fallback').style.display='flex';this.style.display='none'">
+            <div class="hub-fallback" style="display:none"><i class="fas fa-train"></i></div>
+            <div class="hub-code-chip">QLN</div>
+          </div>
+          <div class="hub-body">
+            <div class="hub-name">Kollam Junction Railway Station</div>
+            <div class="hub-dist"><i class="fas fa-location-dot"></i> 27 km from venue (~45 mins)</div>
+            <a class="hub-dir" href="https://www.google.com/maps/dir/Kollam+Junction+Railway+Station/College+of+Engineering+Karunagappally" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Get Directions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bus Stands -->
+    <div class="travel-cat">
+      <div class="travel-cat-head">
+        <div class="tc-ico"><i class="fas fa-bus"></i></div>
+        <h3>Nearest Bus Stands</h3>
+      </div>
+      <div class="bus-grid">
+        <div class="bus-card">
+          <div class="bus-ico"><i class="fas fa-bus"></i></div>
+          <div class="bus-info"><div class="bus-name">Karunagappally Bus Stand</div><div class="bus-dist"><i class="fas fa-location-dot"></i> 4 km from venue</div></div>
+          <a class="bus-go" href="https://www.google.com/maps/dir/Karunagappally+Bus+Stand/College+of+Engineering+Karunagappally" target="_blank" rel="noopener" aria-label="Directions"><i class="fas fa-diamond-turn-right"></i></a>
+        </div>
+        <div class="bus-card">
+          <div class="bus-ico"><i class="fas fa-bus"></i></div>
+          <div class="bus-info"><div class="bus-name">Kayamkulam Bus Stand</div><div class="bus-dist"><i class="fas fa-location-dot"></i> 12 km from venue</div></div>
+          <a class="bus-go" href="https://www.google.com/maps/dir/Kayamkulam+Bus+Stand/College+of+Engineering+Karunagappally" target="_blank" rel="noopener" aria-label="Directions"><i class="fas fa-diamond-turn-right"></i></a>
+        </div>
+        <div class="bus-card">
+          <div class="bus-ico"><i class="fas fa-bus"></i></div>
+          <div class="bus-info"><div class="bus-name">Kollam KSRTC Bus Stand</div><div class="bus-dist"><i class="fas fa-location-dot"></i> 27 km from venue</div></div>
+          <a class="bus-go" href="https://www.google.com/maps/dir/Kollam+KSRTC+Bus+Stand/College+of+Engineering+Karunagappally" target="_blank" rel="noopener" aria-label="Directions"><i class="fas fa-diamond-turn-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:8px">
+      <a href="./venue.html" class="btn-primary"><i class="fas fa-location-dot"></i> Full Venue &amp; Map</a>
+      <a href="https://maps.app.goo.gl/CSgHr34z8YuKFb1H9" target="_blank" rel="noopener" class="btn-outline" style="margin-left:8px"><i class="fas fa-map-location-dot"></i> Open in Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ON-CAMPUS / HOSTEL
+══════════════════════════════════════ -->
+<section id="campus">
+  <div class="campus-inner reveal">
+    <div class="c-icon"><i class="fas fa-graduation-cap"></i></div>
+    <h2>Student Housing Support</h2>
+    <p>Student authors from India, Nepal, and Bhutan may be eligible for housing support during IPRECON 2027. The college also offers arranged hostel accommodations for male and female students. Explore the support programs or reach out to the committee for assistance.</p>
+    <div class="campus-btns">
+      <a href="./housing-support.html" class="btn-gold"><i class="fas fa-hand-holding-heart"></i> Student Housing Support</a>
+      <a href="./contact.html" class="btn-ghost"><i class="fas fa-envelope"></i> Contact Committee</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+      <p>2027 IEEE International Power and Renewable Energy Conference — 5th edition. Organized by IEEE Student Branch, College of Engineering Karunagappally, Kerala, India.</p>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/ieeeceksb/"       class="soc-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/IEEE_SB_CEK"           class="soc-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.linkedin.com/company/ieeesbcek/" class="soc-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/ieee_sb_cek/"    class="soc-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>For Authors</h4>
+      <ul>
+        <li><a href="./cfp.html">Call for Papers</a></li>
+        <li><a href="./submissions.html">Submit a Paper</a></li>
+        <li><a href="./important-dates.html">Important Dates</a></li>
+        <li><a href="https://www.ieee.org/conferences/publishing/templates" target="_blank" rel="noopener">IEEE Paper Template</a></li>
+        <li><a href="./camera-ready.html">Camera Ready</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Conference</h4>
+      <ul>
+        <li><a href="./about-iprecon.html">About IPRECON</a></li>
+        <li><a href="./organizers.html">Organizers</a></li>
+        <li><a href="./committee.html">Committee</a></li>
+        <li><a href="./speakers.html">Speakers</a></li>
+        <li><a href="./sponsors.html">Sponsors</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Travel &amp; Info</h4>
+      <ul>
+        <li><a href="./venue.html">Venue &amp; Directions</a></li>
+        <li><a href="./accommodation.html">Accommodation</a></li>
+        <li><a href="./visa.html">Visa Information</a></li>
+        <li><a href="./kerala.html">Kerala Tourism</a></li>
+        <li><a href="./contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Built with ❤️ &nbsp;|&nbsp; IEEE Student Branch CEK &copy; 2027</span>
+    <span>College of Engineering Karunagappally, Kerala, India</span>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+'use strict';
+gsap.registerPlugin(ScrollTrigger);
+
+/* Scroll progress + navbar shadow + logo reveal */
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('scroll-bar').style.width = pct + '%';
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+/* Mobile nav */
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+/* ── IntersectionObserver reveals ──────────────── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── GSAP animations ────────────────────────────── */
+/* Page hero entrance */
+gsap.fromTo('.page-hero-inner > *',
+  { opacity: 0, y: 22 },
+  { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', delay: 0.1 }
+);
+
+/* Quick stats */
+gsap.fromTo('.qs-card',
+  { opacity: 0, y: 22, scale: 0.95 },
+  { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.1, ease: 'back.out(1.3)',
+    scrollTrigger: { trigger: '.qs-grid', start: 'top 88%', once: true } }
+);
+
+/* Hotel cards per tier */
+gsap.utils.toArray('.hotel-grid').forEach(grid => {
+  gsap.fromTo(grid.querySelectorAll('.hotel-card'),
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out',
+      scrollTrigger: { trigger: grid, start: 'top 85%', once: true } });
+});
+
+/* Tier heads slide in */
+gsap.utils.toArray('.tier-head').forEach(head => {
+  gsap.fromTo(head,
+    { opacity: 0, x: -20 },
+    { opacity: 1, x: 0, duration: 0.5, ease: 'power2.out',
+      scrollTrigger: { trigger: head, start: 'top 88%', once: true } });
+});
+
+/* Discount banner */
+gsap.fromTo('.discount-banner',
+  { opacity: 0, y: 24 },
+  { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
+    scrollTrigger: { trigger: '.discount-banner', start: 'top 88%', once: true } }
+);
+
+/* Travel hub cards per category */
+gsap.utils.toArray('.hub-grid').forEach(grid => {
+  gsap.fromTo(grid.querySelectorAll('.hub-card'),
+    { opacity: 0, y: 26 },
+    { opacity: 1, y: 0, duration: 0.55, stagger: 0.12, ease: 'power2.out',
+      scrollTrigger: { trigger: grid, start: 'top 86%', once: true } });
+});
+
+/* Bus cards */
+gsap.fromTo('.bus-card',
+  { opacity: 0, y: 20 },
+  { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out',
+    scrollTrigger: { trigger: '.bus-grid', start: 'top 88%', once: true } }
+);
+
+/* Smooth anchor scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>

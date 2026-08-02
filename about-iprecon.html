@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | IPRECON 2027 — IEEE International Power and Renewable Energy Conference</title>
+  <meta name="description" content="About IPRECON 2027 — India's first IEEE Club of 6 Technical Paper Conference. Legacy, editions, and global impact." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Variables ──────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --brand:    #211021;
+      --purple:   #8e24aa;
+      --purple-d: #6a1b9a;
+      --gold:     #d4af37;
+      --gold-d:   #c9a227;
+      --white:    #ffffff;
+      --off:      #fdf5fd;
+      --text:     #2d1f2d;
+      --muted:    #5a4a5a;
+      --light:    #f8f4f8;
+      --border:   #e0cce0;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text); background: #fff; }
+    img  { max-width: 100%; display: block; }
+    a    { text-decoration: none; color: inherit; }
+
+    /* ── Scroll progress bar ───────────────────── */
+    #scroll-bar {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+      z-index: 9999; transition: width 0.08s linear;
+    }
+
+    /* ════════ HEADER ════════ */
+    .header-top-bar {
+      background: var(--brand);
+      padding: 7px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; color: rgba(255,255,255,0.65);
+      letter-spacing: 0.04em;
+    }
+    .header-top-bar span { display: flex; align-items: center; gap: 8px; }
+    .header-top-bar i    { color: var(--gold); font-size: 11px; }
+    .header-top-bar a    { color: rgba(255,255,255,0.65); transition: color 0.2s; }
+    .header-top-bar a:hover { color: var(--gold); }
+
+    .site-header {
+      background: #fff;
+      padding: 18px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 3px solid var(--brand);
+    }
+    .header-brand { display: flex; align-items: center; gap: 18px; }
+    .header-conf-logo { height: 72px; width: auto; }
+    .header-brand-text {
+      display: flex; flex-direction: column; justify-content: center; gap: 2px;
+      border-left: 1px solid var(--border);
+      padding-left: 18px;
+    }
+    .header-brand-text .conf-name {
+      font-size: 20px; font-weight: 800;
+      color: var(--brand); letter-spacing: 0.02em; line-height: 1;
+    }
+    .header-brand-text .conf-full {
+      font-size: 12px; color: var(--muted); font-weight: 400;
+      letter-spacing: 0.02em; line-height: 1.4;
+    }
+    .header-edition-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-d));
+      color: white; font-size: 10.5px; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-top: 6px; width: fit-content;
+    }
+    .header-sponsors { display: flex; align-items: center; gap: 0; }
+    .header-sp-group {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 0 24px; border-right: 1px solid var(--border);
+    }
+    .header-sp-group:last-child { border-right: none; padding-right: 0; }
+    .header-sp-group .sp-label {
+      font-size: 9.5px; color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 600;
+    }
+    .header-sp-group img { height: 36px; width: auto; opacity: 0.8; transition: opacity 0.2s; }
+    .header-sp-group img:hover { opacity: 1; }
+
+    /* ════════ NAVBAR ════════ */
+    .navbar {
+      background: var(--brand);
+      position: sticky; top: 0; z-index: 1000;
+      border-bottom: 2px solid rgba(142,36,170,0.5);
+      transition: box-shadow 0.3s;
+    }
+    .navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.45); }
+    .nav-container {
+      max-width: 1300px; margin: 0 auto; padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand-logo-wrap {
+      display: flex; align-items: center; gap: 12px;
+      flex-shrink: 0; height: 58px;
+      opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+    }
+    .navbar.scrolled .brand-logo-wrap { opacity: 1; visibility: visible; }
+    .brand-logo { height: 46px; width: auto; display: block; }
+    .nav-items { display: flex; list-style: none; }
+    .nav-item { position: relative; }
+    .nav-item > a,
+    .nav-item > span.nav-link {
+      display: flex; align-items: center; gap: 5px;
+      padding: 0 16px; height: 58px;
+      color: rgba(255,255,255,0.78);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      cursor: pointer; white-space: nowrap;
+      border-bottom: 3px solid transparent; margin-bottom: -2px;
+      transition: color 0.22s, border-color 0.22s;
+    }
+    .nav-item > a:hover,
+    .nav-item > span.nav-link:hover,
+    .nav-item:hover > span.nav-link { color: #fff; border-bottom-color: var(--gold); }
+    .nav-item > a.active { color: #fff; border-bottom-color: var(--gold); }
+    .nav-item > span.nav-link::after {
+      content: '\f107'; font-family: 'Font Awesome 6 Free';
+      font-weight: 900; font-size: 10px; margin-left: 3px;
+    }
+    .dropdown-content {
+      display: none; position: absolute; top: 100%; left: 0;
+      background: var(--brand); min-width: 270px;
+      border-top: 2px solid var(--purple);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.45); z-index: 200;
+    }
+    .nav-item:hover .dropdown-content { display: block; }
+    .dropdown-item {
+      display: block; padding: 11px 20px;
+      color: rgba(255,255,255,0.7);
+      font-size: 11.5px; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      border-left: 3px solid transparent; transition: all 0.18s;
+    }
+    .dropdown-item:hover {
+      background: rgba(142,36,170,0.18); color: #fff;
+      border-left-color: var(--gold); padding-left: 26px;
+    }
+    .dropdown-item.active { color: var(--gold); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: rgba(255,255,255,0.85); border-radius: 2px; transition: all 0.3s;
+    }
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; top: 58px;
+      background: var(--brand); z-index: 999; overflow-y: auto; padding: 16px;
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a {
+      display: block; padding: 11px 14px;
+      color: rgba(255,255,255,0.78); font-size: 12.5px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--gold); }
+    .mob-section {
+      font-size: 10px; color: var(--gold);
+      padding: 14px 14px 4px; letter-spacing: 0.14em;
+      font-weight: 700; text-transform: uppercase;
+    }
+
+    /* ════════ PAGE HERO / BREADCRUMB ════════ */
+    .page-hero {
+      background: var(--brand);
+      padding: 66px 60px 60px;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg, transparent, transparent 60px,
+        rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
+    .page-hero .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4);
+      color: var(--gold); font-size: 11px; font-weight: 600;
+      padding: 6px 16px; border-radius: 3px;
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 22px;
+    }
+    .page-hero h1 {
+      font-size: clamp(30px, 4.5vw, 48px); font-weight: 800; color: #fff;
+      line-height: 1.15; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.01em;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--gold); }
+    .page-hero p {
+      font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 640px; margin: 0 auto;
+    }
+    .breadcrumb {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.3); }
+    .breadcrumb .current { color: var(--gold); }
+
+    /* ════════ SECTION COMMONS ════════ */
+    .section-wrap { max-width: 1200px; margin: 0 auto; }
+    .sec-head { text-align: center; margin-bottom: 48px; }
+    .sec-label-tag {
+      display: block; font-size: 11px; color: var(--purple);
+      letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px;
+    }
+    .sec-title {
+      font-size: clamp(26px, 3.5vw, 38px); font-weight: 800;
+      color: var(--brand); line-height: 1.2;
+      display: inline-block; padding-bottom: 14px; position: relative;
+    }
+    .sec-title::after {
+      content: ''; position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%); width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+    }
+    .sec-sub { font-size: 14.5px; color: var(--muted); line-height: 1.7; max-width: 620px; margin: 16px auto 0; }
+
+    /* ════════ ANNOUNCEMENTS MARQUEE ════════ */
+    .marquee-strip {
+      background: var(--off); border-bottom: 1px solid var(--border);
+      padding: 10px 0; overflow: hidden;
+      position: sticky; top: 58px; z-index: 999;
+    }
+    .marquee-track { display: flex; gap: 52px; animation: mLeft 32s linear infinite; width: max-content; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes mLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+    .marquee-item i { color: var(--purple); font-size: 11px; }
+    .marquee-item strong { color: var(--brand); font-weight: 600; }
+    .marquee-sep { color: #d0b0d0; }
+
+    /* ════════ INTRO / LEGACY ════════ */
+    #legacy { padding: 80px 60px; background: #fff; }
+    .legacy-layout { display: flex; gap: 64px; align-items: flex-start; }
+    .legacy-text { flex: 0 0 60%; }
+    .legacy-text p { font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 18px; text-align: justify; }
+    .legacy-text p strong { color: var(--text); font-weight: 600; }
+    .legacy-text p:last-child { margin-bottom: 0; }
+    .legacy-side { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+    .legacy-logo-box { background: var(--off); border: 1px solid var(--border); border-radius: 8px; padding: 32px; text-align: center; }
+    .legacy-logo-box img { max-height: 120px; margin: 0 auto; }
+    .legacy-fact-card { background: var(--brand); border-radius: 8px; padding: 22px 26px; display: flex; gap: 16px; align-items: flex-start; }
+    .legacy-fact-card i { color: var(--gold); font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .legacy-fact-card p { font-size: 13.5px; color: rgba(255,255,255,0.8); line-height: 1.65; }
+    .legacy-fact-card p strong { color: white; }
+
+    /* ════════ FEATURED EDITION (2026 / 2027) ════════ */
+    #edition { padding: 80px 60px; background: var(--brand); position: relative; overflow: hidden; }
+    #edition::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
+    }
+    .edition-wrap { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; }
+    #edition .sec-title { color: white; }
+    #edition .sec-title::after { background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.3)); }
+    #edition .sec-label-tag { color: var(--gold); }
+    #edition .sec-sub { color: rgba(255,255,255,0.6); }
+    .edition-card {
+      display: flex; gap: 40px; align-items: center;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 40px; margin-bottom: 26px;
+    }
+    .edition-card:last-child { margin-bottom: 0; }
+    .edition-logo {
+      flex: 0 0 240px; background: rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 34px; display: flex; align-items: center; justify-content: center;
+      min-height: 180px;
+    }
+    .edition-logo img { max-height: 130px; }
+    .edition-logo .edition-num { font-size: 44px; font-weight: 800; color: rgba(255,255,255,0.85); text-align: center; line-height: 1.1; }
+    .edition-body { flex: 1; }
+    .edition-tag {
+      display: inline-block; font-size: 11px; color: var(--gold);
+      font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .edition-body h3 { font-size: 24px; font-weight: 800; color: white; margin-bottom: 8px; }
+    .edition-body h3 em { font-style: normal; color: var(--gold); }
+    .edition-theme {
+      font-size: 13.5px; font-style: italic; color: rgba(255,255,255,0.7);
+      border-left: 3px solid var(--gold); padding-left: 14px; margin: 14px 0 18px; line-height: 1.6;
+    }
+    .edition-body p { font-size: 14px; color: rgba(255,255,255,0.72); line-height: 1.8; margin-bottom: 18px; }
+    .edition-meta { display: flex; flex-wrap: wrap; gap: 10px; }
+    .edition-chip {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(142,36,170,0.2); border: 1px solid rgba(142,36,170,0.4);
+      color: rgba(255,255,255,0.82); font-size: 12px; font-weight: 500;
+      padding: 7px 14px; border-radius: 20px;
+    }
+    .edition-chip i { color: var(--gold); font-size: 11px; }
+
+    /* ════════ PAST EDITIONS ════════ */
+    #past { padding: 80px 60px; background: var(--light); }
+    .past-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; max-width: 1200px; margin: 0 auto; }
+    .past-card {
+      background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s; opacity: 0; transform: translateY(28px);
+    }
+    .past-card.animated { opacity: 1; transform: translateY(0); }
+    .past-card:hover { transform: translateY(-7px); box-shadow: 0 18px 44px rgba(33,16,33,0.13); }
+    .past-card-top { background: var(--brand); padding: 26px 22px; text-align: center; position: relative; }
+    .past-card-top::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--purple), var(--gold)); }
+    .past-edition-badge {
+      display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    }
+    .past-card-top .past-year { font-size: 30px; font-weight: 800; color: white; line-height: 1; }
+    .past-card-body { padding: 22px 22px 26px; }
+    .past-card-body h3 { font-size: 17px; font-weight: 700; color: var(--brand); margin-bottom: 8px; }
+    .past-date { font-size: 12px; color: var(--purple); font-weight: 600; margin-bottom: 12px; }
+    .past-card-body p { font-size: 12.5px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+    .past-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    .past-stat { background: var(--off); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; text-align: center; transition: background 0.28s, border-color 0.28s; }
+    .past-stat .num { font-size: 20px; font-weight: 800; color: var(--purple-d); line-height: 1; transition: color 0.28s; }
+    .past-stat .lbl { font-size: 10px; color: var(--muted); margin-top: 4px; letter-spacing: 0.03em; transition: color 0.28s; }
+    .past-stat:hover { background: var(--purple); border-color: var(--purple); }
+    .past-stat:hover .num, .past-stat:hover .lbl { color: white; }
+    .past-link {
+      display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600;
+      color: var(--purple); border-bottom: 1px solid transparent; transition: gap 0.2s, border-color 0.2s;
+    }
+    .past-link:hover { gap: 11px; border-bottom-color: var(--purple); }
+
+    /* ════════ GLOBAL IMPACT ════════ */
+    #impact { padding: 80px 60px; background: #fff; }
+    .impact-layout { display: flex; gap: 56px; align-items: stretch; }
+    .impact-text { flex: 1; display: flex; flex-direction: column; }
+    .impact-text h3 { font-size: 20px; font-weight: 700; color: var(--brand); margin-bottom: 16px; }
+    .impact-text p { font-size: 14.5px; color: var(--muted); line-height: 1.85; margin-bottom: 16px; }
+    .impact-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: auto; }
+    .impact-feature {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: var(--off); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 18px;
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+    .impact-feature:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(33,16,33,0.1);
+      border-color: rgba(142,36,170,0.3);
+    }
+    .impact-feature .feat-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: #f3e8f5; display: flex; align-items: center; justify-content: center;
+      font-size: 17px; color: var(--purple); transition: background 0.28s, color 0.28s;
+    }
+    .impact-feature:hover .feat-icon { background: var(--purple); color: white; }
+    .impact-feature .feat-text { font-size: 13.5px; color: var(--text); line-height: 1.5; font-weight: 500; padding-top: 2px; }
+    .impact-stats { flex: 0 0 380px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .impact-stat-card {
+      background: var(--brand); border-radius: 14px; padding: 30px 22px 26px; text-align: center;
+      position: relative; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .impact-stat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+    }
+    /* soft radial glow that appears on hover */
+    .impact-stat-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(142,36,170,0.35), transparent 70%);
+      opacity: 0; transition: opacity 0.35s ease;
+    }
+    .impact-stat-card:hover { transform: translateY(-6px); box-shadow: 0 18px 44px rgba(33,16,33,0.4); }
+    .impact-stat-card:hover::after { opacity: 1; }
+    .impact-stat-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(212,175,55,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--gold); margin: 0 auto 14px;
+      position: relative; z-index: 1; transition: background 0.3s, color 0.3s;
+    }
+    .impact-stat-card:hover .impact-stat-icon { background: var(--gold); color: var(--brand); }
+    .impact-stat-card .big {
+      font-size: 38px; font-weight: 800; line-height: 1; position: relative; z-index: 1;
+      background: linear-gradient(90deg, #fff, #f3d98a);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .impact-stat-card .lbl { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 8px; letter-spacing: 0.03em; position: relative; z-index: 1; }
+
+    /* ════════ FOOTER ════════ */
+    footer { background: #1a0e1a; padding: 68px 60px 36px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; max-width: 1200px; margin: 0 auto 48px; }
+    .footer-brand img { height: 44px; filter: brightness(0) invert(1); opacity: 0.78; margin-bottom: 16px; }
+    .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.8; margin-bottom: 24px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .soc-link {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5); font-size: 14px; transition: all 0.25s;
+    }
+    .soc-link:hover { background: var(--purple); border-color: var(--purple); color: white; transform: translateY(-2px); }
+    .footer-col h4 {
+      font-size: 12px; font-weight: 700; color: white;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: rgba(255,255,255,0.42); font-size: 13px; transition: color 0.22s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.28);
+    }
+
+    /* ════════ REVEAL ════════ */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    /* ════════ RESPONSIVE ════════ */
+    @media (max-width: 1100px) {
+      .site-header, .header-top-bar { padding-left: 28px; padding-right: 28px; }
+      .nav-container { padding: 0 20px; }
+      #legacy, #edition, #past, #impact, footer, .page-hero { padding-left: 32px; padding-right: 32px; }
+      .past-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 900px) {
+      .header-sponsors { display: none; }
+      .legacy-layout { flex-direction: column; }
+      .impact-layout { flex-direction: column; }
+      .impact-stats { flex: none; width: 100%; }
+      .edition-card { flex-direction: column; text-align: center; }
+      .edition-logo { flex: none; width: 100%; }
+      .edition-theme { text-align: left; }
+      .edition-meta { justify-content: center; }
+    }
+    @media (max-width: 768px) {
+      .header-top-bar { padding: 6px 18px; font-size: 11px; }
+      .header-top-bar .htb-right { display: none; }
+      .site-header { padding: 14px 18px; }
+      .header-conf-logo { height: 56px; }
+      .nav-items { display: none; }
+      .hamburger { display: flex; }
+      .nav-container { padding: 0 16px; }
+      .past-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+      #legacy, #edition, #past, #impact { padding-left: 20px; padding-right: 20px; }
+      .page-hero { padding: 48px 20px 44px; }
+      .impact-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .impact-stats { grid-template-columns: 1fr; }
+      .past-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="scroll-bar"></div>
+
+<!-- ══════ HEADER ══════ -->
+<div class="header-top-bar">
+  <span>
+    <i class="fas fa-map-marker-alt"></i> College of Engineering Karunagappally, Kerala, India
+    &nbsp;&nbsp;
+    <i class="fas fa-calendar-alt"></i> September 2027
+    &nbsp;&nbsp;
+    <i class="fas fa-wifi"></i> Hybrid Conference
+  </span>
+  <span class="htb-right">
+    <a href="./contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+    &nbsp;&nbsp;
+    <a href="./registration.html"><i class="fas fa-user-plus"></i> Register</a>
+  </span>
+</div>
+
+<header class="site-header">
+  <div class="header-brand">
+    <img class="header-conf-logo" src="assets/img/iprecon26 black.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+    <div class="header-brand-text">
+      <span class="conf-name">September 2027</span>
+      <span class="conf-full">College of Engineering Karunagappally, Kerala, INDIA</span>
+      <div class="header-edition-badge"><i class="fas fa-star"></i> 5th Edition</div>
+    </div>
+  </div>
+  <div class="header-sponsors">
+    <div class="header-sp-group">
+      <span class="sp-label">Technical Co-Sponsor</span>
+      <img src="assets/img/ias_bw.png" alt="IEEE IAS" onerror="this.style.display='none'">
+    </div>
+    <div class="header-sp-group">
+      <span class="sp-label">Technical Co-Sponsor</span>
+      <img src="assets/img/pes BLACK.png" alt="IEEE PES" onerror="this.style.display='none'">
+    </div>
+    <div class="header-sp-group">
+      <span class="sp-label">Organized under</span>
+      <img src="assets/img/ieee blk.png" alt="IEEE" onerror="this.style.display='none'">
+    </div>
+  </div>
+</header>
+
+<!-- ══════ NAVBAR ══════ -->
+<nav class="navbar" id="mainNav">
+  <div class="nav-container">
+    <a href="./index.html" class="brand-logo-wrap">
+      <img class="brand-logo" src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+    </a>
+    <ul class="nav-items">
+      <li class="nav-item"><a href="./index.html">HOME</a></li>
+      <li class="nav-item">
+        <span class="nav-link">ABOUT</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item active" href="./about-iprecon.html">IPRECON</a>
+          <a class="dropdown-item" href="./organizers.html">ORGANIZERS</a>
+          <a class="dropdown-item" href="./venue.html">VENUE</a>
+          <a class="dropdown-item" href="./kerala.html">KERALA</a>
+          <a class="dropdown-item" href="./accommodation.html">ACCOMMODATION</a>
+          <a class="dropdown-item" href="./visa.html">VISA</a>
+          <a class="dropdown-item" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+          <a class="dropdown-item" href="./dei.html">DEI STATEMENT</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./committee.html">COMMITTEE</a></li>
+      <li class="nav-item">
+        <span class="nav-link">FOR AUTHORS</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./cfp.html">CALL FOR PAPERS</a>
+          <a class="dropdown-item" href="./submissions.html">SUBMISSIONS</a>
+          <a class="dropdown-item" href="./important-dates.html">IMPORTANT DATES</a>
+          <a class="dropdown-item" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+          <a class="dropdown-item" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+          <a class="dropdown-item" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
+          <a class="dropdown-item" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./speakers.html">SPEAKERS</a></li>
+      <li class="nav-item">
+        <span class="nav-link">PROGRAM</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./inaugural.html">INAUGURAL PROGRAM</a>
+          <a class="dropdown-item" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+          <a class="dropdown-item" href="./tutorials.html">TUTORIALS</a>
+          <a class="dropdown-item" href="./tracks.html">TRACKS</a>
+          <a class="dropdown-item" href="./special-sessions.html">SPECIAL SESSIONS</a>
+          <a class="dropdown-item" href="./keynote.html">KEYNOTE</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./registration.html">REGISTRATION</a></li>
+      <li class="nav-item"><a href="./contact.html">CONTACT</a></li>
+    </ul>
+    <button class="hamburger" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="./index.html">HOME</a>
+  <div class="mob-section">ABOUT</div>
+  <a href="./about-iprecon.html" style="padding-left:28px">IPRECON</a>
+  <a href="./organizers.html"    style="padding-left:28px">ORGANIZERS</a>
+  <a href="./venue.html"         style="padding-left:28px">VENUE</a>
+  <a href="./kerala.html"        style="padding-left:28px">KERALA</a>
+  <a href="./accommodation.html" style="padding-left:28px">ACCOMMODATION</a>
+  <a href="./visa.html"          style="padding-left:28px">VISA</a>
+  <a href="./sponsors.html"      style="padding-left:28px">SPONSORS &amp; EXHIBITORS</a>
+  <a href="./dei.html"           style="padding-left:28px">DEI STATEMENT</a>
+  <a href="./committee.html">COMMITTEE</a>
+  <div class="mob-section">FOR AUTHORS</div>
+  <a href="./cfp.html"                      style="padding-left:28px">CALL FOR PAPERS</a>
+  <a href="./submissions.html"              style="padding-left:28px">SUBMISSIONS</a>
+  <a href="./important-dates.html"          style="padding-left:28px">IMPORTANT DATES</a>
+  <a href="./camera-ready.html"             style="padding-left:28px">CAMERA READY INSTRUCTIONS</a>
+  <a href="./presentation-guidelines.html" style="padding-left:28px">PRESENTATION GUIDELINES</a>
+  <a href="./housing-support.html"          style="padding-left:28px">STUDENT HOUSING SUPPORT</a>
+  <a href="./travel-support.html"           style="padding-left:28px">STUDENT TRAVEL SUPPORT</a>
+  <a href="./speakers.html">SPEAKERS</a>
+  <div class="mob-section">PROGRAM</div>
+  <a href="./inaugural.html"             style="padding-left:28px">INAUGURAL PROGRAM</a>
+  <a href="./distinguished-lectures.html" style="padding-left:28px">DISTINGUISHED LECTURE PROGRAM</a>
+  <a href="./tutorials.html"             style="padding-left:28px">TUTORIALS</a>
+  <a href="./tracks.html"                style="padding-left:28px">TRACKS</a>
+  <a href="./special-sessions.html"      style="padding-left:28px">SPECIAL SESSIONS</a>
+  <a href="./keynote.html"               style="padding-left:28px">KEYNOTE</a>
+  <a href="./registration.html">REGISTRATION</a>
+  <a href="./contact.html">CONTACT</a>
+</div>
+
+<!-- ══════ ANNOUNCEMENTS MARQUEE ══════ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
+    <span class="marquee-sep">◆</span>
+    <!-- duplicate -->
+    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
+    <span class="marquee-sep">◆</span>
+  </div>
+</div>
+
+<!-- ══════ PAGE HERO ══════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow"><i class="fas fa-circle-dot"></i> India's First IEEE Club of 6 Conference</span>
+    <h1>About <em>IPRECON</em></h1>
+    <p>IEEE International Power and Renewable Energy Conference — India's first IEEE Club of 6 Technical Paper Conference, organized by the IEEE Student Branch, College of Engineering Karunagappally.</p>
+  </div>
+  <div class="breadcrumb">
+    <a href="./index.html">Home</a>
+    <i class="fas fa-chevron-right"></i>
+    <span class="current">About IPRECON</span>
+  </div>
+</section>
+
+<!-- ══════ LEGACY ══════ -->
+<section id="legacy">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">The Legacy</div>
+      <h2 class="sec-title reveal">IPRECON</h2>
+      <p class="sec-sub reveal">The IEEE International Power and Renewable Energy Conference legacy and foundation.</p>
+    </div>
+    <div class="legacy-layout">
+      <div class="legacy-text">
+        <p><strong>IPRECON</strong> (IEEE International Power and Renewable Energy Conference) is India's first IEEE Club of 6 conference, proudly organized by the IEEE Student Branch, College of Engineering Karunagappally. Since its inception, IPRECON has set a benchmark in combining innovation, sustainability, and academic excellence — offering a unified platform for students, researchers, professionals, and industry experts to collaborate on transformative solutions for the future of power and energy.</p>
+        <p>The conference has consistently maintained its commitment to excellence, providing researchers and professionals with opportunities to share cutting-edge innovations and contribute to sustainable solutions for global energy challenges. IPRECON emphasizes the integration of power systems, renewable energy, electronics, artificial intelligence, and data science to shape a sustainable and intelligent future.</p>
+        <p>All proceedings are published in the <strong>IEEE Xplore® Digital Library</strong>, with 20% of presented papers eligible for further review and possible publication in premier IEEE IAS periodicals, including Transactions and Magazines.</p>
+      </div>
+      <div class="legacy-side">
+        <div class="legacy-logo-box">
+          <img src="assets/img/iprecon black.png" alt="IPRECON Logo" onerror="this.style.display='none'">
+        </div>
+        <div class="legacy-fact-card">
+          <i class="fas fa-trophy"></i>
+          <p>India's <strong>first IEEE IAS Club of 6</strong> Technical Paper Conference, bringing together six premier technical communities under one platform.</p>
+        </div>
+        <div class="legacy-fact-card">
+          <i class="fas fa-database"></i>
+          <p>All accepted papers submitted to the <strong>IEEE Xplore® Digital Library</strong>, subject to IEEE quality standards.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FEATURED EDITIONS (2027 + 2026) ══════ -->
+<section id="edition">
+  <div class="edition-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">The Current & Previous Edition</div>
+      <h2 class="sec-title reveal">IPRECON 2027 &amp; 2026</h2>
+      <p class="sec-sub reveal">Continuing the tradition of excellence with cutting-edge innovation and global collaboration.</p>
+    </div>
+
+    <!-- 2027 -->
+    <div class="edition-card">
+      <div class="edition-logo">
+        <img src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'edition-num',textContent:'IPRECON 2027'}))">
+      </div>
+      <div class="edition-body">
+        <span class="edition-tag">5th Edition · Current</span>
+        <h3>IPRECON <em>2027</em></h3>
+        <p class="edition-theme">"Advancing Power and Renewable Energy Systems through AI, Computing, and Emerging Technologies"</p>
+        <p>The fifth edition of India's first and only IEEE Club of 6 Technical Paper Conference is organized by the IEEE Student Branch of the College of Engineering Karunagappally, with technical co-sponsorship from IEEE IAS and IEEE PES. Scheduled for September 2027 at CEK, Kerala, the conference offers a premier platform for students, researchers, and professionals to present cutting-edge innovations in power, renewable energy, and computing. The event features technical sessions, keynote talks, distinguished lectures, and workshops, with all accepted papers submitted to the IEEE Xplore® Digital Library.</p>
+        <div class="edition-meta">
+          <span class="edition-chip"><i class="fas fa-calendar-alt"></i> September 2027</span>
+          <span class="edition-chip"><i class="fas fa-map-marker-alt"></i> CEK, Kerala, India</span>
+          <span class="edition-chip"><i class="fas fa-laptop"></i> Hybrid Mode</span>
+          <span class="edition-chip"><i class="fas fa-database"></i> IEEE Xplore® Indexed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2026 (with sample data) -->
+    <div class="edition-card">
+      <div class="edition-logo">
+        <img src="assets/img/iprecon26 white.png" alt="IPRECON 2026" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'edition-num',textContent:'IPRECON 2026'}))">
+      </div>
+      <div class="edition-body">
+        <span class="edition-tag">4th Edition · Concluded</span>
+        <h3>IPRECON <em>2026</em></h3>
+        <p class="edition-theme">"Advancing Power and Renewable Energy Systems through AI, Computing, and Emerging Technologies"</p>
+        <p>The fourth edition was successfully held from September 04–06, 2026, at the College of Engineering Karunagappally, Kerala, India, in hybrid mode. Building on IPRECON's growing global reach, the 2026 edition welcomed researchers and delegates from across the world, featuring distinguished keynote sessions, hands-on tutorials, and a strong slate of peer-reviewed technical papers — all published in the IEEE Xplore® Digital Library, with the top 20% of presented papers invited for IEEE IAS periodical review.</p>
+        <div class="edition-meta">
+          <span class="edition-chip"><i class="fas fa-file-lines"></i> 428 Papers Received</span>
+          <span class="edition-chip"><i class="fas fa-check-circle"></i> 176 Papers Accepted</span>
+          <span class="edition-chip"><i class="fas fa-globe"></i> 34 International Papers</span>
+          <span class="edition-chip"><i class="fas fa-database"></i> 176 IEEE Xplore® Published</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PAST ENDEAVOURS ══════ -->
+<section id="past">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Past Endeavours</div>
+      <h2 class="sec-title reveal">Our Journey So Far</h2>
+      <p class="sec-sub reveal">Explore the remarkable journey of IPRECON through its successful past editions, each advancing power and renewable energy research globally.</p>
+    </div>
+    <div class="past-grid">
+
+      <!-- 2026 -->
+      <div class="past-card">
+        <div class="past-card-top">
+          <div class="past-edition-badge">4th Edition</div>
+          <div class="past-year">2026</div>
+        </div>
+        <div class="past-card-body">
+          <h3>IPRECON 2026</h3>
+          <div class="past-date">September 04–06, 2026</div>
+          <p>The fourth edition drew its largest global cohort yet, reinforcing IPRECON's standing as a premier forum for power and renewable energy research.</p>
+          <div class="past-stats">
+            <div class="past-stat"><div class="num">428</div><div class="lbl">Received</div></div>
+            <div class="past-stat"><div class="num">176</div><div class="lbl">Accepted</div></div>
+            <div class="past-stat"><div class="num">34</div><div class="lbl">International</div></div>
+            <div class="past-stat"><div class="num">176</div><div class="lbl">Xplore®</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2022 -->
+      <div class="past-card">
+        <div class="past-card-top">
+          <div class="past-edition-badge">3rd Edition</div>
+          <div class="past-year">2022</div>
+        </div>
+        <div class="past-card-body">
+          <h3>IPRECON 2022</h3>
+          <div class="past-date">December 16–18, 2022</div>
+          <p>A vital platform for interdisciplinary discourse and research exchange, marking another milestone toward a sustainable future.</p>
+          <div class="past-stats">
+            <div class="past-stat"><div class="num">311</div><div class="lbl">Received</div></div>
+            <div class="past-stat"><div class="num">121</div><div class="lbl">Accepted</div></div>
+            <div class="past-stat"><div class="num">28</div><div class="lbl">International</div></div>
+            <div class="past-stat"><div class="num">121</div><div class="lbl">Xplore®</div></div>
+          </div>
+          <a class="past-link" href="https://2022.iprecon.org" target="_blank" rel="noopener">Know More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 2021 -->
+      <div class="past-card">
+        <div class="past-card-top">
+          <div class="past-edition-badge">2nd Edition</div>
+          <div class="past-year">2021</div>
+        </div>
+        <div class="past-card-body">
+          <h3>IPRECON 2021</h3>
+          <div class="past-date">September 24–26, 2021</div>
+          <p>A surge in participation reflected IPRECON's growing global reach and continued commitment to quality and relevance.</p>
+          <div class="past-stats">
+            <div class="past-stat"><div class="num">241</div><div class="lbl">Received</div></div>
+            <div class="past-stat"><div class="num">115</div><div class="lbl">Accepted</div></div>
+            <div class="past-stat"><div class="num">29</div><div class="lbl">International</div></div>
+            <div class="past-stat"><div class="num">115</div><div class="lbl">Xplore®</div></div>
+          </div>
+          <a class="past-link" href="https://2021.iprecon.org" target="_blank" rel="noopener">Know More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 2020 -->
+      <div class="past-card">
+        <div class="past-card-top">
+          <div class="past-edition-badge">1st Edition</div>
+          <div class="past-year">2020</div>
+        </div>
+        <div class="past-card-body">
+          <h3>IPRECON 2020</h3>
+          <div class="past-date">Oct 30 – Nov 1, 2020</div>
+          <p>A pioneering initiative in power and energy conferences in India — a global platform for thought leaders, young researchers, and innovators.</p>
+          <div class="past-stats">
+            <div class="past-stat"><div class="num">146</div><div class="lbl">Received</div></div>
+            <div class="past-stat"><div class="num">35</div><div class="lbl">Accepted</div></div>
+            <div class="past-stat"><div class="num">4</div><div class="lbl">International</div></div>
+            <div class="past-stat"><div class="num">35</div><div class="lbl">Xplore®</div></div>
+          </div>
+          <a class="past-link" href="https://2020.iprecon.org" target="_blank" rel="noopener">Know More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════ GLOBAL IMPACT ══════ -->
+<section id="impact">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Global Impact</div>
+      <h2 class="sec-title reveal">IPRECON's Global Impact</h2>
+      <p class="sec-sub reveal">Our commitment to excellence and innovation in power and renewable energy research.</p>
+    </div>
+    <div class="impact-layout">
+      <div class="impact-text">
+        <h3 class="reveal">Our Commitment to Excellence</h3>
+        <p class="reveal">Over the years, IPRECON has established itself as a premier platform for academic and industrial collaboration in power systems, renewable energy, and intelligent computing technologies.</p>
+        <p class="reveal">The conference has consistently maintained its commitment to excellence, providing researchers and professionals with opportunities to share cutting-edge innovations and contribute to sustainable solutions for global energy challenges.</p>
+        <ul class="impact-list">
+          <li class="impact-feature">
+            <div class="feat-icon"><i class="fas fa-trophy"></i></div>
+            <div class="feat-text">India's first IEEE IAS Club of 6 Technical Paper Conference</div>
+          </li>
+          <li class="impact-feature">
+            <div class="feat-icon"><i class="fas fa-globe"></i></div>
+            <div class="feat-text">Global platform with increasing international participation</div>
+          </li>
+          <li class="impact-feature">
+            <div class="feat-icon"><i class="fas fa-database"></i></div>
+            <div class="feat-text">All proceedings published in the IEEE Xplore® Digital Library</div>
+          </li>
+          <li class="impact-feature">
+            <div class="feat-icon"><i class="fas fa-medal"></i></div>
+            <div class="feat-text">20% of papers eligible for IEEE IAS periodical publication</div>
+          </li>
+          <li class="impact-feature">
+            <div class="feat-icon"><i class="fas fa-handshake"></i></div>
+            <div class="feat-text">Strong industry–academia collaboration</div>
+          </li>
+        </ul>
+      </div>
+      <div class="impact-stats">
+        <div class="impact-stat-card">
+          <div class="impact-stat-icon"><i class="fas fa-file-lines"></i></div>
+          <div class="big" data-count="1126" data-suffix="+">0</div>
+          <div class="lbl">Total Papers Received</div>
+        </div>
+        <div class="impact-stat-card">
+          <div class="impact-stat-icon"><i class="fas fa-check-circle"></i></div>
+          <div class="big" data-count="447" data-suffix="+">0</div>
+          <div class="lbl">Total Papers Accepted</div>
+        </div>
+        <div class="impact-stat-card">
+          <div class="impact-stat-icon"><i class="fas fa-globe"></i></div>
+          <div class="big" data-count="95" data-suffix="+">0</div>
+          <div class="lbl">International Papers</div>
+        </div>
+        <div class="impact-stat-card">
+          <div class="impact-stat-icon"><i class="fas fa-award"></i></div>
+          <div class="big" data-count="4" data-suffix="">0</div>
+          <div class="lbl">Successful Editions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+      <p>2027 IEEE International Power and Renewable Energy Conference — 5th edition. Organized by IEEE Student Branch, College of Engineering Karunagappally, Kerala, India.</p>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/ieeeceksb/"       class="soc-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com/IEEE_SB_CEK"                  class="soc-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.linkedin.com/company/ieeesbcek/" class="soc-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/ieee_sb_cek/"    class="soc-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Paper Submission</h4>
+      <ul>
+        <li><a href="./cfp.html">Call for Papers</a></li>
+        <li><a href="./submissions.html">Submit a Paper</a></li>
+        <li><a href="https://www.ieee.org/conferences/publishing/templates" target="_blank" rel="noopener">Paper Template</a></li>
+        <li><a href="./important-dates.html">Important Dates</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="https://ieeesbcek.org" target="_blank" rel="noopener">IEEE SB CEK</a></li>
+        <li><a href="./committee.html">Team</a></li>
+        <li><a href="./about-iprecon.html">Legacy</a></li>
+        <li><a href="./organizers.html">Organizers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Travel &amp; Info</h4>
+      <ul>
+        <li><a href="./venue.html">Transportation</a></li>
+        <li><a href="./accommodation.html">Hotels</a></li>
+        <li><a href="./kerala.html">Tourism</a></li>
+        <li><a href="./contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Built with ❤️ &nbsp;|&nbsp; IEEE Student Branch CEK &copy; 2027</span>
+    <span>College of Engineering Karunagappally, Kerala, India</span>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+'use strict';
+gsap.registerPlugin(ScrollTrigger);
+
+/* Scroll progress + navbar shadow + logo reveal */
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('scroll-bar').style.width = pct + '%';
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+/* Mobile nav */
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+/* Reveals */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* Past-edition card stagger */
+gsap.fromTo('.past-card',
+  { opacity: 0, y: 28 },
+  { opacity: 1, y: 0, duration: 0.58, stagger: 0.1, ease: 'power2.out',
+    scrollTrigger: { trigger: '.past-grid', start: 'top 82%', once: true } }
+);
+
+/* Featured edition cards slide in */
+gsap.utils.toArray('.edition-card').forEach((card, i) => {
+  gsap.fromTo(card,
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+      scrollTrigger: { trigger: card, start: 'top 85%', once: true } }
+  );
+});
+
+/* Legacy text + side stagger */
+gsap.fromTo('.legacy-text p',
+  { opacity: 0, x: -20 },
+  { opacity: 1, x: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out',
+    scrollTrigger: { trigger: '.legacy-text', start: 'top 82%', once: true } }
+);
+gsap.fromTo('.legacy-side > *',
+  { opacity: 0, x: 20 },
+  { opacity: 1, x: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out',
+    scrollTrigger: { trigger: '.legacy-side', start: 'top 82%', once: true } }
+);
+
+/* Impact stat cards stagger */
+gsap.fromTo('.impact-stat-card',
+  { opacity: 0, y: 26, scale: 0.94 },
+  { opacity: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.12, ease: 'back.out(1.3)',
+    scrollTrigger: { trigger: '.impact-stats', start: 'top 84%', once: true } }
+);
+
+/* Impact feature cards */
+gsap.fromTo('.impact-feature',
+  { opacity: 0, y: 18 },
+  { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out',
+    scrollTrigger: { trigger: '.impact-list', start: 'top 86%', once: true } }
+);
+
+/* Page-hero entrance */
+gsap.fromTo('.page-hero-inner > *',
+  { opacity: 0, y: 22 },
+  { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', delay: 0.1 }
+);
+
+/* Count-up on the impact numbers */
+document.querySelectorAll('.impact-stat-card .big').forEach(el => {
+  const target = +el.getAttribute('data-count');
+  const suffix = el.getAttribute('data-suffix') || '';
+  ScrollTrigger.create({
+    trigger: el, start: 'top 88%', once: true,
+    onEnter: () => {
+      const counter = { val: 0 };
+      gsap.to(counter, {
+        val: target, duration: 1.6, ease: 'power2.out',
+        onUpdate: () => { el.textContent = Math.round(counter.val) + suffix; }
+      });
+    }
+  });
+});
+
+/* Smooth anchor scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>

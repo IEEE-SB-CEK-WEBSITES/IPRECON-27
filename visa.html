@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visa Information | IPRECON 2027 — IEEE International Power and Renewable Energy Conference</title>
+  <meta name="description" content="Visa information for international participants attending IPRECON 2027 at College of Engineering Karunagappally, Kerala, India — e-Conference Visa guide." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Variables ──────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --brand:    #211021;
+      --purple:   #8e24aa;
+      --purple-d: #6a1b9a;
+      --gold:     #d4af37;
+      --gold-d:   #c9a227;
+      --white:    #ffffff;
+      --off:      #fdf5fd;
+      --text:     #2d1f2d;
+      --muted:    #5a4a5a;
+      --light:    #f8f4f8;
+      --border:   #e0cce0;
+      --nav-h:    58px;   /* single source of truth for navbar height */
+    }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
+    img  { max-width: 100%; display: block; }
+    a    { text-decoration: none; color: inherit; }
+
+    /* ── Scroll progress bar ───────────────────── */
+    #scroll-bar {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+      z-index: 9999; transition: width 0.08s linear;
+    }
+
+    /* ════════════════════════════════════════════
+       HEADER — two-row design
+    ════════════════════════════════════════════ */
+    .header-top-bar {
+      background: var(--brand);
+      padding: 7px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; color: rgba(255,255,255,0.65);
+      letter-spacing: 0.04em;
+    }
+    .header-top-bar span { display: flex; align-items: center; gap: 8px; }
+    .header-top-bar i    { color: var(--gold); font-size: 11px; }
+    .header-top-bar a    { color: rgba(255,255,255,0.65); transition: color 0.2s; }
+    .header-top-bar a:hover { color: var(--gold); }
+
+    .site-header {
+      background: #fff;
+      padding: 18px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 3px solid var(--brand);
+    }
+
+    .header-brand {
+      display: flex; align-items: center; gap: 18px;
+    }
+    .header-conf-logo { height: 72px; width: auto; }
+    .header-brand-text {
+      display: flex; flex-direction: column; gap: 2px;
+      border-left: 1px solid var(--border);
+      padding-left: 18px;
+    }
+    .header-brand-text .conf-name {
+      font-size: 20px; font-weight: 800;
+      color: var(--brand); letter-spacing: 0.02em; line-height: 1;
+    }
+    .header-brand-text .conf-full {
+      font-size: 12px; color: var(--muted); font-weight: 400;
+      letter-spacing: 0.02em; line-height: 1.4;
+    }
+    .header-edition-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-d));
+      color: white; font-size: 10.5px; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-top: 6px; width: fit-content;
+    }
+
+    .header-sponsors {
+      display: flex; align-items: center; gap: 0;
+    }
+    .header-sp-group {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 0 24px;
+      border-right: 1px solid var(--border);
+    }
+    .header-sp-group:last-child { border-right: none; padding-right: 0; }
+    .header-sp-group .sp-label {
+      font-size: 9.5px; color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 600;
+    }
+    .header-sp-group img {
+      height: 36px; width: auto; opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .header-sp-group img:hover { opacity: 1; }
+
+    /* ════════════════════════════════════════════
+       NAVBAR
+    ════════════════════════════════════════════ */
+    .navbar {
+      background: var(--brand);
+      position: sticky; top: 0; z-index: 1000;
+      border-bottom: 2px solid rgba(142,36,170,0.5);
+      transition: box-shadow 0.3s;
+    }
+    .navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.45); }
+
+    .nav-container {
+      max-width: 1300px; margin: 0 auto; padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: var(--nav-h);
+    }
+
+    .brand-logo-wrap {
+      display: flex; align-items: center; gap: 12px; height: var(--nav-h);
+      opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+    }
+    .navbar.scrolled .brand-logo-wrap { opacity: 1; visibility: visible; }
+    .brand-logo { height: 46px; width: auto; display: block; }
+    .brand-label {
+      font-size: 13px; font-weight: 700; color: white;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      border-left: 2px solid rgba(212,175,55,0.6);
+      padding-left: 12px; line-height: 1.2;
+    }
+    .brand-label span { display: block; font-size: 10px; font-weight: 400; color: rgba(255,255,255,0.55); letter-spacing: 0.04em; }
+
+    .nav-items { display: flex; list-style: none; }
+    .nav-item { position: relative; }
+    .nav-item > a,
+    .nav-item > span.nav-link {
+      display: flex; align-items: center; gap: 5px;
+      padding: 0 16px; height: var(--nav-h);
+      color: rgba(255,255,255,0.78);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      cursor: pointer; white-space: nowrap;
+      border-bottom: 3px solid transparent; margin-bottom: -2px;
+      transition: color 0.22s, border-color 0.22s;
+    }
+    .nav-item > a:hover,
+    .nav-item > span.nav-link:hover,
+    .nav-item:hover > span.nav-link { color: #fff; border-bottom-color: var(--gold); }
+    .nav-item > span.nav-link::after {
+      content: '\f107'; font-family: 'Font Awesome 6 Free';
+      font-weight: 900; font-size: 10px; margin-left: 3px;
+    }
+
+    .dropdown-content {
+      display: none; position: absolute; top: 100%; left: 0;
+      background: var(--brand); min-width: 270px;
+      border-top: 2px solid var(--purple);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.45); z-index: 200;
+    }
+    .nav-item:hover .dropdown-content { display: block; }
+    .dropdown-item {
+      display: block; padding: 11px 20px;
+      color: rgba(255,255,255,0.7);
+      font-size: 11.5px; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      border-left: 3px solid transparent; transition: all 0.18s;
+    }
+    .dropdown-item:hover {
+      background: rgba(142,36,170,0.18); color: #fff;
+      border-left-color: var(--gold); padding-left: 26px;
+    }
+    .dropdown-item.active { color: var(--gold); }
+
+    /* Mobile-only marquee that lives inside the navbar bar */
+    .nav-marquee {
+      display: none;               /* hidden on desktop — desktop uses .marquee-strip below hero */
+      flex: 1; overflow: hidden;
+      height: var(--nav-h);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+    .nav-marquee-track {
+      display: flex; align-items: center; gap: 34px; height: 100%;
+      width: max-content; animation: mLeft 22s linear infinite;
+    }
+    .nav-marquee-item {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; color: rgba(255,255,255,0.82); white-space: nowrap;
+    }
+    .nav-marquee-item i      { color: var(--gold); font-size: 11px; }
+    .nav-marquee-item strong { color: #fff; font-weight: 600; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 10px; margin-right: -10px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: rgba(255,255,255,0.85); border-radius: 2px; transition: all 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav {
+      position: fixed; top: var(--nav-h); right: 0; bottom: 0;
+      width: min(82%, 340px);
+      background: var(--brand); z-index: 1001;
+      overflow-y: auto; padding: 16px 16px 40px;
+      -webkit-overflow-scrolling: touch;
+      transform: translateX(100%);
+      transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
+      box-shadow: -12px 0 32px rgba(0,0,0,0.45);
+      visibility: hidden;
+    }
+    .mobile-nav.open { transform: translateX(0); visibility: visible; }
+    /* dim backdrop behind the drawer */
+    .mobile-nav-overlay {
+      position: fixed; inset: 0; top: var(--nav-h);
+      background: rgba(0,0,0,0.5); z-index: 1000;
+      opacity: 0; visibility: hidden; transition: opacity 0.3s;
+    }
+    .mobile-nav-overlay.open { opacity: 1; visibility: visible; }
+    .mobile-nav a {
+      display: block; padding: 14px 14px;
+      color: rgba(255,255,255,0.78); font-size: 13px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s;
+    }
+    .mobile-nav a:hover, .mobile-nav a:active { color: var(--gold); }
+    .mob-section {
+      font-size: 10px; color: var(--gold);
+      padding: 16px 14px 4px; letter-spacing: 0.14em;
+      font-weight: 700; text-transform: uppercase;
+    }
+    .mob-sub { padding-left: 28px !important; font-size: 12.5px !important; }
+    body.nav-open { overflow: hidden; }
+
+    /* ════════════════════════════════════════════
+       ANNOUNCEMENTS STRIP
+    ════════════════════════════════════════════ */
+    .marquee-strip {
+      background: var(--off); border-bottom: 1px solid var(--border);
+      padding: 10px 0; overflow: hidden;
+      position: sticky; top: var(--nav-h); z-index: 998;
+    }
+    /* On desktop: show the strip below the hero, hide the mobile-only one */
+    .marquee-strip-mobile { display: none; }
+    .marquee-strip-desktop { display: block; }
+    .marquee-track {
+      display: flex; gap: 52px; align-items: center;
+      animation: mLeft 32s linear infinite; width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes mLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12.5px; color: var(--muted); white-space: nowrap;
+    }
+    .marquee-item i    { color: var(--purple); font-size: 11px; }
+    .marquee-item strong { color: var(--brand); font-weight: 600; }
+    .marquee-sep { color: #d0b0d0; }
+    body.nav-open .marquee-strip { visibility: hidden; }
+
+    /* ════════════════════════════════════════════
+       PAGE HERO / BREADCRUMB
+    ════════════════════════════════════════════ */
+    .page-hero {
+      background: var(--brand);
+      padding: 66px 60px 60px;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg, transparent, transparent 60px,
+        rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
+    .page-hero .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4);
+      color: var(--gold); font-size: 11px; font-weight: 600;
+      padding: 6px 16px; border-radius: 3px;
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 22px;
+    }
+    .page-hero h1 {
+      font-size: clamp(30px, 4.5vw, 48px); font-weight: 800; color: #fff;
+      line-height: 1.15; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.01em;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--gold); }
+    .page-hero p {
+      font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 640px; margin: 0 auto;
+    }
+    .breadcrumb {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.3); }
+    .breadcrumb .current { color: var(--gold); }
+
+    /* ════════════════════════════════════════════
+       SECTION COMMONS
+    ════════════════════════════════════════════ */
+    .section-wrap { max-width: 1120px; margin: 0 auto; }
+    .sec-head { text-align: center; margin-bottom: 44px; }
+    .sec-label-tag {
+      display: block;
+      font-size: 11px; color: var(--purple);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 10px;
+    }
+    .sec-title {
+      font-size: clamp(24px, 3.2vw, 34px); font-weight: 800;
+      color: var(--brand); line-height: 1.2;
+      display: inline-block; padding-bottom: 14px; position: relative;
+    }
+    .sec-title::after {
+      content: ''; position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+    }
+    .sec-sub {
+      font-size: 14.5px; color: var(--muted);
+      line-height: 1.7; max-width: 680px; margin: 16px auto 0;
+    }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--purple); color: #fff;
+      padding: 12px 24px; border-radius: 6px;
+      font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      border: 2px solid var(--purple); transition: all 0.28s ease;
+    }
+    .btn-primary:hover { background: transparent; color: var(--purple); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--brand);
+      padding: 12px 24px; border-radius: 6px;
+      font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      border: 2px solid var(--border); transition: all 0.28s ease;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--purple-d); transform: translateY(-2px); }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand);
+      padding: 12px 24px; border-radius: 6px;
+      font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      transition: all 0.28s ease;
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,175,55,0.4); }
+
+    /* ════════════════════════════════════════════
+       VISA HIGHLIGHT (e-Conference Visa banner)
+    ════════════════════════════════════════════ */
+    #vhighlight { padding: 70px 60px 30px; background: #fff; }
+    .visa-banner {
+      max-width: 1000px; margin: 0 auto;
+      background: linear-gradient(135deg, var(--brand), var(--purple));
+      color: #fff; border-radius: 18px; padding: 40px 44px;
+      display: flex; align-items: center; gap: 28px;
+      position: relative; overflow: hidden;
+    }
+    .visa-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(255,255,255,0.03) 50px, rgba(255,255,255,0.03) 51px);
+    }
+    .vb-icon {
+      width: 78px; height: 78px; border-radius: 20px; flex-shrink: 0; position: relative; z-index: 1;
+      background: rgba(212,175,55,0.18); border: 1px solid rgba(212,175,55,0.4);
+      display: flex; align-items: center; justify-content: center; font-size: 34px; color: var(--gold);
+    }
+    .vb-text { position: relative; z-index: 1; }
+    .vb-text h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+    .vb-text p { font-size: 14px; opacity: 0.88; line-height: 1.7; }
+
+    /* ════════════════════════════════════════════
+       WELCOME + WARNING NOTICE
+    ════════════════════════════════════════════ */
+    #welcome { padding: 40px 60px; background: #fff; }
+    .welcome-text { max-width: 900px; margin: 0 auto 30px; text-align: center; }
+    .welcome-text p { font-size: 15px; color: var(--muted); line-height: 1.9; }
+    .warn-card {
+      max-width: 900px; margin: 0 auto;
+      background: #fff4f4; border: 1px solid #f3c2c2; border-left: 4px solid #d64545;
+      border-radius: 12px; padding: 22px 28px;
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .warn-card i { color: #d64545; font-size: 22px; margin-top: 2px; flex-shrink: 0; }
+    .warn-card h3 { font-size: 15px; font-weight: 700; color: #b03030; margin-bottom: 6px; }
+    .warn-card p { font-size: 13.5px; color: #7a4a4a; line-height: 1.7; }
+
+    /* ════════════════════════════════════════════
+       ELIGIBILITY + DURATION (two cards)
+    ════════════════════════════════════════════ */
+    #eligibility { padding: 60px 60px; background: var(--light); }
+    .elig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1100px; margin: 0 auto; }
+    .elig-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .elig-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(33,16,33,0.1); }
+    .elig-head {
+      display: flex; align-items: center; gap: 14px;
+      padding: 22px 26px; background: var(--brand); position: relative; overflow: hidden;
+    }
+    .elig-head::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--purple), var(--gold)); }
+    .elig-head .eh-icon {
+      width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(212,175,55,0.14); color: var(--gold);
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+    }
+    .elig-head h3 { font-size: 17px; font-weight: 700; color: #fff; }
+    .elig-body { padding: 24px 26px 26px; }
+    .elig-body p { font-size: 13.5px; color: var(--muted); line-height: 1.8; }
+    .elig-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .elig-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 13.5px; color: var(--text); line-height: 1.6; }
+    .elig-list i { color: var(--gold); font-size: 13px; margin-top: 4px; flex-shrink: 0; }
+    .duration-badge {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
+      background: #f3e8f5; color: var(--purple-d); font-weight: 700; font-size: 13px;
+      padding: 10px 18px; border-radius: 10px;
+    }
+    .duration-badge i { color: var(--purple); }
+
+    /* ════════════════════════════════════════════
+       APPLICATION STEPS
+    ════════════════════════════════════════════ */
+    #steps { padding: 76px 60px; background: #fff; }
+    .steps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
+    .step-card {
+      background: var(--off); border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px 28px 26px; position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .step-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(33,16,33,0.1); border-color: rgba(142,36,170,0.3); }
+    .step-num {
+      position: absolute; top: -16px; left: 28px;
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-d)); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800;
+      box-shadow: 0 8px 20px rgba(142,36,170,0.35);
+    }
+    .step-card h3 { font-size: 17px; font-weight: 700; color: var(--brand); margin: 16px 0 10px; display: flex; align-items: center; gap: 10px; }
+    .step-card h3 i { color: var(--purple); font-size: 15px; }
+    .step-card p { font-size: 13.5px; color: var(--muted); line-height: 1.75; }
+    .step-docs { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-top: 12px; }
+    .step-docs li { display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; color: var(--text); line-height: 1.55; }
+    .step-docs i { color: var(--gold); font-size: 11px; margin-top: 4px; flex-shrink: 0; }
+
+    /* ════════════════════════════════════════════
+       COUNTRY RESTRICTIONS
+    ════════════════════════════════════════════ */
+    #restrictions { padding: 76px 60px; background: var(--light); }
+    .restrict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1100px; margin: 0 auto 24px; }
+    .restrict-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 30px 30px; }
+    .restrict-card .rc-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .restrict-card .rc-icon { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+    .restrict-card.no .rc-icon { background: #fdeaea; color: #d64545; }
+    .restrict-card.yes .rc-icon { background: #e8f6ec; color: #2e9e54; }
+    .restrict-card h3 { font-size: 16px; font-weight: 700; color: var(--brand); }
+    .restrict-card p { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+    .country-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .country-chip { font-size: 12px; font-weight: 500; padding: 6px 13px; border-radius: 20px; }
+    .country-chip.no { background: #fdeaea; color: #b03030; }
+    .country-chip.yes { background: #e8f6ec; color: #1e7a3e; }
+    .origin-note {
+      max-width: 1100px; margin: 0 auto;
+      background: #fff8ec; border: 1px solid #f0dca8; border-left: 4px solid var(--gold);
+      border-radius: 12px; padding: 22px 28px;
+    }
+    .origin-note h4 { font-size: 14px; font-weight: 700; color: #8a6d1f; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .origin-note p { font-size: 13px; color: #6a5a3a; line-height: 1.7; }
+    .origin-note em { font-style: italic; color: #7a6a4a; }
+
+    /* ════════════════════════════════════════════
+       REMOTE POLICY + EXEMPTION
+    ════════════════════════════════════════════ */
+    #policy { padding: 76px 60px; background: #fff; }
+    .policy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1100px; margin: 0 auto; }
+    .policy-card {
+      border-radius: 16px; padding: 34px 32px; position: relative; overflow: hidden;
+    }
+    .policy-card.remote { background: linear-gradient(135deg, var(--brand), var(--purple-d)); color: #fff; }
+    .policy-card.exempt { background: var(--off); border: 1px solid var(--border); }
+    .policy-card .pc-icon {
+      width: 56px; height: 56px; border-radius: 14px; margin-bottom: 18px;
+      display: flex; align-items: center; justify-content: center; font-size: 24px;
+    }
+    .policy-card.remote .pc-icon { background: rgba(212,175,55,0.18); color: var(--gold); }
+    .policy-card.exempt .pc-icon { background: #f3e8f5; color: var(--purple); }
+    .policy-card h3 { font-size: 19px; font-weight: 800; margin-bottom: 12px; }
+    .policy-card.exempt h3 { color: var(--brand); }
+    .policy-card p { font-size: 14px; line-height: 1.8; }
+    .policy-card.remote p { color: rgba(255,255,255,0.85); }
+    .policy-card.exempt p { color: var(--muted); }
+
+    /* ════════════════════════════════════════════
+       CTA — APPLY + SUPPORT
+    ════════════════════════════════════════════ */
+    #apply { padding: 80px 60px; background: var(--brand); position: relative; overflow: hidden; }
+    #apply::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg, transparent, transparent 60px,
+        rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
+    }
+    .apply-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; text-align: center; }
+    .apply-inner .a-icon {
+      width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 20px;
+      background: rgba(212,175,55,0.12); display: flex; align-items: center; justify-content: center;
+      font-size: 26px; color: var(--gold);
+    }
+    .apply-inner h2 { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 14px; }
+    .apply-inner p { font-size: 14.5px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 30px; }
+    .apply-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: rgba(255,255,255,0.85);
+      padding: 12px 24px; border-radius: 6px;
+      font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      border: 2px solid rgba(255,255,255,0.35); transition: all 0.28s ease;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .support-line { margin-top: 26px; font-size: 13px; color: rgba(255,255,255,0.55); }
+    .support-line a { color: var(--gold); font-weight: 600; }
+
+    /* ════════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════════ */
+    footer { background: #1a0e1a; padding: 68px 60px 36px; }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px; max-width: 1200px; margin: 0 auto 48px;
+    }
+    .footer-brand img {
+      height: 44px; filter: brightness(0) invert(1);
+      opacity: 0.78; margin-bottom: 16px;
+    }
+    .footer-brand p {
+      font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.8; margin-bottom: 24px;
+    }
+    .footer-socials { display: flex; gap: 10px; }
+    .soc-link {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5); font-size: 14px; transition: all 0.25s;
+    }
+    .soc-link:hover { background: var(--purple); border-color: var(--purple); color: white; transform: translateY(-2px); }
+    .footer-col h4 {
+      font-size: 12px; font-weight: 700; color: white;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 18px; padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: rgba(255,255,255,0.42); font-size: 13px; transition: color 0.22s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto;
+      padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12px; color: rgba(255,255,255,0.28);
+    }
+
+    /* ════════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════════ */
+    @media (max-width: 1100px) {
+      .site-header, .header-top-bar { padding-left: 28px; padding-right: 28px; }
+      .nav-container { padding: 0 20px; }
+      #vhighlight, #welcome, #eligibility, #steps, #restrictions, #policy, #apply, footer, .page-hero { padding-left: 32px; padding-right: 32px; }
+      .elig-grid, .steps-grid, .restrict-grid, .policy-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 900px) {
+      .header-sp-group { padding: 0 14px; }
+      .header-sp-group .sp-label { display: none; }
+      .header-sp-group img { height: 30px; }
+    }
+    @media (max-width: 768px) {
+      .header-top-bar { padding: 6px 16px; font-size: 11px; }
+      .header-top-bar .htb-right { display: none; }
+      .header-top-bar span { gap: 6px; }
+      .site-header {
+        padding: 10px 12px; flex-direction: row; align-items: center;
+        justify-content: space-between; gap: 8px;
+      }
+      .header-conf-logo { height: 40px; }
+      .header-brand { gap: 8px; flex: 1; min-width: 0; }
+      .header-brand-text { padding-left: 8px; }
+      .header-brand-text .conf-name { font-size: 11px; }
+      .header-brand-text .conf-full { font-size: 9px; line-height: 1.3; }
+      .header-edition-badge { display: none; }
+      .header-sponsors { display: flex; flex-shrink: 0; }
+      .header-sp-group { padding: 0 6px; border-right: 1px solid var(--border); }
+      .header-sp-group:last-child { border-right: none; padding-right: 0; }
+      .header-sp-group .sp-label { display: none; }
+      .header-sp-group img { height: 22px; }
+      .brand-logo-wrap { gap: 8px; width: 0; overflow: hidden; }
+      .navbar.scrolled .brand-logo-wrap { width: auto; margin-right: 8px; }
+      .brand-logo { height: 34px; }
+      .brand-label { display: none; }
+      .nav-items { display: none; }
+      .hamburger { display: flex; }
+      .nav-container { padding: 0 14px; justify-content: flex-start; gap: 6px; }
+      .hamburger { margin-left: auto; margin-right: 0; order: 3; }
+      .nav-marquee { display: block; }
+      .navbar.scrolled .nav-marquee { display: none; }
+      .marquee-strip-desktop { display: none; }
+      .marquee-strip-mobile { display: none; position: sticky; top: var(--nav-h); padding: 8px 0; z-index: 998; }
+      .navbar.scrolled ~ .marquee-strip-mobile { display: block; }
+      .marquee-track { gap: 34px; animation-duration: 22s; }
+      .marquee-item { font-size: 11.5px; gap: 6px; }
+      .marquee-sep  { font-size: 10px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+      #vhighlight, #welcome, #eligibility, #steps, #restrictions, #policy, #apply { padding-left: 20px; padding-right: 20px; }
+      .page-hero { padding: 48px 20px 44px; }
+      .visa-banner { flex-direction: column; text-align: center; padding: 30px 24px; }
+      .warn-card { flex-direction: column; gap: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track, .nav-marquee-track { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+<div id="scroll-bar"></div>
+
+<!-- ══════════════════════════════════════
+     HEADER — two-row design
+══════════════════════════════════════ -->
+<div class="header-top-bar">
+  <span>
+    <i class="fas fa-map-marker-alt"></i> College of Engineering Karunagappally, Kerala, India
+    &nbsp;&nbsp;
+    <i class="fas fa-calendar-alt"></i> September 2027
+    &nbsp;&nbsp;
+    <i class="fas fa-wifi"></i> Hybrid Conference
+  </span>
+  <span class="htb-right">
+    <a href="./contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+    &nbsp;&nbsp;
+    <a href="./registration.html"><i class="fas fa-user-plus"></i> Register</a>
+  </span>
+</div>
+
+<header class="site-header">
+  <div class="header-brand">
+    <img class="header-conf-logo"
+         src="assets/img/iprecon26 black.png"
+         alt="IPRECON 2027"
+         onerror="this.style.display='none'">
+    <div class="header-brand-text">
+      <span class="conf-name">September 2027</span>
+      <span class="conf-full">College of Engineering Karunagappally, Kerala, INDIA</span>
+      <div class="header-edition-badge"><i class="fas fa-star"></i> 5th Edition</div>
+    </div>
+  </div>
+
+  <div class="header-sponsors">
+    <div class="header-sp-group">
+      <span class="sp-label">Technical Co-Sponsor</span>
+      <img src="assets/img/ias_bw.png"
+           alt="IEEE IAS"
+           onerror="this.style.display='none'">
+    </div>
+    <div class="header-sp-group">
+      <span class="sp-label">Technical Co-Sponsor</span>
+      <img src="assets/img/pes BLACK.png"
+           alt="IEEE PES"
+           onerror="this.style.display='none'">
+    </div>
+    <div class="header-sp-group">
+      <span class="sp-label">Organized under</span>
+      <img src="assets/img/ieee blk.png"
+           alt="IEEE"
+           onerror="this.style.display='none'">
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav class="navbar" id="mainNav">
+  <div class="nav-container">
+    <a href="./index.html" class="brand-logo-wrap">
+      <img class="brand-logo"
+           src="assets/img/iprecon26 white.png"
+           alt="IPRECON 2027"
+           onerror="this.style.display='none'">
+    </a>
+    <ul class="nav-items">
+      <li class="nav-item"><a href="./index.html">HOME</a></li>
+      <li class="nav-item">
+        <span class="nav-link">ABOUT</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./about-iprecon.html">IPRECON</a>
+          <a class="dropdown-item" href="./organizers.html">ORGANIZERS</a>
+          <a class="dropdown-item" href="./venue.html">VENUE</a>
+          <a class="dropdown-item" href="./kerala.html">KERALA</a>
+          <a class="dropdown-item" href="./accommodation.html">ACCOMMODATION</a>
+          <a class="dropdown-item active" href="./visa.html">VISA</a>
+          <a class="dropdown-item" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+          <a class="dropdown-item" href="./dei.html">DEI STATEMENT</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./committee.html">COMMITTEE</a></li>
+      <li class="nav-item">
+        <span class="nav-link">FOR AUTHORS</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./cfp.html">CALL FOR PAPERS</a>
+          <a class="dropdown-item" href="./submissions.html">SUBMISSIONS</a>
+          <a class="dropdown-item" href="./important-dates.html">IMPORTANT DATES</a>
+          <a class="dropdown-item" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+          <a class="dropdown-item" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+          <a class="dropdown-item" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
+          <a class="dropdown-item" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./speakers.html">SPEAKERS</a></li>
+      <li class="nav-item">
+        <span class="nav-link">PROGRAM</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./inaugural.html">INAUGURAL PROGRAM</a>
+          <a class="dropdown-item" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+          <a class="dropdown-item" href="./tutorials.html">TUTORIALS</a>
+          <a class="dropdown-item" href="./tracks.html">TRACKS</a>
+          <a class="dropdown-item" href="./special-sessions.html">SPECIAL SESSIONS</a>
+          <a class="dropdown-item" href="./keynote.html">KEYNOTE</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./registration.html">REGISTRATION</a></li>
+      <li class="nav-item"><a href="./contact.html">CONTACT</a></li>
+    </ul>
+    <!-- Mobile-only marquee that flows through the navbar bar (like the old site) -->
+    <div class="nav-marquee">
+      <div class="nav-marquee-track">
+        <span class="nav-marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</span>
+        <span class="marquee-sep">◆</span>
+        <span class="nav-marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</span>
+        <span class="marquee-sep">◆</span>
+        <span class="nav-marquee-item"><i class="fas fa-book"></i> Accepted papers in <strong>IEEE Xplore Digital Library</strong></span>
+        <span class="marquee-sep">◆</span>
+        <span class="nav-marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</span>
+        <span class="marquee-sep">◆</span>
+        <span class="nav-marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong></span>
+        <span class="marquee-sep">◆</span>
+        <!-- duplicate for seamless loop -->
+        <span class="nav-marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</span>
+        <span class="marquee-sep">◆</span>
+        <span class="nav-marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</span>
+        <span class="marquee-sep">◆</span>
+        <span class="nav-marquee-item"><i class="fas fa-book"></i> Accepted papers in <strong>IEEE Xplore Digital Library</strong></span>
+        <span class="marquee-sep">◆</span>
+        <span class="nav-marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</span>
+        <span class="marquee-sep">◆</span>
+        <span class="nav-marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong></span>
+        <span class="marquee-sep">◆</span>
+      </div>
+    </div>
+    <button class="hamburger" id="menuBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="./index.html">HOME</a>
+  <div class="mob-section">ABOUT</div>
+  <a href="./about-iprecon.html" class="mob-sub">IPRECON</a>
+  <a href="./organizers.html"    class="mob-sub">ORGANIZERS</a>
+  <a href="./venue.html"         class="mob-sub">VENUE</a>
+  <a href="./kerala.html"        class="mob-sub">KERALA</a>
+  <a href="./accommodation.html" class="mob-sub">ACCOMMODATION</a>
+  <a href="./visa.html"          class="mob-sub">VISA</a>
+  <a href="./sponsors.html"      class="mob-sub">SPONSORS &amp; EXHIBITORS</a>
+  <a href="./dei.html"           class="mob-sub">DEI STATEMENT</a>
+  <a href="./committee.html">COMMITTEE</a>
+  <div class="mob-section">FOR AUTHORS</div>
+  <a href="./cfp.html"                      class="mob-sub">CALL FOR PAPERS</a>
+  <a href="./submissions.html"              class="mob-sub">SUBMISSIONS</a>
+  <a href="./important-dates.html"          class="mob-sub">IMPORTANT DATES</a>
+  <a href="./camera-ready.html"             class="mob-sub">CAMERA READY INSTRUCTIONS</a>
+  <a href="./presentation-guidelines.html" class="mob-sub">PRESENTATION GUIDELINES</a>
+  <a href="./housing-support.html"          class="mob-sub">STUDENT HOUSING SUPPORT</a>
+  <a href="./travel-support.html"           class="mob-sub">STUDENT TRAVEL SUPPORT</a>
+  <a href="./speakers.html">SPEAKERS</a>
+  <div class="mob-section">PROGRAM</div>
+  <a href="./inaugural.html"             class="mob-sub">INAUGURAL PROGRAM</a>
+  <a href="./distinguished-lectures.html" class="mob-sub">DISTINGUISHED LECTURE PROGRAM</a>
+  <a href="./tutorials.html"             class="mob-sub">TUTORIALS</a>
+  <a href="./tracks.html"                class="mob-sub">TRACKS</a>
+  <a href="./special-sessions.html"      class="mob-sub">SPECIAL SESSIONS</a>
+  <a href="./keynote.html"               class="mob-sub">KEYNOTE</a>
+  <a href="./registration.html">REGISTRATION</a>
+  <a href="./contact.html">CONTACT</a>
+</div>
+
+<!-- Mobile marquee strip: appears below navbar on scroll (hidden on desktop) -->
+<div class="marquee-strip marquee-strip-mobile">
+  <div class="marquee-track">
+    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
+    <span class="marquee-sep">◆</span>
+    <!-- duplicate -->
+    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
+    <span class="marquee-sep">◆</span>
+  </div>
+</div>
+
+<!-- Desktop marquee: sits below the navbar (original position) -->
+<div class="marquee-strip marquee-strip-desktop">
+  <div class="marquee-track">
+    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
+    <span class="marquee-sep">◆</span>
+    <!-- duplicate -->
+    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
+    <span class="marquee-sep">◆</span>
+    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
+    <span class="marquee-sep">◆</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow"><i class="fas fa-passport"></i> For International Participants</span>
+    <h1>Visa <em>Information</em></h1>
+    <p>A complete guide for international participants attending IPRECON 2027 in Kerala, India — everything you need for a smooth e-Conference Visa application.</p>
+  </div>
+  <div class="breadcrumb">
+    <a href="./index.html">Home</a>
+    <i class="fas fa-chevron-right"></i>
+    <span class="current">Visa</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     e-CONFERENCE VISA HIGHLIGHT
+══════════════════════════════════════ -->
+<section id="vhighlight">
+  <div class="visa-banner reveal">
+    <div class="vb-icon"><i class="fas fa-id-card"></i></div>
+    <div class="vb-text">
+      <h2>e-Conference Visa Required</h2>
+      <p>International participants attending IPRECON 2027 in person must apply for an Indian e-Conference Visa. This specialized visa is designed for conferences, workshops, and academic gatherings.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     WELCOME + WARNING
+══════════════════════════════════════ -->
+<section id="welcome">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Getting Started</div>
+      <h2 class="sec-title reveal">Welcome, International Participants</h2>
+    </div>
+    <div class="welcome-text">
+      <p class="reveal">We are pleased to welcome international students, researchers, academicians, and professionals to IPRECON 2027 in Kerala, India. To facilitate your participation, we have outlined the necessary visa information and procedures below. Please read the following instructions carefully to ensure a smooth application process.</p>
+    </div>
+    <div class="warn-card reveal">
+      <i class="fas fa-triangle-exclamation"></i>
+      <div>
+        <h3>Important Notice</h3>
+        <p>Please do <strong>not</strong> apply for a tourist visa, as it is not valid for conference participation and may lead to rejection or unnecessary complications and expenses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ELIGIBILITY + DURATION
+══════════════════════════════════════ -->
+<section id="eligibility">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Visa Type: e-Conference Visa</div>
+      <h2 class="sec-title reveal">Eligibility &amp; Duration</h2>
+      <p class="sec-sub reveal">International participants attending IPRECON in person must apply for an Indian e-Conference Visa — intended specifically for those visiting India for conferences, workshops, and similar academic or professional gatherings.</p>
+    </div>
+    <div class="elig-grid">
+      <div class="elig-card reveal">
+        <div class="elig-head">
+          <div class="eh-icon"><i class="fas fa-user-check"></i></div>
+          <h3>Who Is Eligible?</h3>
+        </div>
+        <div class="elig-body">
+          <ul class="elig-list">
+            <li><i class="fas fa-check"></i> A foreigner whose sole purpose of visiting India is to attend a conference / seminar / workshop held in India</li>
+            <li><i class="fas fa-check"></i> Holds a valid passport and a re-entry permit if required by your home country</li>
+            <li><i class="fas fa-check"></i> Not persona-non-grata to the Government of India</li>
+            <li><i class="fas fa-check"></i> Not considered an undesirable person</li>
+            <li><i class="fas fa-check"></i> A person of assured financial standing</li>
+          </ul>
+        </div>
+      </div>
+      <div class="elig-card reveal">
+        <div class="elig-head">
+          <div class="eh-icon"><i class="fas fa-hourglass-half"></i></div>
+          <h3>Duration of the Visa</h3>
+        </div>
+        <div class="elig-body">
+          <p>Conference visas are issued for the duration of the conference and the travelling time. Delegates may also combine tourism with attending the conference.</p>
+          <div class="duration-badge"><i class="fas fa-calendar-check"></i> Maximum validity: 6 months</div>
+          <p style="margin-top:16px">The process is relatively straightforward — follow the instructions carefully and submit all required documentation. For questions, contact the Indian Mission in your home country.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     APPLICATION STEPS
+══════════════════════════════════════ -->
+<section id="steps">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Step by Step</div>
+      <h2 class="sec-title reveal">Application Process</h2>
+      <p class="sec-sub reveal">To apply for the e-Conference Visa, follow the four steps below.</p>
+    </div>
+    <div class="steps-grid">
+
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <h3><i class="fas fa-clipboard-check"></i> Complete Registration</h3>
+        <p>Only participants whose papers have been accepted and who have completed the full registration process will receive an official Conference Invitation Letter from the organizing committee. This letter is required for the visa application.</p>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <h3><i class="fas fa-file-arrow-up"></i> Prepare Required Documents</h3>
+        <p>You will need to upload the following during the application:</p>
+        <ul class="step-docs">
+          <li><i class="fas fa-image"></i> Passport-sized photograph (JPEG, white background, max 1MB, min 350×350 px)</li>
+          <li><i class="fas fa-passport"></i> Scanned copy of passport (PDF, photo/bio page only, max 300KB)</li>
+          <li><i class="fas fa-envelope-open-text"></i> Conference Invitation Letter (issued by IPRECON organizing committee)</li>
+        </ul>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <h3><i class="fas fa-globe"></i> Apply Online</h3>
+        <p>Submit your application through the official Government of India e-Visa portal. Select the "e-Conference Visa" category and complete all required fields.</p>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-num">4</div>
+        <h3><i class="fas fa-plane-circle-check"></i> Visa Approval &amp; Travel</h3>
+        <p>Processing time typically ranges from 12 hours to a few days. Upon approval, you will receive a PDF copy via email. Print this document and carry it during travel. Special e-Visa counters are available at major Indian airports.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     COUNTRY RESTRICTIONS
+══════════════════════════════════════ -->
+<section id="restrictions">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Please Read Carefully</div>
+      <h2 class="sec-title reveal">Country-Specific Guidelines</h2>
+      <p class="sec-sub reveal">As per the visa regulations of the Government of India, invitation-letter eligibility varies by country.</p>
+    </div>
+    <div class="restrict-grid">
+      <div class="restrict-card no reveal">
+        <div class="rc-head">
+          <div class="rc-icon"><i class="fas fa-ban"></i></div>
+          <h3>Invitation Letter Restrictions</h3>
+        </div>
+        <p>The IPRECON organizing committee will <strong>not</strong> provide conference invitation letters to individuals holding citizenship of the following countries:</p>
+        <div class="country-chips">
+          <span class="country-chip no">Pakistan</span>
+          <span class="country-chip no">Bangladesh</span>
+          <span class="country-chip no">Afghanistan</span>
+          <span class="country-chip no">Iraq</span>
+          <span class="country-chip no">Sudan</span>
+          <span class="country-chip no">Iran</span>
+          <span class="country-chip no">Syria</span>
+          <span class="country-chip no">Stateless persons</span>
+        </div>
+      </div>
+      <div class="restrict-card yes reveal">
+        <div class="rc-head">
+          <div class="rc-icon"><i class="fas fa-circle-check"></i></div>
+          <h3>Eligible Countries</h3>
+        </div>
+        <p>Conference invitation letters will be issued only to participants from countries listed as eligible under the Indian Government's e-Visa program.</p>
+        <div class="country-chips">
+          <span class="country-chip yes"><i class="fas fa-check"></i>&nbsp; e-Visa eligible nations</span>
+        </div>
+        <p style="margin-top:16px"><strong>Nepal &amp; Bhutan:</strong> Citizens of Nepal and Bhutan do not require a visa to enter India, in accordance with the Freedom of Movement Agreement between these countries and the Republic of India.</p>
+      </div>
+    </div>
+    <div class="origin-note reveal">
+      <h4><i class="fas fa-circle-info"></i> Persons of Pakistani Origin</h4>
+      <p>Individuals of Pakistani origin, irrespective of their current citizenship, are not eligible to receive visa invitation letters from the organizing committee. <em>"Pakistani origin" refers to individuals who currently hold or previously held Pakistani citizenship, or whose parents or grandparents were citizens of Pakistan.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     REMOTE POLICY + EXEMPTION
+══════════════════════════════════════ -->
+<section id="policy">
+  <div class="section-wrap">
+    <div class="sec-head">
+      <div class="sec-label-tag">Inclusive by Design</div>
+      <h2 class="sec-title reveal">Remote Presentation Policy</h2>
+    </div>
+    <div class="policy-grid">
+      <div class="policy-card remote reveal">
+        <div class="pc-icon"><i class="fas fa-video"></i></div>
+        <h3>Present Remotely</h3>
+        <p>In alignment with our commitment to diversity, equity, and inclusion, authors from countries or backgrounds that are not eligible for Indian visas will be allowed to present their papers remotely via an online platform. This ensures that every qualified submission has the opportunity to contribute to the conference, regardless of national or visa limitations.</p>
+      </div>
+      <div class="policy-card exempt reveal">
+        <div class="pc-icon"><i class="fas fa-people-arrows"></i></div>
+        <h3>Visa Exemption — Nepal &amp; Bhutan</h3>
+        <p>Citizens of Nepal and Bhutan do not require a visa to enter India, in accordance with the Freedom of Movement Agreement between these countries and the Republic of India. Along with citizens of India, they may attend in person without the need for a visa, provided they have an accepted conference paper.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     APPLY CTA
+══════════════════════════════════════ -->
+<section id="apply">
+  <div class="apply-inner reveal">
+    <div class="a-icon"><i class="fas fa-passport"></i></div>
+    <h2>Ready to Apply?</h2>
+    <p>Visit the official Government of India e-Visa portal to begin your application. Make sure you have your Conference Invitation Letter and required documents ready.</p>
+    <div class="apply-btns">
+      <a href="https://indianvisaonline.gov.in/evisa/" target="_blank" rel="noopener" class="btn-gold"><i class="fas fa-arrow-up-right-from-square"></i> Apply for e-Visa</a>
+      <a href="https://indianvisaonline.gov.in/evisa/tvoa.html" target="_blank" rel="noopener" class="btn-ghost"><i class="fas fa-list-check"></i> View Eligible Countries</a>
+    </div>
+    <div class="support-line">
+      Need visa support? Contact the IPRECON visa helpdesk at <a href="./contact.html">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+      <p>2027 IEEE International Power and Renewable Energy Conference — 5th edition. Organized by IEEE Student Branch, College of Engineering Karunagappally, Kerala, India.</p>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/ieeeceksb/"       class="soc-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/IEEE_SB_CEK"           class="soc-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.linkedin.com/company/ieeesbcek/" class="soc-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/ieee_sb_cek/"    class="soc-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>For Authors</h4>
+      <ul>
+        <li><a href="./cfp.html">Call for Papers</a></li>
+        <li><a href="./submissions.html">Submit a Paper</a></li>
+        <li><a href="./important-dates.html">Important Dates</a></li>
+        <li><a href="https://www.ieee.org/conferences/publishing/templates" target="_blank" rel="noopener">IEEE Paper Template</a></li>
+        <li><a href="./camera-ready.html">Camera Ready</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Conference</h4>
+      <ul>
+        <li><a href="./about-iprecon.html">About IPRECON</a></li>
+        <li><a href="./organizers.html">Organizers</a></li>
+        <li><a href="./committee.html">Committee</a></li>
+        <li><a href="./speakers.html">Speakers</a></li>
+        <li><a href="./sponsors.html">Sponsors</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Travel &amp; Info</h4>
+      <ul>
+        <li><a href="./venue.html">Venue &amp; Directions</a></li>
+        <li><a href="./accommodation.html">Accommodation</a></li>
+        <li><a href="./visa.html">Visa Information</a></li>
+        <li><a href="./kerala.html">Kerala Tourism</a></li>
+        <li><a href="./contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Built with ❤️ &nbsp;|&nbsp; IEEE Student Branch CEK &copy; 2027</span>
+    <span>College of Engineering Karunagappally, Kerala, India</span>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+'use strict';
+gsap.registerPlugin(ScrollTrigger);
+
+/* Scroll progress + navbar shadow + logo reveal */
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('scroll-bar').style.width = pct + '%';
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+/* Mobile nav */
+const menuBtn    = document.getElementById('menuBtn');
+const mobileNav  = document.getElementById('mobileNav');
+const navOverlay = document.getElementById('mobileNavOverlay');
+function closeMenu() {
+  mobileNav.classList.remove('open');
+  navOverlay.classList.remove('open');
+  menuBtn.classList.remove('active');
+  document.body.classList.remove('nav-open');
+  menuBtn.setAttribute('aria-expanded', 'false');
+}
+menuBtn.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  navOverlay.classList.toggle('open', open);
+  menuBtn.classList.toggle('active', open);
+  document.body.classList.toggle('nav-open', open);
+  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+navOverlay.addEventListener('click', closeMenu);
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
+
+/* ── IntersectionObserver reveals ──────────────── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── GSAP animations ────────────────────────────── */
+/* Page hero entrance */
+gsap.fromTo('.page-hero-inner > *',
+  { opacity: 0, y: 22 },
+  { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', delay: 0.1 }
+);
+
+/* Step cards */
+gsap.fromTo('.step-card',
+  { opacity: 0, y: 28 },
+  { opacity: 1, y: 0, duration: 0.55, stagger: 0.12, ease: 'power2.out',
+    scrollTrigger: { trigger: '.steps-grid', start: 'top 84%', once: true } }
+);
+
+/* Eligibility cards */
+gsap.fromTo('.elig-card',
+  { opacity: 0, y: 24 },
+  { opacity: 1, y: 0, duration: 0.55, stagger: 0.14, ease: 'power2.out',
+    scrollTrigger: { trigger: '.elig-grid', start: 'top 85%', once: true } }
+);
+
+/* Restriction cards */
+gsap.fromTo('.restrict-card',
+  { opacity: 0, y: 24 },
+  { opacity: 1, y: 0, duration: 0.55, stagger: 0.14, ease: 'power2.out',
+    scrollTrigger: { trigger: '.restrict-grid', start: 'top 85%', once: true } }
+);
+
+/* Policy cards */
+gsap.fromTo('.policy-card',
+  { opacity: 0, y: 24 },
+  { opacity: 1, y: 0, duration: 0.55, stagger: 0.14, ease: 'power2.out',
+    scrollTrigger: { trigger: '.policy-grid', start: 'top 85%', once: true } }
+);
+
+/* Smooth anchor scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
