@@ -232,18 +232,20 @@
        PAGE HERO / BREADCRUMB
     ════════════════════════════════════════════ */
     .page-hero {
-      background: var(--brand);
-      padding: 66px 60px 60px;
-      position: relative; overflow: hidden;
-      text-align: center;
+      position: relative; min-height: 460px;
+      display: flex; align-items: center; justify-content: flex-start; text-align: left;
+      background: linear-gradient(135deg, #1e3c72, #2a5298, var(--brand));
+      overflow: hidden;
     }
-    .page-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background-image: repeating-linear-gradient(
-        -45deg, transparent, transparent 60px,
-        rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
+    .page-hero .hero-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center 30%; opacity: 0.6;
     }
-    .page-hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
+    .page-hero .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(20, 30, 48, 0.95) 0%, rgba(20, 30, 48, 0.6) 50%, rgba(20, 30, 48, 0.2) 100%);
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 820px; padding: 70px 60px; margin: 0; }
     .page-hero .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4);
@@ -257,17 +259,17 @@
     }
     .page-hero h1 em { font-style: normal; color: var(--gold); }
     .page-hero p {
-      font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 640px; margin: 0 auto;
+      font-size: 15px; color: rgba(255,255,255,0.82); line-height: 1.75; max-width: 640px; margin: 0;
     }
     .breadcrumb {
       position: relative; z-index: 2;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.5);
+      display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+      margin-top: 26px; font-size: 12px; color: rgba(255,255,255,0.6);
       letter-spacing: 0.04em;
     }
-    .breadcrumb a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .breadcrumb a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
     .breadcrumb a:hover { color: var(--gold); }
-    .breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.3); }
+    .breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.4); }
     .breadcrumb .current { color: var(--gold); }
 
     /* ════════════════════════════════════════════
@@ -366,47 +368,44 @@
        VISION / MISSION
     ════════════════════════════════════════════ */
     #vm { padding: 80px 60px; background: var(--light); }
-    .vm-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 24px; max-width: 1100px; margin: 0 auto; }
+    .vm-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; }
     .vm-card {
-      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      background: #fff; border: 1px solid var(--border); border-radius: 20px;
       padding: 0; overflow: hidden; position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
-    .vm-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(33,16,33,0.14); }
+    .vm-card:hover { transform: translateY(-8px); box-shadow: 0 24px 50px rgba(33,16,33,0.15); }
     .vm-card-head {
-      background: var(--brand); padding: 30px 32px 26px;
-      position: relative; overflow: hidden;
+      padding: 40px 40px 30px;
+      position: relative;
     }
-    .vm-card-head::before {
-      content: ''; position: absolute; inset: 0;
-      background-image: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px);
-    }
-    .vm-card.mission .vm-card-head { background: linear-gradient(135deg, var(--purple-d), var(--purple)); }
+    .vm-card.vision .vm-card-head { background: #1a101a; }
+    .vm-card.mission .vm-card-head { background: #8e24aa; }
     .vm-icon {
-      width: 58px; height: 58px; border-radius: 14px;
-      background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.35);
+      width: 52px; height: 52px; border-radius: 12px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
       display: flex; align-items: center; justify-content: center;
-      font-size: 24px; color: var(--gold); margin-bottom: 16px;
-      position: relative; z-index: 1;
+      font-size: 20px; color: #fff; margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .vm-card.mission .vm-icon { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); color: #fff; }
-    .vm-card-head h3 { font-size: 22px; font-weight: 800; color: #fff; position: relative; z-index: 1; letter-spacing: 0.01em; }
-    .vm-card-head .vm-tag { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; position: relative; z-index: 1; display: block; margin-top: 4px; }
-    .vm-card-body { padding: 28px 32px 32px; }
-    .vm-card-body > p { font-size: 15px; color: var(--muted); line-height: 1.85; }
-    .vm-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .vm-card.vision .vm-icon { color: #d4af37; background: rgba(212,175,55,0.1); border-color: rgba(212,175,55,0.2); }
+    .vm-card-head h3 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .vm-card-head .vm-tag { font-size: 10px; color: rgba(255,255,255,0.6); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; }
+    .vm-card-body { padding: 40px; }
+    .vm-card-body > p { font-size: 15.5px; color: var(--muted); line-height: 1.8; }
+    .vm-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
     .vm-list li {
-      display: flex; gap: 14px; align-items: flex-start; font-size: 14px; color: var(--text); line-height: 1.6;
-      padding-bottom: 14px; border-bottom: 1px solid var(--border);
+      display: flex; gap: 18px; align-items: center; font-size: 14.5px; color: var(--text); line-height: 1.6;
+      padding: 18px 0; border-bottom: 1px solid #f0f0f0;
     }
+    .vm-list li:first-child { padding-top: 0; }
     .vm-list li:last-child { padding-bottom: 0; border-bottom: none; }
     .vm-list .vm-num {
-      flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px;
-      background: #f3e8f5; color: var(--purple); font-size: 12px; font-weight: 800;
-      display: flex; align-items: center; justify-content: center; margin-top: 1px;
-      transition: background 0.28s, color 0.28s;
+      flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+      background: #f3e8f5; color: var(--purple); font-size: 11px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
     }
-    .vm-list li:hover .vm-num { background: var(--purple); color: #fff; }
 
     /* ════════════════════════════════════════════
        FACILITIES
@@ -580,7 +579,7 @@
   <span>
     <i class="fas fa-map-marker-alt"></i> College of Engineering Karunagappally, Kerala, India
     &nbsp;&nbsp;
-    <i class="fas fa-calendar-alt"></i> September 2027
+    <i class="fas fa-calendar-alt"></i> 15-17 October 2027
     &nbsp;&nbsp;
     <i class="fas fa-wifi"></i> Hybrid Conference
   </span>
@@ -598,7 +597,7 @@
          alt="IPRECON 2027"
          onerror="this.style.display='none'">
     <div class="header-brand-text">
-      <span class="conf-name">September 2027</span>
+      <span class="conf-name">15-17 October 2027</span>
       <span class="conf-full">College of Engineering Karunagappally, Kerala, INDIA</span>
       <div class="header-edition-badge"><i class="fas fa-star"></i> 5th Edition</div>
     </div>
@@ -752,15 +751,17 @@
      PAGE HERO
 ══════════════════════════════════════ -->
 <section class="page-hero">
+  <img class="hero-bg" src="assets/img/college-venue-wide.jpg" alt="College Campus" onerror="this.style.display='none'">
+  <div class="hero-overlay"></div>
   <div class="page-hero-inner">
-    <span class="eyebrow"><i class="fas fa-location-dot"></i> Karunagappally, Kollam · Kerala, India</span>
+    <span class="eyebrow"><i class="fas fa-calendar-alt"></i> 15-17 October 2027 · <i class="fas fa-location-dot"></i> Karunagappally, Kollam · Kerala, India</span>
     <h1>Conference <em>Venue</em></h1>
     <p>College of Engineering Karunagappally — a premier institution for technical excellence in Kerala, India, hosting IPRECON 2027.</p>
-  </div>
-  <div class="breadcrumb">
-    <a href="./index.html">Home</a>
-    <i class="fas fa-chevron-right"></i>
-    <span class="current">Venue</span>
+    <div class="breadcrumb">
+      <a href="./index.html">Home</a>
+      <i class="fas fa-chevron-right"></i>
+      <span class="current">Venue</span>
+    </div>
   </div>
 </section>
 
@@ -805,7 +806,7 @@
         <div class="vm-card-head">
           <div class="vm-icon"><i class="fas fa-eye"></i></div>
           <h3>Vision</h3>
-          <span class="vm-tag">Where we aim to be</span>
+          <span class="vm-tag">WHERE WE AIM TO BE</span>
         </div>
         <div class="vm-card-body">
           <p>Strive for excellence in professional education and research to address the evolving technological demands of society.</p>
@@ -815,7 +816,7 @@
         <div class="vm-card-head">
           <div class="vm-icon"><i class="fas fa-bullseye"></i></div>
           <h3>Mission</h3>
-          <span class="vm-tag">How we get there</span>
+          <span class="vm-tag">HOW WE GET THERE</span>
         </div>
         <div class="vm-card-body">
           <ul class="vm-list">

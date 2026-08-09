@@ -233,7 +233,7 @@
     ════════════════════════════════════════════ */
     .kerala-hero {
       position: relative; min-height: 460px;
-      display: flex; align-items: center; justify-content: center; text-align: center;
+      display: flex; align-items: center; justify-content: flex-start; text-align: left;
       background: linear-gradient(135deg, #0d3b2e, #14634a, var(--brand));
       overflow: hidden;
     }
@@ -245,7 +245,7 @@
       position: absolute; inset: 0;
       background: linear-gradient(180deg, rgba(20,14,26,0.55), rgba(20,14,26,0.8));
     }
-    .kerala-hero-inner { position: relative; z-index: 2; max-width: 780px; padding: 70px 40px; }
+    .kerala-hero-inner { position: relative; z-index: 2; max-width: 780px; padding: 70px 60px; margin: 0; }
     .kerala-hero .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(212,175,55,0.18); border: 1px solid rgba(212,175,55,0.5);
@@ -258,10 +258,10 @@
       line-height: 1.05; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.01em;
     }
     .kerala-hero .tagline { font-size: 17px; color: var(--gold); font-style: italic; margin-bottom: 20px; font-weight: 500; }
-    .kerala-hero p { font-size: 15px; color: rgba(255,255,255,0.82); line-height: 1.75; max-width: 640px; margin: 0 auto; }
+    .kerala-hero p { font-size: 15px; color: rgba(255,255,255,0.82); line-height: 1.75; max-width: 640px; margin: 0; }
     .breadcrumb {
       position: relative; z-index: 2;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
+      display: flex; align-items: center; justify-content: flex-start; gap: 8px;
       margin-top: 26px; font-size: 12px; color: rgba(255,255,255,0.6);
       letter-spacing: 0.04em;
     }
@@ -305,21 +305,82 @@
     #welcome { padding: 76px 60px 40px; background: #fff; }
     .welcome-text { max-width: 900px; margin: 0 auto 44px; text-align: center; }
     .welcome-text p { font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 16px; }
-    .highlights { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+    .highlights { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+      gap: 24px; 
+      max-width: 1200px; 
+      margin: 0 auto; 
+    }
     .highlight-card {
-      background: var(--off); border: 1px solid var(--border); border-radius: 14px;
-      padding: 30px 22px; text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      height: 320px;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      background-size: cover;
+      background-position: center;
     }
-    .highlight-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(33,16,33,0.11); border-color: rgba(142,36,170,0.3); }
-    .highlight-icon {
-      width: 56px; height: 56px; border-radius: 14px; margin: 0 auto 16px;
-      background: #f3e8f5; display: flex; align-items: center; justify-content: center;
-      font-size: 24px; color: var(--purple); transition: background 0.28s, color 0.28s;
+    .highlight-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(33,16,33,0.9) 0%, rgba(33,16,33,0.2) 60%, transparent 100%);
+      z-index: 1;
+      transition: opacity 0.3s;
     }
-    .highlight-card:hover .highlight-icon { background: var(--purple); color: #fff; }
-    .highlight-card h3 { font-size: 16px; font-weight: 700; color: var(--brand); margin-bottom: 8px; }
-    .highlight-card p { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+    .highlight-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(33,16,33,0.3);
+    }
+    .highlight-card:hover::before {
+      opacity: 0.95;
+    }
+    .highlight-content {
+      position: relative;
+      z-index: 2;
+      transition: transform 0.3s;
+    }
+    .highlight-card:hover .highlight-content {
+      transform: translateY(-5px);
+    }
+    .highlight-card .highlight-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--gold);
+      color: var(--brand);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 12px;
+      transition: all 0.3s;
+    }
+    .highlight-card:hover .highlight-icon {
+      background: #fff;
+      transform: scale(1.1);
+    }
+    .highlight-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+    .highlight-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+      margin: 0;
+    }
 
     /* ════════════════════════════════════════════
        TOURISM FEATURE BLOCKS
@@ -469,7 +530,7 @@
   <span>
     <i class="fas fa-map-marker-alt"></i> College of Engineering Karunagappally, Kerala, India
     &nbsp;&nbsp;
-    <i class="fas fa-calendar-alt"></i> September 2027
+    <i class="fas fa-calendar-alt"></i> 15-17 October 2027
     &nbsp;&nbsp;
     <i class="fas fa-wifi"></i> Hybrid Conference
   </span>
@@ -483,11 +544,11 @@
 <header class="site-header">
   <div class="header-brand">
     <img class="header-conf-logo"
-         src="assets/img/iprecon26 black.png"
+         src="assets/img/iprecon27 black.png"
          alt="IPRECON 2027"
          onerror="this.style.display='none'">
     <div class="header-brand-text">
-      <span class="conf-name">September 2027</span>
+      <span class="conf-name">15-17 October 2027</span>
       <span class="conf-full">College of Engineering Karunagappally, Kerala, INDIA</span>
       <div class="header-edition-badge"><i class="fas fa-star"></i> 5th Edition</div>
     </div>
@@ -522,7 +583,7 @@
   <div class="nav-container">
     <a href="./index.html" class="brand-logo-wrap">
       <img class="brand-logo"
-           src="assets/img/iprecon26 white.png"
+           src="assets/img/iprecon27 white.png"
            alt="IPRECON 2027"
            onerror="this.style.display='none'">
     </a>
@@ -644,7 +705,7 @@
   <img class="hero-bg" src="assets/img/kerala1.jpg" alt="Kerala Landscape" onerror="this.style.display='none'">
   <div class="hero-overlay"></div>
   <div class="kerala-hero-inner">
-    <span class="eyebrow"><i class="fas fa-leaf"></i> God's Own Country</span>
+    <span class="eyebrow"><i class="fas fa-calendar-alt"></i> 15-17 October 2027 · <i class="fas fa-leaf"></i> God's Own Country</span>
     <h1>Kerala</h1>
     <div class="tagline">Where nature paints its finest canvas</div>
     <p>Discover the enchanting beauty of Kerala, where pristine backwaters meet lush hill stations, ancient temples coexist with modern cities, and every corner tells a story of rich cultural heritage and natural splendor.</p>
@@ -670,25 +731,33 @@
       <p class="reveal">Traveling across Kerala offers a glimpse into a way of life deeply influenced by its natural beauty, fostering a culture that is both serene and unhurried. Often referred to as "God's Own Country," Kerala captivates visitors with its breathtaking scenery, tranquil backwaters, and rich cultural heritage.</p>
     </div>
     <div class="highlights">
-      <div class="highlight-card">
-        <div class="highlight-icon"><i class="fas fa-mountain-sun"></i></div>
-        <h3>Hill Stations</h3>
-        <p>Scenic retreats in the Western Ghats</p>
+      <div class="highlight-card" style="background-image: url('assets/img/hill-stations.jpg');">
+        <div class="highlight-content">
+          <div class="highlight-icon"><i class="fas fa-mountain-sun"></i></div>
+          <h3>Hill Stations</h3>
+          <p>Scenic retreats in the Western Ghats</p>
+        </div>
       </div>
-      <div class="highlight-card">
-        <div class="highlight-icon"><i class="fas fa-water"></i></div>
-        <h3>Backwaters</h3>
-        <p>900km of interconnected waterways</p>
+      <div class="highlight-card" style="background-image: url('assets/img/backwaters.jpg');">
+        <div class="highlight-content">
+          <div class="highlight-icon"><i class="fas fa-water"></i></div>
+          <h3>Backwaters</h3>
+          <p>900km of interconnected waterways</p>
+        </div>
       </div>
-      <div class="highlight-card">
-        <div class="highlight-icon"><i class="fas fa-paw"></i></div>
-        <h3>Wildlife</h3>
-        <p>Rich biodiversity &amp; nature reserves</p>
+      <div class="highlight-card" style="background-image: url('assets/img/wildlife.jpg');">
+        <div class="highlight-content">
+          <div class="highlight-icon"><i class="fas fa-paw"></i></div>
+          <h3>Wildlife</h3>
+          <p>Rich biodiversity &amp; nature reserves</p>
+        </div>
       </div>
-      <div class="highlight-card">
-        <div class="highlight-icon"><i class="fas fa-masks-theater"></i></div>
-        <h3>Art Forms</h3>
-        <p>Kathakali, Theyyam &amp; traditional arts</p>
+      <div class="highlight-card" style="background-image: url('assets/img/art-forms.jpg');">
+        <div class="highlight-content">
+          <div class="highlight-icon"><i class="fas fa-masks-theater"></i></div>
+          <h3>Art Forms</h3>
+          <p>Kathakali, Theyyam &amp; traditional arts</p>
+        </div>
       </div>
     </div>
   </div>
@@ -795,7 +864,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <img src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+      <img src="assets/img/iprecon27 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
       <p>2027 IEEE International Power and Renewable Energy Conference — 5th edition. Organized by IEEE Student Branch, College of Engineering Karunagappally, Kerala, India.</p>
       <div class="footer-socials">
         <a href="https://www.facebook.com/ieeeceksb/"       class="soc-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>

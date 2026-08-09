@@ -57,7 +57,7 @@
       border-bottom: 3px solid var(--brand);
     }
     .header-brand { display: flex; align-items: center; gap: 18px; }
-    .header-conf-logo { height: 72px; width: auto; }
+    .header-conf-logo { height: 100px; width: auto; align-self: center; }
     .header-brand-text {
       display: flex; flex-direction: column; justify-content: center; gap: 2px;
       border-left: 1px solid var(--border);
@@ -182,7 +182,7 @@
       background: var(--brand);
       padding: 66px 60px 60px;
       position: relative; overflow: hidden;
-      text-align: center;
+      text-align: left;
     }
     .page-hero::before {
       content: ''; position: absolute; inset: 0;
@@ -190,7 +190,7 @@
         -45deg, transparent, transparent 60px,
         rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
     }
-    .page-hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0; }
     .page-hero .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4);
@@ -204,11 +204,11 @@
     }
     .page-hero h1 em { font-style: normal; color: var(--gold); }
     .page-hero p {
-      font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 640px; margin: 0 auto;
+      font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 640px; margin: 0;
     }
     .breadcrumb {
       position: relative; z-index: 2;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
+      display: flex; align-items: center; justify-content: flex-start; gap: 8px;
       margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.5);
       letter-spacing: 0.04em;
     }
@@ -491,9 +491,9 @@
 
 <header class="site-header">
   <div class="header-brand">
-    <img class="header-conf-logo" src="assets/img/iprecon26 black.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+    <img class="header-conf-logo" src="assets/img/iprecon27 black.png" alt="IPRECON 2027" onerror="this.style.display='none'">
     <div class="header-brand-text">
-      <span class="conf-name">September 2027</span>
+      <span class="conf-name">15-17 October 2027</span>
       <span class="conf-full">College of Engineering Karunagappally, Kerala, INDIA</span>
       <div class="header-edition-badge"><i class="fas fa-star"></i> 5th Edition</div>
     </div>
@@ -518,7 +518,7 @@
 <nav class="navbar" id="mainNav">
   <div class="nav-container">
     <a href="./index.html" class="brand-logo-wrap">
-      <img class="brand-logo" src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+      <img class="brand-logo" src="assets/img/iprecon27 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
     </a>
     <ul class="nav-items">
       <li class="nav-item"><a href="./index.html">HOME</a></li>
@@ -684,7 +684,7 @@
     <!-- 2027 -->
     <div class="edition-card">
       <div class="edition-logo">
-        <img src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'edition-num',textContent:'IPRECON 2027'}))">
+        <img src="assets/img/iprecon27 white.png" alt="IPRECON 2027" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'edition-num',textContent:'IPRECON 2027'}))">
       </div>
       <div class="edition-body">
         <span class="edition-tag">5th Edition · Current</span>
@@ -880,7 +880,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <img src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+      <img src="assets/img/iprecon27 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
       <p>2027 IEEE International Power and Renewable Energy Conference — 5th edition. Organized by IEEE Student Branch, College of Engineering Karunagappally, Kerala, India.</p>
       <div class="footer-socials">
         <a href="https://www.facebook.com/ieeeceksb/"       class="soc-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>

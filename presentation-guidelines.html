@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon.png" />
+  <title>Presentation Guidelines | IPRECON 2027 — IEEE International Power and Renewable Energy Conference</title>
+  <meta name="description" content="Presentation guidelines for IPRECON 2027 — in-person and virtual presentation rules, timing, template and video format requirements." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <style>
+/* ── Reset & Variables ──────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --brand:    #211021;
+  --purple:   #8e24aa;
+  --purple-d: #6a1b9a;
+  --gold:     #d4af37;
+  --gold-d:   #c9a227;
+  --white:    #ffffff;
+  --off:      #fdf5fd;
+  --text:     #2d1f2d;
+  --muted:    #5a4a5a;
+  --light:    #f8f4f8;
+  --border:   #e0cce0;
+  --nav-h:    58px;
+}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: 'Poppins', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
+img  { max-width: 100%; display: block; }
+a    { text-decoration: none; color: inherit; }
+
+#scroll-bar {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--purple), var(--gold));
+  z-index: 9999; transition: width 0.08s linear;
+}
+
+/* HEADER */
+.header-top-bar {
+  background: var(--brand); padding: 7px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; color: rgba(255,255,255,0.65); letter-spacing: 0.04em;
+}
+.header-top-bar span { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.header-top-bar i    { color: var(--gold); font-size: 11px; }
+.header-top-bar a    { color: rgba(255,255,255,0.65); transition: color 0.2s; }
+.header-top-bar a:hover { color: var(--gold); }
+.site-header {
+  background: #fff; padding: 18px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 3px solid var(--brand);
+}
+.header-brand { display: flex; align-items: center; gap: 18px; }
+.header-conf-logo { height: 100px; width: auto; }
+.header-brand-text {
+  display: flex; flex-direction: column; gap: 2px;
+  border-left: 1px solid var(--border); padding-left: 18px;
+}
+.header-brand-text .conf-name { font-size: 20px; font-weight: 800; color: var(--brand); letter-spacing: 0.02em; line-height: 1; }
+.header-brand-text .conf-full { font-size: 12px; color: var(--muted); font-weight: 400; letter-spacing: 0.02em; line-height: 1.4; }
+.header-edition-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, var(--purple), var(--purple-d));
+  color: white; font-size: 10.5px; font-weight: 700;
+  padding: 4px 12px; border-radius: 20px;
+  letter-spacing: 0.08em; text-transform: uppercase; margin-top: 6px; width: fit-content;
+}
+.header-sponsors { display: flex; align-items: center; gap: 0; }
+.header-sp-group { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 0 24px; border-right: 1px solid var(--border); }
+.header-sp-group:last-child { border-right: none; padding-right: 0; }
+.header-sp-group .sp-label { font-size: 9.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+.header-sp-group img { height: 36px; width: auto; opacity: 0.8; transition: opacity 0.2s; }
+.header-sp-group img:hover { opacity: 1; }
+
+/* NAVBAR */
+.navbar { background: var(--brand); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid rgba(142,36,170,0.5); transition: box-shadow 0.3s; }
+.navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.45); }
+.nav-container { max-width: 1300px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: var(--nav-h); }
+.brand-logo-wrap { display: flex; align-items: center; gap: 12px; height: var(--nav-h); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
+.navbar.scrolled .brand-logo-wrap { opacity: 1; visibility: visible; }
+.brand-logo { height: 46px; width: auto; display: block; }
+.nav-items { display: flex; list-style: none; margin-left: auto; }
+.nav-item { position: relative; }
+.nav-item > a, .nav-item > span.nav-link {
+  display: flex; align-items: center; gap: 5px; padding: 0 16px; height: var(--nav-h);
+  color: rgba(255,255,255,0.78); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.07em; text-transform: uppercase; cursor: pointer; white-space: nowrap;
+  border-bottom: 3px solid transparent; margin-bottom: -2px; transition: color 0.22s, border-color 0.22s;
+}
+.nav-item > a:hover, .nav-item > span.nav-link:hover, .nav-item:hover > span.nav-link { color: #fff; border-bottom-color: var(--gold); }
+.nav-item > a.active { color: #fff; border-bottom-color: var(--gold); }
+.nav-item > span.nav-link::after { content: '\f107'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 10px; margin-left: 3px; }
+.dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: var(--brand); min-width: 300px; border-top: 2px solid var(--purple); box-shadow: 0 10px 32px rgba(0,0,0,0.45); z-index: 200; }
+.nav-item:hover .dropdown-content { display: block; }
+.dropdown-item { display: block; padding: 11px 20px; color: rgba(255,255,255,0.7); font-size: 11.5px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; border-left: 3px solid transparent; transition: all 0.18s; }
+.dropdown-item:hover { background: rgba(142,36,170,0.18); color: #fff; border-left-color: var(--gold); padding-left: 26px; }
+.dropdown-item.active { color: var(--gold); border-left-color: var(--gold); }
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 10px; margin-right: -10px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: rgba(255,255,255,0.85); border-radius: 2px; transition: all 0.3s; }
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-nav { position: fixed; top: var(--nav-h); right: 0; bottom: 0; width: min(82%, 340px); background: var(--brand); z-index: 1001; overflow-y: auto; padding: 16px 16px 40px; -webkit-overflow-scrolling: touch; transform: translateX(100%); transition: transform 0.32s cubic-bezier(0.22,0.61,0.36,1); box-shadow: -12px 0 32px rgba(0,0,0,0.45); visibility: hidden; }
+.mobile-nav.open { transform: translateX(0); visibility: visible; }
+.mobile-nav-overlay { position: fixed; inset: 0; top: var(--nav-h); background: rgba(0,0,0,0.5); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s; }
+.mobile-nav-overlay.open { opacity: 1; visibility: visible; }
+.mobile-nav a { display: block; padding: 14px 14px; color: rgba(255,255,255,0.78); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s; }
+.mobile-nav a:hover, .mobile-nav a:active { color: var(--gold); }
+  .mob-close {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    width: 100%; padding: 14px 22px; margin-bottom: 4px;
+    background: rgba(255,255,255,0.06); border: none; border-bottom: 1px solid rgba(255,255,255,0.12);
+    color: var(--gold); font: inherit; font-size: 11px; font-weight: 800;
+    letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .mob-close:hover { background: rgba(212,175,55,0.16); color: #fff; }
+  .mob-close i { font-size: 15px; }
+.mob-section { font-size: 10px; color: var(--gold); padding: 16px 14px 4px; letter-spacing: 0.14em; font-weight: 700; text-transform: uppercase; }
+.mob-sub { padding-left: 28px !important; font-size: 12.5px !important; }
+body.nav-open { overflow: hidden; }
+
+/* SECTION COMMONS */
+.section-wrap { max-width: 1200px; margin: 0 auto; }
+.sec-head { text-align: center; margin-bottom: 48px; }
+.sec-label-tag { display: block; font-size: 11px; color: var(--purple); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
+.sec-title { font-size: clamp(24px, 3.5vw, 34px); font-weight: 800; color: var(--brand); line-height: 1.2; display: inline-block; padding-bottom: 14px; position: relative; }
+.sec-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, var(--purple), var(--gold)); }
+.sec-title.left { display: block; text-align: left; }
+.sec-title.left::after { left: 0; transform: none; }
+.sec-sub { font-size: 14.5px; color: var(--muted); line-height: 1.7; max-width: 600px; margin: 16px auto 0; }
+
+.content-section { padding: 76px 60px; }
+.content-section.alt { background: var(--light); }
+.content-section.dark { background: var(--brand); }
+
+/* generic prose card */
+.prose-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 34px 36px; box-shadow: 0 4px 20px rgba(33,16,33,0.06); }
+.prose-card p { font-size: 14.5px; color: var(--muted); line-height: 1.85; margin-bottom: 16px; }
+.prose-card p:last-child { margin-bottom: 0; }
+.prose-card p strong { color: var(--text); font-weight: 600; }
+.prose-card h3 { font-size: 17px; color: var(--brand); font-weight: 700; margin: 24px 0 12px; }
+.prose-card ul { list-style: none; margin: 6px 0 16px; }
+.prose-card ul li { position: relative; padding-left: 26px; font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 10px; }
+.prose-card ul li::before { content: '\f105'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 6px; color: var(--purple); }
+
+/* buttons */
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--purple); color: #fff; padding: 12px 28px; border-radius: 4px; font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; border: 2px solid var(--purple); transition: all 0.28s ease; }
+.btn-primary:hover { background: transparent; color: var(--purple); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(142,36,170,0.2); }
+.btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--brand); padding: 12px 28px; border-radius: 4px; font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; border: 2px solid var(--border); transition: all 0.28s ease; }
+.btn-outline:hover { border-color: var(--purple); color: var(--purple); transform: translateY(-2px); }
+.btn-gold { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand); padding: 12px 30px; border-radius: 40px; font-size: 13.5px; font-weight: 700; box-shadow: 0 4px 20px rgba(212,175,55,0.3); transition: all 0.3s; }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(212,175,55,0.5); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* info band */
+.info-band { background: var(--brand); padding: 40px 44px; border-radius: 12px; }
+.info-band h2 { color: #fff; font-size: 20px; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.info-band h2 i { color: var(--gold); }
+.info-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; font-size: 14px; color: rgba(255,255,255,0.82); line-height: 1.7; }
+.info-item:last-child { margin-bottom: 0; }
+.info-item i { color: var(--gold); font-size: 13px; margin-top: 4px; flex-shrink: 0; }
+.info-link { color: var(--gold); font-weight: 500; border-bottom: 1px solid rgba(212,175,55,0.4); }
+
+/* FOOTER */
+footer { background: #1a0e1a; padding: 68px 60px 36px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; max-width: 1200px; margin: 0 auto 48px; }
+.footer-brand img { height: 44px; filter: brightness(0) invert(1); opacity: 0.78; margin-bottom: 16px; }
+.footer-brand p { font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.8; margin-bottom: 24px; }
+.footer-socials { display: flex; gap: 10px; }
+.soc-link { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-size: 14px; transition: all 0.25s; }
+.soc-link:hover { background: var(--purple); border-color: var(--purple); color: white; transform: translateY(-2px); }
+.footer-col h4 { font-size: 12px; font-weight: 700; color: white; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { color: rgba(255,255,255,0.42); font-size: 13px; transition: color 0.22s; }
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.28); }
+
+/* reveal */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+
+/* ════════════════════════════════════════════
+       MARQUEE (index2 system)
+    ════════════════════════════════════════════ */
+body.nav-open .nav-marquee { visibility: hidden; }
+body.nav-open .marquee-strip-mobile { display: none !important; }
+.nav-marquee { display: none; flex: 1; overflow: hidden; height: 58px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.nav-marquee-track { display: flex; align-items: center; gap: 30px; height: 100%; width: max-content; animation: mLeft 22s linear infinite; }
+.nav-marquee-item { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.82); white-space: nowrap; }
+.nav-marquee-item i { color: var(--gold); font-size: 11px; }
+.nav-marquee-item strong { color: #fff; font-weight: 600; }
+.nav-marquee-sep { color: rgba(212,175,55,0.7); font-size: 10px; }
+.marquee-strip { background: var(--off); border-bottom: 1px solid var(--border); padding: 10px 0; overflow: hidden; position: sticky; top: 58px; z-index: 999; }
+.marquee-strip-mobile { display: none; background: var(--off); border-bottom: 1px solid var(--border); overflow: hidden; }
+.marquee-track { display: flex; gap: 52px; animation: mLeft 32s linear infinite; width: max-content; }
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes mLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-item { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.marquee-item i { color: var(--purple); font-size: 11px; }
+.marquee-item strong { color: var(--brand); font-weight: 600; }
+.marquee-sep { color: #d0b0d0; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .site-header, .header-top-bar { padding-left: 28px; padding-right: 28px; }
+  .nav-container { padding: 0 20px; }
+  .content-section { padding-left: 32px; padding-right: 32px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+@media (max-width: 900px) {
+  .header-sp-group { padding: 0 14px; }
+  .header-sp-group .sp-label { display: none; }
+  .header-sp-group img { height: 30px; }
+}
+@media (max-width: 768px) {
+  .header-top-bar { padding: 6px 16px; font-size: 11px; }
+  .header-top-bar .htb-right { display: none; }
+  .site-header { padding: 10px 12px; }
+  .header-conf-logo { height: 46px; }
+  .header-brand { gap: 8px; flex: 1; min-width: 0; }
+  .header-brand-text { padding-left: 8px; }
+  .header-brand-text .conf-name { font-size: 11px; }
+  .header-brand-text .conf-full { font-size: 9px; line-height: 1.3; }
+  .header-edition-badge { display: none; }
+  .header-sponsors { display: flex; flex-shrink: 0; }
+  .header-sp-group { padding: 0 6px; }
+  .header-sp-group img { height: 22px; }
+  .brand-logo-wrap { gap: 8px; width: 0; overflow: hidden; }
+  .navbar.scrolled .brand-logo-wrap { width: auto; margin-right: 8px; }
+  .brand-logo { height: 34px; }
+  .nav-items { display: none; }
+  .hamburger { display: flex; margin-left: auto; }
+  .nav-container { padding: 0 14px; justify-content: flex-start; gap: 8px; height: 58px; }
+  .navbar { height: 58px; }
+  .hamburger { order: 3; flex-shrink: 0; }
+  .nav-marquee { display: block; order: 2; }
+  .marquee-strip { display: none; }
+  .marquee-strip-mobile { display: none; position: fixed; top: 58px; left: 0; right: 0; padding: 9px 0; z-index: 997; }
+  .navbar.scrolled ~ .marquee-strip-mobile { display: block; }
+  .navbar.scrolled .nav-marquee { display: none; }
+  .content-section { padding: 52px 20px; }
+  .sec-head { margin-bottom: 34px; }
+  .prose-card { padding: 26px 22px; }
+  .info-band { padding: 28px 22px; }
+  footer { padding: 48px 20px 30px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+}
+@media (max-width: 480px) {
+  .header-conf-logo { height: 46px; }
+  .header-sp-group img { height: 19px; }
+  .btn-row { flex-direction: column; }
+  .btn-primary, .btn-outline, .btn-gold { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+  </style>
+</head>
+<body>
+<div id="scroll-bar"></div>
+
+<div class="header-top-bar">
+  <span>
+    <i class="fas fa-map-marker-alt"></i> College of Engineering Karunagappally, Kerala, India
+    &nbsp;&nbsp;
+    <i class="fas fa-calendar-alt"></i> 15–17 October 2027
+    &nbsp;&nbsp;
+    <i class="fas fa-wifi"></i> Hybrid Conference
+  </span>
+  <span class="htb-right">
+    <a href="./contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+    &nbsp;&nbsp;
+    <a href="./registration.html"><i class="fas fa-user-plus"></i> Register</a>
+  </span>
+</div>
+
+<header class="site-header">
+  <div class="header-brand">
+    <img class="header-conf-logo" src="assets/img/iprecon27 black.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+    <div class="header-brand-text">
+      <span class="conf-name">15–17 October 2027</span>
+      <span class="conf-full">College of Engineering Karunagappally, Kerala, INDIA</span>
+      <div class="header-edition-badge"><i class="fas fa-star"></i> 5th Edition</div>
+    </div>
+  </div>
+  <div class="header-sponsors">
+    <div class="header-sp-group">
+      <span class="sp-label">Technical Co-Sponsor</span>
+      <img src="assets/img/ias_bw.png" alt="IEEE IAS" onerror="this.style.display='none'">
+    </div>
+    <div class="header-sp-group">
+      <span class="sp-label">Technical Co-Sponsor</span>
+      <img src="assets/img/pes BLACK.png" alt="IEEE PES" onerror="this.style.display='none'">
+    </div>
+    <div class="header-sp-group">
+      <span class="sp-label">Organized under</span>
+      <img src="assets/img/ieee blk.png" alt="IEEE" onerror="this.style.display='none'">
+    </div>
+  </div>
+</header>
+
+<nav class="navbar" id="mainNav">
+  <div class="nav-container">
+    <a href="./index.html" class="brand-logo-wrap">
+      <img class="brand-logo" src="assets/img/iprecon27 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
+    </a>
+    <ul class="nav-items">
+      <li class="nav-item"><a href="./index.html" data-nav="home">HOME</a></li>
+      <li class="nav-item">
+        <span class="nav-link">ABOUT</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./about-iprecon.html">IPRECON</a>
+          <a class="dropdown-item" href="./organizers.html">ORGANIZERS</a>
+          <a class="dropdown-item" href="./venue.html">VENUE</a>
+          <a class="dropdown-item" href="./kerala.html">KERALA</a>
+          <a class="dropdown-item" href="./accommodation.html">ACCOMMODATION</a>
+          <a class="dropdown-item" href="./visa.html">VISA</a>
+          <a class="dropdown-item" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+          <a class="dropdown-item" href="./dei.html">DEI STATEMENT</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./committee.html" data-nav="committee">COMMITTEE</a></li>
+      <li class="nav-item">
+        <span class="nav-link active" data-navgroup="authors">FOR AUTHORS</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./cfp.html" data-nav="cfp">CALL FOR PAPERS</a>
+          <a class="dropdown-item" href="./submissions.html" data-nav="submissions">SUBMISSIONS</a>
+          <a class="dropdown-item" href="./important-dates.html" data-nav="important-dates">IMPORTANT DATES</a>
+          <a class="dropdown-item" href="./camera-ready.html" data-nav="camera-ready">CAMERA READY INSTRUCTIONS</a>
+          <a class="dropdown-item active" href="./presentation-guidelines.html" data-nav="presentation-guidelines">PRESENTATION GUIDELINES</a>
+          <a class="dropdown-item" href="./housing-support.html" data-nav="housing-support">STUDENT HOUSING SUPPORT</a>
+          <a class="dropdown-item" href="./travel-support.html" data-nav="travel-support">STUDENT TRAVEL SUPPORT</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./speakers.html" data-nav="speakers">SPEAKERS</a></li>
+      <li class="nav-item">
+        <span class="nav-link">PROGRAM</span>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="./inaugural.html">INAUGURAL PROGRAM</a>
+          <a class="dropdown-item" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+          <a class="dropdown-item" href="./tutorials.html">TUTORIALS</a>
+          <a class="dropdown-item" href="./tracks.html">TRACKS</a>
+          <a class="dropdown-item" href="./special-sessions.html">SPECIAL SESSIONS</a>
+          <a class="dropdown-item" href="./keynote.html">KEYNOTE</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="./registration.html" data-nav="registration">REGISTRATION</a></li>
+      <li class="nav-item"><a href="./contact.html" data-nav="contact">CONTACT</a></li>
+    </ul>
+    <esi:include src="/includes/nav-marquee.html" />
+    <button class="hamburger" id="menuBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<esi:include src="/includes/marquee-mobile.html" />
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <button type="button" class="mob-close" id="mobClose" aria-label="Close menu">
+    <span>Close menu</span><i class="fas fa-xmark"></i>
+  </button>
+  <a href="./index.html">HOME</a>
+  <div class="mob-section">ABOUT</div>
+  <a class="mob-sub" href="./about-iprecon.html">IPRECON</a>
+  <a class="mob-sub" href="./organizers.html">ORGANIZERS</a>
+  <a class="mob-sub" href="./venue.html">VENUE</a>
+  <a class="mob-sub" href="./kerala.html">KERALA</a>
+  <a class="mob-sub" href="./accommodation.html">ACCOMMODATION</a>
+  <a class="mob-sub" href="./visa.html">VISA</a>
+  <a class="mob-sub" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+  <a class="mob-sub" href="./dei.html">DEI STATEMENT</a>
+  <a href="./committee.html">COMMITTEE</a>
+  <div class="mob-section">FOR AUTHORS</div>
+  <a class="mob-sub" href="./cfp.html">CALL FOR PAPERS</a>
+  <a class="mob-sub" href="./submissions.html">SUBMISSIONS</a>
+  <a class="mob-sub" href="./important-dates.html">IMPORTANT DATES</a>
+  <a class="mob-sub" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+  <a class="mob-sub" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+  <a class="mob-sub" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
+  <a class="mob-sub" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
+  <a href="./speakers.html">SPEAKERS</a>
+  <div class="mob-section">PROGRAM</div>
+  <a class="mob-sub" href="./inaugural.html">INAUGURAL PROGRAM</a>
+  <a class="mob-sub" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+  <a class="mob-sub" href="./tutorials.html">TUTORIALS</a>
+  <a class="mob-sub" href="./tracks.html">TRACKS</a>
+  <a class="mob-sub" href="./special-sessions.html">SPECIAL SESSIONS</a>
+  <a class="mob-sub" href="./keynote.html">KEYNOTE</a>
+  <a href="./registration.html">REGISTRATION</a>
+  <a href="./contact.html">CONTACT</a>
+</div>
+
+<esi:include src="/includes/marquee.html" />
+
+<main>
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow"><i class="fas fa-display"></i> For Authors &middot; 5th Edition</span>
+    <h1>Presentation <em>Guidelines</em></h1>
+    <p>Essential guidelines for preparing and submitting your conference presentation — in person or pre-recorded. Please review them carefully before submission.</p>
+  </div>
+  <div class="breadcrumb">
+    <a href="./index.html">Home</a>
+    <i class="fas fa-chevron-right"></i>
+    <span>For Authors</span>
+    <i class="fas fa-chevron-right"></i>
+    <span class="current">Presentation Guidelines</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     01 · GENERAL
+══════════════════════════════════════ -->
+<section class="pg-band light">
+  <div class="pg-wrap">
+    <div class="pg-head">
+      <span class="pg-eyebrow">Before You Prepare</span>
+      <h2>General Guidelines</h2>
+    </div>
+
+    <div class="deadline-line reveal">
+      <i class="fas fa-clock"></i>
+      <span>Presentation submission deadline: <b>15 September 2027</b> &mdash; no extensions will be granted.</span>
+    </div>
+
+    <div class="rule-cards">
+      <article class="rcard reveal">
+        <span class="rc-i"><i class="fas fa-file-powerpoint"></i></span>
+        <h3>Template Required</h3>
+        <p>Authors must use the provided presentation template so every session looks consistent.</p>
+      </article>
+      <article class="rcard reveal">
+        <span class="rc-i"><i class="fas fa-ban"></i></span>
+        <h3>Logo Restrictions</h3>
+        <p>Logos from other organizations or institutions are strictly prohibited on the slides.</p>
+      </article>
+      <article class="rcard reveal">
+        <span class="rc-i"><i class="fas fa-layer-group"></i></span>
+        <h3>No Overlapping</h3>
+        <p>Content must not overlap the conference title or the logos placed in the template.</p>
+      </article>
+      <article class="rcard reveal">
+        <span class="rc-i"><i class="fas fa-calendar-xmark"></i></span>
+        <h3>Hard Deadline</h3>
+        <p><b>15 September 2027.</b> Late presentation files cannot be accommodated in the program.</p>
+      </article>
+    </div>
+
+    <div class="flex-note reveal">
+      <span class="fn-tag">Template flexibility</span>
+      <p>The provided file is a flexible starting template. Authors may freely add, remove, reorder or redesign the content slides. However, the <b>title slide structure</b> and the <b>header and footer on every slide</b> must remain unchanged, and no content, images, shapes or videos may overlap these areas.</p>
+      <a href="assets/documents/IPRECON_2026_Conference_Template.pptx" class="pgbtn pgbtn-dark" download><i class="fas fa-download"></i> Download Presentation Template</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     02 · IN-PERSON
+══════════════════════════════════════ -->
+<section class="pg-band dark">
+  <div class="pg-wrap">
+    <div class="pg-head">
+      <span class="pg-eyebrow">On Site</span>
+      <h2>In-Person Presentations</h2>
+    </div>
+
+    <div class="timing reveal">
+      <div class="tm-seg talk"><span class="tm-n">12</span><span class="tm-u">min talk</span></div>
+      <div class="tm-seg qa"><span class="tm-n">3</span><span class="tm-u">min discussion</span></div>
+      <div class="tm-total"><span class="tm-n">15</span><span class="tm-u">min total slot</span></div>
+    </div>
+
+    <ul class="spec-lines reveal">
+      <li>To avoid laptop and projector compatibility problems, authors must <b>prepare and submit presentation files in advance</b>.</li>
+      <li>Only the provided template may be used to prepare the presentation.</li>
+      <li>Presentations must be submitted in <b>.pptx format</b> only.</li>
+      <li>A presentation is accepted only if it follows every guideline and the listed authors have <b>completed registration</b> in advance.</li>
+      <li><b>Cancellation of tickets is not permitted</b> once presenter details and presentation files are outstanding.</li>
+      <li>Upload the file to a cloud drive and submit an <b>editable</b> link so the committee can download it.</li>
+    </ul>
+
+    <div class="pg-btn-row">
+      <a href="./contact.html" class="pgbtn pgbtn-gold"><i class="fas fa-paper-plane"></i> Submit Presentation &amp; Details</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     03 · VIRTUAL
+══════════════════════════════════════ -->
+<section class="pg-band light alt">
+  <div class="pg-wrap">
+    <div class="pg-head">
+      <span class="pg-eyebrow">Online</span>
+      <h2>Virtual Presentations</h2>
+    </div>
+
+    <div class="vspec-strip reveal">
+      <div class="vs-chip"><span class="vc-k">Duration</span><span class="vc-v">12 min max</span></div>
+      <div class="vs-chip"><span class="vc-k">Resolution</span><span class="vc-v">1920&times;1080 / 1280&times;720</span></div>
+      <div class="vs-chip"><span class="vc-k">Format</span><span class="vc-v">MP4 &middot; H.264 / H.265</span></div>
+      <div class="vs-chip"><span class="vc-k">Audio</span><span class="vc-v">AAC &middot; 44.1 kHz stereo</span></div>
+      <div class="vs-chip"><span class="vc-k">File size</span><span class="vc-v">500 MB max</span></div>
+    </div>
+
+    <div class="vrules">
+      <div class="vrule reveal"><span class="vr-i">V1</span><p>Authors must <b>pre-record</b> the presentation; it is played during the session.</p></div>
+      <div class="vrule reveal"><span class="vr-i">V2</span><p>Each recorded video runs <b>12 minutes</b>, with <b>3 minutes</b> of live discussion.</p></div>
+      <div class="vrule reveal"><span class="vr-i">V3</span><p><b>Keep your video on</b> while presenting and stay clearly visible throughout.</p></div>
+      <div class="vrule reveal"><span class="vr-i">V4</span><p>Submit in <b>.mp4 format</b> only.</p></div>
+      <div class="vrule reveal"><span class="vr-i">V5</span><p>Recommended software: <b>OBS Studio, Zoom, Webex, Google Meet</b>.</p></div>
+      <div class="vrule reveal"><span class="vr-i">V6</span><p>Picture-in-picture video must <b>not obstruct any logos</b> in the template.</p></div>
+      <div class="vrule reveal"><span class="vr-i">V7</span><p>Accepted only if guidelines are followed and all listed authors have <b>completed registration</b>.</p></div>
+      <div class="vrule reveal"><span class="vr-i">V8</span><p>Upload to a cloud drive and share an <b>editable</b> link for download access.</p></div>
+    </div>
+
+    <div class="vfoot reveal">
+      <p><i class="fas fa-headset"></i> For technical issues with recording or submission, contact the technical support team.</p>
+      <a href="./contact.html" class="pgbtn pgbtn-dark"><i class="fas fa-video"></i> Submit Video &amp; Details</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     04 · IMPORTANT NOTICE
+══════════════════════════════════════ -->
+<section class="pg-band dark">
+  <div class="pg-wrap">
+    <div class="pg-head">
+      <span class="pg-eyebrow">Read Carefully</span>
+      <h2>Important Notice</h2>
+    </div>
+
+    <div class="notice-grid">
+      <div class="npanel reveal">
+        <span class="np-i">01</span>
+        <h3>Multiple Authors</h3>
+        <p>If a paper has multiple authors, only those listed in the submission form as presenters may present. All listed presenters <b>must be registered in advance</b>.</p>
+      </div>
+      <div class="npanel reveal">
+        <span class="np-i">02</span>
+        <h3>Certificate Requirements</h3>
+        <p>It is <b>not mandatory</b> for every author to present, but <b>only those who actively take part in the Q&amp;A session receive a "Certificate of Presentation."</b></p>
+      </div>
+      <div class="npanel reveal">
+        <span class="np-i">03</span>
+        <h3>Co-Author Registration</h3>
+        <p>Co-presenters listed in the form need a <b>valid co-author registration</b> and must attend both the presentation and the Q&amp;A session to receive the certificate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+<section class="pg-cta">
+  <div class="pg-wrap cta-split">
+    <div>
+      <h2>Need help with presentations?</h2>
+      <p>Questions about the template, technical requirements or the submission process — the committee can help.</p>
+    </div>
+    <div class="pg-btn-row">
+      <a href="./contact.html" class="pgbtn pgbtn-dark"><i class="fas fa-envelope"></i> Contact Us</a>
+      <a href="./registration.html" class="pgbtn pgbtn-line light"><i class="fas fa-user-plus"></i> Registration</a>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ════════════════════════════════════════════
+       PRESENTATION GUIDELINES
+    ════════════════════════════════════════════ */
+/* ── page hero (same as about-iprecon.html) ── */
+.page-hero { background: var(--brand); padding: 66px 60px 60px; position: relative; overflow: hidden; text-align: left; }
+.page-hero::before { content: ''; position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px); }
+.page-hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0; }
+.page-hero .eyebrow { display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4);
+  color: var(--gold); font-size: 11px; font-weight: 600; padding: 6px 16px; border-radius: 3px;
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 22px; }
+.page-hero h1 { font-size: clamp(28px, 4.2vw, 46px); font-weight: 800; color: #fff;
+  line-height: 1.15; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.01em; }
+.page-hero h1 em { font-style: normal; color: var(--gold); }
+.page-hero p { font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 640px; margin: 0; }
+.breadcrumb { position: relative; z-index: 2; display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+.breadcrumb a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.3); }
+.breadcrumb .current { color: var(--gold); }
+
+.pg-wrap { max-width: 1140px; margin: 0 auto; }
+.pg-band { padding: 88px 60px; }
+.pg-band.light { background: #fff; color: var(--brand); }
+.pg-band.light.alt { background: var(--light); }
+.pg-band.dark { position: relative; overflow: hidden; color: #fff;
+  background: radial-gradient(120% 90% at 80% 0%, #3a1d3f 0%, var(--brand) 55%, #1a0e1a 100%);
+  border-top: 1px solid rgba(212,175,55,0.28); border-bottom: 1px solid rgba(212,175,55,0.28); }
+.pg-band.dark::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px); }
+.pg-band.dark > * { position: relative; z-index: 2; }
+
+.pg-head { text-align: center; margin-bottom: 44px; }
+.pg-eyebrow { display: block; font-size: 11px; font-weight: 700; color: var(--purple);
+  letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+.pg-head h2 { font-size: clamp(24px, 3.4vw, 36px); font-weight: 800; line-height: 1.2;
+  letter-spacing: -0.02em; display: inline-block; padding-bottom: 14px; position: relative; }
+.pg-head h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 90px; height: 3px; background: linear-gradient(90deg, var(--purple), var(--gold)); }
+.pg-band.dark .pg-eyebrow { color: var(--gold); }
+.pg-band.dark .pg-head h2::after { background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.25)); }
+
+.pg-btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.pgbtn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 4px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+  border: 1px solid transparent; transition: all 0.25s ease; }
+.pgbtn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand); }
+.pgbtn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(212,175,55,0.35); }
+.pgbtn-dark { background: var(--brand); color: #fff; }
+.pgbtn-dark:hover { background: var(--purple); transform: translateY(-2px); }
+.pgbtn-line.light { border-color: rgba(33,16,33,0.25); color: var(--brand); }
+.pgbtn-line.light:hover { border-color: var(--brand); background: var(--brand); color: #fff; }
+
+/* deadline line */
+.deadline-line { display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin-bottom: 40px; padding: 18px 24px; background: var(--brand); color: rgba(255,255,255,0.82);
+  font-size: 13.5px; letter-spacing: 0.02em; }
+.deadline-line i { color: var(--gold); }
+.deadline-line b { color: var(--gold); font-weight: 700; }
+
+/* 01 — rule cards */
+.rule-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.rcard { border: 1px solid var(--border); border-radius: 4px; padding: 28px 24px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+.rcard:hover { transform: translateY(-6px); border-color: var(--purple); box-shadow: 0 16px 40px rgba(142,36,170,0.18); }
+.rc-i { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px;
+  border-radius: 50%; background: #f3e8f5; color: var(--purple); font-size: 17px; margin-bottom: 18px;
+  transition: background 0.3s ease, color 0.3s ease; }
+.rcard:hover .rc-i { background: linear-gradient(135deg, var(--purple), var(--purple-d)); color: #fff; }
+.rcard h3 { font-size: 15.5px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 10px; }
+.rcard p { font-size: 13px; line-height: 1.7; color: var(--muted); }
+.rcard b { color: var(--brand); font-weight: 700; }
+
+.flex-note { margin-top: 34px; padding: 30px 32px; background: var(--off);
+  border: 1px solid var(--border); border-left: 3px solid var(--gold); }
+.fn-tag { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--purple-d); background: #f3e8f5; padding: 5px 12px; margin-bottom: 14px; }
+.flex-note p { font-size: 14px; line-height: 1.85; color: var(--muted); margin-bottom: 22px; }
+.flex-note b { color: var(--brand); font-weight: 700; }
+
+/* 02 — timing bar */
+.timing { display: grid; grid-template-columns: 12fr 3fr auto; gap: 4px; align-items: stretch; margin-bottom: 42px; }
+.tm-seg { padding: 26px 24px; display: flex; flex-direction: column; justify-content: center; }
+.tm-seg.talk { background: linear-gradient(120deg, rgba(142,36,170,0.5), rgba(142,36,170,0.2)); }
+.tm-seg.qa   { background: linear-gradient(120deg, rgba(212,175,55,0.45), rgba(212,175,55,0.18)); }
+.tm-total { padding: 26px 30px; border: 1px solid rgba(212,175,55,0.4); display: flex;
+  flex-direction: column; justify-content: center; min-width: 150px; }
+.tm-n { font-size: clamp(26px, 3.2vw, 38px); font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+.tm-total .tm-n { color: var(--gold); }
+.tm-u { margin-top: 8px; font-size: 10.5px; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; color: rgba(255,255,255,0.65); }
+
+.spec-lines { list-style: none; border-top: 1px solid rgba(255,255,255,0.16); }
+.spec-lines li { position: relative; padding: 18px 4px 18px 30px; border-bottom: 1px solid rgba(255,255,255,0.16);
+  font-size: 13.5px; line-height: 1.7; color: rgba(255,255,255,0.72); transition: padding-left 0.3s ease, background 0.3s ease; }
+.spec-lines li::before { content: ''; position: absolute; left: 4px; top: 27px; width: 10px; height: 1px; background: var(--gold); }
+.spec-lines li:hover { padding-left: 42px; background: rgba(255,255,255,0.04); }
+.spec-lines b { color: #fff; }
+
+/* 03 — virtual: spec strip + rule ledger */
+.vspec-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
+  border: 1px solid var(--border); background: #fff; margin-bottom: 40px; }
+.vs-chip { padding: 22px 20px; border-left: 1px solid var(--border); transition: background 0.28s ease; }
+.vs-chip:first-child { border-left: none; }
+.vs-chip:hover { background: var(--brand); }
+.vc-k { display: block; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--purple); margin-bottom: 9px; transition: color 0.28s ease; }
+.vc-v { display: block; font-size: 14.5px; font-weight: 700; color: var(--brand); transition: color 0.28s ease; }
+.vs-chip:hover .vc-k { color: var(--gold); }
+.vs-chip:hover .vc-v { color: #fff; }
+
+.vrules { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
+.vrule { display: flex; gap: 16px; align-items: flex-start; padding: 18px 4px;
+  border-bottom: 1px solid var(--border); transition: padding-left 0.3s ease; }
+.vrule:hover { padding-left: 12px; }
+.vr-i { flex-shrink: 0; font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+  color: var(--purple); padding-top: 3px; transition: color 0.3s ease; }
+.vrule:hover .vr-i { color: var(--gold); }
+.vrule p { font-size: 13.5px; line-height: 1.7; color: var(--muted); }
+.vrule b { color: var(--brand); font-weight: 700; }
+
+.vfoot { display: flex; align-items: center; justify-content: space-between; gap: 28px;
+  flex-wrap: wrap; margin-top: 34px; padding-top: 26px; border-top: 2px solid var(--brand); }
+.vfoot p { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 520px; }
+.vfoot i { color: var(--purple); margin-right: 8px; }
+
+/* 04 — notice panels */
+.notice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.npanel { position: relative; background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 30px 28px;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease; }
+.npanel:hover { border-color: rgba(212,175,55,0.5); background: rgba(255,255,255,0.085); transform: translateY(-5px); }
+.np-i { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.18em; color: var(--gold); margin-bottom: 14px; }
+.npanel h3 { font-size: 17px; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 12px; }
+.npanel p { font-size: 13.5px; line-height: 1.75; color: rgba(255,255,255,0.7); }
+.npanel b { color: #fff; font-weight: 700; }
+
+/* CTA */
+.pg-cta { background: var(--off); color: var(--brand); padding: 70px 60px; border-top: 1px solid var(--border); }
+.cta-split { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.cta-split h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 10px; }
+.cta-split p { font-size: 14px; color: var(--muted); max-width: 460px; line-height: 1.7; }
+.cta-split .pg-btn-row { margin-top: 0; }
+
+@media (max-width: 1100px) {
+  .pg-band, .pg-cta, .page-hero { padding-left: 32px; padding-right: 32px; }
+  .rule-cards { grid-template-columns: repeat(2, 1fr); }
+  .vspec-strip { grid-template-columns: repeat(2, 1fr); }
+  .vs-chip:nth-child(odd) { border-left: none; }
+  .vrules { grid-template-columns: 1fr; column-gap: 0; }
+  .notice-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .pg-band { padding: 60px 20px; }
+  .pg-cta  { padding: 52px 20px; }
+  .page-hero { padding: 48px 20px 44px; }
+  .rule-cards { grid-template-columns: 1fr; }
+  .timing { grid-template-columns: 1fr; }
+  .deadline-line { flex-direction: column; text-align: center; gap: 8px; }
+  .vspec-strip { grid-template-columns: 1fr; }
+  .vs-chip { border-left: none; border-top: 1px solid var(--border); }
+  .vs-chip:first-child { border-top: none; }
+  .vfoot { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</main>
+<esi:include src="/includes/footer.html" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+'use strict';
+if (window.gsap) gsap.registerPlugin(ScrollTrigger);
+window.addEventListener('scroll', () => {
+  const sb = document.getElementById('scroll-bar');
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  if (sb) sb.style.width = pct + '%';
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+const menuBtn = document.getElementById('menuBtn');
+const mobileNav = document.getElementById('mobileNav');
+const navOverlay = document.getElementById('mobileNavOverlay');
+function closeMenu() {
+  mobileNav.classList.remove('open'); navOverlay.classList.remove('open');
+  menuBtn.classList.remove('active'); document.body.classList.remove('nav-open');
+  menuBtn.setAttribute('aria-expanded', 'false');
+}
+menuBtn.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  navOverlay.classList.toggle('open', open); menuBtn.classList.toggle('active', open);
+  document.body.classList.toggle('nav-open', open);
+  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+navOverlay.addEventListener('click', closeMenu);
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+/* drawer close button */
+(function () {
+  var btn = document.getElementById('mobClose');
+  var nav = document.getElementById('mobileNav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function () {
+    nav.classList.remove('open');
+    document.body.classList.remove('nav-open');
+    var ov = document.getElementById('mobileNavOverlay');
+    if (ov) ov.classList.remove('open');
+    var mb = document.getElementById('menuBtn');
+    if (mb) { mb.classList.remove('active'); mb.setAttribute('aria-expanded', 'false'); }
+  });
+})();
+</script>
+
+</body>
+</html>
