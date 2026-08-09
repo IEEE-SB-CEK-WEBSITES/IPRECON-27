@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon.png" />
   <title>About | IPRECON 2027 — IEEE International Power and Renewable Energy Conference</title>
   <meta name="description" content="About IPRECON 2027 — India's first IEEE Club of 6 Technical Paper Conference. Legacy, editions, and global impact." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -37,7 +40,9 @@
       z-index: 9999; transition: width 0.08s linear;
     }
 
-    /* ════════ HEADER ════════ */
+    /* ════════════════════════════════════════════
+       HEADER
+    ════════════════════════════════════════════ */
     .header-top-bar {
       background: var(--brand);
       padding: 7px 60px;
@@ -92,7 +97,9 @@
     .header-sp-group img { height: 36px; width: auto; opacity: 0.8; transition: opacity 0.2s; }
     .header-sp-group img:hover { opacity: 1; }
 
-    /* ════════ NAVBAR ════════ */
+    /* ════════════════════════════════════════════
+       NAVBAR
+    ════════════════════════════════════════════ */
     .navbar {
       background: var(--brand);
       position: sticky; top: 0; z-index: 1000;
@@ -111,7 +118,7 @@
     }
     .navbar.scrolled .brand-logo-wrap { opacity: 1; visibility: visible; }
     .brand-logo { height: 46px; width: auto; display: block; }
-    .nav-items { display: flex; list-style: none; }
+    .nav-items { display: flex; list-style: none; margin-left: auto; }
     .nav-item { position: relative; }
     .nav-item > a,
     .nav-item > span.nav-link {
@@ -160,24 +167,56 @@
       background: rgba(255,255,255,0.85); border-radius: 2px; transition: all 0.3s;
     }
     .mobile-nav {
-      display: none; position: fixed; inset: 0; top: 58px;
-      background: var(--brand); z-index: 999; overflow-y: auto; padding: 16px;
+      display: none; position: fixed; left: 0; right: 0; top: 58px; bottom: 0;
+      background: var(--brand); z-index: 1002;
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: 8px 0 40px;
+      border-top: 1px solid rgba(212,175,55,0.35);
     }
     .mobile-nav.open { display: block; }
+    body.nav-open { overflow: hidden; }
+    body.nav-open .nav-marquee { visibility: hidden; }
+    body.nav-open .marquee-strip-mobile { display: none !important; }
     .mobile-nav a {
-      display: block; padding: 11px 14px;
-      color: rgba(255,255,255,0.78); font-size: 12.5px;
-      font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
-      border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s;
+      display: flex; align-items: center;
+      padding: 14px 22px;
+      color: rgba(255,255,255,0.82); font-size: 12.5px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.2s, color 0.2s, padding-left 0.2s;
     }
-    .mobile-nav a:hover { color: var(--gold); }
+    .mobile-nav a:hover, .mobile-nav a:active { color: var(--gold); background: rgba(255,255,255,0.05); padding-left: 28px; }
+    .mobile-nav a.mob-sub {
+      padding-left: 38px; font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.68);
+    }
+    .mobile-nav a.mob-sub::before {
+      content: ''; width: 10px; height: 1px; background: rgba(212,175,55,0.6);
+      margin-right: 12px; margin-left: -22px; flex-shrink: 0;
+    }
+    .mobile-nav a.mob-sub:hover { padding-left: 44px; color: var(--gold); }
+    .mob-close {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      width: 100%; padding: 14px 22px; margin-bottom: 4px;
+      background: rgba(255,255,255,0.06); border: none; border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: var(--gold); font: inherit; font-size: 11px; font-weight: 800;
+      letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+      .mob-close:hover { background: rgba(212,175,55,0.16); color: #fff; }
+      .mob-close i { font-size: 15px; }
     .mob-section {
+      display: block; margin-top: 10px;
+      padding: 14px 22px 8px;
       font-size: 10px; color: var(--gold);
-      padding: 14px 14px 4px; letter-spacing: 0.14em;
-      font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.2em; font-weight: 800; text-transform: uppercase;
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
 
-    /* ════════ PAGE HERO / BREADCRUMB ════════ */
+    /* ════════════════════════════════════════════
+       PAGE HERO / BREADCRUMB
+    ════════════════════════════════════════════ */
     .page-hero {
       background: var(--brand);
       padding: 66px 60px 60px;
@@ -217,7 +256,9 @@
     .breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.3); }
     .breadcrumb .current { color: var(--gold); }
 
-    /* ════════ SECTION COMMONS ════════ */
+    /* ════════════════════════════════════════════
+       SECTION COMMONS
+    ════════════════════════════════════════════ */
     .section-wrap { max-width: 1200px; margin: 0 auto; }
     .sec-head { text-align: center; margin-bottom: 48px; }
     .sec-label-tag {
@@ -236,7 +277,33 @@
     }
     .sec-sub { font-size: 14.5px; color: var(--muted); line-height: 1.7; max-width: 620px; margin: 16px auto 0; }
 
-    /* ════════ ANNOUNCEMENTS MARQUEE ════════ */
+    /* ════════════════════════════════════════════
+       ANNOUNCEMENTS MARQUEE
+    ════════════════════════════════════════════ */
+    /* Scrolling marquee inside the navbar (mobile only — hidden on desktop) */
+    .nav-marquee {
+      display: none; flex: 1; overflow: hidden; height: 58px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+    .nav-marquee-track {
+      display: flex; align-items: center; gap: 30px; height: 100%;
+      width: max-content; animation: mLeft 22s linear infinite;
+    }
+    .nav-marquee-item {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; color: rgba(255,255,255,0.82); white-space: nowrap;
+    }
+    .nav-marquee-item i      { color: var(--gold); font-size: 11px; }
+    .nav-marquee-item strong { color: #fff; font-weight: 600; }
+    .nav-marquee-sep { color: rgba(212,175,55,0.7); font-size: 10px; }
+
+    /* mobile-only marquee strip (hidden on desktop) */
+    .marquee-strip-mobile {
+      display: none;
+      background: var(--off); border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
     .marquee-strip {
       background: var(--off); border-bottom: 1px solid var(--border);
       padding: 10px 0; overflow: hidden;
@@ -250,7 +317,9 @@
     .marquee-item strong { color: var(--brand); font-weight: 600; }
     .marquee-sep { color: #d0b0d0; }
 
-    /* ════════ INTRO / LEGACY ════════ */
+    /* ════════════════════════════════════════════
+       INTRO / LEGACY
+    ════════════════════════════════════════════ */
     #legacy { padding: 80px 60px; background: #fff; }
     .legacy-layout { display: flex; gap: 64px; align-items: flex-start; }
     .legacy-text { flex: 0 0 60%; }
@@ -265,7 +334,9 @@
     .legacy-fact-card p { font-size: 13.5px; color: rgba(255,255,255,0.8); line-height: 1.65; }
     .legacy-fact-card p strong { color: white; }
 
-    /* ════════ FEATURED EDITION (2026 / 2027) ════════ */
+    /* ════════════════════════════════════════════
+       FEATURED EDITION (2026 / 2027)
+    ════════════════════════════════════════════ */
     #edition { padding: 80px 60px; background: var(--brand); position: relative; overflow: hidden; }
     #edition::before {
       content: ''; position: absolute; inset: 0;
@@ -310,7 +381,9 @@
     }
     .edition-chip i { color: var(--gold); font-size: 11px; }
 
-    /* ════════ PAST EDITIONS ════════ */
+    /* ════════════════════════════════════════════
+       PAST EDITIONS
+    ════════════════════════════════════════════ */
     #past { padding: 80px 60px; background: var(--light); }
     .past-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; max-width: 1200px; margin: 0 auto; }
     .past-card {
@@ -342,7 +415,9 @@
     }
     .past-link:hover { gap: 11px; border-bottom-color: var(--purple); }
 
-    /* ════════ GLOBAL IMPACT ════════ */
+    /* ════════════════════════════════════════════
+       GLOBAL IMPACT
+    ════════════════════════════════════════════ */
     #impact { padding: 80px 60px; background: #fff; }
     .impact-layout { display: flex; gap: 56px; align-items: stretch; }
     .impact-text { flex: 1; display: flex; flex-direction: column; }
@@ -401,7 +476,9 @@
     }
     .impact-stat-card .lbl { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 8px; letter-spacing: 0.03em; position: relative; z-index: 1; }
 
-    /* ════════ FOOTER ════════ */
+    /* ════════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════════ */
     footer { background: #1a0e1a; padding: 68px 60px 36px; }
     .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; max-width: 1200px; margin: 0 auto 48px; }
     .footer-brand img { height: 44px; filter: brightness(0) invert(1); opacity: 0.78; margin-bottom: 16px; }
@@ -427,11 +504,15 @@
       display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.28);
     }
 
-    /* ════════ REVEAL ════════ */
+    /* ════════════════════════════════════════════
+       REVEAL
+    ════════════════════════════════════════════ */
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.in-view { opacity: 1; transform: translateY(0); }
 
-    /* ════════ RESPONSIVE ════════ */
+    /* ════════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════════ */
     @media (max-width: 1100px) {
       .site-header, .header-top-bar { padding-left: 28px; padding-right: 28px; }
       .nav-container { padding: 0 20px; }
@@ -440,7 +521,9 @@
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
     }
     @media (max-width: 900px) {
-      .header-sponsors { display: none; }
+      .header-sp-group { padding: 0 12px; }
+      .header-sp-group .sp-label { display: none; }
+      .header-sp-group img { height: 28px; }
       .legacy-layout { flex-direction: column; }
       .impact-layout { flex-direction: column; }
       .impact-stats { flex: none; width: 100%; }
@@ -450,13 +533,42 @@
       .edition-meta { justify-content: center; }
     }
     @media (max-width: 768px) {
+      .site-header { padding: 10px 12px; gap: 8px; }
+      .header-brand { gap: 8px; flex: 1; min-width: 0; }
+      .header-conf-logo { height: 46px; }
+      .header-brand-text { padding-left: 10px; }
+      .header-brand-text .conf-name { font-size: 12px; }
+      .header-brand-text .conf-full { font-size: 8.5px; line-height: 1.3; }
+      .header-edition-badge { display: none; }
+
+      /* sponsor logos stay visible, top-right */
+      .header-sponsors { display: flex; flex-shrink: 0; }
+      .header-sp-group { padding: 0 6px; border-right: 1px solid var(--border); }
+      .header-sp-group:last-child { border-right: none; }
+      .header-sp-group .sp-label { display: none; }
+      .header-sp-group img { height: 22px; }
+
+      .nav-items { display: none; }
+      /* collapse the logo slot so the marquee runs the full bar; it returns on scroll */
+      .brand-logo-wrap { gap: 8px; width: 0; overflow: hidden; }
+      .navbar.scrolled .brand-logo-wrap { width: auto; margin-right: 8px; }
+      .brand-label { display: none; }
+      .hamburger { display: flex; flex-shrink: 0; order: 3; margin-left: auto; }
+      .navbar { height: 58px; }
+      .nav-container { padding: 0 12px; justify-content: flex-start; gap: 8px; height: 58px; }
+
+      /* marquee runs inside the nav bar at the top of the page … */
+      .nav-marquee { display: block; order: 2; }
+      .marquee-strip { display: none; }
+      /* … then pins directly under the nav once scrolled */
+      .marquee-strip-mobile {
+        display: none; position: fixed; top: 58px; left: 0; right: 0;
+        padding: 9px 0; z-index: 997;
+      }
+      .navbar.scrolled ~ .marquee-strip-mobile { display: block; }
+      .navbar.scrolled .nav-marquee { display: none; }
       .header-top-bar { padding: 6px 18px; font-size: 11px; }
       .header-top-bar .htb-right { display: none; }
-      .site-header { padding: 14px 18px; }
-      .header-conf-logo { height: 56px; }
-      .nav-items { display: none; }
-      .hamburger { display: flex; }
-      .nav-container { padding: 0 16px; }
       .past-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
@@ -473,12 +585,14 @@
 <body>
 <div id="scroll-bar"></div>
 
-<!-- ══════ HEADER ══════ -->
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
 <div class="header-top-bar">
   <span>
     <i class="fas fa-map-marker-alt"></i> College of Engineering Karunagappally, Kerala, India
     &nbsp;&nbsp;
-    <i class="fas fa-calendar-alt"></i> September 2027
+    <i class="fas fa-calendar-alt"></i> 15–17 October 2027
     &nbsp;&nbsp;
     <i class="fas fa-wifi"></i> Hybrid Conference
   </span>
@@ -514,7 +628,9 @@
   </div>
 </header>
 
-<!-- ══════ NAVBAR ══════ -->
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
 <nav class="navbar" id="mainNav">
   <div class="nav-container">
     <a href="./index.html" class="brand-logo-wrap">
@@ -563,71 +679,57 @@
       <li class="nav-item"><a href="./registration.html">REGISTRATION</a></li>
       <li class="nav-item"><a href="./contact.html">CONTACT</a></li>
     </ul>
+    <esi:include src="/includes/nav-marquee.html" />
     <button class="hamburger" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <!-- Mobile nav -->
 <div class="mobile-nav" id="mobileNav">
+  <button type="button" class="mob-close" id="mobClose" aria-label="Close menu">
+    <span>Close menu</span><i class="fas fa-xmark"></i>
+  </button>
   <a href="./index.html">HOME</a>
   <div class="mob-section">ABOUT</div>
-  <a href="./about-iprecon.html" style="padding-left:28px">IPRECON</a>
-  <a href="./organizers.html"    style="padding-left:28px">ORGANIZERS</a>
-  <a href="./venue.html"         style="padding-left:28px">VENUE</a>
-  <a href="./kerala.html"        style="padding-left:28px">KERALA</a>
-  <a href="./accommodation.html" style="padding-left:28px">ACCOMMODATION</a>
-  <a href="./visa.html"          style="padding-left:28px">VISA</a>
-  <a href="./sponsors.html"      style="padding-left:28px">SPONSORS &amp; EXHIBITORS</a>
-  <a href="./dei.html"           style="padding-left:28px">DEI STATEMENT</a>
+  <a class="mob-sub" href="./about-iprecon.html">IPRECON</a>
+  <a class="mob-sub" href="./organizers.html">ORGANIZERS</a>
+  <a class="mob-sub" href="./venue.html">VENUE</a>
+  <a class="mob-sub" href="./kerala.html">KERALA</a>
+  <a class="mob-sub" href="./accommodation.html">ACCOMMODATION</a>
+  <a class="mob-sub" href="./visa.html">VISA</a>
+  <a class="mob-sub" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+  <a class="mob-sub" href="./dei.html">DEI STATEMENT</a>
   <a href="./committee.html">COMMITTEE</a>
   <div class="mob-section">FOR AUTHORS</div>
-  <a href="./cfp.html"                      style="padding-left:28px">CALL FOR PAPERS</a>
-  <a href="./submissions.html"              style="padding-left:28px">SUBMISSIONS</a>
-  <a href="./important-dates.html"          style="padding-left:28px">IMPORTANT DATES</a>
-  <a href="./camera-ready.html"             style="padding-left:28px">CAMERA READY INSTRUCTIONS</a>
-  <a href="./presentation-guidelines.html" style="padding-left:28px">PRESENTATION GUIDELINES</a>
-  <a href="./housing-support.html"          style="padding-left:28px">STUDENT HOUSING SUPPORT</a>
-  <a href="./travel-support.html"           style="padding-left:28px">STUDENT TRAVEL SUPPORT</a>
+  <a class="mob-sub" href="./cfp.html">CALL FOR PAPERS</a>
+  <a class="mob-sub" href="./submissions.html">SUBMISSIONS</a>
+  <a class="mob-sub" href="./important-dates.html">IMPORTANT DATES</a>
+  <a class="mob-sub" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+  <a class="mob-sub" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+  <a class="mob-sub" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
+  <a class="mob-sub" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
   <a href="./speakers.html">SPEAKERS</a>
   <div class="mob-section">PROGRAM</div>
-  <a href="./inaugural.html"             style="padding-left:28px">INAUGURAL PROGRAM</a>
-  <a href="./distinguished-lectures.html" style="padding-left:28px">DISTINGUISHED LECTURE PROGRAM</a>
-  <a href="./tutorials.html"             style="padding-left:28px">TUTORIALS</a>
-  <a href="./tracks.html"                style="padding-left:28px">TRACKS</a>
-  <a href="./special-sessions.html"      style="padding-left:28px">SPECIAL SESSIONS</a>
-  <a href="./keynote.html"               style="padding-left:28px">KEYNOTE</a>
+  <a class="mob-sub" href="./inaugural.html">INAUGURAL PROGRAM</a>
+  <a class="mob-sub" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+  <a class="mob-sub" href="./tutorials.html">TUTORIALS</a>
+  <a class="mob-sub" href="./tracks.html">TRACKS</a>
+  <a class="mob-sub" href="./special-sessions.html">SPECIAL SESSIONS</a>
+  <a class="mob-sub" href="./keynote.html">KEYNOTE</a>
   <a href="./registration.html">REGISTRATION</a>
   <a href="./contact.html">CONTACT</a>
 </div>
 
-<!-- ══════ ANNOUNCEMENTS MARQUEE ══════ -->
-<div class="marquee-strip">
-  <div class="marquee-track">
-    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
-    <span class="marquee-sep">◆</span>
-    <!-- duplicate -->
-    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
-    <span class="marquee-sep">◆</span>
-  </div>
-</div>
+<!-- ══════════════════════════════════════
+     ANNOUNCEMENTS MARQUEE
+══════════════════════════════════════ -->
+<esi:include src="/includes/marquee-mobile.html" />
 
-<!-- ══════ PAGE HERO ══════ -->
+<esi:include src="/includes/marquee.html" />
+
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
 <section class="page-hero">
   <div class="page-hero-inner">
     <span class="eyebrow"><i class="fas fa-circle-dot"></i> India's First IEEE Club of 6 Conference</span>
@@ -641,7 +743,9 @@
   </div>
 </section>
 
-<!-- ══════ LEGACY ══════ -->
+<!-- ══════════════════════════════════════
+     LEGACY
+══════════════════════════════════════ -->
 <section id="legacy">
   <div class="section-wrap">
     <div class="sec-head">
@@ -672,7 +776,9 @@
   </div>
 </section>
 
-<!-- ══════ FEATURED EDITIONS (2027 + 2026) ══════ -->
+<!-- ══════════════════════════════════════
+     FEATURED EDITIONS (2027 + 2026)
+══════════════════════════════════════ -->
 <section id="edition">
   <div class="edition-wrap">
     <div class="sec-head">
@@ -689,10 +795,10 @@
       <div class="edition-body">
         <span class="edition-tag">5th Edition · Current</span>
         <h3>IPRECON <em>2027</em></h3>
-        <p class="edition-theme">"Advancing Power and Renewable Energy Systems through AI, Computing, and Emerging Technologies"</p>
-        <p>The fifth edition of India's first and only IEEE Club of 6 Technical Paper Conference is organized by the IEEE Student Branch of the College of Engineering Karunagappally, with technical co-sponsorship from IEEE IAS and IEEE PES. Scheduled for September 2027 at CEK, Kerala, the conference offers a premier platform for students, researchers, and professionals to present cutting-edge innovations in power, renewable energy, and computing. The event features technical sessions, keynote talks, distinguished lectures, and workshops, with all accepted papers submitted to the IEEE Xplore® Digital Library.</p>
+        <p class="edition-theme">"Next-Generation Energy Systems: Intelligence, Resilience and Decarbonization"</p>
+        <p>The fifth edition of India's first and only IEEE Club of 6 Technical Paper Conference is organized by the IEEE Student Branch of the College of Engineering Karunagappally, with technical co-sponsorship from IEEE IAS and IEEE PES. Scheduled for 15–17 October 2027 at CEK, Kerala, the conference offers a premier platform for students, researchers, and professionals to present cutting-edge innovations in power, renewable energy, and computing. The event features technical sessions, keynote talks, distinguished lectures, and workshops, with all accepted papers submitted to the IEEE Xplore® Digital Library.</p>
         <div class="edition-meta">
-          <span class="edition-chip"><i class="fas fa-calendar-alt"></i> September 2027</span>
+          <span class="edition-chip"><i class="fas fa-calendar-alt"></i> 15–17 October 2027</span>
           <span class="edition-chip"><i class="fas fa-map-marker-alt"></i> CEK, Kerala, India</span>
           <span class="edition-chip"><i class="fas fa-laptop"></i> Hybrid Mode</span>
           <span class="edition-chip"><i class="fas fa-database"></i> IEEE Xplore® Indexed</span>
@@ -721,7 +827,9 @@
   </div>
 </section>
 
-<!-- ══════ PAST ENDEAVOURS ══════ -->
+<!-- ══════════════════════════════════════
+     PAST ENDEAVOURS
+══════════════════════════════════════ -->
 <section id="past">
   <div class="section-wrap">
     <div class="sec-head">
@@ -814,7 +922,9 @@
   </div>
 </section>
 
-<!-- ══════ GLOBAL IMPACT ══════ -->
+<!-- ══════════════════════════════════════
+     GLOBAL IMPACT
+══════════════════════════════════════ -->
 <section id="impact">
   <div class="section-wrap">
     <div class="sec-head">
@@ -876,52 +986,10 @@
   </div>
 </section>
 
-<!-- ══════ FOOTER ══════ -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <img src="assets/img/iprecon27 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
-      <p>2027 IEEE International Power and Renewable Energy Conference — 5th edition. Organized by IEEE Student Branch, College of Engineering Karunagappally, Kerala, India.</p>
-      <div class="footer-socials">
-        <a href="https://www.facebook.com/ieeeceksb/"       class="soc-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://x.com/IEEE_SB_CEK"                  class="soc-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.linkedin.com/company/ieeesbcek/" class="soc-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/ieee_sb_cek/"    class="soc-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Paper Submission</h4>
-      <ul>
-        <li><a href="./cfp.html">Call for Papers</a></li>
-        <li><a href="./submissions.html">Submit a Paper</a></li>
-        <li><a href="https://www.ieee.org/conferences/publishing/templates" target="_blank" rel="noopener">Paper Template</a></li>
-        <li><a href="./important-dates.html">Important Dates</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>About</h4>
-      <ul>
-        <li><a href="https://ieeesbcek.org" target="_blank" rel="noopener">IEEE SB CEK</a></li>
-        <li><a href="./committee.html">Team</a></li>
-        <li><a href="./about-iprecon.html">Legacy</a></li>
-        <li><a href="./organizers.html">Organizers</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Travel &amp; Info</h4>
-      <ul>
-        <li><a href="./venue.html">Transportation</a></li>
-        <li><a href="./accommodation.html">Hotels</a></li>
-        <li><a href="./kerala.html">Tourism</a></li>
-        <li><a href="./contact.html">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>Built with ❤️ &nbsp;|&nbsp; IEEE Student Branch CEK &copy; 2027</span>
-    <span>College of Engineering Karunagappally, Kerala, India</span>
-  </div>
-</footer>
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<esi:include src="/includes/footer.html" />
 
 <!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -938,8 +1006,18 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 /* Mobile nav */
-document.getElementById('menuBtn').addEventListener('click', () => {
-  document.getElementById('mobileNav').classList.toggle('open');
+const menuBtn = document.getElementById('menuBtn');
+const mobileNav = document.getElementById('mobileNav');
+menuBtn.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  document.body.classList.toggle('nav-open', open);
+});
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobileNav.classList.remove('open');
+  document.body.classList.remove('nav-open');
+}));
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) { mobileNav.classList.remove('open'); document.body.classList.remove('nav-open'); }
 });
 
 /* Reveals */
@@ -1019,6 +1097,21 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+
+/* drawer close button */
+(function () {
+  var btn = document.getElementById('mobClose');
+  var nav = document.getElementById('mobileNav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function () {
+    nav.classList.remove('open');
+    document.body.classList.remove('nav-open');
+    var ov = document.getElementById('mobileNavOverlay');
+    if (ov) ov.classList.remove('open');
+    var mb = document.getElementById('menuBtn');
+    if (mb) { mb.classList.remove('active'); mb.setAttribute('aria-expanded', 'false'); }
+  });
+})();
 </script>
 </body>
 </html>

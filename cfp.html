@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon.png" />
   <title>IPRECON 2027 — Call for Papers</title>
   <meta name="description" content="Call for Papers — IPRECON 2027, the 5th IEEE International Power and Renewable Energy Conference at College of Engineering Karunagappally, Kerala, India." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -53,7 +56,7 @@ a    { text-decoration: none; color: inherit; }
   border-bottom: 3px solid var(--brand);
 }
 .header-brand { display: flex; align-items: center; gap: 18px; }
-.header-conf-logo { height: 110px; width: auto; }
+.header-conf-logo { height: 100px; width: auto; }
 .header-brand-text {
   display: flex; flex-direction: column; gap: 2px;
   border-left: 1px solid var(--border); padding-left: 18px;
@@ -81,7 +84,7 @@ a    { text-decoration: none; color: inherit; }
 .brand-logo-wrap { display: flex; align-items: center; gap: 12px; height: var(--nav-h); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
 .navbar.scrolled .brand-logo-wrap { opacity: 1; visibility: visible; }
 .brand-logo { height: 46px; width: auto; display: block; }
-.nav-items { display: flex; list-style: none; }
+.nav-items { display: flex; list-style: none; margin-left: auto; }
 .nav-item { position: relative; }
 .nav-item > a, .nav-item > span.nav-link {
   display: flex; align-items: center; gap: 5px; padding: 0 16px; height: var(--nav-h);
@@ -108,24 +111,19 @@ a    { text-decoration: none; color: inherit; }
 .mobile-nav-overlay.open { opacity: 1; visibility: visible; }
 .mobile-nav a { display: block; padding: 14px 14px; color: rgba(255,255,255,0.78); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s; }
 .mobile-nav a:hover, .mobile-nav a:active { color: var(--gold); }
+  .mob-close {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    width: 100%; padding: 14px 22px; margin-bottom: 4px;
+    background: rgba(255,255,255,0.06); border: none; border-bottom: 1px solid rgba(255,255,255,0.12);
+    color: var(--gold); font: inherit; font-size: 11px; font-weight: 800;
+    letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .mob-close:hover { background: rgba(212,175,55,0.16); color: #fff; }
+  .mob-close i { font-size: 15px; }
 .mob-section { font-size: 10px; color: var(--gold); padding: 16px 14px 4px; letter-spacing: 0.14em; font-weight: 700; text-transform: uppercase; }
 .mob-sub { padding-left: 28px !important; font-size: 12.5px !important; }
 body.nav-open { overflow: hidden; }
-
-/* PAGE HERO (sub-pages) */
-.page-hero { background: var(--brand); position: relative; overflow: hidden; padding: 70px 60px 60px; }
-.page-hero::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px); }
-.page-hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; }
-.page-hero-crumb { font-size: 11.5px; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; margin-bottom: 18px; }
-.page-hero-crumb a { color: var(--gold); }
-.page-hero-crumb a:hover { text-decoration: underline; }
-.page-hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); color: var(--gold); font-size: 11px; font-weight: 600; padding: 6px 16px; border-radius: 3px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; }
-.page-hero h1 { font-size: clamp(28px, 4vw, 46px); font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 14px; }
-.page-hero h1 em { font-style: normal; color: var(--gold); }
-.page-hero p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 720px; }
-.page-hero-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 24px; }
-.page-hero-meta span { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.72); }
-.page-hero-meta i { color: var(--gold); }
 
 /* SECTION COMMONS */
 .section-wrap { max-width: 1200px; margin: 0 auto; }
@@ -187,6 +185,31 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
+/* ════════════════════════════════════════════
+       MARQUEE (index2 system)
+    ════════════════════════════════════════════ */
+body.nav-open .nav-marquee { visibility: hidden; }
+body.nav-open .marquee-strip-mobile { display: none !important; }
+.nav-marquee {
+  display: none; flex: 1; overflow: hidden; height: 58px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.nav-marquee-track { display: flex; align-items: center; gap: 30px; height: 100%; width: max-content; animation: mLeft 22s linear infinite; }
+.nav-marquee-item { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.82); white-space: nowrap; }
+.nav-marquee-item i { color: var(--gold); font-size: 11px; }
+.nav-marquee-item strong { color: #fff; font-weight: 600; }
+.nav-marquee-sep { color: rgba(212,175,55,0.7); font-size: 10px; }
+.marquee-strip { background: var(--off); border-bottom: 1px solid var(--border); padding: 10px 0; overflow: hidden; position: sticky; top: 58px; z-index: 999; }
+.marquee-strip-mobile { display: none; background: var(--off); border-bottom: 1px solid var(--border); overflow: hidden; }
+.marquee-track { display: flex; gap: 52px; animation: mLeft 32s linear infinite; width: max-content; }
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes mLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-item { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.marquee-item i { color: var(--purple); font-size: 11px; }
+.marquee-item strong { color: var(--brand); font-weight: 600; }
+.marquee-sep { color: #d0b0d0; }
+
 /* RESPONSIVE */
 @media (max-width: 1100px) {
   .site-header, .header-top-bar { padding-left: 28px; padding-right: 28px; }
@@ -203,7 +226,7 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
   .header-top-bar { padding: 6px 16px; font-size: 11px; }
   .header-top-bar .htb-right { display: none; }
   .site-header { padding: 10px 12px; }
-  .header-conf-logo { height: 40px; }
+  .header-conf-logo { height: 46px; }
   .header-brand { gap: 8px; flex: 1; min-width: 0; }
   .header-brand-text { padding-left: 8px; }
   .header-brand-text .conf-name { font-size: 11px; }
@@ -217,7 +240,15 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
   .brand-logo { height: 34px; }
   .nav-items { display: none; }
   .hamburger { display: flex; margin-left: auto; }
-  .nav-container { padding: 0 14px; justify-content: flex-start; gap: 6px; }
+  .nav-container { padding: 0 14px; justify-content: flex-start; gap: 8px; height: 58px; }
+  .navbar { height: 58px; }
+  .hamburger { order: 3; flex-shrink: 0; }
+  /* marquee flows through the full nav bar */
+  .nav-marquee { display: block; order: 2; }
+  .marquee-strip { display: none; }
+  .marquee-strip-mobile { display: none; position: fixed; top: 58px; left: 0; right: 0; padding: 9px 0; z-index: 997; }
+  .navbar.scrolled ~ .marquee-strip-mobile { display: block; }
+  .navbar.scrolled .nav-marquee { display: none; }
   .content-section, .page-hero { padding: 52px 20px; }
   .page-hero { padding-top: 48px; }
   .sec-head { margin-bottom: 34px; }
@@ -228,7 +259,7 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
 }
 @media (max-width: 480px) {
-  .header-conf-logo { height: 36px; }
+  .header-conf-logo { height: 46px; }
   .header-sp-group img { height: 19px; }
   .btn-row { flex-direction: column; }
   .btn-primary, .btn-outline, .btn-gold { width: 100%; justify-content: center; }
@@ -331,298 +362,499 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
       <li class="nav-item"><a href="./registration.html" data-nav="registration">REGISTRATION</a></li>
       <li class="nav-item"><a href="./contact.html" data-nav="contact">CONTACT</a></li>
     </ul>
+    <esi:include src="/includes/nav-marquee.html" />
     <button class="hamburger" id="menuBtn" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
+<esi:include src="/includes/marquee-mobile.html" />
+
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 <div class="mobile-nav" id="mobileNav">
+  <button type="button" class="mob-close" id="mobClose" aria-label="Close menu">
+    <span>Close menu</span><i class="fas fa-xmark"></i>
+  </button>
   <a href="./index.html">HOME</a>
   <div class="mob-section">ABOUT</div>
-  <a href="./about-iprecon.html" class="mob-sub">IPRECON</a>
-  <a href="./organizers.html"    class="mob-sub">ORGANIZERS</a>
-  <a href="./venue.html"         class="mob-sub">VENUE</a>
-  <a href="./kerala.html"        class="mob-sub">KERALA</a>
-  <a href="./accommodation.html" class="mob-sub">ACCOMMODATION</a>
-  <a href="./visa.html"          class="mob-sub">VISA</a>
-  <a href="./sponsors.html"      class="mob-sub">SPONSORS &amp; EXHIBITORS</a>
-  <a href="./dei.html"           class="mob-sub">DEI STATEMENT</a>
+  <a class="mob-sub" href="./about-iprecon.html">IPRECON</a>
+  <a class="mob-sub" href="./organizers.html">ORGANIZERS</a>
+  <a class="mob-sub" href="./venue.html">VENUE</a>
+  <a class="mob-sub" href="./kerala.html">KERALA</a>
+  <a class="mob-sub" href="./accommodation.html">ACCOMMODATION</a>
+  <a class="mob-sub" href="./visa.html">VISA</a>
+  <a class="mob-sub" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+  <a class="mob-sub" href="./dei.html">DEI STATEMENT</a>
   <a href="./committee.html">COMMITTEE</a>
   <div class="mob-section">FOR AUTHORS</div>
-  <a href="./cfp.html"                     class="mob-sub">CALL FOR PAPERS</a>
-  <a href="./submissions.html"             class="mob-sub">SUBMISSIONS</a>
-  <a href="./important-dates.html"         class="mob-sub">IMPORTANT DATES</a>
-  <a href="./camera-ready.html"            class="mob-sub">CAMERA READY INSTRUCTIONS</a>
-  <a href="./presentation-guidelines.html" class="mob-sub">PRESENTATION GUIDELINES</a>
-  <a href="./housing-support.html"         class="mob-sub">STUDENT HOUSING SUPPORT</a>
-  <a href="./travel-support.html"          class="mob-sub">STUDENT TRAVEL SUPPORT</a>
+  <a class="mob-sub" href="./cfp.html">CALL FOR PAPERS</a>
+  <a class="mob-sub" href="./submissions.html">SUBMISSIONS</a>
+  <a class="mob-sub" href="./important-dates.html">IMPORTANT DATES</a>
+  <a class="mob-sub" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+  <a class="mob-sub" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+  <a class="mob-sub" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
+  <a class="mob-sub" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
   <a href="./speakers.html">SPEAKERS</a>
   <div class="mob-section">PROGRAM</div>
-  <a href="./inaugural.html"              class="mob-sub">INAUGURAL PROGRAM</a>
-  <a href="./distinguished-lectures.html" class="mob-sub">DISTINGUISHED LECTURE PROGRAM</a>
-  <a href="./tutorials.html"              class="mob-sub">TUTORIALS</a>
-  <a href="./tracks.html"                 class="mob-sub">TRACKS</a>
-  <a href="./special-sessions.html"       class="mob-sub">SPECIAL SESSIONS</a>
-  <a href="./keynote.html"                class="mob-sub">KEYNOTE</a>
+  <a class="mob-sub" href="./inaugural.html">INAUGURAL PROGRAM</a>
+  <a class="mob-sub" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+  <a class="mob-sub" href="./tutorials.html">TUTORIALS</a>
+  <a class="mob-sub" href="./tracks.html">TRACKS</a>
+  <a class="mob-sub" href="./special-sessions.html">SPECIAL SESSIONS</a>
+  <a class="mob-sub" href="./keynote.html">KEYNOTE</a>
   <a href="./registration.html">REGISTRATION</a>
   <a href="./contact.html">CONTACT</a>
 </div>
 
+<esi:include src="/includes/marquee.html" />
+
 <main>
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <div class="page-hero-crumb"><a href="./index.html">Home</a> &nbsp;/&nbsp; For Authors &nbsp;/&nbsp; Call for Papers</div>
-    <div class="page-hero-tag"><i class="fas fa-file-alt"></i> For Authors</div>
+    <span class="eyebrow"><i class="fas fa-file-lines"></i> For Authors &middot; 5th Edition</span>
     <h1>Call for <em>Papers</em></h1>
-    <p>5th IEEE International Power and Renewable Energy Conference — inviting original research contributions in power systems, renewable energy, and emerging computing technologies.</p>
-    <div class="page-hero-meta">
-      <span><i class="fas fa-calendar-alt"></i> 15–17 October 2027</span>
-      <span><i class="fas fa-map-marker-alt"></i> CEK, Kerala, India</span>
-      <span><i class="fas fa-laptop"></i> Hybrid Mode</span>
+    <p>5th IEEE International Power and Renewable Energy Conference — inviting original research in power systems, renewable energy, and emerging computing technologies. All accepted papers submitted to the IEEE Xplore&reg; Digital Library.</p>
+
+    <div class="hero-dl">
+      <a href="/assets/documents/CFP IPRECON 2027.pdf" class="dl-btn dl-solid" download>
+        <i class="fas fa-file-arrow-down"></i>
+        <span>Download CFP<small>Full &middot; 2 pages &middot; PDF</small></span>
+      </a>
+      <a href="/assets/documents/CFP BRIEF IPRECON 2027.pdf" class="dl-btn dl-line" download>
+        <i class="fas fa-file-lines"></i>
+        <span>One Page CFP<small>Brief &middot; 1 page &middot; PDF</small></span>
+      </a>
+      <a href="/submissions.html" class="dl-btn dl-line">
+        <i class="fas fa-upload"></i>
+        <span>Submit Paper<small>Microsoft CMT portal</small></span>
+      </a>
+    </div>
+  </div>
+  <div class="breadcrumb">
+    <a href="./index.html">Home</a>
+    <i class="fas fa-chevron-right"></i>
+    <span>For Authors</span>
+    <i class="fas fa-chevron-right"></i>
+    <span class="current">Call for Papers</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     02 · THEME
+══════════════════════════════════════ -->
+<section class="cfp-band light">
+  <div class="cfp-wrap">
+    <div class="cfp-head">
+      <span class="cfp-eyebrow">The Theme</span>
+      <h2>Theme &amp; Scope</h2>
+    </div>
+    <div class="theme-split">
+      <div>
+        <p class="theme-quote">Next-Generation Energy Systems: <em>Intelligence, Resilience and Decarbonization</em></p>
+        <p class="theme-body">IPRECON 2027 is the 5th edition of India's first and only IEEE Club of 6 Technical Paper Conference, organized by the IEEE Student Branch of the College of Engineering Karunagappally. With technical co-sponsorship from <strong>IEEE IAS</strong> and <strong>IEEE PES</strong>, it is a premier platform for students, researchers, and professionals to present cutting-edge work.</p>
+      </div>
+      <dl class="spec-list">
+        <dt>Format</dt><dd>6-page IEEE double column</dd>
+        <dt>Extra pages</dt><dd>Up to 8 &middot; &#8377;1000 / $25 per page</dd>
+        <dt>Review</dt><dd>Double-blind peer review</dd>
+        <dt>Indexing</dt><dd>IEEE Xplore&reg; Digital Library</dd>
+        <dt>Recognition</dt><dd>Top 20% invited to IEEE IAS periodicals</dd>
+        <dt>Portal</dt><dd>Microsoft CMT</dd>
+      </dl>
     </div>
   </div>
 </section>
 
-<section class="content-section">
-  <div class="section-wrap">
-    <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:34px;align-items:start;" class="cfp-top">
-      <div class="prose-card reveal">
-        <h3 style="margin-top:0;">Theme</h3>
-        <p><em>"Advancing Power and Renewable Energy Systems through AI, Computing, and Emerging Technologies"</em></p>
-        <p>The IEEE International Power and Renewable Energy Conference (IPRECON 2027) is the 5th edition of India's first and only IEEE Club of 6 Technical Paper Conference, organized by the IEEE Student Branch of the College of Engineering Karunagappally. With technical co-sponsorship from <strong>IEEE IAS</strong> and <strong>IEEE PES</strong>, IPRECON 2027 serves as a premier platform for students, researchers, and professionals to share cutting-edge innovations.</p>
-        <p>All accepted papers will be submitted for inclusion in the <strong>IEEE Xplore® Digital Library</strong>, subject to IEEE quality standards.</p>
-        <div class="btn-row" style="margin-top:22px;">
-          <a href="./submissions.html" class="btn-primary"><i class="fas fa-upload"></i> Submit Paper</a>
-          <a href="https://www.ieee.org/conferences/publishing/templates" target="_blank" rel="noopener" class="btn-outline"><i class="fas fa-file-word"></i> IEEE Template</a>
+<!-- ══════════════════════════════════════
+     03 · TRACKS
+══════════════════════════════════════ -->
+<section class="cfp-band dark">
+  <div class="cfp-wrap">
+    <div class="cfp-head">
+      <span class="cfp-eyebrow">Scope</span>
+      <h2>Tracks &amp; Topics</h2>
+    </div>
+    <div class="track-ledger">
+
+      <article class="track-row reveal">
+        <span class="tr-idx">T1</span>
+        <div class="tr-body">
+          <h3>Power and Energy Systems</h3>
+          <div class="tr-tags"><span>Power Converters &amp; Control</span><span>Power Quality</span><span>Smart Grid</span><span>Distributed Generation</span><span>Grid Interconnection</span><span>Energy Policy &amp; Standards</span><span>High Voltage Engineering</span></div>
         </div>
-      </div>
-      <div class="info-band reveal">
-        <h2><i class="fas fa-star"></i> Conference Features</h2>
-        <div class="info-item"><i class="fas fa-check"></i><span>Hybrid Mode Conference</span></div>
-        <div class="info-item"><i class="fas fa-check"></i><span>International Participation</span></div>
-        <div class="info-item"><i class="fas fa-check"></i><span>Keynote Talks &amp; Workshops</span></div>
-        <div class="info-item"><i class="fas fa-check"></i><span>IEEE Quality Standards</span></div>
-        <div class="info-item"><i class="fas fa-check"></i><span>Potential IEEE IAS Publication</span></div>
-      </div>
+      </article>
+
+      <article class="track-row reveal">
+        <span class="tr-idx">T2</span>
+        <div class="tr-body">
+          <h3>Renewable Energy and Storage</h3>
+          <div class="tr-tags"><span>Solar &amp; Wind</span><span>Hybrid Systems</span><span>Battery Management</span><span>Microgrids</span><span>Electric Vehicles</span><span>Charging Infrastructure</span><span>Grid Modernization</span></div>
+        </div>
+      </article>
+
+      <article class="track-row reveal">
+        <span class="tr-idx">T3</span>
+        <div class="tr-body">
+          <h3>Power Electronics and Control</h3>
+          <div class="tr-tags"><span>Converters &amp; Drives</span><span>Control Strategies</span><span>Wide Band Gap Devices</span><span>Electric Machines</span><span>Motor Control</span><span>HVDC &amp; FACTS</span></div>
+        </div>
+      </article>
+
+      <article class="track-row reveal">
+        <span class="tr-idx">T4</span>
+        <div class="tr-body">
+          <h3>Computing, AI &amp; Data Science</h3>
+          <div class="tr-tags"><span>ML for Smart Grids</span><span>Predictive Maintenance</span><span>Fault Detection</span><span>Big Data Analytics</span><span>Nature-Inspired Optimization</span><span>Digital Twin</span><span>Cyber-Physical Systems</span><span>Blockchain &amp; Cybersecurity</span><span>Energy Forecasting</span></div>
+        </div>
+      </article>
+
+      <article class="track-row reveal">
+        <span class="tr-idx">T5</span>
+        <div class="tr-body">
+          <h3>Electronics &amp; Embedded Systems</h3>
+          <div class="tr-tags"><span>IoT Energy Systems</span><span>Wireless Sensor Networks</span><span>Embedded Power Applications</span><span>Semiconductor Technologies</span><span>Advanced Lighting</span></div>
+        </div>
+      </article>
+
+      <article class="track-row reveal">
+        <span class="tr-idx">T6</span>
+        <div class="tr-body">
+          <h3>Emerging &amp; Interdisciplinary</h3>
+          <div class="tr-tags"><span>Smart Cities</span><span>Infrastructure Automation</span><span>Industrial Energy Management</span><span>Swarm Intelligence</span><span>Virtual Power Plants</span><span>Distributed Energy Resources</span><span>Advanced Storage</span></div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
 
-<section class="content-section alt">
-  <div class="section-wrap">
-    <div class="sec-head">
-      <div class="sec-label-tag">Scope</div>
-      <h2 class="sec-title reveal">Topics of Interest</h2>
-      <p class="sec-sub reveal">We invite authors from across the globe to submit original research aligned with the following tracks.</p>
+<!-- ══════════════════════════════════════
+     04 · IMPORTANT DATES
+══════════════════════════════════════ -->
+<section class="cfp-band light" id="dates">
+  <div class="cfp-wrap">
+    <div class="cfp-head">
+      <span class="cfp-eyebrow">Key Deadlines</span>
+      <h2>Important Dates</h2>
     </div>
-    <div class="topics-grid">
-      <div class="topic-card reveal">
-        <div class="topic-icon"><i class="fas fa-bolt"></i></div>
-        <h3>Power and Energy Systems</h3>
-        <ul>
-          <li>Power Converters and Control Systems</li>
-          <li>Power Quality and Power Flow Control</li>
-          <li>Smart Grid Technologies</li>
-          <li>Distributed Generation and Grid Interconnection</li>
-          <li>Energy Policies and Standards</li>
-          <li>High Voltage Engineering and Insulation</li>
-        </ul>
-      </div>
-      <div class="topic-card reveal">
-        <div class="topic-icon"><i class="fas fa-solar-panel"></i></div>
-        <h3>Renewable Energy and Storage</h3>
-        <ul>
-          <li>Solar, Wind, and Hybrid Energy Systems</li>
-          <li>Energy Storage &amp; Battery Management</li>
-          <li>Microgrid Technologies</li>
-          <li>Electric Vehicles &amp; Charging Infrastructure</li>
-          <li>Grid Modernization and Integration</li>
-        </ul>
-      </div>
-      <div class="topic-card reveal">
-        <div class="topic-icon"><i class="fas fa-microchip"></i></div>
-        <h3>Power Electronics and Control</h3>
-        <ul>
-          <li>Power Electronic Converters and Drives</li>
-          <li>Control Strategies for Renewable Systems</li>
-          <li>Wide Band Gap Devices and Applications</li>
-          <li>Electric Machines and Motor Control</li>
-          <li>HVDC and FACTS Technologies</li>
-        </ul>
-      </div>
-      <div class="topic-card reveal">
-        <div class="topic-icon"><i class="fas fa-brain"></i></div>
-        <h3>Computing, AI &amp; Data Science</h3>
-        <ul>
-          <li>Machine Learning and AI for Smart Grids</li>
-          <li>Predictive Maintenance and Fault Detection</li>
-          <li>Big Data Analytics for Power Systems</li>
-          <li>Nature-Inspired Optimization Algorithms</li>
-          <li>Digital Twin and Cyber-Physical Systems</li>
-          <li>Blockchain and Cybersecurity in Power</li>
-          <li>AI-Based Energy Forecasting</li>
-        </ul>
-      </div>
-      <div class="topic-card reveal">
-        <div class="topic-icon"><i class="fas fa-satellite-dish"></i></div>
-        <h3>Electronics &amp; Embedded Systems</h3>
-        <ul>
-          <li>IoT-Based Energy Systems</li>
-          <li>Wireless Sensor Networks</li>
-          <li>Embedded Systems for Power Applications</li>
-          <li>Semiconductor Technologies for Renewables</li>
-          <li>Advanced Lighting Technologies</li>
-        </ul>
-      </div>
-      <div class="topic-card reveal">
-        <div class="topic-icon"><i class="fas fa-city"></i></div>
-        <h3>Emerging &amp; Interdisciplinary</h3>
-        <ul>
-          <li>Smart Cities and Infrastructure Automation</li>
-          <li>Energy Management in Industrial Systems</li>
-          <li>Swarm Intelligence &amp; Intelligent Control</li>
-          <li>Virtual Power Plants &amp; DER</li>
-          <li>Advanced Energy Storage Techniques</li>
-        </ul>
-      </div>
+    <p class="cfp-note">All deadlines are 23:59 AOE (Anywhere on Earth) and subject to final confirmation.</p>
+
+    <ol class="date-rail">
+      <li class="dr-step reveal">
+        <span class="dr-dot"></span>
+        <span class="dr-date">1 Nov 2026</span>
+        <h3>Submission Opens</h3>
+        <p>Microsoft CMT portal opens for full paper submission.</p>
+        <span class="dr-pill open">Opens</span>
+      </li>
+      <li class="dr-step reveal">
+        <span class="dr-dot"></span>
+        <span class="dr-date">1 Feb 2027</span>
+        <h3>Submission Closes</h3>
+        <p>Final deadline for full papers. No submissions after this date.</p>
+        <span class="dr-pill due">Deadline</span>
+      </li>
+      <li class="dr-step reveal">
+        <span class="dr-dot"></span>
+        <span class="dr-date">31 Jul 2027</span>
+        <h3>Acceptance Notification</h3>
+        <p>Review decisions released to authors through the CMT portal.</p>
+        <span class="dr-pill info">Notification</span>
+      </li>
+      <li class="dr-step reveal">
+        <span class="dr-dot"></span>
+        <span class="dr-date">31 Aug 2027</span>
+        <h3>Camera-Ready &amp; Registration</h3>
+        <p>Final paper, copyright form, and author registration due.</p>
+        <span class="dr-pill due">Deadline</span>
+      </li>
+      <li class="dr-step reveal">
+        <span class="dr-dot"></span>
+        <span class="dr-date">15&ndash;17 Oct 2027</span>
+        <h3>Conference</h3>
+        <p>Three days of technical sessions, keynotes, and tutorials at CEK.</p>
+        <span class="dr-pill live">Conference</span>
+      </li>
+    </ol>
+
+    <div class="cfp-btn-row">
+      <a href="./important-dates.html" class="cbtn cbtn-dark"><i class="fas fa-calendar-days"></i> Full Date Details</a>
+      <a href="./camera-ready.html" class="cbtn cbtn-line dark"><i class="fas fa-file-circle-check"></i> Camera-Ready Instructions</a>
     </div>
   </div>
 </section>
 
-<section class="content-section">
-  <div class="section-wrap">
-    <div class="sec-head">
-      <div class="sec-label-tag">Before You Submit</div>
-      <h2 class="sec-title reveal">Submission Guidelines</h2>
+<!-- ══════════════════════════════════════
+     05 · SUBMISSION RULES
+══════════════════════════════════════ -->
+<section class="cfp-band dark">
+  <div class="cfp-wrap">
+    <div class="cfp-head">
+      <span class="cfp-eyebrow">Before You Submit</span>
+      <h2>Submission Rules</h2>
     </div>
-    <div class="guide-grid">
-      <div class="guide-card reveal">
-        <div class="guide-num"><i class="fas fa-file-lines"></i></div>
+    <div class="rule-grid">
+
+      <div class="rule-col reveal">
         <h3>Paper Format</h3>
         <ul>
-          <li>6-page full paper in standard IEEE format</li>
-          <li>Max 8 pages with extra payment (₹1000 / $25 per page)</li>
-          <li>No author biography at the end</li>
-          <li>Include references within the page limit</li>
+          <li><b>6 pages</b> in standard IEEE conference format</li>
+          <li>Extendable to <b>8 pages</b> with per-page charge</li>
+          <li>References counted within the page limit</li>
+          <li>No author biography section</li>
         </ul>
       </div>
-      <div class="guide-card reveal">
-        <div class="guide-num"><i class="fas fa-laptop-code"></i></div>
+
+      <div class="rule-col reveal">
         <h3>Conference Mode</h3>
         <ul>
-          <li>Hybrid mode conference</li>
-          <li>In-person and virtual attendance options</li>
-          <li>Platform details provided after registration</li>
-          <li>Access to all technical sessions and keynotes</li>
+          <li>Hybrid — in-person at CEK or online</li>
+          <li>Platform details sent after registration</li>
+          <li>Full access to sessions, keynotes, tutorials</li>
+          <li>Remote presentation for visa-restricted authors</li>
         </ul>
       </div>
-      <div class="guide-card reveal">
-        <div class="guide-num"><i class="fas fa-award"></i></div>
-        <h3>Publication Benefits</h3>
+
+      <div class="rule-col reveal">
+        <h3>Publication</h3>
         <ul>
-          <li>IEEE Xplore® Digital Library inclusion</li>
-          <li>Top 20% eligible for IEEE IAS periodicals</li>
-          <li>Rigorous peer review process</li>
-          <li>International visibility</li>
+          <li>IEEE Xplore&reg; Digital Library inclusion</li>
+          <li>Top <b>20%</b> invited for IEEE IAS periodicals</li>
+          <li>Subject to IEEE quality standards</li>
+          <li>Rigorous peer review</li>
         </ul>
       </div>
-      <div class="guide-card reveal">
-        <div class="guide-num"><i class="fas fa-clipboard-check"></i></div>
-        <h3>Registration Requirements</h3>
+
+      <div class="rule-col reveal">
+        <h3>Registration</h3>
         <ul>
-          <li>Each paper needs one full author registration</li>
+          <li>One <b>full author registration</b> per paper</li>
           <li>IEEE membership validation required</li>
-          <li>Student ID verification for student category</li>
-          <li>Transaction ID preservation recommended</li>
+          <li>Student ID verification for student rates</li>
+          <li>Retain your payment transaction ID</li>
         </ul>
       </div>
+
     </div>
   </div>
 </section>
 
-<section class="content-section dark">
-  <div class="section-wrap" style="text-align:center;">
-    <h2 style="color:#fff;font-size:26px;font-weight:800;margin-bottom:12px;">Ready to Submit?</h2>
-    <p style="color:rgba(255,255,255,0.7);max-width:560px;margin:0 auto 26px;line-height:1.7;">Submit your 6-page full paper in standard IEEE format for review through the Microsoft CMT system.</p>
-    <div class="btn-row" style="justify-content:center;">
-      <a href="./submissions.html" class="btn-gold"><i class="fas fa-upload"></i> Submit Paper Now</a>
-      <a href="https://www.ieee.org/conferences/publishing/templates" target="_blank" rel="noopener" class="btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.3);"><i class="fas fa-download"></i> IEEE Template</a>
+<!-- ══════════════════════════════════════
+     06 · CTA
+══════════════════════════════════════ -->
+<section class="cfp-cta">
+  <div class="cfp-wrap cta-split">
+    <div>
+      <h2>Ready to submit?</h2>
+      <p>Papers go through the Microsoft CMT system. Have your IEEE-formatted PDF ready before you start.</p>
     </div>
-    <p style="color:rgba(255,255,255,0.5);font-size:13px;margin-top:24px;">Need help? <a href="./contact.html" style="color:var(--gold);">Contact the organizing committee</a></p>
+    <div class="cfp-btn-row">
+      <a href="./submissions.html" class="cbtn cbtn-dark"><i class="fas fa-upload"></i> Submit Paper</a>
+      <a href="./contact.html" class="cbtn cbtn-line dark"><i class="fas fa-envelope"></i> Ask the Committee</a>
+    </div>
   </div>
 </section>
 
 <style>
-.topics-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-.topic-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:28px 26px; box-shadow:0 4px 20px rgba(33,16,33,0.06); transition:transform .3s, box-shadow .3s; }
-.topic-card:hover { transform:translateY(-5px); box-shadow:0 16px 40px rgba(33,16,33,0.11); }
-.topic-icon { width:50px; height:50px; border-radius:10px; background:#f3e8f5; color:var(--purple); display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:16px; }
-.topic-card h3 { font-size:15.5px; color:var(--brand); font-weight:700; margin-bottom:14px; }
-.topic-card ul { list-style:none; }
-.topic-card ul li { position:relative; padding-left:22px; font-size:13px; color:var(--muted); line-height:1.55; margin-bottom:8px; }
-.topic-card ul li::before { content:'\f105'; font-family:'Font Awesome 6 Free'; font-weight:900; position:absolute; left:4px; color:var(--gold); }
-.guide-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
-.guide-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:28px 30px; box-shadow:0 4px 20px rgba(33,16,33,0.06); }
-.guide-num { width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,var(--purple),var(--purple-d)); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; margin-bottom:16px; }
-.guide-card h3 { font-size:16px; color:var(--brand); font-weight:700; margin-bottom:12px; }
-.guide-card ul { list-style:none; }
-.guide-card ul li { position:relative; padding-left:24px; font-size:13.5px; color:var(--muted); line-height:1.6; margin-bottom:9px; }
-.guide-card ul li::before { content:'\f00c'; font-family:'Font Awesome 6 Free'; font-weight:900; position:absolute; left:4px; color:var(--purple); font-size:11px; top:3px; }
-@media (max-width:900px){ .cfp-top{grid-template-columns:1fr !important;} .topics-grid{grid-template-columns:1fr 1fr;} .guide-grid{grid-template-columns:1fr;} }
-@media (max-width:600px){ .topics-grid{grid-template-columns:1fr;} }
+/* ── hero download buttons ─────────────────── */
+.hero-dl { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.dl-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 13px 22px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.03em;
+  transition: transform 0.22s, background 0.22s, border-color 0.22s, color 0.22s;
+}
+.dl-btn i { font-size: 16px; flex-shrink: 0; }
+.dl-btn span { display: flex; flex-direction: column; line-height: 1.25; text-align: left; }
+.dl-btn small {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; opacity: 0.62; margin-top: 3px;
+}
+.dl-solid { background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand); }
+.dl-solid:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(212,175,55,0.32); }
+.dl-line { border: 1px solid rgba(255,255,255,0.3); color: #fff; }
+.dl-line:hover { transform: translateY(-2px); border-color: var(--gold); color: var(--gold); }
+
+@media (max-width: 640px) {
+  .hero-dl { flex-direction: column; }
+  .dl-btn { width: 100%; }
+}
+
+/* ════════════════════════════════════════════
+       CFP — white / black alternating system
+    ════════════════════════════════════════════ */
+/* site dark band — same as accommodation / visa / committee */
+.cfp-band.dark {
+  background: radial-gradient(120% 90% at 80% 0%, #3a1d3f 0%, var(--brand) 55%, #1a0e1a 100%);
+}
+.cfp-band.dark::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px);
+}
+.cfp-band.dark { position: relative; overflow: hidden;
+  border-top: 1px solid rgba(212,175,55,0.28); border-bottom: 1px solid rgba(212,175,55,0.28); }
+.cfp-band.dark > * { position: relative; z-index: 2; }
+
+.cfp-wrap { max-width: 1180px; margin: 0 auto; }
+.cfp-band { padding: 92px 60px; }
+.cfp-band.light { background: #fff; color: var(--brand); }
+.cfp-band.light:nth-of-type(even) { background: var(--light); }
+.cfp-band.dark  { color: #fff; }
+
+/* section head — eyebrow + title + gradient rule (site standard) */
+.cfp-head { text-align: center; margin-bottom: 46px; }
+.cfp-eyebrow {
+  display: block; font-size: 11px; font-weight: 700; color: var(--purple);
+  letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px;
+}
+.cfp-head h2 {
+  font-size: clamp(24px, 3.4vw, 36px); font-weight: 800; line-height: 1.2;
+  letter-spacing: -0.02em; display: inline-block; padding-bottom: 14px; position: relative;
+}
+.cfp-head h2::after {
+  content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 90px; height: 3px; background: linear-gradient(90deg, var(--purple), var(--gold));
+}
+.cfp-band.dark .cfp-eyebrow { color: var(--gold); }
+.cfp-band.dark .cfp-head h2::after { background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.25)); }
+.cfp-note { font-size: 13.5px; opacity: 0.62; margin: -30px auto 40px; max-width: 640px; text-align: center; }
+
+/* buttons */
+.cfp-btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+.cbtn { display: inline-flex; align-items: center; gap: 9px; padding: 14px 26px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  border: 1px solid transparent; transition: all 0.25s ease; }
+.cbtn-solid { background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand); }
+.cbtn-solid:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(212,175,55,0.35); }
+.cbtn-dark { background: var(--brand); color: #fff; }
+.cbtn-dark:hover { background: var(--purple); }
+.cbtn-line { border-color: rgba(255,255,255,0.35); color: #fff; }
+.cbtn-line:hover { border-color: var(--gold); color: var(--gold); }
+.cbtn-line.dark { border-color: rgba(33,16,33,0.28); color: var(--brand); }
+.cbtn-line.dark:hover { border-color: var(--brand); background: var(--brand); color: #fff; }
+
+/* ── page hero (same as about-iprecon.html) ── */
+.page-hero {
+  background: var(--brand);
+  padding: 66px 60px 60px;
+  position: relative; overflow: hidden;
+  text-align: left;
+}
+.page-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg, transparent, transparent 60px,
+    rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
+}
+.page-hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0; }
+.page-hero .eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4);
+  color: var(--gold); font-size: 11px; font-weight: 600;
+  padding: 6px 16px; border-radius: 3px;
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 22px;
+}
+.page-hero h1 {
+  font-size: clamp(30px, 4.5vw, 48px); font-weight: 800; color: #fff;
+  line-height: 1.15; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.01em;
+}
+.page-hero h1 em { font-style: normal; color: var(--gold); }
+.page-hero p {
+  font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 640px; margin: 0;
+}
+.breadcrumb {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.5);
+  letter-spacing: 0.04em;
+}
+.breadcrumb a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.3); }
+.breadcrumb .current { color: var(--gold); }
+
+/* ── theme split + spec list ── */
+.theme-split { display: grid; grid-template-columns: 1.25fr 1fr; gap: 60px; align-items: start; }
+.theme-quote { font-size: clamp(19px, 2.3vw, 27px); font-weight: 700; line-height: 1.45; letter-spacing: -0.015em;
+  padding-left: 22px; border-left: 3px solid var(--gold); margin-bottom: 26px; }
+.theme-quote em { font-style: normal; color: var(--purple); }
+.theme-body { font-size: 14.5px; line-height: 1.9; opacity: 0.75; }
+.spec-list { display: grid; grid-template-columns: auto 1fr; column-gap: 22px; }
+.spec-list dt { font-size: 10.5px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); padding: 14px 0; border-top: 1px solid rgba(33,16,33,0.12); white-space: nowrap; }
+.spec-list dd { font-size: 13.5px; padding: 14px 0; border-top: 1px solid rgba(33,16,33,0.12); opacity: 0.82; }
+
+/* ── track ledger: rows that invert on hover ── */
+.track-ledger { border-top: 1px solid rgba(255,255,255,0.16); }
+.track-row { display: grid; grid-template-columns: 96px 1fr; gap: 20px; align-items: start;
+  padding: 30px 24px 30px 4px; border-bottom: 1px solid rgba(255,255,255,0.16);
+  transition: background 0.35s ease, color 0.35s ease, padding-left 0.35s ease; }
+.track-row:hover { background: rgba(255,255,255,0.06); padding-left: 24px; }
+.tr-idx { font-size: 13px; font-weight: 800; letter-spacing: 0.18em; color: var(--gold); padding-top: 5px; }
+.tr-body h3 { font-size: clamp(18px, 2.2vw, 25px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
+.tr-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tr-tags span { font-size: 12px; padding: 6px 13px; border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.72); transition: all 0.35s ease; }
+.track-row:hover .tr-tags span { border-color: rgba(212,175,55,0.5); color: var(--gold); }
+
+/* ── date rail: horizontal timeline ── */
+.date-rail { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; counter-reset: dr; }
+.dr-step { position: relative; padding: 34px 22px 0 0; border-top: 2px solid rgba(33,16,33,0.12); }
+.dr-step:hover { border-top-color: var(--gold); }
+.dr-dot { position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%;
+  background: #fff; border: 2px solid rgba(33,16,33,0.35); transition: all 0.3s ease; }
+.dr-step:hover .dr-dot { background: var(--gold); border-color: var(--gold); transform: scale(1.25); }
+.dr-date { display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 10px; }
+.dr-step h3 { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; line-height: 1.3; }
+.dr-step p { font-size: 12.5px; line-height: 1.65; opacity: 0.65; margin-bottom: 14px; }
+.dr-pill { display: inline-block; font-size: 9.5px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 11px; }
+.dr-pill.open { background: #eaf6ee; color: #1e7a3e; }
+.dr-pill.due  { background: #fdeaea; color: #b03030; }
+.dr-pill.info { background: #f3e8f5; color: var(--purple-d); }
+.dr-pill.live { background: var(--brand); color: var(--gold); }
+
+/* ── rule columns ── */
+.rule-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.rule-col { padding: 0 26px; border-left: 1px solid rgba(255,255,255,0.16); }
+.rule-col:first-child { padding-left: 0; border-left: none; }
+.rule-col h3 { font-size: 15px; font-weight: 800; letter-spacing: 0.02em; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 2px solid var(--gold); display: inline-block; }
+.rule-col ul { list-style: none; }
+.rule-col li { position: relative; padding-left: 18px; font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+.rule-col li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 1px; background: var(--gold); }
+.rule-col b { color: #fff; font-weight: 700; }
+
+/* ── CTA ── */
+.cfp-cta { background: var(--off); color: var(--brand); padding: 78px 60px; border-top: 1px solid rgba(33,16,33,0.12); }
+.cta-split { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.cta-split h2 { font-size: clamp(24px, 3.4vw, 38px); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 10px; }
+.cta-split p { font-size: 14px; opacity: 0.7; max-width: 460px; line-height: 1.7; }
+.cta-split .cfp-btn-row { margin-top: 0; }
+
+@media (max-width: 1100px) {
+  .cfp-band, .page-hero, .cfp-cta { padding-left: 32px; padding-right: 32px; }
+  .theme-split { grid-template-columns: 1fr; gap: 40px; }
+  .date-rail { grid-template-columns: repeat(2, 1fr); gap: 34px 0; }
+  .rule-grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+  .rule-col:nth-child(3) { padding-left: 0; border-left: none; }
+}
+@media (max-width: 768px) {
+  .cfp-band { padding: 64px 20px; }
+  .page-hero { padding: 48px 20px 44px; }
+  .cfp-cta  { padding: 58px 20px; }
+  .date-rail { grid-template-columns: 1fr; }
+  .rule-grid { grid-template-columns: 1fr; }
+  .rule-col { padding-left: 0; border-left: none; }
+  .track-row { grid-template-columns: 1fr; gap: 10px; }
+  .cfp-head { gap: 14px; margin-bottom: 32px; }
+}
 </style>
 
 </main>
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <img src="assets/img/iprecon27 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
-      <p>2027 IEEE International Power and Renewable Energy Conference — 5th edition. Organized by IEEE Student Branch, College of Engineering Karunagappally, Kerala, India.</p>
-      <div class="footer-socials">
-        <a href="https://www.facebook.com/ieeeceksb/"       class="soc-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://x.com/IEEE_SB_CEK"                 class="soc-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.linkedin.com/company/ieeesbcek/" class="soc-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/ieee_sb_cek/"    class="soc-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>For Authors</h4>
-      <ul>
-        <li><a href="./cfp.html">Call for Papers</a></li>
-        <li><a href="./submissions.html">Submit a Paper</a></li>
-        <li><a href="./important-dates.html">Important Dates</a></li>
-        <li><a href="https://www.ieee.org/conferences/publishing/templates" target="_blank" rel="noopener">IEEE Paper Template</a></li>
-        <li><a href="./camera-ready.html">Camera Ready</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Conference</h4>
-      <ul>
-        <li><a href="./about-iprecon.html">About IPRECON</a></li>
-        <li><a href="./organizers.html">Organizers</a></li>
-        <li><a href="./committee.html">Committee</a></li>
-        <li><a href="./speakers.html">Speakers</a></li>
-        <li><a href="./sponsors.html">Sponsors</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Travel &amp; Info</h4>
-      <ul>
-        <li><a href="./venue.html">Venue &amp; Directions</a></li>
-        <li><a href="./accommodation.html">Accommodation</a></li>
-        <li><a href="./visa.html">Visa Information</a></li>
-        <li><a href="./kerala.html">Kerala Tourism</a></li>
-        <li><a href="./contact.html">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>Built with &#10084;&#65039; &nbsp;|&nbsp; IEEE Student Branch CEK &copy; 2027</span>
-    <span>College of Engineering Karunagappally, Kerala, India</span>
-  </div>
-</footer>
+<esi:include src="/includes/footer.html" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -662,6 +894,21 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+
+/* drawer close button */
+(function () {
+  var btn = document.getElementById('mobClose');
+  var nav = document.getElementById('mobileNav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function () {
+    nav.classList.remove('open');
+    document.body.classList.remove('nav-open');
+    var ov = document.getElementById('mobileNavOverlay');
+    if (ov) ov.classList.remove('open');
+    var mb = document.getElementById('menuBtn');
+    if (mb) { mb.classList.remove('active'); mb.setAttribute('aria-expanded', 'false'); }
+  });
+})();
 </script>
 
 </body>

@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon.png" />
   <title>IPRECON 2027 — Registration</title>
   <meta name="description" content="Registration details and fees for IPRECON 2027 — authors, co-authors, and attendees." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -53,7 +56,7 @@ a    { text-decoration: none; color: inherit; }
   border-bottom: 3px solid var(--brand);
 }
 .header-brand { display: flex; align-items: center; gap: 18px; }
-.header-conf-logo { height: 110px; width: auto; }
+.header-conf-logo { height: 100px; width: auto; }
 .header-brand-text {
   display: flex; flex-direction: column; gap: 2px;
   border-left: 1px solid var(--border); padding-left: 18px;
@@ -81,7 +84,7 @@ a    { text-decoration: none; color: inherit; }
 .brand-logo-wrap { display: flex; align-items: center; gap: 12px; height: var(--nav-h); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
 .navbar.scrolled .brand-logo-wrap { opacity: 1; visibility: visible; }
 .brand-logo { height: 46px; width: auto; display: block; }
-.nav-items { display: flex; list-style: none; }
+.nav-items { display: flex; list-style: none; margin-left: auto; }
 .nav-item { position: relative; }
 .nav-item > a, .nav-item > span.nav-link {
   display: flex; align-items: center; gap: 5px; padding: 0 16px; height: var(--nav-h);
@@ -102,14 +105,54 @@ a    { text-decoration: none; color: inherit; }
 .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.mobile-nav { position: fixed; top: var(--nav-h); right: 0; bottom: 0; width: min(82%, 340px); background: var(--brand); z-index: 1001; overflow-y: auto; padding: 16px 16px 40px; -webkit-overflow-scrolling: touch; transform: translateX(100%); transition: transform 0.32s cubic-bezier(0.22,0.61,0.36,1); box-shadow: -12px 0 32px rgba(0,0,0,0.45); visibility: hidden; }
-.mobile-nav.open { transform: translateX(0); visibility: visible; }
-.mobile-nav-overlay { position: fixed; inset: 0; top: var(--nav-h); background: rgba(0,0,0,0.5); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s; }
+.mobile-nav {
+  position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0;
+  background: var(--brand); z-index: 1003;
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
+  padding: 8px 0 40px;
+  border-top: 1px solid rgba(212,175,55,0.35);
+  transform: translateY(-8px); opacity: 0; visibility: hidden;
+  transition: transform 0.28s ease, opacity 0.28s ease, visibility 0.28s;
+}
+.mobile-nav.open { transform: none; opacity: 1; visibility: visible; }
+.mobile-nav-overlay { display: none; }   /* full-width drawer needs no scrim */
 .mobile-nav-overlay.open { opacity: 1; visibility: visible; }
-.mobile-nav a { display: block; padding: 14px 14px; color: rgba(255,255,255,0.78); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s; }
-.mobile-nav a:hover, .mobile-nav a:active { color: var(--gold); }
-.mob-section { font-size: 10px; color: var(--gold); padding: 16px 14px 4px; letter-spacing: 0.14em; font-weight: 700; text-transform: uppercase; }
-.mob-sub { padding-left: 28px !important; font-size: 12.5px !important; }
+.mobile-nav a {
+  display: flex; align-items: center; justify-content: flex-start;
+  padding: 14px 22px;
+  color: rgba(255,255,255,0.82); font-size: 12.5px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.2s, color 0.2s, padding-left 0.2s;
+}
+.mobile-nav a:hover, .mobile-nav a:active { color: var(--gold); background: rgba(255,255,255,0.05); padding-left: 28px; }
+.mobile-nav a.mob-sub {
+  padding-left: 34px; font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,0.68);
+}
+.mobile-nav a.mob-sub::before {
+  content: ''; width: 10px; height: 1px; background: rgba(212,175,55,0.6);
+  margin-right: 12px; flex-shrink: 0;
+}
+.mobile-nav a.mob-sub:hover { padding-left: 40px; color: var(--gold); }
+.mob-close {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    width: 100%; padding: 14px 22px; margin-bottom: 4px;
+    background: rgba(255,255,255,0.06); border: none; border-bottom: 1px solid rgba(255,255,255,0.12);
+    color: var(--gold); font: inherit; font-size: 11px; font-weight: 800;
+    letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .mob-close:hover { background: rgba(212,175,55,0.16); color: #fff; }
+  .mob-close i { font-size: 15px; }
+.mob-section {
+  display: block; margin-top: 10px;
+  padding: 14px 22px 8px;
+  font-size: 10px; color: var(--gold);
+  letter-spacing: 0.2em; font-weight: 800; text-transform: uppercase;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
 body.nav-open { overflow: hidden; }
 
 /* PAGE HERO (sub-pages) */
@@ -188,6 +231,35 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
 /* RESPONSIVE */
+/* ════════════════════════════════════════════
+       MARQUEE (index2 system)
+    ════════════════════════════════════════════ */
+body.nav-open .nav-marquee { visibility: hidden; }
+body.nav-open .marquee-strip-mobile { display: none !important; }
+.nav-marquee {
+  display: none; flex: 1 1 auto; min-width: 0; overflow: hidden; height: var(--nav-h);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.nav-marquee-track { display: flex; align-items: center; gap: 30px; height: 100%; width: max-content; animation: mLeft 22s linear infinite; }
+.nav-marquee-item { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.82); white-space: nowrap; }
+.nav-marquee-item i { color: var(--gold); font-size: 11px; }
+.nav-marquee-item strong { color: #fff; font-weight: 600; }
+.nav-marquee-sep { color: rgba(212,175,55,0.7); font-size: 10px; }
+.marquee-strip {
+  background: var(--off); border-bottom: 1px solid var(--border);
+  padding: 10px 0; overflow: hidden;
+  position: sticky; top: var(--nav-h); z-index: 999;
+}
+.marquee-strip-mobile { display: none; background: var(--off); border-bottom: 1px solid var(--border); overflow: hidden; }
+.marquee-track { display: flex; gap: 52px; animation: mLeft 32s linear infinite; width: max-content; }
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes mLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-item { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.marquee-item i { color: var(--purple); font-size: 11px; }
+.marquee-item strong { color: var(--brand); font-weight: 600; }
+.marquee-sep { color: #d0b0d0; }
+
 @media (max-width: 1100px) {
   .site-header, .header-top-bar { padding-left: 28px; padding-right: 28px; }
   .nav-container { padding: 0 20px; }
@@ -200,24 +272,42 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
   .header-sp-group img { height: 30px; }
 }
 @media (max-width: 768px) {
-  .header-top-bar { padding: 6px 16px; font-size: 11px; }
+      .site-header { padding: 10px 12px; gap: 8px; }
+      .header-brand { gap: 8px; flex: 1; min-width: 0; }
+      .header-conf-logo { height: 46px; }
+      .header-brand-text { padding-left: 10px; }
+      .header-brand-text .conf-name { font-size: 12px; }
+      .header-brand-text .conf-full { font-size: 8.5px; line-height: 1.3; }
+      .header-edition-badge { display: none; }
+
+      /* sponsor logos stay visible, top-right */
+      .header-sponsors { display: flex; flex-shrink: 0; }
+      .header-sp-group { padding: 0 6px; border-right: 1px solid var(--border); }
+      .header-sp-group:last-child { border-right: none; }
+      .header-sp-group .sp-label { display: none; }
+      .header-sp-group img { height: 22px; }
+
+      .nav-items { display: none; }
+      /* collapse the logo slot so the marquee runs the full bar; it returns on scroll */
+      .brand-logo-wrap { gap: 8px; width: 0; overflow: hidden; }
+      .navbar.scrolled .brand-logo-wrap { width: auto; margin-right: 8px; }
+      .brand-label { display: none; }
+      .hamburger { display: flex; flex-shrink: 0; order: 3; margin-left: auto; }
+      .navbar { height: 58px; }
+      .nav-container { padding: 0 12px; justify-content: flex-start; gap: 8px; height: 58px; }
+
+      /* marquee runs inside the nav bar at the top of the page … */
+      .nav-marquee { display: block; order: 2; flex: 1 1 auto; min-width: 0; }
+      .marquee-strip { display: none; }
+      /* … then pins directly under the nav once scrolled */
+      .marquee-strip-mobile {
+        display: none; position: fixed; top: 58px; left: 0; right: 0;
+        padding: 9px 0; z-index: 997;
+      }
+      .navbar.scrolled ~ .marquee-strip-mobile { display: block; }
+      .navbar.scrolled .nav-marquee { display: none; }
+  .header-top-bar { padding: 6px 18px; font-size: 11px; }
   .header-top-bar .htb-right { display: none; }
-  .site-header { padding: 10px 12px; }
-  .header-conf-logo { height: 40px; }
-  .header-brand { gap: 8px; flex: 1; min-width: 0; }
-  .header-brand-text { padding-left: 8px; }
-  .header-brand-text .conf-name { font-size: 11px; }
-  .header-brand-text .conf-full { font-size: 9px; line-height: 1.3; }
-  .header-edition-badge { display: none; }
-  .header-sponsors { display: flex; flex-shrink: 0; }
-  .header-sp-group { padding: 0 6px; }
-  .header-sp-group img { height: 22px; }
-  .brand-logo-wrap { gap: 8px; width: 0; overflow: hidden; }
-  .navbar.scrolled .brand-logo-wrap { width: auto; margin-right: 8px; }
-  .brand-logo { height: 34px; }
-  .nav-items { display: none; }
-  .hamburger { display: flex; margin-left: auto; }
-  .nav-container { padding: 0 14px; justify-content: flex-start; gap: 6px; }
   .content-section, .page-hero { padding: 52px 20px; }
   .page-hero { padding-top: 48px; }
   .sec-head { margin-bottom: 34px; }
@@ -228,8 +318,6 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
 }
 @media (max-width: 480px) {
-  .header-conf-logo { height: 36px; }
-  .header-sp-group img { height: 19px; }
   .btn-row { flex-direction: column; }
   .btn-primary, .btn-outline, .btn-gold { width: 100%; justify-content: center; }
 }
@@ -237,6 +325,9 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
 }
+
+  
+
 
   </style>
 </head>
@@ -331,6 +422,7 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
       <li class="nav-item"><a href="./registration.html" class="active" data-nav="registration">REGISTRATION</a></li>
       <li class="nav-item"><a href="./contact.html" data-nav="contact">CONTACT</a></li>
     </ul>
+    <esi:include src="/includes/nav-marquee.html" />
     <button class="hamburger" id="menuBtn" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -339,310 +431,691 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
 
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 <div class="mobile-nav" id="mobileNav">
+  <button type="button" class="mob-close" id="mobClose" aria-label="Close menu">
+    <span>Close menu</span><i class="fas fa-xmark"></i>
+  </button>
   <a href="./index.html">HOME</a>
   <div class="mob-section">ABOUT</div>
-  <a href="./about-iprecon.html" class="mob-sub">IPRECON</a>
-  <a href="./organizers.html"    class="mob-sub">ORGANIZERS</a>
-  <a href="./venue.html"         class="mob-sub">VENUE</a>
-  <a href="./kerala.html"        class="mob-sub">KERALA</a>
-  <a href="./accommodation.html" class="mob-sub">ACCOMMODATION</a>
-  <a href="./visa.html"          class="mob-sub">VISA</a>
-  <a href="./sponsors.html"      class="mob-sub">SPONSORS &amp; EXHIBITORS</a>
-  <a href="./dei.html"           class="mob-sub">DEI STATEMENT</a>
+  <a class="mob-sub" href="./about-iprecon.html">IPRECON</a>
+  <a class="mob-sub" href="./organizers.html">ORGANIZERS</a>
+  <a class="mob-sub" href="./venue.html">VENUE</a>
+  <a class="mob-sub" href="./kerala.html">KERALA</a>
+  <a class="mob-sub" href="./accommodation.html">ACCOMMODATION</a>
+  <a class="mob-sub" href="./visa.html">VISA</a>
+  <a class="mob-sub" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+  <a class="mob-sub" href="./dei.html">DEI STATEMENT</a>
   <a href="./committee.html">COMMITTEE</a>
   <div class="mob-section">FOR AUTHORS</div>
-  <a href="./cfp.html"                     class="mob-sub">CALL FOR PAPERS</a>
-  <a href="./submissions.html"             class="mob-sub">SUBMISSIONS</a>
-  <a href="./important-dates.html"         class="mob-sub">IMPORTANT DATES</a>
-  <a href="./camera-ready.html"            class="mob-sub">CAMERA READY INSTRUCTIONS</a>
-  <a href="./presentation-guidelines.html" class="mob-sub">PRESENTATION GUIDELINES</a>
-  <a href="./housing-support.html"         class="mob-sub">STUDENT HOUSING SUPPORT</a>
-  <a href="./travel-support.html"          class="mob-sub">STUDENT TRAVEL SUPPORT</a>
+  <a class="mob-sub" href="./cfp.html">CALL FOR PAPERS</a>
+  <a class="mob-sub" href="./submissions.html">SUBMISSIONS</a>
+  <a class="mob-sub" href="./important-dates.html">IMPORTANT DATES</a>
+  <a class="mob-sub" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+  <a class="mob-sub" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+  <a class="mob-sub" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
+  <a class="mob-sub" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
   <a href="./speakers.html">SPEAKERS</a>
   <div class="mob-section">PROGRAM</div>
-  <a href="./inaugural.html"              class="mob-sub">INAUGURAL PROGRAM</a>
-  <a href="./distinguished-lectures.html" class="mob-sub">DISTINGUISHED LECTURE PROGRAM</a>
-  <a href="./tutorials.html"              class="mob-sub">TUTORIALS</a>
-  <a href="./tracks.html"                 class="mob-sub">TRACKS</a>
-  <a href="./special-sessions.html"       class="mob-sub">SPECIAL SESSIONS</a>
-  <a href="./keynote.html"                class="mob-sub">KEYNOTE</a>
+  <a class="mob-sub" href="./inaugural.html">INAUGURAL PROGRAM</a>
+  <a class="mob-sub" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+  <a class="mob-sub" href="./tutorials.html">TUTORIALS</a>
+  <a class="mob-sub" href="./tracks.html">TRACKS</a>
+  <a class="mob-sub" href="./special-sessions.html">SPECIAL SESSIONS</a>
+  <a class="mob-sub" href="./keynote.html">KEYNOTE</a>
   <a href="./registration.html">REGISTRATION</a>
   <a href="./contact.html">CONTACT</a>
 </div>
 
+<esi:include src="/includes/marquee-mobile.html" />
+
+<esi:include src="/includes/marquee.html" />
+
 <main>
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <div class="page-hero-crumb"><a href="./index.html">Home</a> &nbsp;/&nbsp; Registration</div>
-    <div class="page-hero-tag"><i class="fas fa-user-plus"></i> Registration</div>
+    <span class="eyebrow"><i class="fas fa-user-plus"></i> Registration &middot; 5th Edition</span>
     <h1>Registration <em>Details</em></h1>
-    <p>Please read the registration guidelines carefully before registering. All authors, co-authors, and attendees must select the appropriate category below.</p>
-    <div class="page-hero-meta">
-      <span><i class="fas fa-clock"></i> Early Bird: by 31 Aug 2027</span>
-      <span><i class="fas fa-calendar-day"></i> Regular: from 1 Sep 2027</span>
+    <p>Read the guidelines carefully before registering. Fees exclude payment gateway and currency conversion charges.</p>
+    <div class="hero-cta">
+      <button class="rbtn gold" id="registerBtn"><i class="fas fa-arrow-down"></i> Start Registration</button>
+      <span class="hero-note"><i class="fas fa-triangle-exclamation"></i> Indian, Bhutan &amp; Nepal delegates pay in INR / Ngultrum</span>
+    </div>
+  </div>
+  <div class="breadcrumb">
+    <a href="./index.html">Home</a>
+    <i class="fas fa-chevron-right"></i>
+    <span class="current">Registration</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     01 · FEE EXPLORER
+══════════════════════════════════════ -->
+<section class="rg-band light" id="fees">
+  <div class="rg-wrap">
+    <div class="rg-head">
+      <span class="rg-eyebrow">What It Costs</span>
+      <h2>Fee Explorer</h2>
+    </div>
+
+    <div class="fee-cards" id="feeMatrix">
+
+      <article class="fee-group reveal" data-role="author">
+        <h3 class="fg-name"><i class="fas fa-user-graduate"></i> Author &ndash; Student</h3>
+        <div class="fg-cols">
+          <span></span>
+          <span class="col-early">Early bird</span>
+          <span class="col-regular">Regular</span>
+        </div>
+        <div class="fg-row">
+          <span class="fg-k">IEEE Member</span>
+          <span class="td-price col-early"><b>&#8377;4,999</b><em>$150</em></span>
+          <span class="td-price col-regular"><b>&#8377;6,999</b><em>$200</em></span>
+        </div>
+        <div class="fg-row">
+          <span class="fg-k">Non-IEEE</span>
+          <span class="td-price col-early"><b>&#8377;6,999</b><em>$175</em></span>
+          <span class="td-price col-regular"><b>&#8377;8,999</b><em>$225</em></span>
+        </div>
+      </article>
+
+      <article class="fee-group reveal" data-role="author">
+        <h3 class="fg-name"><i class="fas fa-briefcase"></i> Author &ndash; Academia / Industry</h3>
+        <div class="fg-cols">
+          <span></span>
+          <span class="col-early">Early bird</span>
+          <span class="col-regular">Regular</span>
+        </div>
+        <div class="fg-row">
+          <span class="fg-k">IEEE Member</span>
+          <span class="td-price col-early"><b>&#8377;7,999</b><em>$190</em></span>
+          <span class="td-price col-regular"><b>&#8377;9,999</b><em>$240</em></span>
+        </div>
+        <div class="fg-row">
+          <span class="fg-k">Non-IEEE</span>
+          <span class="td-price col-early"><b>&#8377;9,999</b><em>$240</em></span>
+          <span class="td-price col-regular"><b>&#8377;11,999</b><em>$290</em></span>
+        </div>
+      </article>
+
+      <article class="fee-group reveal" data-role="coauthor">
+        <h3 class="fg-name"><i class="fas fa-users"></i> Co-Author &ndash; Student</h3>
+        <div class="fg-cols">
+          <span></span>
+          <span class="col-early">Early bird</span>
+          <span class="col-regular">Regular</span>
+        </div>
+        <div class="fg-row">
+          <span class="fg-k">IEEE Member</span>
+          <span class="td-price col-early"><b>&#8377;2,999</b><em>$130</em></span>
+          <span class="td-price col-regular"><b>&#8377;4,999</b><em>$180</em></span>
+        </div>
+        <div class="fg-row">
+          <span class="fg-k">Non-IEEE</span>
+          <span class="td-price col-early"><b>&#8377;3,999</b><em>$155</em></span>
+          <span class="td-price col-regular"><b>&#8377;5,999</b><em>$205</em></span>
+        </div>
+      </article>
+
+      <article class="fee-group reveal" data-role="coauthor">
+        <h3 class="fg-name"><i class="fas fa-user-tie"></i> Co-Author &ndash; Academia / Industry</h3>
+        <div class="fg-cols">
+          <span></span>
+          <span class="col-early">Early bird</span>
+          <span class="col-regular">Regular</span>
+        </div>
+        <div class="fg-row">
+          <span class="fg-k">IEEE Member</span>
+          <span class="td-price col-early"><b>&#8377;3,999</b><em>$170</em></span>
+          <span class="td-price col-regular"><b>&#8377;5,999</b><em>$220</em></span>
+        </div>
+        <div class="fg-row">
+          <span class="fg-k">Non-IEEE</span>
+          <span class="td-price col-early"><b>&#8377;5,999</b><em>$220</em></span>
+          <span class="td-price col-regular"><b>&#8377;7,999</b><em>$270</em></span>
+        </div>
+      </article>
+
+      <article class="fee-group reveal" data-role="attendee">
+        <h3 class="fg-name"><i class="fas fa-ticket"></i> Attendee &ndash; Student</h3>
+        <div class="fg-cols">
+          <span></span>
+          <span class="col-early">Early bird</span>
+          <span class="col-regular">Regular</span>
+        </div>
+        <div class="fg-row">
+          <span class="fg-k">IEEE Member</span>
+          <span class="td-price col-early"><b>&#8377;2,499</b><em>$40</em></span>
+          <span class="td-price col-regular"><b>&#8377;3,499</b><em>$60</em></span>
+        </div>
+        <div class="fg-row">
+          <span class="fg-k">Non-IEEE</span>
+          <span class="td-price col-early"><b>&#8377;3,499</b><em>$60</em></span>
+          <span class="td-price col-regular"><b>&#8377;4,499</b><em>$80</em></span>
+        </div>
+      </article>
+
+      <article class="fee-group reveal" data-role="attendee">
+        <h3 class="fg-name"><i class="fas fa-id-badge"></i> Attendee &ndash; Academia / Industry</h3>
+        <div class="fg-cols">
+          <span></span>
+          <span class="col-early">Early bird</span>
+          <span class="col-regular">Regular</span>
+        </div>
+        <div class="fg-row">
+          <span class="fg-k">IEEE Member</span>
+          <span class="td-price col-early"><b>&#8377;7,499</b><em>$130</em></span>
+          <span class="td-price col-regular"><b>&#8377;8,499</b><em>$180</em></span>
+        </div>
+        <div class="fg-row">
+          <span class="fg-k">Non-IEEE</span>
+          <span class="td-price col-early"><b>&#8377;8,499</b><em>$160</em></span>
+          <span class="td-price col-regular"><b>&#8377;9,499</b><em>$210</em></span>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="fee-foot"><i class="fas fa-circle-info"></i> USD rates apply to foreign delegates. Indian, Bhutan and Nepal delegates must pay in INR or Ngultrum.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     02 · ADD-ONS & NOTICES
+══════════════════════════════════════ -->
+<section class="rg-band dark">
+  <div class="rg-wrap">
+    <div class="rg-head">
+      <span class="rg-eyebrow">Also Applies</span>
+      <h2>Add-ons &amp; Notices</h2>
+    </div>
+
+    <div class="tiles">
+      <div class="tile reveal">
+        <span class="tl-k">Additional pages</span>
+        <span class="tl-v">&#8377;1,000 <em>/</em> $25</span>
+        <p>Per page beyond six, up to a maximum of eight pages including references.</p>
+      </div>
+      <div class="tile reveal">
+        <span class="tl-k">Verification penalty</span>
+        <span class="tl-v">&#8377;1,000 <em>/</em> $25</span>
+        <p>Plus the difference in fee, if a valid IEEE membership or student ID is not uploaded.</p>
+      </div>
+      <div class="tile reveal">
+        <span class="tl-k">GST</span>
+        <span class="tl-v">Not levied</span>
+        <p>The organizing body falls below the prescribed GST turnover threshold, so no GST is collected.</p>
+      </div>
+      <div class="tile reveal">
+        <span class="tl-k">Proof of payment</span>
+        <span class="tl-v">Platform invoice</span>
+        <p>The invoice issued by the ticketing platform is the sole and final proof of payment.</p>
+      </div>
+    </div>
+
+    <div class="marq-note reveal">
+      <i class="fas fa-user-xmark"></i>
+      <p><b>IEEE no-show policy.</b> Each accepted paper in the final program must have at least one author present it at the conference, virtual or physical. Non-presented papers are not submitted to the IEEE Xplore&reg; digital library.</p>
     </div>
   </div>
 </section>
 
-<section class="content-section">
-  <div class="section-wrap">
-    <div class="reg-alert reveal">
-      <i class="fas fa-triangle-exclamation"></i>
-      <div><strong>Important:</strong> Indian, Bhutan &amp; Nepal delegates must pay in INR or Ngultrum. The registration portal will go live once camera-ready submissions open.</div>
+<!-- ══════════════════════════════════════
+     03 · RULEBOOK
+══════════════════════════════════════ -->
+<section class="rg-band light alt">
+  <div class="rg-wrap narrow">
+    <div class="rg-head">
+      <span class="rg-eyebrow">Read Before Paying</span>
+      <h2>The Rulebook</h2>
     </div>
 
-    <div class="info-band reveal" style="margin-top:26px;">
-      <h2><i class="fas fa-circle-info"></i> Fee Notice</h2>
-      <div class="info-item"><i class="fas fa-chevron-right"></i><span>The fees shown below exclude payment gateway charges and currency conversion charges.</span></div>
-      <div class="info-item"><i class="fas fa-chevron-right"></i><span>As the organizing body falls below the prescribed GST turnover threshold, GST will not be levied or collected from attendees.</span></div>
-      <div class="info-item"><i class="fas fa-chevron-right"></i><span>The invoice issued by the ticketing platform serves as the sole and final proof of payment.</span></div>
+    <div class="book">
+
+      <section class="chapter reveal">
+        <div class="ch-side"><span class="ch-n">01</span><span class="ch-t">Important Information</span></div>
+        <div class="ch-body">
+          <p class="lede">Applies to every registration, whichever category you choose.</p>
+          <ul>
+            <li>The conference is held in <b>hybrid mode</b>.</li>
+            <li>Papers are limited to <b>six pages including references</b>, with no author biography at the end.</li>
+            <li>Up to <b>eight pages</b> are permitted on payment of &#8377;1,000 ($25) per extra page.</li>
+            <li>Platform details for virtual attendees are emailed <b>after registration</b>.</li>
+            <li>Attendee registration includes access to <b>all technical sessions and keynotes</b>.</li>
+            <li>Fees exclude <b>payment gateway and currency conversion charges</b>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="chapter reveal">
+        <div class="ch-side"><span class="ch-n">02</span><span class="ch-t">Authors</span></div>
+        <div class="ch-body">
+          <p class="lede">Every accepted paper needs one author registered in full before it enters the program.</p>
+          <ul>
+            <li>Each paper must be covered by a full <b>IEEE member or non-member registration</b> paid by one of the authors.</li>
+            <li>IEEE members supply their <b>membership number and card</b> at registration. Validation happens afterwards — if it fails, the balance fee for the relevant category becomes payable.</li>
+            <li>Students upload a <b>valid student ID</b> for the student rate, otherwise the balance fee applies.</li>
+            <li>Keep the <b>transaction ID</b> from the payment gateway and your bank in case the payment needs tracing.</li>
+            <li>Quote your <b>Paper ID</b> and registration confirmation number in all correspondence.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="chapter reveal">
+        <div class="ch-side"><span class="ch-n">03</span><span class="ch-t">Co-Authors</span></div>
+        <div class="ch-body">
+          <p class="lede">Co-presenter registration is only for co-authors who want to present and receive a certificate. All co-authors get full session access either way.</p>
+
+          <h4>Conditions</h4>
+          <ul>
+            <li>Valid only if the paper is <b>already registered by a primary author</b>.</li>
+            <li>The certificate is issued only if the co-presenter <b>joins the Q&amp;A session</b> after the presentation.</li>
+            <li>Co-presenter payment is <b>non-refundable</b>.</li>
+            <li>Author and co-presenter must both attend the session, physically or virtually.</li>
+          </ul>
+
+          <h4>Documents needed</h4>
+          <ul class="inline-docs">
+            <li>Primary author's name</li>
+            <li>Primary author's transaction receipt</li>
+            <li>Paper ID</li>
+            <li>IEEE membership card <span>(IEEE rate)</span></li>
+            <li>Student ID valid for 2027 <span>(student rate)</span></li>
+          </ul>
+
+          <p class="flag"><i class="fas fa-circle-exclamation"></i> If any condition is unmet, the committee may withhold the certificate of presentation and the co-presenter registration becomes invalid.</p>
+        </div>
+      </section>
+
+      <section class="chapter reveal">
+        <div class="ch-side"><span class="ch-n">04</span><span class="ch-t">Cancellation &amp; IEEE No-Show</span></div>
+        <div class="ch-body">
+          <p class="lede">Written notice is required. Refunds are processed only after the conference.</p>
+          <ul>
+            <li>Cancellations refund the fee <b>less a 50% cancellation charge</b>, if written notice arrives before <b>15 September 2027</b>. No refunds after that date.</li>
+            <li>Notify the organizers at <a href="mailto:registrations@iprecon.org" class="mail">registrations@iprecon.org</a>.</li>
+            <li>Bank service and administration charges are deducted from the refund.</li>
+            <li>Non-presented papers are <b>not submitted to IEEE Xplore&reg;</b>, as per IEEE no-show policy.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="chapter rail-chapter reveal">
+        <div class="ch-side"><span class="ch-n">05</span><span class="ch-t">How to pay</span></div>
+        <div class="ch-body">
+          <p class="lede">Three steps on the ticketing platform.</p>
+
+          <ol class="pay-rail">
+            <li>
+              <span class="pr-dot"></span>
+              <span class="pr-step">Step 01</span>
+              <h4>Choose Registration</h4>
+              <p>Pick your category. One registration covers one paper — buy additional registrations for additional papers. Over-length manuscripts need &#8377;1,000 per extra page ($25 for foreign authors).</p>
+            </li>
+            <li>
+              <span class="pr-dot"></span>
+              <span class="pr-step">Step 02</span>
+              <h4>Enter Buyer Details</h4>
+              <p>Buyer name, email and phone number. Anyone can buy the ticket — note the invoice is issued in the buyer's name.</p>
+            </li>
+            <li>
+              <span class="pr-dot"></span>
+              <span class="pr-step">Step 03</span>
+              <h4>Enter Attendee Details</h4>
+              <p>The first attendee is the registering author. Provide the correct Paper ID, click Continue, check the payment page, then Proceed to Pay.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
     </div>
   </div>
 </section>
 
-<section class="content-section alt">
-  <div class="section-wrap">
-    <div class="sec-head">
-      <div class="sec-label-tag">Fees by Category</div>
-      <h2 class="sec-title reveal">Registration Fees</h2>
-      <p class="sec-sub reveal">Early Bird applies by 31 August 2027; Regular fees apply from 1 September 2027.</p>
+<!-- ══════════════════════════════════════
+     04 · CONFIRM
+══════════════════════════════════════ -->
+<section class="rg-band dark" id="confirm">
+  <div class="rg-wrap">
+    <div class="rg-head">
+      <span class="rg-eyebrow">Final Step</span>
+      <h2>Confirm &amp; Register</h2>
     </div>
 
-    <div class="fee-tables">
-      <!-- Author Student -->
-      <div class="fee-block reveal">
-        <div class="fee-title"><i class="fas fa-user-graduate"></i> Author &ndash; Student</div>
-        <table class="fee-table">
-          <thead><tr><th>Category</th><th>Early Bird<br><small>by 31 Aug 2027</small></th><th>Regular<br><small>from 1 Sep 2027</small></th></tr></thead>
-          <tbody>
-            <tr><td>IEEE Member</td><td>&#8377;4,999</td><td>&#8377;6,999</td></tr>
-            <tr><td>Non-IEEE</td><td>&#8377;6,999</td><td>&#8377;8,999</td></tr>
-            <tr><td>Foreign IEEE</td><td>$150</td><td>$200</td></tr>
-            <tr><td>Foreign Non-IEEE</td><td>$175</td><td>$225</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <!-- Author Academia -->
-      <div class="fee-block reveal">
-        <div class="fee-title"><i class="fas fa-user-tie"></i> Author &ndash; Academia / Industry</div>
-        <table class="fee-table">
-          <thead><tr><th>Category</th><th>Early Bird<br><small>by 31 Aug 2027</small></th><th>Regular<br><small>from 1 Sep 2027</small></th></tr></thead>
-          <tbody>
-            <tr><td>IEEE Member</td><td>&#8377;7,999</td><td>&#8377;9,999</td></tr>
-            <tr><td>Non-IEEE</td><td>&#8377;9,999</td><td>&#8377;11,999</td></tr>
-            <tr><td>Foreign IEEE</td><td>$190</td><td>$240</td></tr>
-            <tr><td>Foreign Non-IEEE</td><td>$240</td><td>$290</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <!-- Co-Author Student -->
-      <div class="fee-block reveal">
-        <div class="fee-title"><i class="fas fa-users"></i> Co-Author &ndash; Student</div>
-        <table class="fee-table">
-          <thead><tr><th>Category</th><th>Early Bird<br><small>by 31 Aug 2027</small></th><th>Regular<br><small>from 1 Sep 2027</small></th></tr></thead>
-          <tbody>
-            <tr><td>IEEE Member</td><td>&#8377;2,999</td><td>&#8377;4,999</td></tr>
-            <tr><td>Non-IEEE</td><td>&#8377;3,999</td><td>&#8377;5,999</td></tr>
-            <tr><td>Foreign IEEE</td><td>$130</td><td>$180</td></tr>
-            <tr><td>Foreign Non-IEEE</td><td>$155</td><td>$205</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <!-- Co-Author Academia -->
-      <div class="fee-block reveal">
-        <div class="fee-title"><i class="fas fa-users-gear"></i> Co-Author &ndash; Academia / Industry</div>
-        <table class="fee-table">
-          <thead><tr><th>Category</th><th>Early Bird<br><small>by 31 Aug 2027</small></th><th>Regular<br><small>from 1 Sep 2027</small></th></tr></thead>
-          <tbody>
-            <tr><td>IEEE Member</td><td>&#8377;3,999</td><td>&#8377;5,999</td></tr>
-            <tr><td>Non-IEEE</td><td>&#8377;5,999</td><td>&#8377;7,999</td></tr>
-            <tr><td>Foreign IEEE</td><td>$170</td><td>$220</td></tr>
-            <tr><td>Foreign Non-IEEE</td><td>$220</td><td>$270</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <!-- Attendee Student -->
-      <div class="fee-block reveal">
-        <div class="fee-title"><i class="fas fa-user"></i> Attendee &ndash; Student</div>
-        <table class="fee-table">
-          <thead><tr><th>Category</th><th>Early Bird<br><small>by 31 Aug 2027</small></th><th>Regular<br><small>from 1 Sep 2027</small></th></tr></thead>
-          <tbody>
-            <tr><td>IEEE Member</td><td>&#8377;2,499</td><td>&#8377;3,499</td></tr>
-            <tr><td>Non-IEEE</td><td>&#8377;3,499</td><td>&#8377;4,499</td></tr>
-            <tr><td>Foreign IEEE</td><td>$40</td><td>$60</td></tr>
-            <tr><td>Foreign Non-IEEE</td><td>$60</td><td>$80</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <!-- Attendee Academia -->
-      <div class="fee-block reveal">
-        <div class="fee-title"><i class="fas fa-user-tag"></i> Attendee &ndash; Academia / Industry</div>
-        <table class="fee-table">
-          <thead><tr><th>Category</th><th>Early Bird<br><small>by 31 Aug 2027</small></th><th>Regular<br><small>from 1 Sep 2027</small></th></tr></thead>
-          <tbody>
-            <tr><td>IEEE Member</td><td>&#8377;7,499</td><td>&#8377;8,499</td></tr>
-            <tr><td>Non-IEEE</td><td>&#8377;8,499</td><td>&#8377;9,499</td></tr>
-            <tr><td>Foreign IEEE</td><td>$130</td><td>$180</td></tr>
-            <tr><td>Foreign Non-IEEE</td><td>$160</td><td>$210</td></tr>
-          </tbody>
-        </table>
+    <div class="confirm-bar reveal">
+      <label class="tick" for="termsCheckbox">
+        <input type="checkbox" id="termsCheckbox">
+        <span class="tick-mark"></span>
+        <span class="tick-text">I have read and understood all the registration guidelines, terms and conditions above, and agree to comply with them.</span>
+      </label>
+      <div class="confirm-go">
+        <button class="rbtn gold locked" id="finalRegisterBtn"><i class="fas fa-circle-check"></i> Open Registration Portal</button>
+        <span class="confirm-hint" id="termsHint">Tick the box to unlock</span>
       </div>
     </div>
 
-    <div class="mini-cards">
-      <div class="mini-card reveal"><h4><i class="fas fa-file-circle-plus"></i> Additional Pages</h4><p>Indian delegates: &#8377;1,000 per page<br>Foreign delegates: $25 per page</p></div>
-      <div class="mini-card reveal"><h4><i class="fas fa-id-card"></i> Verification Penalty</h4><p>Failure to upload valid IEEE membership or student ID: &#8377;1,000 / $25 + difference in fee.</p></div>
+    <div class="dates-strip reveal">
+      <span><i class="fas fa-calendar-check"></i> Early bird ends <b>31 August 2027</b></span>
+      <span><i class="fas fa-clock"></i> Regular fee from <b>1 September 2027</b></span>
+      <span><i class="fas fa-rotate-left"></i> Refund window closes <b>15 September 2027</b></span>
     </div>
   </div>
 </section>
 
-<section class="content-section">
-  <div class="section-wrap">
-    <div class="sec-head">
-      <div class="sec-label-tag">Read First</div>
-      <h2 class="sec-title reveal">Registration Guidelines</h2>
+<!-- ══════════════════════════════════════
+     CONTACT
+══════════════════════════════════════ -->
+<section class="rg-cta">
+  <div class="rg-wrap cta-split">
+    <div>
+      <h2>Need help with registration?</h2>
+      <p>Questions about the process, fees or payment methods — get in touch with the registration desk.</p>
     </div>
-
-    <div class="prose-card reveal">
-      <h3 style="margin-top:0;">Important Information</h3>
-      <ul>
-        <li>The conference will be held in Hybrid Mode.</li>
-        <li>The maximum page limit is six pages including references. No author biography at the end.</li>
-        <li>Additional pages up to 8 are permitted, subject to payment of &#8377;1,000 ($25) extra per additional page.</li>
-        <li>Platform details for virtual attendees will be provided via email after registration.</li>
-        <li>Attendee registration includes access to all technical sessions and keynotes.</li>
-      </ul>
-      <h3>For Authors</h3>
-      <ul>
-        <li>Each paper must be covered by a full IEEE member or non-member registration fee by one of the authors.</li>
-        <li>IEEE members must provide their membership number and upload their IEEE membership card during registration if registering under the IEEE category. Validation is done after registration; failing which the balance fee of the relevant category applies.</li>
-        <li>Students must upload a valid student ID card if registering under the student category; failing which the balance fee applies.</li>
-        <li>Keep a copy of the transaction ID generated by the payment gateway and your bank — you may need it to track your payment.</li>
-        <li>All correspondence regarding your registration should contain your Paper ID and registration confirmation number.</li>
-      </ul>
-      <h3>For Co-Authors (Co-Presenters)</h3>
-      <ul>
-        <li>This registration is only for co-authors who wish to present the paper and obtain a presentation certificate.</li>
-        <li>It is valid only if the paper is already registered with a primary author.</li>
-        <li>The co-presenter can avail the presentation certificate only by actively engaging in the Q&amp;A session after the video presentation.</li>
-        <li>Co-author registration payments are non-refundable.</li>
-        <li>Attach the payment receipt of the primary registered author to complete co-author registration.</li>
-      </ul>
-      <h3>Cancellation &amp; No-Show Policy</h3>
-      <ul>
-        <li>Refunds are made after deduction of a cancellation charge (50% of the registration fee) if written notification is received before the stated cutoff. No refunds after that date.</li>
-        <li>Cancellation must be notified in writing by email to the organizers.</li>
-        <li>Bank service charges and administration fees are deducted from the refund; refunds are processed only after the conference.</li>
-        <li>Each accepted paper must have at least one author present. Non-presented papers will not be submitted to IEEE Xplore® as per IEEE's no-show policy.</li>
-      </ul>
+    <div class="contact-links">
+      <a href="mailto:registrations@iprecon.org"><i class="fas fa-envelope"></i> registrations@iprecon.org</a>
+      <a href="tel:+919311401568"><i class="fas fa-phone"></i> +91 93114 01568</a>
+      <a href="./contact.html"><i class="fas fa-headset"></i> Contact page</a>
     </div>
   </div>
 </section>
 
-<section class="content-section alt">
-  <div class="section-wrap">
-    <div class="sec-head">
-      <div class="sec-label-tag">How It Works</div>
-      <h2 class="sec-title reveal">Registration Steps</h2>
-    </div>
-    <div class="reg-steps">
-      <div class="reg-step reveal"><div class="reg-step-n">1</div><h3>Choose Registration</h3><p>Click 'Register Now' and choose your category. Buy one registration per paper. Over-length manuscripts beyond six pages require &#8377;1,000 ($25) per additional page.</p></div>
-      <div class="reg-step reveal"><div class="reg-step-n">2</div><h3>Enter Buyer Details</h3><p>Enter buyer details (name, email, phone). Anyone can buy the registration ticket. Note that the invoice is issued in the name of the buyer.</p></div>
-      <div class="reg-step reveal"><div class="reg-step-n">3</div><h3>Enter Attendee Details</h3><p>Enter attendee details. The first attendee is the registering author. Provide the correct Paper ID, review the payment page, then proceed to pay.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="content-section dark">
-  <div class="section-wrap" style="text-align:center;">
-    <h2 style="color:#fff;font-size:24px;font-weight:800;margin-bottom:12px;">Need Help with Registration?</h2>
-    <p style="color:rgba(255,255,255,0.7);max-width:540px;margin:0 auto 24px;line-height:1.7;">For any questions regarding the registration process, fees, or payment methods, please contact us.</p>
-    <div class="btn-row" style="justify-content:center;">
-      <a href="./contact.html" class="btn-gold"><i class="fas fa-envelope"></i> Contact Us</a>
-      <a href="tel:+919311401568" class="btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.3);"><i class="fas fa-phone"></i> +91 93114 01568</a>
+<!-- ══════════════════════════════════════
+     GUIDELINE GATE
+══════════════════════════════════════ -->
+<div class="gate" id="warningModal">
+  <div class="gate-box">
+    <span class="gate-tag"><i class="fas fa-triangle-exclamation"></i> Read first</span>
+    <h3>Guidelines before payment</h3>
+    <p>Before registering, read and understand the fees, requirements and policies on this page.</p>
+    <ul class="gate-list">
+      <li>Registration fees and payment methods</li>
+      <li>Paper submission requirements</li>
+      <li>Cancellation and refund policies</li>
+      <li>IEEE membership verification</li>
+      <li>Terms and conditions for acceptance</li>
+    </ul>
+    <div class="gate-actions">
+      <button class="rbtn gold" id="closeWarningBtn"><i class="fas fa-book-open-reader"></i> Take me to the fees</button>
+      <button class="rbtn line" id="cancelWarningBtn">Cancel</button>
     </div>
   </div>
-</section>
+</div>
 
 <style>
-.reg-alert { display:flex; gap:16px; align-items:center; background:linear-gradient(135deg,#fff7e6,#fdf0d5); border:1px solid #f0d68a; border-left:5px solid var(--gold); border-radius:12px; padding:20px 26px; }
-.reg-alert i { font-size:24px; color:var(--gold-d); flex-shrink:0; }
-.reg-alert strong { color:var(--brand); }
-.reg-alert div { font-size:14px; color:var(--muted); line-height:1.6; }
-.fee-tables { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
-.fee-block { background:#fff; border:1px solid var(--border); border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(33,16,33,0.06); }
-.fee-title { background:var(--brand); color:#fff; font-size:15px; font-weight:700; padding:16px 22px; display:flex; align-items:center; gap:10px; }
-.fee-title i { color:var(--gold); }
-.fee-table { width:100%; border-collapse:collapse; }
-.fee-table th, .fee-table td { padding:12px 20px; text-align:left; font-size:13.5px; border-bottom:1px solid var(--border); }
-.fee-table thead th { background:var(--off); color:var(--purple-d); font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:0.03em; }
-.fee-table thead th small { font-weight:400; color:var(--muted); text-transform:none; letter-spacing:0; }
-.fee-table tbody td:first-child { color:var(--text); font-weight:500; }
-.fee-table tbody td:not(:first-child) { color:var(--brand); font-weight:700; }
-.fee-table tbody tr:last-child td { border-bottom:none; }
-.fee-table tbody tr:hover { background:var(--off); }
-.mini-cards { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:24px; }
-.mini-card { background:#fff; border:1px solid var(--border); border-left:4px solid var(--purple); border-radius:12px; padding:22px 26px; box-shadow:0 4px 20px rgba(33,16,33,0.06); }
-.mini-card h4 { font-size:15px; color:var(--brand); font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
-.mini-card h4 i { color:var(--purple); }
-.mini-card p { font-size:13.5px; color:var(--muted); line-height:1.7; }
-.reg-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-.reg-step { background:#fff; border:1px solid var(--border); border-radius:12px; padding:30px 28px; box-shadow:0 4px 20px rgba(33,16,33,0.06); position:relative; }
-.reg-step-n { width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,var(--purple),var(--purple-d)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:20px; margin-bottom:16px; }
-.reg-step h3 { font-size:16px; color:var(--brand); font-weight:700; margin-bottom:10px; }
-.reg-step p { font-size:13.5px; color:var(--muted); line-height:1.65; }
-@media (max-width:900px){ .fee-tables{grid-template-columns:1fr;} .mini-cards{grid-template-columns:1fr;} .reg-steps{grid-template-columns:1fr;} }
+/* ════════════════════════════════════════════
+       REGISTRATION 2027
+    ════════════════════════════════════════════ */
+.page-hero { background: var(--brand); padding: 66px 60px 60px; position: relative; overflow: hidden; text-align: left; }
+.page-hero::before { content: ''; position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px); }
+.page-hero-inner { position: relative; z-index: 2; max-width: 860px; margin: 0; }
+.page-hero .eyebrow { display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4);
+  color: var(--gold); font-size: 11px; font-weight: 600; padding: 6px 16px; border-radius: 3px;
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 22px; }
+.page-hero h1 { font-size: clamp(30px, 4.5vw, 48px); font-weight: 800; color: #fff;
+  line-height: 1.15; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.01em; }
+.page-hero h1 em { font-style: normal; color: var(--gold); }
+.page-hero p { font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 660px; margin: 0; }
+.hero-cta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 28px; }
+.hero-note { display: inline-flex; align-items: center; gap: 9px; font-size: 12.5px; color: rgba(255,255,255,0.6); }
+.hero-note i { color: var(--gold); }
+.breadcrumb { position: relative; z-index: 2; display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+.breadcrumb a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.3); }
+.breadcrumb .current { color: var(--gold); }
+
+.rg-wrap { max-width: 1160px; margin: 0 auto; }
+.rg-band { padding: 82px 60px; }
+.rg-band.light { background: #fff; color: var(--brand); }
+.rg-band.light.alt { background: var(--light); }
+.rg-band.dark { position: relative; overflow: hidden; color: #fff;
+  background: radial-gradient(120% 90% at 80% 0%, #3a1d3f 0%, var(--brand) 55%, #1a0e1a 100%);
+  border-top: 1px solid rgba(212,175,55,0.28); border-bottom: 1px solid rgba(212,175,55,0.28); }
+.rg-band.dark::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px); }
+.rg-band.dark > * { position: relative; z-index: 2; }
+
+.rg-head { text-align: center; margin-bottom: 42px; }
+.rg-eyebrow { display: block; font-size: 11px; font-weight: 700; color: var(--purple);
+  letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+.rg-head h2 { font-size: clamp(24px, 3.4vw, 36px); font-weight: 800; line-height: 1.2;
+  letter-spacing: -0.02em; display: inline-block; padding-bottom: 14px; position: relative; }
+.rg-head h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 90px; height: 3px; background: linear-gradient(90deg, var(--purple), var(--gold)); }
+.rg-band.dark .rg-eyebrow { color: var(--gold); }
+.rg-band.dark .rg-head h2::after { background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.25)); }
+
+.rbtn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 4px;
+  font: inherit; font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+  border: 1px solid transparent; cursor: pointer; transition: all 0.25s ease; }
+.rbtn.gold { background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand); }
+.rbtn.gold:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(212,175,55,0.35); }
+.rbtn.line { background: transparent; color: var(--muted); border-color: var(--border); }
+.rbtn.line:hover { background: var(--brand); border-color: var(--brand); color: #fff; }
+.rbtn.locked { opacity: 0.4; pointer-events: none; }
+
+/* ── 01 fee cards ── */
+
+.fee-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 22px; margin-top: 30px; }
+.fee-group { background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--border);
+  padding: 24px 26px 20px; transition: border-top-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease; }
+.fee-group:hover { border-top-color: var(--gold); transform: translateY(-4px); box-shadow: 0 16px 38px rgba(33,16,33,0.1); }
+.fee-group.hide { display: none; }
+.fg-name { display: flex; align-items: center; gap: 11px; font-size: 15.5px; font-weight: 800;
+  letter-spacing: -0.01em; color: var(--brand); padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.fg-name i { color: var(--gold); font-size: 15px; }
+.fg-cols { display: grid; grid-template-columns: 1fr 104px 104px; gap: 10px; padding: 12px 0 6px; }
+.fg-cols span { font-size: 9.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; text-align: center; }
+.fg-cols .col-early { color: #2e7d32; }
+.fg-cols .col-regular { color: var(--purple-d); }
+.fg-row { display: grid; grid-template-columns: 1fr 104px 104px; gap: 10px; align-items: center;
+  padding: 12px 0; border-top: 1px solid var(--border); }
+.fg-k { font-size: 13.5px; color: var(--muted); }
+.td-price { text-align: center; font-variant-numeric: tabular-nums; line-height: 1.25; }
+.td-price b { display: block; font-size: 16.5px; font-weight: 800; }
+.td-price em { display: block; font-style: normal; font-size: 11.5px; font-weight: 600; opacity: 0.7; margin-top: 2px; }
+.td-price.col-early { color: #2e7d32; }
+.td-price.col-regular { color: var(--purple-d); }
+.fee-cards.hide-early .col-early, .fee-cards.hide-regular .col-regular { display: none; }
+.fee-cards.hide-early .fg-cols, .fee-cards.hide-early .fg-row,
+.fee-cards.hide-regular .fg-cols, .fee-cards.hide-regular .fg-row { grid-template-columns: 1fr 110px; }
+
+/* ── 02 tiles ── */
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid rgba(255,255,255,0.14); }
+.tile { padding: 28px 24px; border-left: 1px solid rgba(255,255,255,0.14); transition: background 0.3s ease; }
+.tile:first-child { border-left: none; }
+.tile:hover { background: rgba(255,255,255,0.05); }
+.tl-k { display: block; font-size: 10px; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.tl-v { display: block; font-size: clamp(20px, 2.4vw, 27px); font-weight: 800; letter-spacing: -0.02em;
+  color: #fff; margin-bottom: 12px; }
+.tl-v em { font-style: normal; color: rgba(255,255,255,0.3); margin: 0 4px; }
+.tile p { font-size: 12.5px; line-height: 1.7; color: rgba(255,255,255,0.62); }
+
+.marq-note { display: flex; gap: 18px; align-items: flex-start; margin-top: 26px;
+  padding: 22px 26px; background: rgba(255,255,255,0.05); border-left: 3px solid var(--gold); }
+.marq-note i { color: var(--gold); font-size: 18px; margin-top: 2px; }
+.marq-note p { font-size: 13.5px; line-height: 1.8; color: rgba(255,255,255,0.72); }
+.marq-note b { color: #fff; }
+
+/* ── 03 rulebook ── */
+.rg-wrap.narrow { max-width: 900px; }
+.book { border-top: 1px solid var(--border); }
+.chapter { display: grid; grid-template-columns: 168px 1fr; gap: 34px;
+  padding: 34px 0; border-bottom: 1px solid var(--border); }
+.ch-side { position: sticky; top: 96px; align-self: start; }
+.ch-n { display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
+.ch-t { display: block; font-size: 17px; font-weight: 800; letter-spacing: -0.01em; color: var(--brand); line-height: 1.3; }
+.ch-body .lede { font-size: 15px; line-height: 1.8; color: var(--brand); font-weight: 500; margin-bottom: 20px; }
+.ch-body h4 { font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--purple); margin: 26px 0 12px; }
+.ch-body h4:first-of-type { margin-top: 0; }
+.ch-body ul { list-style: none; }
+.ch-body ul li { position: relative; padding: 0 0 12px 22px; font-size: 14px; line-height: 1.8; color: var(--muted); }
+.ch-body ul li::before { content: ''; position: absolute; left: 0; top: 13px; width: 10px; height: 1px; background: var(--gold); }
+.ch-body ul li:last-child { padding-bottom: 0; }
+.ch-body b { color: var(--brand); font-weight: 700; }
+.mail { color: var(--purple); font-weight: 700; }
+.mail:hover { text-decoration: underline; }
+.inline-docs { display: flex; flex-wrap: wrap; gap: 8px; }
+.inline-docs li { padding: 8px 14px !important; background: #fff; border: 1px solid var(--border);
+  border-radius: 30px; font-size: 12.5px; color: var(--text); }
+.inline-docs li::before { display: none; }
+.inline-docs span { color: var(--muted); font-size: 11.5px; }
+.rail-chapter { grid-template-columns: 1fr; gap: 18px; }
+.rail-chapter .ch-side { position: static; display: flex; align-items: baseline; gap: 12px; }
+.rail-chapter .ch-n { margin-bottom: 0; }
+.pay-rail { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 26px; margin-top: 26px; }
+.pay-rail li { position: relative; padding-top: 30px; border-top: 1px solid var(--border); }
+.pay-rail li::after { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 1px; background: var(--border); }
+.pr-dot { position: absolute; top: -8px; left: 0; width: 15px; height: 15px; border-radius: 50%;
+  background: var(--light); border: 2px solid var(--border); transition: all 0.28s ease; }
+.pay-rail li:hover .pr-dot { border-color: var(--gold); background: var(--gold); transform: scale(1.15); }
+.pr-step { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--purple); margin-bottom: 10px; }
+.pay-rail h4 { font-size: 16px; font-weight: 800; letter-spacing: -0.01em; color: var(--brand);
+  margin: 0 0 9px; text-transform: none; }
+.pay-rail p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+.flag { display: flex; gap: 11px; align-items: flex-start; margin-top: 22px; padding: 15px 18px;
+  background: #fff; border-left: 3px solid #d64545; font-size: 13px; line-height: 1.75; color: #7a3030; }
+.flag i { color: #b03030; margin-top: 3px; }
+
+/* ── 04 confirm ── */
+.confirm-bar { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center;
+  padding: 30px 32px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); }
+.tick { display: flex; gap: 14px; align-items: flex-start; cursor: pointer; }
+.tick input { position: absolute; opacity: 0; }
+.tick-mark { flex-shrink: 0; width: 24px; height: 24px; border: 2px solid var(--gold); border-radius: 4px;
+  background: transparent; position: relative; transition: all 0.25s ease; }
+.tick input:checked ~ .tick-mark { background: var(--gold); }
+.tick input:checked ~ .tick-mark::after { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--brand); }
+.tick input:focus-visible ~ .tick-mark { box-shadow: 0 0 0 3px rgba(212,175,55,0.3); }
+.tick-text { font-size: 13.5px; line-height: 1.7; color: rgba(255,255,255,0.78); }
+.confirm-go { text-align: center; }
+.confirm-hint { display: block; margin-top: 10px; font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
+@keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+.tick.shake { animation: shake 0.45s ease-in-out; }
+
+.dates-strip { display: flex; flex-wrap: wrap; gap: 0; margin-top: 24px; border: 1px solid rgba(255,255,255,0.14); }
+.dates-strip span { flex: 1; min-width: 220px; padding: 18px 22px; font-size: 13px; color: rgba(255,255,255,0.7);
+  border-left: 1px solid rgba(255,255,255,0.14); display: flex; align-items: center; gap: 10px; }
+.dates-strip span:first-child { border-left: none; }
+.dates-strip i { color: var(--gold); }
+.dates-strip b { color: #fff; }
+
+/* contact */
+.rg-cta { background: var(--off); color: var(--brand); padding: 66px 60px; border-top: 1px solid var(--border); }
+.cta-split { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.cta-split h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 10px; }
+.cta-split p { font-size: 14px; color: var(--muted); max-width: 440px; line-height: 1.7; }
+.contact-links { display: flex; flex-direction: column; gap: 11px; }
+.contact-links a { display: inline-flex; align-items: center; gap: 11px; font-size: 14px; font-weight: 600;
+  color: var(--brand); transition: color 0.25s ease; }
+.contact-links a:hover { color: var(--purple); }
+.contact-links i { color: var(--gold); width: 18px; }
+
+/* gate modal */
+.gate { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center;
+  padding: 20px; background: rgba(13,8,14,0.72); backdrop-filter: blur(5px);
+  opacity: 0; visibility: hidden; transition: all 0.28s ease; }
+.gate.show { opacity: 1; visibility: visible; }
+.gate-box { width: 100%; max-width: 520px; max-height: 88vh; overflow-y: auto;
+  background: #16101a; border: 1px solid rgba(212,175,55,0.35); border-top: 3px solid var(--gold);
+  padding: 34px 32px 30px; transform: translateY(16px); transition: transform 0.3s ease; }
+.gate.show .gate-box { transform: none; }
+.gate-tag { display: inline-flex; align-items: center; gap: 9px; font-size: 10px; font-weight: 800;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--brand); background: var(--gold);
+  padding: 6px 13px; margin-bottom: 18px; }
+.gate-box h3 { font-size: 23px; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 12px; }
+.gate-box > p { font-size: 13.5px; line-height: 1.75; color: rgba(255,255,255,0.68); margin-bottom: 20px; }
+.gate-list { list-style: none; border-top: 1px solid rgba(255,255,255,0.14); margin-bottom: 24px; }
+.gate-list li { position: relative; padding: 11px 0 11px 20px; border-bottom: 1px solid rgba(255,255,255,0.14);
+  font-size: 13px; color: rgba(255,255,255,0.72); }
+.gate-list li::before { content: ''; position: absolute; left: 0; top: 20px; width: 9px; height: 1px; background: var(--gold); }
+.gate-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.gate-actions .rbtn.line { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.25); }
+.gate-actions .rbtn.line:hover { background: transparent; border-color: var(--gold); color: var(--gold); }
+
+@media (max-width: 1100px) {
+  .rg-band, .rg-cta, .page-hero { padding-left: 32px; padding-right: 32px; }
+  .tiles { grid-template-columns: repeat(2, 1fr); }
+  .tile:nth-child(3) { border-left: none; }
+  .tile:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,0.14); }
+  .confirm-bar { grid-template-columns: 1fr; gap: 22px; }
+  .confirm-go { text-align: left; }
+}
+@media (max-width: 768px) {
+  .rg-band { padding: 58px 20px; }
+  .rg-cta { padding: 50px 20px; }
+  .page-hero { padding: 48px 20px 44px; }
+  .fee-cards { grid-template-columns: 1fr; }
+  .fee-group { padding: 20px 20px 16px; }
+  .fg-cols, .fg-row { grid-template-columns: 1fr 86px 86px; }
+  .td-price { font-size: 15px; }
+  .tiles { grid-template-columns: 1fr; }
+  .tile { border-left: none; border-top: 1px solid rgba(255,255,255,0.14); }
+  .tile:first-child { border-top: none; }
+  .pay-rail { grid-template-columns: 1fr; gap: 0; }
+  .pay-rail li { padding-top: 26px; margin-bottom: 22px; }
+  .pay-rail li:last-child { margin-bottom: 0; }
+  .chapter { grid-template-columns: 1fr; gap: 14px; padding: 26px 0; }
+  .ch-side { position: static; display: flex; align-items: baseline; gap: 12px; }
+  .ch-n { margin-bottom: 0; }
+  .dates-strip span { border-left: none; border-top: 1px solid rgba(255,255,255,0.14); }
+  .dates-strip span:first-child { border-top: none; }
+  .rbtn { width: 100%; justify-content: center; }
+}
 </style>
 
+<script>
+(function () {
+  var PORTAL = 'https://konfhub.com/2026-ieee-international-power-and-renewable-energy-conference-iprecon-2026-hybrid-event';
+
+  /* gate + terms */
+  var gate = document.getElementById('warningModal'),
+      openBtn = document.getElementById('registerBtn'),
+      readBtn = document.getElementById('closeWarningBtn'),
+      cancel = document.getElementById('cancelWarningBtn'),
+      check = document.getElementById('termsCheckbox'),
+      final = document.getElementById('finalRegisterBtn'),
+      hint = document.getElementById('termsHint');
+  function close() { gate.classList.remove('show'); document.body.style.overflow = ''; }
+  openBtn.addEventListener('click', function () { gate.classList.add('show'); document.body.style.overflow = 'hidden'; });
+  readBtn.addEventListener('click', function () {
+    close();
+    setTimeout(function () {
+      var t = document.getElementById('fees');
+      if (t) window.scrollTo({ top: t.offsetTop - 90, behavior: 'smooth' });
+    }, 240);
+  });
+  cancel.addEventListener('click', close);
+  gate.addEventListener('click', function (e) { if (e.target === gate) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && gate.classList.contains('show')) close(); });
+
+  check.addEventListener('change', function () {
+    final.classList.toggle('locked', !check.checked);
+    hint.textContent = check.checked ? 'Portal unlocked' : 'Tick the box to unlock';
+  });
+  final.addEventListener('click', function () {
+    if (!check.checked) {
+      var t = document.querySelector('.tick');
+      t.classList.add('shake');
+      setTimeout(function () { t.classList.remove('shake'); }, 480);
+      return;
+    }
+    window.open(PORTAL, '_blank', 'noopener');
+  });
+
+})();
+</script>
 </main>
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <img src="assets/img/iprecon27 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
-      <p>2027 IEEE International Power and Renewable Energy Conference — 5th edition. Organized by IEEE Student Branch, College of Engineering Karunagappally, Kerala, India.</p>
-      <div class="footer-socials">
-        <a href="https://www.facebook.com/ieeeceksb/"       class="soc-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://x.com/IEEE_SB_CEK"                 class="soc-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.linkedin.com/company/ieeesbcek/" class="soc-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/ieee_sb_cek/"    class="soc-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>For Authors</h4>
-      <ul>
-        <li><a href="./cfp.html">Call for Papers</a></li>
-        <li><a href="./submissions.html">Submit a Paper</a></li>
-        <li><a href="./important-dates.html">Important Dates</a></li>
-        <li><a href="https://www.ieee.org/conferences/publishing/templates" target="_blank" rel="noopener">IEEE Paper Template</a></li>
-        <li><a href="./camera-ready.html">Camera Ready</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Conference</h4>
-      <ul>
-        <li><a href="./about-iprecon.html">About IPRECON</a></li>
-        <li><a href="./organizers.html">Organizers</a></li>
-        <li><a href="./committee.html">Committee</a></li>
-        <li><a href="./speakers.html">Speakers</a></li>
-        <li><a href="./sponsors.html">Sponsors</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Travel &amp; Info</h4>
-      <ul>
-        <li><a href="./venue.html">Venue &amp; Directions</a></li>
-        <li><a href="./accommodation.html">Accommodation</a></li>
-        <li><a href="./visa.html">Visa Information</a></li>
-        <li><a href="./kerala.html">Kerala Tourism</a></li>
-        <li><a href="./contact.html">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>Built with &#10084;&#65039; &nbsp;|&nbsp; IEEE Student Branch CEK &copy; 2027</span>
-    <span>College of Engineering Karunagappally, Kerala, India</span>
-  </div>
-</footer>
+<esi:include src="/includes/footer.html" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -682,6 +1155,21 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+
+/* drawer close button */
+(function () {
+  var btn = document.getElementById('mobClose');
+  var nav = document.getElementById('mobileNav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function () {
+    nav.classList.remove('open');
+    document.body.classList.remove('nav-open');
+    var ov = document.getElementById('mobileNavOverlay');
+    if (ov) ov.classList.remove('open');
+    var mb = document.getElementById('menuBtn');
+    if (mb) { mb.classList.remove('active'); mb.setAttribute('aria-expanded', 'false'); }
+  });
+})();
 </script>
 
 </body>

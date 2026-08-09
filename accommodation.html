@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon.png" />
   <title>Accommodation | IPRECON 2027 — IEEE International Power and Renewable Energy Conference</title>
   <meta name="description" content="Accommodation and travel information for IPRECON 2027 delegates near College of Engineering Karunagappally, Kollam, Kerala, India." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -62,7 +65,7 @@
     .header-brand {
       display: flex; align-items: center; gap: 18px;
     }
-    .header-conf-logo { height: 72px; width: auto; }
+    .header-conf-logo { height: 100px; width: auto; }
     .header-brand-text {
       display: flex; flex-direction: column; gap: 2px;
       border-left: 1px solid var(--border);
@@ -134,7 +137,7 @@
       height: 46px; width: auto; display: block;
     }
 
-    .nav-items { display: flex; list-style: none; }
+    .nav-items { display: flex; list-style: none; margin-left: auto; }
 
     .nav-item { position: relative; }
     .nav-item > a,
@@ -186,27 +189,80 @@
       background: rgba(255,255,255,0.85); border-radius: 2px; transition: all 0.3s;
     }
     .mobile-nav {
-      display: none; position: fixed; inset: 0; top: 58px;
-      background: var(--brand); z-index: 999;
-      overflow-y: auto; padding: 16px;
+      display: none; position: fixed; left: 0; right: 0; top: 58px; bottom: 0;
+      background: var(--brand); z-index: 1002;
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: 8px 0 40px;
+      border-top: 1px solid rgba(212,175,55,0.35);
     }
     .mobile-nav.open { display: block; }
+    body.nav-open { overflow: hidden; }
+    body.nav-open .nav-marquee { visibility: hidden; }
+    body.nav-open .marquee-strip-mobile { display: none !important; }
     .mobile-nav a {
-      display: block; padding: 11px 14px;
-      color: rgba(255,255,255,0.78); font-size: 12.5px;
-      font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
-      border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s;
+      display: flex; align-items: center;
+      padding: 14px 22px;
+      color: rgba(255,255,255,0.82); font-size: 12.5px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.2s, color 0.2s, padding-left 0.2s;
     }
-    .mobile-nav a:hover { color: var(--gold); }
+    .mobile-nav a:hover, .mobile-nav a:active { color: var(--gold); background: rgba(255,255,255,0.05); padding-left: 28px; }
+    .mobile-nav a.mob-sub {
+      padding-left: 38px; font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.68);
+    }
+    .mobile-nav a.mob-sub::before {
+      content: ''; width: 10px; height: 1px; background: rgba(212,175,55,0.6);
+      margin-right: 12px; margin-left: -22px; flex-shrink: 0;
+    }
+    .mobile-nav a.mob-sub:hover { padding-left: 44px; color: var(--gold); }
+    .mob-close {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      width: 100%; padding: 14px 22px; margin-bottom: 4px;
+      background: rgba(255,255,255,0.06); border: none; border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: var(--gold); font: inherit; font-size: 11px; font-weight: 800;
+      letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+      .mob-close:hover { background: rgba(212,175,55,0.16); color: #fff; }
+      .mob-close i { font-size: 15px; }
     .mob-section {
+      display: block; margin-top: 10px;
+      padding: 14px 22px 8px;
       font-size: 10px; color: var(--gold);
-      padding: 14px 14px 4px; letter-spacing: 0.14em;
-      font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.2em; font-weight: 800; text-transform: uppercase;
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
 
     /* ════════════════════════════════════════════
        ANNOUNCEMENTS MARQUEE
     ════════════════════════════════════════════ */
+    /* Scrolling marquee inside the navbar (mobile only — hidden on desktop) */
+    .nav-marquee {
+      display: none; flex: 1; overflow: hidden; height: 58px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+    .nav-marquee-track {
+      display: flex; align-items: center; gap: 30px; height: 100%;
+      width: max-content; animation: mLeft 22s linear infinite;
+    }
+    .nav-marquee-item {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; color: rgba(255,255,255,0.82); white-space: nowrap;
+    }
+    .nav-marquee-item i      { color: var(--gold); font-size: 11px; }
+    .nav-marquee-item strong { color: #fff; font-weight: 600; }
+    .nav-marquee-sep { color: rgba(212,175,55,0.7); font-size: 10px; }
+
+    /* mobile-only marquee strip (hidden on desktop) */
+    .marquee-strip-mobile {
+      display: none;
+      background: var(--off); border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
     .marquee-strip {
       background: var(--off); border-bottom: 1px solid var(--border);
       padding: 10px 0; overflow: hidden;
@@ -232,18 +288,21 @@
        PAGE HERO / BREADCRUMB
     ════════════════════════════════════════════ */
     .page-hero {
-      background: var(--brand);
-      padding: 66px 60px 60px;
-      position: relative; overflow: hidden;
-      text-align: center;
+      position: relative;
+      min-height: clamp(360px, calc(100vh - 250px), 580px);
+      display: flex; align-items: center; justify-content: flex-start; text-align: left;
+      background: linear-gradient(135deg, #1e3c72, #2a5298, var(--brand));
+      overflow: hidden;
     }
-    .page-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background-image: repeating-linear-gradient(
-        -45deg, transparent, transparent 60px,
-        rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
+    .page-hero .hero-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center center; opacity: 0.65;
     }
-    .page-hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
+    .page-hero .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(20, 30, 48, 0.95) 0%, rgba(20, 30, 48, 0.6) 50%, rgba(20, 30, 48, 0.2) 100%);
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 820px; padding: 70px 60px; margin: 0; }
     .page-hero .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4);
@@ -257,30 +316,37 @@
     }
     .page-hero h1 em { font-style: normal; color: var(--gold); }
     .page-hero p {
-      font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 640px; margin: 0 auto;
+      font-size: 15px; color: rgba(255,255,255,0.82); line-height: 1.75; max-width: 640px; margin: 0;
     }
     .breadcrumb {
       position: relative; z-index: 2;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.5);
+      display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+      margin-top: 26px; font-size: 12px; color: rgba(255,255,255,0.6);
       letter-spacing: 0.04em;
     }
-    .breadcrumb a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .breadcrumb a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
     .breadcrumb a:hover { color: var(--gold); }
-    .breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.3); }
+    .breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.4); }
     .breadcrumb .current { color: var(--gold); }
 
     /* ════════════════════════════════════════════
        SECTION COMMONS
     ════════════════════════════════════════════ */
     .section-wrap { max-width: 1200px; margin: 0 auto; }
-    .sec-head { text-align: center; margin-bottom: 44px; }
+    .sec-head { text-align: center; margin-bottom: 44px; max-width: 1200px; margin-left: auto; margin-right: auto; }
     .sec-label-tag {
-      display: block;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
       font-size: 11px; color: var(--purple);
       letter-spacing: 0.18em; text-transform: uppercase;
-      font-weight: 700; margin-bottom: 10px;
+      font-weight: 700; margin-bottom: 12px;
     }
+    .sec-label-tag::before {
+      content: attr(data-num);
+      font-size: 12px; font-weight: 800; color: var(--gold);
+      letter-spacing: 0.06em;
+      padding-right: 12px; border-right: 1px solid var(--border);
+    }
+    .sec-label-tag::after { display: none; }
     .sec-title {
       font-size: clamp(24px, 3.2vw, 34px); font-weight: 800;
       color: var(--brand); line-height: 1.2;
@@ -288,8 +354,7 @@
     }
     .sec-title::after {
       content: ''; position: absolute; bottom: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 60px; height: 3px;
+      transform: translateX(-50%); width: 60px; height: 3px;
       background: linear-gradient(90deg, var(--purple), var(--gold));
     }
     .sec-sub {
@@ -370,18 +435,18 @@
        HOTEL TIERS
     ════════════════════════════════════════════ */
     .hotels { padding: 54px 60px; }
-    .hotels:nth-of-type(even) { background: var(--light); }
-    .tier-head { display: flex; align-items: center; gap: 14px; max-width: 1200px; margin: 0 auto 30px; }
-    .tier-icon {
-      width: 50px; height: 50px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px; flex-shrink: 0;
+    .tier-head { max-width: 1200px; margin: 0 auto 30px; text-align: center; }
+    .tier-head h2 {
+      font-size: clamp(20px, 2.4vw, 26px); font-weight: 800;
+      color: var(--brand); line-height: 1.25;
+      display: inline-block; padding-bottom: 12px; position: relative;
     }
-    .tier-icon.lux { background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand); }
-    .tier-icon.mid { background: linear-gradient(135deg, var(--purple), var(--purple-d)); color: #fff; }
-    .tier-icon.budget { background: #f3e8f5; color: var(--purple); }
-    .tier-head h2 { font-size: 22px; font-weight: 800; color: var(--brand); }
-    .tier-head span { font-size: 12.5px; color: var(--muted); display: block; margin-top: 2px; }
+    .tier-head h2::after {
+      content: ''; position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%); width: 46px; height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+    }
+    .tier-head span { font-size: 13px; color: var(--muted); display: block; margin-top: 12px; }
 
     .hotel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; max-width: 1200px; margin: 0 auto; }
     .hotel-card {
@@ -536,7 +601,7 @@
     /* ════════════════════════════════════════════
        TRAVEL / HOW TO REACH
     ════════════════════════════════════════════ */
-    #travel { padding: 76px 60px; background: #fff; }
+    #travel { padding: 76px 60px; }
     .travel-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 1100px; margin: 0 auto; }
     .travel-card {
       background: var(--off); border: 1px solid var(--border); border-radius: 16px;
@@ -573,21 +638,24 @@
     /* ════════════════════════════════════════════
        ON-CAMPUS / HOSTEL
     ════════════════════════════════════════════ */
-    #campus { padding: 76px 60px; background: var(--brand); position: relative; overflow: hidden; }
-    #campus::before {
-      content: ''; position: absolute; inset: 0;
-      background-image: repeating-linear-gradient(
-        -45deg, transparent, transparent 60px,
-        rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px);
-    }
-    .campus-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; text-align: center; }
+    #campus { padding: 76px 60px; background: var(--off); position: relative; overflow: hidden; }
+    .campus-inner { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; text-align: center; }
     .campus-inner .c-icon {
       width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 20px;
-      background: rgba(212,175,55,0.12); display: flex; align-items: center; justify-content: center;
-      font-size: 26px; color: var(--gold);
+      background: linear-gradient(135deg, var(--gold), var(--gold-d));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; color: var(--brand);
     }
-    .campus-inner h2 { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 14px; }
-    .campus-inner p { font-size: 14.5px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 28px; }
+    .campus-inner h2 {
+      font-size: clamp(22px, 2.6vw, 28px); font-weight: 800; color: var(--brand);
+      margin-bottom: 16px; padding-bottom: 12px; display: inline-block; position: relative;
+    }
+    .campus-inner h2::after {
+      content: ''; position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%); width: 46px; height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+    }
+    .campus-inner p { font-size: 14.5px; color: var(--muted); line-height: 1.8; margin-bottom: 28px; }
     .campus-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .btn-gold {
       display: inline-flex; align-items: center; gap: 8px;
@@ -599,12 +667,115 @@
     .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,175,55,0.4); }
     .btn-ghost {
       display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: rgba(255,255,255,0.85);
+      background: transparent; color: var(--brand);
       padding: 12px 26px; border-radius: 6px;
       font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
-      border: 2px solid rgba(255,255,255,0.35); transition: all 0.28s ease;
+      border: 2px solid var(--border); transition: all 0.28s ease;
     }
-    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .btn-ghost:hover { border-color: var(--purple); color: var(--purple); transform: translateY(-2px); }
+    .dark-band .btn-ghost { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.35); }
+    .dark-band .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ════════════════════════════════════════════
+       DARK BAND — glass treatment
+    ════════════════════════════════════════════ */
+    .dark-band {
+      background: radial-gradient(120% 90% at 80% 0%, #3a1d3f 0%, var(--brand) 55%, #1a0e1a 100%);
+      position: relative; overflow: hidden;
+      border-top: 1px solid rgba(212,175,55,0.28);
+      border-bottom: 1px solid rgba(212,175,55,0.28);
+    }
+    .dark-band::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(
+        -45deg, transparent, transparent 60px,
+        rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px);
+    }
+    .dark-band > * { position: relative; z-index: 2; }
+    .dark-band .sec-title { color: #fff; }
+    .dark-band .sec-title::after { background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.15)); }
+    .dark-band .sec-sub { color: rgba(255,255,255,0.62); }
+    .dark-band .sec-label-tag { color: var(--gold); }
+    .dark-band .sec-label-tag::before { border-right-color: rgba(255,255,255,0.18); }
+    .dark-band .btn-outline { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.28); }
+    .dark-band .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* glass cards */
+    .dark-band .hotel-card {
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 34px rgba(0,0,0,0.32);
+    }
+    .dark-band .hotel-card::before { background: linear-gradient(180deg, var(--gold), rgba(212,175,55,0.2)); }
+    .dark-band .hotel-card:hover {
+      border-color: rgba(212,175,55,0.55);
+      background: rgba(255,255,255,0.085);
+      box-shadow: 0 26px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.18);
+    }
+    .dark-band .hotel-name { color: #fff; }
+    .dark-band .hotel-dist { color: rgba(255,255,255,0.6); }
+    .dark-band .hotel-dist i { color: var(--gold); }
+    .dark-band .hotel-tag { background: rgba(255,255,255,0.09); color: rgba(255,255,255,0.8); }
+    .dark-band .hotel-tag.dist { background: rgba(230,81,0,0.18); color: #ffb074; }
+    .dark-band .hotel-dir {
+      background: transparent; border-color: rgba(212,175,55,0.5); color: var(--gold);
+    }
+    .dark-band .hotel-dir:hover {
+      background: linear-gradient(135deg, var(--gold), var(--gold-d));
+      border-color: var(--gold); color: var(--brand);
+    }
+    .dark-band .btn-primary {
+      background: transparent; border-color: rgba(212,175,55,0.55); color: var(--gold);
+    }
+    .dark-band .btn-primary:hover {
+      background: linear-gradient(135deg, var(--gold), var(--gold-d));
+      border-color: var(--gold); color: var(--brand);
+    }
+    .dark-band .tier-head h2 { color: #fff; }
+    .dark-band .tier-head h2::after { background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.15)); }
+    .dark-band .tier-head span { color: rgba(255,255,255,0.55); }
+
+    /* travel bits on dark */
+    .dark-band .travel-cat-head h3 { color: #fff; }
+    .dark-band .travel-cat-head .tc-ico { background: rgba(212,175,55,0.14); color: var(--gold); }
+    .dark-band .hub-card,
+    .dark-band .bus-card,
+    .dark-band .travel-card {
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 34px rgba(0,0,0,0.32);
+    }
+    .dark-band .hub-card:hover,
+    .dark-band .bus-card:hover,
+    .dark-band .travel-card:hover {
+      border-color: rgba(212,175,55,0.55);
+      background: rgba(255,255,255,0.085);
+      box-shadow: 0 26px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.18);
+    }
+    .dark-band .hub-name,
+    .dark-band .bus-card .bus-name { color: #fff; }
+    .dark-band .hub-dist,
+    .dark-band .bus-card .bus-dist { color: rgba(255,255,255,0.6); }
+    .dark-band .hub-dist i,
+    .dark-band .bus-card .bus-dist i { color: var(--gold); }
+    .dark-band .hub-dir {
+      background: transparent; border-color: rgba(212,175,55,0.5); color: var(--gold);
+    }
+    .dark-band .hub-dir:hover {
+      background: linear-gradient(135deg, var(--gold), var(--gold-d));
+      border-color: var(--gold); color: var(--brand);
+    }
+    .dark-band .bus-card .bus-ico { background: rgba(212,175,55,0.14); color: var(--gold); }
+    .dark-band .bus-card .bus-go { background: rgba(212,175,55,0.18); color: var(--gold); }
+    .dark-band .bus-card .bus-go:hover { background: var(--gold); color: var(--brand); }
+    .dark-band .travel-card-head { background: rgba(0,0,0,0.28); }
+    .dark-band .travel-steps .step-num { background: rgba(212,175,55,0.16); color: var(--gold); }
+    .dark-band .travel-steps .step-text { color: rgba(255,255,255,0.72); }
+    .dark-band .travel-steps .step-text strong { color: #fff; }
+    .dark-band .travel-meta { border-top-color: rgba(255,255,255,0.12); }
+    .dark-band .travel-meta span { color: rgba(255,255,255,0.6); }
 
     /* ════════════════════════════════════════════
        FOOTER
@@ -651,7 +822,8 @@
     @media (max-width: 1100px) {
       .site-header, .header-top-bar { padding-left: 28px; padding-right: 28px; }
       .nav-container { padding: 0 20px; }
-      #quickstats, #notice, .hotels, #travel, #campus, footer, .page-hero { padding-left: 32px; padding-right: 32px; }
+      #quickstats, #notice, .hotels, #travel, #campus, footer { padding-left: 32px; padding-right: 32px; }
+      .page-hero-inner { padding: 60px 32px; }
       .qs-grid { grid-template-columns: repeat(2, 1fr); }
       .hotel-grid { grid-template-columns: repeat(2, 1fr); }
       .hub-grid { grid-template-columns: 1fr; }
@@ -660,16 +832,47 @@
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
     }
     @media (max-width: 900px) {
-      .header-sponsors { display: none; }
+      .header-sp-group { padding: 0 12px; }
+      .header-sp-group .sp-label { display: none; }
+      .header-sp-group img { height: 28px; }
     }
     @media (max-width: 768px) {
+      .site-header { padding: 10px 12px; gap: 8px; }
+      .header-brand { gap: 8px; flex: 1; min-width: 0; }
+      .header-conf-logo { height: 46px; }
+      .header-brand-text { padding-left: 10px; }
+      .header-brand-text .conf-name { font-size: 12px; }
+      .header-brand-text .conf-full { font-size: 8.5px; line-height: 1.3; }
+      .header-edition-badge { display: none; }
+
+      /* sponsor logos stay visible, top-right */
+      .header-sponsors { display: flex; flex-shrink: 0; }
+      .header-sp-group { padding: 0 6px; border-right: 1px solid var(--border); }
+      .header-sp-group:last-child { border-right: none; }
+      .header-sp-group .sp-label { display: none; }
+      .header-sp-group img { height: 22px; }
+
+      .nav-items { display: none; }
+      /* collapse the logo slot so the marquee runs the full bar; it returns on scroll */
+      .brand-logo-wrap { gap: 8px; width: 0; overflow: hidden; }
+      .navbar.scrolled .brand-logo-wrap { width: auto; margin-right: 8px; }
+      .brand-label { display: none; }
+      .hamburger { display: flex; flex-shrink: 0; order: 3; margin-left: auto; }
+      .navbar { height: 58px; }
+      .nav-container { padding: 0 12px; justify-content: flex-start; gap: 8px; height: 58px; }
+
+      /* marquee runs inside the nav bar at the top of the page … */
+      .nav-marquee { display: block; order: 2; }
+      .marquee-strip { display: none; }
+      /* … then pins directly under the nav once scrolled */
+      .marquee-strip-mobile {
+        display: none; position: fixed; top: 58px; left: 0; right: 0;
+        padding: 9px 0; z-index: 997;
+      }
+      .navbar.scrolled ~ .marquee-strip-mobile { display: block; }
+      .navbar.scrolled .nav-marquee { display: none; }
       .header-top-bar { padding: 6px 18px; font-size: 11px; }
       .header-top-bar .htb-right { display: none; }
-      .site-header { padding: 14px 18px; }
-      .header-conf-logo { height: 56px; }
-      .nav-items { display: none; }
-      .hamburger { display: flex; }
-      .nav-container { padding: 0 16px; }
       .qs-grid { grid-template-columns: 1fr 1fr; }
       .hotel-grid { grid-template-columns: 1fr; }
       .hub-grid { grid-template-columns: 1fr; }
@@ -679,7 +882,8 @@
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
       #quickstats, #notice, .hotels, #travel, #campus { padding-left: 20px; padding-right: 20px; }
-      .page-hero { padding: 48px 20px 44px; }
+      .page-hero { min-height: clamp(320px, calc(100vh - 200px), 440px); }
+      .page-hero-inner { padding: 50px 20px; }
       .notice-card { flex-direction: column; gap: 12px; }
     }
   </style>
@@ -694,7 +898,7 @@
   <span>
     <i class="fas fa-map-marker-alt"></i> College of Engineering Karunagappally, Kerala, India
     &nbsp;&nbsp;
-    <i class="fas fa-calendar-alt"></i> September 2027
+    <i class="fas fa-calendar-alt"></i> 15–17 October 2027
     &nbsp;&nbsp;
     <i class="fas fa-wifi"></i> Hybrid Conference
   </span>
@@ -708,11 +912,11 @@
 <header class="site-header">
   <div class="header-brand">
     <img class="header-conf-logo"
-         src="assets/img/iprecon26 black.png"
+         src="assets/img/iprecon27 black.png"
          alt="IPRECON 2027"
          onerror="this.style.display='none'">
     <div class="header-brand-text">
-      <span class="conf-name">September 2027</span>
+      <span class="conf-name">15–17 October 2027</span>
       <span class="conf-full">College of Engineering Karunagappally, Kerala, INDIA</span>
       <div class="header-edition-badge"><i class="fas fa-star"></i> 5th Edition</div>
     </div>
@@ -747,7 +951,7 @@
   <div class="nav-container">
     <a href="./index.html" class="brand-logo-wrap">
       <img class="brand-logo"
-           src="assets/img/iprecon26 white.png"
+           src="assets/img/iprecon27 white.png"
            alt="IPRECON 2027"
            onerror="this.style.display='none'">
     </a>
@@ -794,6 +998,7 @@
       <li class="nav-item"><a href="./registration.html">REGISTRATION</a></li>
       <li class="nav-item"><a href="./contact.html">CONTACT</a></li>
     </ul>
+    <esi:include src="/includes/nav-marquee.html" />
     <button class="hamburger" id="menuBtn" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -802,33 +1007,36 @@
 
 <!-- Mobile nav -->
 <div class="mobile-nav" id="mobileNav">
+  <button type="button" class="mob-close" id="mobClose" aria-label="Close menu">
+    <span>Close menu</span><i class="fas fa-xmark"></i>
+  </button>
   <a href="./index.html">HOME</a>
   <div class="mob-section">ABOUT</div>
-  <a href="./about-iprecon.html" style="padding-left:28px">IPRECON</a>
-  <a href="./organizers.html"    style="padding-left:28px">ORGANIZERS</a>
-  <a href="./venue.html"         style="padding-left:28px">VENUE</a>
-  <a href="./kerala.html"        style="padding-left:28px">KERALA</a>
-  <a href="./accommodation.html" style="padding-left:28px">ACCOMMODATION</a>
-  <a href="./visa.html"          style="padding-left:28px">VISA</a>
-  <a href="./sponsors.html"      style="padding-left:28px">SPONSORS &amp; EXHIBITORS</a>
-  <a href="./dei.html"           style="padding-left:28px">DEI STATEMENT</a>
+  <a class="mob-sub" href="./about-iprecon.html">IPRECON</a>
+  <a class="mob-sub" href="./organizers.html">ORGANIZERS</a>
+  <a class="mob-sub" href="./venue.html">VENUE</a>
+  <a class="mob-sub" href="./kerala.html">KERALA</a>
+  <a class="mob-sub" href="./accommodation.html">ACCOMMODATION</a>
+  <a class="mob-sub" href="./visa.html">VISA</a>
+  <a class="mob-sub" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+  <a class="mob-sub" href="./dei.html">DEI STATEMENT</a>
   <a href="./committee.html">COMMITTEE</a>
   <div class="mob-section">FOR AUTHORS</div>
-  <a href="./cfp.html"                      style="padding-left:28px">CALL FOR PAPERS</a>
-  <a href="./submissions.html"              style="padding-left:28px">SUBMISSIONS</a>
-  <a href="./important-dates.html"          style="padding-left:28px">IMPORTANT DATES</a>
-  <a href="./camera-ready.html"             style="padding-left:28px">CAMERA READY INSTRUCTIONS</a>
-  <a href="./presentation-guidelines.html" style="padding-left:28px">PRESENTATION GUIDELINES</a>
-  <a href="./housing-support.html"          style="padding-left:28px">STUDENT HOUSING SUPPORT</a>
-  <a href="./travel-support.html"           style="padding-left:28px">STUDENT TRAVEL SUPPORT</a>
+  <a class="mob-sub" href="./cfp.html">CALL FOR PAPERS</a>
+  <a class="mob-sub" href="./submissions.html">SUBMISSIONS</a>
+  <a class="mob-sub" href="./important-dates.html">IMPORTANT DATES</a>
+  <a class="mob-sub" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+  <a class="mob-sub" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+  <a class="mob-sub" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
+  <a class="mob-sub" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
   <a href="./speakers.html">SPEAKERS</a>
   <div class="mob-section">PROGRAM</div>
-  <a href="./inaugural.html"             style="padding-left:28px">INAUGURAL PROGRAM</a>
-  <a href="./distinguished-lectures.html" style="padding-left:28px">DISTINGUISHED LECTURE PROGRAM</a>
-  <a href="./tutorials.html"             style="padding-left:28px">TUTORIALS</a>
-  <a href="./tracks.html"                style="padding-left:28px">TRACKS</a>
-  <a href="./special-sessions.html"      style="padding-left:28px">SPECIAL SESSIONS</a>
-  <a href="./keynote.html"               style="padding-left:28px">KEYNOTE</a>
+  <a class="mob-sub" href="./inaugural.html">INAUGURAL PROGRAM</a>
+  <a class="mob-sub" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+  <a class="mob-sub" href="./tutorials.html">TUTORIALS</a>
+  <a class="mob-sub" href="./tracks.html">TRACKS</a>
+  <a class="mob-sub" href="./special-sessions.html">SPECIAL SESSIONS</a>
+  <a class="mob-sub" href="./keynote.html">KEYNOTE</a>
   <a href="./registration.html">REGISTRATION</a>
   <a href="./contact.html">CONTACT</a>
 </div>
@@ -836,45 +1044,25 @@
 <!-- ══════════════════════════════════════
      ANNOUNCEMENTS MARQUEE
 ══════════════════════════════════════ -->
-<div class="marquee-strip">
-  <div class="marquee-track">
-    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
-    <span class="marquee-sep">◆</span>
-    <!-- duplicate -->
-    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening September 2026</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
-    <span class="marquee-sep">◆</span>
-  </div>
-</div>
+<esi:include src="/includes/marquee-mobile.html" />
+
+<esi:include src="/includes/marquee.html" />
 
 <!-- ══════════════════════════════════════
      PAGE HERO
 ══════════════════════════════════════ -->
 <section class="page-hero">
+  <img class="hero-bg" src="assets/img/accommodation/hotel-allseason-hero.jpg" alt="Hotel All Season, Karunagappally" onerror="this.style.display='none'">
+  <div class="hero-overlay"></div>
   <div class="page-hero-inner">
     <span class="eyebrow"><i class="fas fa-bed"></i> Stay &amp; Travel — Karunagappally</span>
     <h1><em>Accommodation</em> &amp; Travel</h1>
     <p>Comfortable stays near the College of Engineering Karunagappally and clear directions to reach the venue for IPRECON 2027 delegates.</p>
-  </div>
-  <div class="breadcrumb">
-    <a href="./index.html">Home</a>
-    <i class="fas fa-chevron-right"></i>
-    <span class="current">Accommodation</span>
+    <div class="breadcrumb">
+      <a href="./index.html">Home</a>
+      <i class="fas fa-chevron-right"></i>
+      <span class="current">Accommodation</span>
+    </div>
   </div>
 </section>
 
@@ -893,9 +1081,9 @@
 <!-- ══════════════════════════════════════
      ACCOMMODATION — heading + discount banner
 ══════════════════════════════════════ -->
-<section class="hotels">
+<section class="hotels dark-band">
   <div class="sec-head">
-    <div class="sec-label-tag">Where to Stay</div>
+    <div class="sec-label-tag" data-num="01">Where to Stay</div>
     <h2 class="sec-title reveal">Accommodation Options</h2>
     <p class="sec-sub reveal">Recommended nearby hotels for IPRECON 2027 delegates. We have partnered with select properties to offer discounted rates for conference attendees.</p>
   </div>
@@ -913,11 +1101,8 @@
 
   <!-- Tier 1: Premium & Lakefront -->
   <div class="tier-head">
-    <div class="tier-icon lux"><i class="fas fa-crown"></i></div>
-    <div>
-      <h2>Premium &amp; Lakefront</h2>
-      <span>Luxury 4–5 star stays by the beach &amp; Ashtamudi Lake</span>
-    </div>
+    <h2>Premium &amp; Lakefront</h2>
+    <span>Luxury 4–5 star stays by the beach &amp; Ashtamudi Lake</span>
   </div>
   <div class="hotel-grid">
 
@@ -973,13 +1158,16 @@
      ACCOMMODATION — Resort, City & Nearby
 ══════════════════════════════════════ -->
 <section class="hotels">
+  <div class="sec-head">
+    <div class="sec-label-tag" data-num="02">More Options</div>
+    <h2 class="sec-title reveal">Resort, City &amp; Nearby Stays</h2>
+    <p class="sec-sub reveal">Mid-range resorts, city hotels, and the closest property to the venue — including the nearest hotel, just 3 km from the campus gate.</p>
+  </div>
+
   <!-- Tier 2: Resort, City & Nearby -->
   <div class="tier-head">
-    <div class="tier-icon mid"><i class="fas fa-building"></i></div>
-    <div>
-      <h2>Resort, City &amp; Nearby</h2>
-      <span>Comfortable stays close to the city and the venue</span>
-    </div>
+    <h2>Resort, City &amp; Nearby</h2>
+    <span>Comfortable stays close to the city and the venue</span>
   </div>
   <div class="hotel-grid">
 
@@ -1038,10 +1226,10 @@
 <!-- ══════════════════════════════════════
      TRAVEL INFORMATION
 ══════════════════════════════════════ -->
-<section id="travel">
+<section id="travel" class="dark-band">
   <div class="section-wrap">
     <div class="sec-head">
-      <div class="sec-label-tag">Getting to the Venue</div>
+      <div class="sec-label-tag" data-num="03">Getting to the Venue</div>
       <h2 class="sec-title reveal">Travel Information</h2>
       <p class="sec-sub reveal">College of Engineering Karunagappally is well-connected by air, rail, and road. Here are the nearest transportation hubs to help you plan your journey.</p>
     </div>
@@ -1175,6 +1363,7 @@
 ══════════════════════════════════════ -->
 <section id="campus">
   <div class="campus-inner reveal">
+    <div class="sec-label-tag" data-num="04">On Campus</div>
     <div class="c-icon"><i class="fas fa-graduation-cap"></i></div>
     <h2>Student Housing Support</h2>
     <p>Student authors from India, Nepal, and Bhutan may be eligible for housing support during IPRECON 2027. The college also offers arranged hostel accommodations for male and female students. Explore the support programs or reach out to the committee for assistance.</p>
@@ -1188,54 +1377,7 @@
 <!-- ══════════════════════════════════════
      FOOTER
 ══════════════════════════════════════ -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <img src="assets/img/iprecon26 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
-      <p>2027 IEEE International Power and Renewable Energy Conference — 5th edition. Organized by IEEE Student Branch, College of Engineering Karunagappally, Kerala, India.</p>
-      <div class="footer-socials">
-        <a href="https://www.facebook.com/ieeeceksb/"       class="soc-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://twitter.com/IEEE_SB_CEK"           class="soc-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.linkedin.com/company/ieeesbcek/" class="soc-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/ieee_sb_cek/"    class="soc-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>For Authors</h4>
-      <ul>
-        <li><a href="./cfp.html">Call for Papers</a></li>
-        <li><a href="./submissions.html">Submit a Paper</a></li>
-        <li><a href="./important-dates.html">Important Dates</a></li>
-        <li><a href="https://www.ieee.org/conferences/publishing/templates" target="_blank" rel="noopener">IEEE Paper Template</a></li>
-        <li><a href="./camera-ready.html">Camera Ready</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Conference</h4>
-      <ul>
-        <li><a href="./about-iprecon.html">About IPRECON</a></li>
-        <li><a href="./organizers.html">Organizers</a></li>
-        <li><a href="./committee.html">Committee</a></li>
-        <li><a href="./speakers.html">Speakers</a></li>
-        <li><a href="./sponsors.html">Sponsors</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Travel &amp; Info</h4>
-      <ul>
-        <li><a href="./venue.html">Venue &amp; Directions</a></li>
-        <li><a href="./accommodation.html">Accommodation</a></li>
-        <li><a href="./visa.html">Visa Information</a></li>
-        <li><a href="./kerala.html">Kerala Tourism</a></li>
-        <li><a href="./contact.html">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>Built with ❤️ &nbsp;|&nbsp; IEEE Student Branch CEK &copy; 2027</span>
-    <span>College of Engineering Karunagappally, Kerala, India</span>
-  </div>
-</footer>
+<esi:include src="/includes/footer.html" />
 
 <!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -1252,8 +1394,18 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 /* Mobile nav */
-document.getElementById('menuBtn').addEventListener('click', () => {
-  document.getElementById('mobileNav').classList.toggle('open');
+const menuBtn = document.getElementById('menuBtn');
+const mobileNav = document.getElementById('mobileNav');
+menuBtn.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  document.body.classList.toggle('nav-open', open);
+});
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobileNav.classList.remove('open');
+  document.body.classList.remove('nav-open');
+}));
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) { mobileNav.classList.remove('open'); document.body.classList.remove('nav-open'); }
 });
 
 /* ── IntersectionObserver reveals ──────────────── */
@@ -1321,6 +1473,21 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+
+/* drawer close button */
+(function () {
+  var btn = document.getElementById('mobClose');
+  var nav = document.getElementById('mobileNav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function () {
+    nav.classList.remove('open');
+    document.body.classList.remove('nav-open');
+    var ov = document.getElementById('mobileNavOverlay');
+    if (ov) ov.classList.remove('open');
+    var mb = document.getElementById('menuBtn');
+    if (mb) { mb.classList.remove('active'); mb.setAttribute('aria-expanded', 'false'); }
+  });
+})();
 </script>
 </body>
 </html>

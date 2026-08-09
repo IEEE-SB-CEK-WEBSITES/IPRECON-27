@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IPRECON 2027 — Contact Us</title>
-  <meta name="description" content="Contact the IPRECON 2027 organizing committee at College of Engineering Karunagappally, Kerala, India." />
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon.png" />
+  <title>Contact Us | IPRECON 2027 — IEEE International Power and Renewable Energy Conference</title>
+  <meta name="description" content="Contact the IPRECON 2027 organizing committee — College of Engineering Karunagappally, Kerala, India. Phone, email and enquiry form." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,7 +56,7 @@ a    { text-decoration: none; color: inherit; }
   border-bottom: 3px solid var(--brand);
 }
 .header-brand { display: flex; align-items: center; gap: 18px; }
-.header-conf-logo { height: 110px; width: auto; }
+.header-conf-logo { height: 100px; width: auto; }
 .header-brand-text {
   display: flex; flex-direction: column; gap: 2px;
   border-left: 1px solid var(--border); padding-left: 18px;
@@ -81,7 +84,7 @@ a    { text-decoration: none; color: inherit; }
 .brand-logo-wrap { display: flex; align-items: center; gap: 12px; height: var(--nav-h); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
 .navbar.scrolled .brand-logo-wrap { opacity: 1; visibility: visible; }
 .brand-logo { height: 46px; width: auto; display: block; }
-.nav-items { display: flex; list-style: none; }
+.nav-items { display: flex; list-style: none; margin-left: auto; }
 .nav-item { position: relative; }
 .nav-item > a, .nav-item > span.nav-link {
   display: flex; align-items: center; gap: 5px; padding: 0 16px; height: var(--nav-h);
@@ -108,6 +111,16 @@ a    { text-decoration: none; color: inherit; }
 .mobile-nav-overlay.open { opacity: 1; visibility: visible; }
 .mobile-nav a { display: block; padding: 14px 14px; color: rgba(255,255,255,0.78); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s; }
 .mobile-nav a:hover, .mobile-nav a:active { color: var(--gold); }
+  .mob-close {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    width: 100%; padding: 14px 22px; margin-bottom: 4px;
+    background: rgba(255,255,255,0.06); border: none; border-bottom: 1px solid rgba(255,255,255,0.12);
+    color: var(--gold); font: inherit; font-size: 11px; font-weight: 800;
+    letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .mob-close:hover { background: rgba(212,175,55,0.16); color: #fff; }
+  .mob-close i { font-size: 15px; }
 .mob-section { font-size: 10px; color: var(--gold); padding: 16px 14px 4px; letter-spacing: 0.14em; font-weight: 700; text-transform: uppercase; }
 .mob-sub { padding-left: 28px !important; font-size: 12.5px !important; }
 body.nav-open { overflow: hidden; }
@@ -203,7 +216,7 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
   .header-top-bar { padding: 6px 16px; font-size: 11px; }
   .header-top-bar .htb-right { display: none; }
   .site-header { padding: 10px 12px; }
-  .header-conf-logo { height: 40px; }
+  .header-conf-logo { height: 46px; }
   .header-brand { gap: 8px; flex: 1; min-width: 0; }
   .header-brand-text { padding-left: 8px; }
   .header-brand-text .conf-name { font-size: 11px; }
@@ -217,7 +230,20 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
   .brand-logo { height: 34px; }
   .nav-items { display: none; }
   .hamburger { display: flex; margin-left: auto; }
-  .nav-container { padding: 0 14px; justify-content: flex-start; gap: 6px; }
+  .hamburger { display: flex; flex-shrink: 0; order: 3; margin-left: auto; }
+  .navbar { height: 58px; }
+  .nav-container { padding: 0 12px; justify-content: flex-start; gap: 8px; height: 58px; }
+
+  /* marquee runs inside the nav bar at the top of the page … */
+  .nav-marquee { display: block; order: 2; }
+  .marquee-strip { display: none; }
+  /* … then pins directly under the nav once scrolled */
+  .marquee-strip-mobile {
+    display: none; position: fixed; top: 58px; left: 0; right: 0;
+    padding: 9px 0; z-index: 997;
+  }
+  .navbar.scrolled ~ .marquee-strip-mobile { display: block; }
+  .navbar.scrolled .nav-marquee { display: none; }
   .content-section, .page-hero { padding: 52px 20px; }
   .page-hero { padding-top: 48px; }
   .sec-head { margin-bottom: 34px; }
@@ -228,7 +254,7 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
 }
 @media (max-width: 480px) {
-  .header-conf-logo { height: 36px; }
+  .header-conf-logo { height: 46px; }
   .header-sp-group img { height: 19px; }
   .btn-row { flex-direction: column; }
   .btn-primary, .btn-outline, .btn-gold { width: 100%; justify-content: center; }
@@ -237,6 +263,30 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
 }
+
+  
+/* ════════════════════════════════════════════
+       MARQUEE (index2 system)
+    ════════════════════════════════════════════ */
+body.nav-open .nav-marquee { visibility: hidden; }
+body.nav-open .marquee-strip-mobile { display: none !important; }
+.nav-marquee { display: none; flex: 1; overflow: hidden; height: 58px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.nav-marquee-track { display: flex; align-items: center; gap: 30px; height: 100%; width: max-content; animation: mLeft 22s linear infinite; }
+.nav-marquee-item { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.82); white-space: nowrap; }
+.nav-marquee-item i { color: var(--gold); font-size: 11px; }
+.nav-marquee-item strong { color: #fff; font-weight: 600; }
+.nav-marquee-sep { color: rgba(212,175,55,0.7); font-size: 10px; }
+.marquee-strip { background: var(--off); border-bottom: 1px solid var(--border); padding: 10px 0; overflow: hidden; position: sticky; top: 58px; z-index: 999; }
+.marquee-strip-mobile { display: none; background: var(--off); border-bottom: 1px solid var(--border); overflow: hidden; }
+.marquee-track { display: flex; gap: 52px; animation: mLeft 32s linear infinite; width: max-content; }
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes mLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-item { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.marquee-item i { color: var(--purple); font-size: 11px; }
+.marquee-item strong { color: var(--brand); font-weight: 600; }
+.marquee-sep { color: #d0b0d0; }
 
   </style>
 </head>
@@ -329,8 +379,9 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
         </div>
       </li>
       <li class="nav-item"><a href="./registration.html" data-nav="registration">REGISTRATION</a></li>
-      <li class="nav-item"><a href="./contact.html" class="active" data-nav="contact">CONTACT</a></li>
+      <li class="nav-item"><a href="./contact.html" data-nav="contact" class="active">CONTACT</a></li>
     </ul>
+    <esi:include src="/includes/nav-marquee.html" />
     <button class="hamburger" id="menuBtn" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -339,243 +390,484 @@ footer { background: #1a0e1a; padding: 68px 60px 36px; }
 
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 <div class="mobile-nav" id="mobileNav">
+  <button type="button" class="mob-close" id="mobClose" aria-label="Close menu">
+    <span>Close menu</span><i class="fas fa-xmark"></i>
+  </button>
   <a href="./index.html">HOME</a>
   <div class="mob-section">ABOUT</div>
-  <a href="./about-iprecon.html" class="mob-sub">IPRECON</a>
-  <a href="./organizers.html"    class="mob-sub">ORGANIZERS</a>
-  <a href="./venue.html"         class="mob-sub">VENUE</a>
-  <a href="./kerala.html"        class="mob-sub">KERALA</a>
-  <a href="./accommodation.html" class="mob-sub">ACCOMMODATION</a>
-  <a href="./visa.html"          class="mob-sub">VISA</a>
-  <a href="./sponsors.html"      class="mob-sub">SPONSORS &amp; EXHIBITORS</a>
-  <a href="./dei.html"           class="mob-sub">DEI STATEMENT</a>
+  <a class="mob-sub" href="./about-iprecon.html">IPRECON</a>
+  <a class="mob-sub" href="./organizers.html">ORGANIZERS</a>
+  <a class="mob-sub" href="./venue.html">VENUE</a>
+  <a class="mob-sub" href="./kerala.html">KERALA</a>
+  <a class="mob-sub" href="./accommodation.html">ACCOMMODATION</a>
+  <a class="mob-sub" href="./visa.html">VISA</a>
+  <a class="mob-sub" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+  <a class="mob-sub" href="./dei.html">DEI STATEMENT</a>
   <a href="./committee.html">COMMITTEE</a>
   <div class="mob-section">FOR AUTHORS</div>
-  <a href="./cfp.html"                     class="mob-sub">CALL FOR PAPERS</a>
-  <a href="./submissions.html"             class="mob-sub">SUBMISSIONS</a>
-  <a href="./important-dates.html"         class="mob-sub">IMPORTANT DATES</a>
-  <a href="./camera-ready.html"            class="mob-sub">CAMERA READY INSTRUCTIONS</a>
-  <a href="./presentation-guidelines.html" class="mob-sub">PRESENTATION GUIDELINES</a>
-  <a href="./housing-support.html"         class="mob-sub">STUDENT HOUSING SUPPORT</a>
-  <a href="./travel-support.html"          class="mob-sub">STUDENT TRAVEL SUPPORT</a>
+  <a class="mob-sub" href="./cfp.html">CALL FOR PAPERS</a>
+  <a class="mob-sub" href="./submissions.html">SUBMISSIONS</a>
+  <a class="mob-sub" href="./important-dates.html">IMPORTANT DATES</a>
+  <a class="mob-sub" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+  <a class="mob-sub" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+  <a class="mob-sub" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
+  <a class="mob-sub" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
   <a href="./speakers.html">SPEAKERS</a>
   <div class="mob-section">PROGRAM</div>
-  <a href="./inaugural.html"              class="mob-sub">INAUGURAL PROGRAM</a>
-  <a href="./distinguished-lectures.html" class="mob-sub">DISTINGUISHED LECTURE PROGRAM</a>
-  <a href="./tutorials.html"              class="mob-sub">TUTORIALS</a>
-  <a href="./tracks.html"                 class="mob-sub">TRACKS</a>
-  <a href="./special-sessions.html"       class="mob-sub">SPECIAL SESSIONS</a>
-  <a href="./keynote.html"                class="mob-sub">KEYNOTE</a>
+  <a class="mob-sub" href="./inaugural.html">INAUGURAL PROGRAM</a>
+  <a class="mob-sub" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+  <a class="mob-sub" href="./tutorials.html">TUTORIALS</a>
+  <a class="mob-sub" href="./tracks.html">TRACKS</a>
+  <a class="mob-sub" href="./special-sessions.html">SPECIAL SESSIONS</a>
+  <a class="mob-sub" href="./keynote.html">KEYNOTE</a>
   <a href="./registration.html">REGISTRATION</a>
   <a href="./contact.html">CONTACT</a>
 </div>
 
+<esi:include src="/includes/marquee-mobile.html" />
+
+<esi:include src="/includes/marquee.html" />
+
 <main>
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <div class="page-hero-crumb"><a href="./index.html">Home</a> &nbsp;/&nbsp; Contact</div>
-    <div class="page-hero-tag"><i class="fas fa-headset"></i> Get in Touch</div>
+    <span class="eyebrow"><i class="fas fa-headset"></i> Get in Touch &middot; 5th Edition</span>
     <h1>Contact <em>Us</em></h1>
-    <p>Reach out to the IPRECON 2027 organizing committee. We're here to assist you with any questions about papers, registration, travel, or the conference in general.</p>
+    <p>Reach the IPRECON 2027 organizing committee. We're here to help with papers, registration, travel and everything in between.</p>
+    <div class="hero-cta">
+      <a href="#form" class="rbtn gold"><i class="fas fa-paper-plane"></i> Send a Message</a>
+      <span class="hero-note"><i class="fas fa-clock"></i> Replies within 24 hours on business days</span>
+    </div>
+  </div>
+  <div class="breadcrumb">
+    <a href="./index.html">Home</a>
+    <i class="fas fa-chevron-right"></i>
+    <span class="current">Contact</span>
   </div>
 </section>
 
-<section class="content-section">
-  <div class="section-wrap">
-    <div class="contact-top">
-      <div class="contact-info reveal">
-        <div class="ci-card">
-          <div class="ci-ico"><i class="fas fa-location-dot"></i></div>
-          <div><h4>Address</h4><p><strong>College of Engineering Karunagappally</strong><br>Karunagappally, Kollam<br>Kerala, India &ndash; 690523</p></div>
-        </div>
-        <div class="ci-card">
-          <div class="ci-ico"><i class="fas fa-clock"></i></div>
-          <div><h4>Support Availability</h4><p><strong>Monday &ndash; Saturday:</strong> 9:00 AM &ndash; 9:00 PM IST<br>Emergency support available 24/7 via email.</p></div>
-        </div>
-        <div class="ci-card">
-          <div class="ci-ico"><i class="fas fa-phone"></i></div>
-          <div><h4>Phone Numbers</h4><p><strong>Celestine Geo Leslin:</strong> <a href="tel:+919311401568">+91 93114 01568</a><br><strong>Silpa S:</strong> <a href="tel:+916235363577">+91 62353 63577</a></p></div>
-        </div>
-        <div class="ci-card">
-          <div class="ci-ico"><i class="fas fa-envelope"></i></div>
-          <div><h4>Email Addresses</h4><p><strong>General:</strong> <a href="mailto:[email protected]">[email protected]</a><br><strong>Papers:</strong> <a href="mailto:[email protected]">[email protected]</a><br><strong>Registration:</strong> <a href="mailto:[email protected]">[email protected]</a></p></div>
-        </div>
-      </div>
+<!-- ══════════════════════════════════════
+     01 · DIRECT LINES
+══════════════════════════════════════ -->
+<section class="ct-band light">
+  <div class="ct-wrap">
+    <div class="ct-head">
+      <span class="ct-eyebrow">Direct Lines</span>
+      <h2>Talk to the Team</h2>
+    </div>
 
-      <div class="contact-map reveal">
+    <div class="lines">
+      <a class="line reveal" href="tel:+919311401568">
+        <span class="ln-role">Registration &amp; General</span>
+        <span class="ln-name">Celestine Geo Leslin</span>
+        <span class="ln-num">+91 93114 01568</span>
+        <span class="ln-go"><i class="fas fa-phone"></i> Call</span>
+      </a>
+      <a class="line reveal" href="tel:+916235363577">
+        <span class="ln-role">Finance &amp; Support</span>
+        <span class="ln-name">Silpa S</span>
+        <span class="ln-num">+91 62353 63577</span>
+        <span class="ln-go"><i class="fas fa-phone"></i> Call</span>
+      </a>
+    </div>
+
+    <div class="mails">
+      <a class="mailcard reveal" href="mailto:info@iprecon.org">
+        <span class="mc-k">General enquiries</span>
+        <span class="mc-v">info@iprecon.org</span>
+      </a>
+      <a class="mailcard reveal" href="mailto:papers@iprecon.org">
+        <span class="mc-k">Paper submissions</span>
+        <span class="mc-v">papers@iprecon.org</span>
+      </a>
+      <a class="mailcard reveal" href="mailto:registrations@iprecon.org">
+        <span class="mc-k">Registration support</span>
+        <span class="mc-v">registrations@iprecon.org</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     02 · WHERE WE ARE
+══════════════════════════════════════ -->
+<section class="ct-band dark">
+  <div class="ct-wrap">
+    <div class="ct-head">
+      <span class="ct-eyebrow">Where We Are</span>
+      <h2>Venue &amp; Availability</h2>
+    </div>
+
+    <div class="place">
+      <div class="place-map reveal">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4432.489710044096!2d76.55441247552321!3d9.064586290998184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06047ba58e1ba5%3A0x34bf71aaecc5a798!2sCollege%20of%20Engineering%20Karunagappally!5e1!3m2!1sen!2sin!4v1750512745673!5m2!1sen!2sin"
-          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="College of Engineering Karunagappally map"></iframe>
+          title="College of Engineering Karunagappally location" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="content-section alt">
-  <div class="section-wrap">
-    <div class="sec-head">
-      <div class="sec-label-tag">Drop a Line</div>
-      <h2 class="sec-title reveal">Send Us a Message</h2>
-      <p class="sec-sub reveal">Have a question or need assistance? Fill out the form and we'll get back to you as soon as possible.</p>
-    </div>
-
-    <div class="contact-form-wrap reveal">
-      <div id="formSuccess" class="form-success" style="display:none;">
-        <i class="fas fa-circle-check"></i>
-        <h3>Message Sent Successfully!</h3>
-        <p>Thank you for contacting us. We'll respond to your inquiry within 24 hours.</p>
-      </div>
-      <div id="contactForm">
-        <div class="form-grid">
-          <div class="form-field"><label>Full Name *</label><input type="text" id="f-name" placeholder="Your full name"></div>
-          <div class="form-field"><label>Organization / Institution *</label><input type="text" id="f-org" placeholder="Your organization"></div>
-          <div class="form-field"><label>Email Address *</label><input type="email" id="f-email" placeholder="[email protected]"></div>
-          <div class="form-field"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+91 00000 00000"></div>
-          <div class="form-field"><label>Subject *</label>
-            <select id="f-subject">
-              <option value="">Select a subject</option>
-              <option>General Inquiry</option>
-              <option>Paper Submission</option>
-              <option>Registration Support</option>
-              <option>Accommodation</option>
-              <option>Travel Information</option>
-              <option>Sponsorship Opportunities</option>
-              <option>Media &amp; Press</option>
-              <option>Technical Issues</option>
-              <option>Other</option>
-            </select>
+      <div class="place-info">
+        <div class="pi-row reveal">
+          <span class="pi-k"><i class="fas fa-location-dot"></i> Address</span>
+          <div class="pi-v">
+            <b>College of Engineering Karunagappally</b>
+            Karunagappally, Kollam<br>
+            Kerala, India &ndash; 690523
           </div>
-          <div class="form-field"><label>Phone / Alt. Contact</label><input type="text" id="f-alt" placeholder="Optional"></div>
         </div>
-        <div class="form-field" style="margin-top:18px;"><label>Message *</label><textarea id="f-msg" rows="5" placeholder="Type your message (minimum 10 characters)"></textarea></div>
-        <div id="formError" class="form-error" style="display:none;"></div>
-        <button class="btn-primary" id="sendBtn" style="margin-top:18px;"><i class="fas fa-paper-plane"></i> Send Message</button>
-        <p class="form-note">We typically respond within 24 hours during business days. For urgent matters, please call our support line.</p>
+        <div class="pi-row reveal">
+          <span class="pi-k"><i class="fas fa-clock"></i> Support hours</span>
+          <div class="pi-v">
+            <b>Monday &ndash; Saturday</b>
+            9:00 AM &ndash; 9:00 PM IST<br>
+            Emergency support available 24/7 by email
+          </div>
+        </div>
+        <div class="pi-row reveal">
+          <span class="pi-k"><i class="fas fa-calendar-days"></i> Conference</span>
+          <div class="pi-v">
+            <b>15&ndash;17 October 2027</b>
+            Hybrid mode &mdash; on campus and online
+          </div>
+        </div>
+        <a class="pi-link" href="https://maps.app.goo.gl/CSgHr34z8YuKFb1H9" target="_blank" rel="noopener">
+          <i class="fas fa-diamond-turn-right"></i> Open in Google Maps
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="content-section dark">
-  <div class="section-wrap" style="text-align:center;">
-    <h2 style="color:#fff;font-size:24px;font-weight:800;margin-bottom:12px;">Need Immediate Assistance?</h2>
-    <p style="color:rgba(255,255,255,0.7);max-width:520px;margin:0 auto 24px;line-height:1.7;">For urgent inquiries, reach out to us directly by phone.</p>
-    <div class="btn-row" style="justify-content:center;">
-      <a href="tel:+919311401568" class="btn-gold"><i class="fas fa-phone"></i> +91 93114 01568</a>
-      <a href="tel:+916235363577" class="btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.3);"><i class="fas fa-phone"></i> +91 62353 63577</a>
+<!-- ══════════════════════════════════════
+     03 · FORM
+══════════════════════════════════════ -->
+<section class="ct-band light alt" id="form">
+  <div class="ct-wrap narrow">
+    <div class="ct-head">
+      <span class="ct-eyebrow">Enquiries</span>
+      <h2>Send us a Message</h2>
+    </div>
+    <p class="ct-note">Have a question or need assistance? Fill in the form and we'll get back to you as soon as possible.</p>
+
+    <form class="enquiry" id="contactForm" novalidate>
+      <div class="fld">
+        <label for="fName">Full name <span>*</span></label>
+        <input type="text" id="fName" name="name" placeholder="Your full name" required>
+        <em class="err">Please enter your full name.</em>
+      </div>
+      <div class="fld">
+        <label for="fOrg">Organization / Institution <span>*</span></label>
+        <input type="text" id="fOrg" name="organization" placeholder="University, company or institute" required>
+        <em class="err">Please enter your organization or institution.</em>
+      </div>
+      <div class="fld">
+        <label for="fEmail">Email address <span>*</span></label>
+        <input type="email" id="fEmail" name="email" placeholder="you@university.edu" required>
+        <em class="err">Please enter a valid email address.</em>
+      </div>
+      <div class="fld">
+        <label for="fPhone">Phone number <span>*</span></label>
+        <input type="tel" id="fPhone" name="phone" placeholder="+91 00000 00000" required>
+        <em class="err">Please enter your phone number.</em>
+      </div>
+      <div class="fld full">
+        <label for="fSubject">Subject <span>*</span></label>
+        <select id="fSubject" name="subject" required>
+          <option value="">Select a subject</option>
+          <option>General Inquiry</option>
+          <option>Paper Submission</option>
+          <option>Registration Support</option>
+          <option>Accommodation</option>
+          <option>Travel Information</option>
+          <option>Sponsorship Opportunities</option>
+          <option>Media &amp; Press</option>
+          <option>Technical Issues</option>
+          <option value="Other">Other</option>
+        </select>
+        <em class="err">Please select a subject.</em>
+      </div>
+      <div class="fld full" id="otherWrap" hidden>
+        <label for="fOther">Please specify your subject <span>*</span></label>
+        <input type="text" id="fOther" name="customSubject" placeholder="Tell us what it's about">
+        <em class="err">Please enter your subject.</em>
+      </div>
+      <div class="fld full">
+        <label for="fMsg">Message <span>*</span></label>
+        <textarea id="fMsg" name="message" rows="6" maxlength="1000" placeholder="Write your message here…" required></textarea>
+        <div class="fld-foot"><em class="err">Please enter your message (minimum 10 characters).</em><span class="counter" id="counter">0 / 1000 characters</span></div>
+      </div>
+      <div class="fld full actions">
+        <button type="submit" class="rbtn gold" id="sendBtn"><i class="fas fa-paper-plane"></i> Send Message</button>
+        <p class="form-note">We typically respond within 24 hours on business days. For urgent matters, please call the support line.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     04 · URGENT
+══════════════════════════════════════ -->
+<section class="ct-band dark">
+  <div class="ct-wrap">
+    <div class="ct-head">
+      <span class="ct-eyebrow">Right Now</span>
+      <h2>Need Immediate Assistance?</h2>
+    </div>
+    <p class="ct-note dark">For urgent enquiries or immediate support, reach us directly through these channels.</p>
+
+    <div class="urgent">
+      <a class="ur reveal" href="tel:+919311401568"><span class="ur-k"><i class="fas fa-phone"></i> Call now</span><span class="ur-v">+91 93114 01568</span></a>
+      <a class="ur reveal" href="mailto:info@iprecon.org"><span class="ur-k"><i class="fas fa-envelope"></i> Email us</span><span class="ur-v">info@iprecon.org</span></a>
+      <a class="ur reveal" href="./committee.html"><span class="ur-k"><i class="fas fa-users"></i> Committee</span><span class="ur-v">Meet the team</span></a>
+      <a class="ur reveal" href="./registration.html"><span class="ur-k"><i class="fas fa-user-plus"></i> Registration</span><span class="ur-v">Fees &amp; guidelines</span></a>
     </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════
+     SENT MODAL
+══════════════════════════════════════ -->
+<div class="gate" id="sentModal">
+  <div class="gate-box">
+    <span class="gate-tag"><i class="fas fa-circle-check"></i> Message sent</span>
+    <h3>Message Sent Successfully!</h3>
+    <p>Thank you for contacting us. We'll respond to your enquiry within 24 hours.</p>
+    <div class="gate-actions">
+      <button class="rbtn gold" id="sentClose"><i class="fas fa-xmark"></i> Close</button>
+      <a class="rbtn line" href="./index.html">Back to Home</a>
+    </div>
+  </div>
+</div>
 
 <style>
-.contact-top { display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:stretch; }
-.contact-info { display:flex; flex-direction:column; gap:16px; }
-.ci-card { display:flex; gap:16px; align-items:flex-start; background:#fff; border:1px solid var(--border); border-radius:12px; padding:22px 24px; box-shadow:0 4px 20px rgba(33,16,33,0.06); }
-.ci-ico { width:46px; height:46px; flex-shrink:0; border-radius:10px; background:linear-gradient(135deg,var(--purple),var(--purple-d)); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; }
-.ci-card h4 { font-size:14px; color:var(--brand); font-weight:700; margin-bottom:6px; }
-.ci-card p { font-size:13.5px; color:var(--muted); line-height:1.7; }
-.ci-card a { color:var(--purple-d); font-weight:500; }
-.ci-card a:hover { color:var(--purple); }
-.contact-map { border-radius:12px; overflow:hidden; border:1px solid var(--border); min-height:420px; box-shadow:0 4px 20px rgba(33,16,33,0.06); }
-.contact-map iframe { display:block; height:100%; min-height:420px; }
-.contact-form-wrap { max-width:820px; margin:0 auto; background:#fff; border:1px solid var(--border); border-radius:14px; padding:38px 40px; box-shadow:0 8px 40px rgba(33,16,33,0.08); }
-.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-.form-field label { display:block; font-size:12.5px; font-weight:600; color:var(--brand); margin-bottom:6px; }
-.form-field input, .form-field select, .form-field textarea { width:100%; padding:11px 14px; border:1px solid var(--border); border-radius:8px; font-family:inherit; font-size:14px; color:var(--text); background:var(--off); transition:border-color .2s, box-shadow .2s; }
-.form-field input:focus, .form-field select:focus, .form-field textarea:focus { outline:none; border-color:var(--purple); box-shadow:0 0 0 3px rgba(142,36,170,0.1); background:#fff; }
-.form-field textarea { resize:vertical; }
-.form-note { font-size:12.5px; color:var(--muted); margin-top:14px; line-height:1.6; }
-.form-error { background:#fdecea; border:1px solid #f5c6cb; color:#b71c1c; font-size:13px; padding:10px 14px; border-radius:8px; margin-top:14px; }
-.form-success { text-align:center; padding:30px 20px; }
-.form-success i { font-size:52px; color:#2e7d32; margin-bottom:16px; }
-.form-success h3 { font-size:20px; color:var(--brand); font-weight:700; margin-bottom:8px; }
-.form-success p { font-size:14px; color:var(--muted); }
-@media (max-width:900px){ .contact-top{grid-template-columns:1fr;} .contact-map{min-height:320px;} .contact-map iframe{min-height:320px;} }
-@media (max-width:600px){ .form-grid{grid-template-columns:1fr;} .contact-form-wrap{padding:26px 22px;} }
+/* ════════════════════════════════════════════
+       CONTACT
+    ════════════════════════════════════════════ */
+.page-hero { background: var(--brand); padding: 66px 60px 60px; position: relative; overflow: hidden; text-align: left; }
+.page-hero::before { content: ''; position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 61px); }
+.page-hero-inner { position: relative; z-index: 2; max-width: 860px; margin: 0; }
+.page-hero .eyebrow { display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4);
+  color: var(--gold); font-size: 11px; font-weight: 600; padding: 6px 16px; border-radius: 3px;
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 22px; }
+.page-hero h1 { font-size: clamp(30px, 4.5vw, 48px); font-weight: 800; color: #fff;
+  line-height: 1.15; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.01em; }
+.page-hero h1 em { font-style: normal; color: var(--gold); }
+.page-hero p { font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 660px; margin: 0; }
+.hero-cta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 28px; }
+.hero-note { display: inline-flex; align-items: center; gap: 9px; font-size: 12.5px; color: rgba(255,255,255,0.6); }
+.hero-note i { color: var(--gold); }
+.breadcrumb { position: relative; z-index: 2; display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+.breadcrumb a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb i { font-size: 9px; color: rgba(255,255,255,0.3); }
+.breadcrumb .current { color: var(--gold); }
+
+.ct-wrap { max-width: 1160px; margin: 0 auto; }
+.ct-wrap.narrow { max-width: 900px; }
+.ct-band { padding: 82px 60px; }
+.ct-band.light { background: #fff; color: var(--brand); }
+.ct-band.light.alt { background: var(--light); }
+.ct-band.dark { position: relative; overflow: hidden; color: #fff;
+  background: radial-gradient(120% 90% at 80% 0%, #3a1d3f 0%, var(--brand) 55%, #1a0e1a 100%);
+  border-top: 1px solid rgba(212,175,55,0.28); border-bottom: 1px solid rgba(212,175,55,0.28); }
+.ct-band.dark::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px); }
+.ct-band.dark > * { position: relative; z-index: 2; }
+
+.ct-head { text-align: center; margin-bottom: 40px; }
+.ct-eyebrow { display: block; font-size: 11px; font-weight: 700; color: var(--purple);
+  letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+.ct-head h2 { font-size: clamp(24px, 3.4vw, 36px); font-weight: 800; line-height: 1.2;
+  letter-spacing: -0.02em; display: inline-block; padding-bottom: 14px; position: relative; }
+.ct-head h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 90px; height: 3px; background: linear-gradient(90deg, var(--purple), var(--gold)); }
+.ct-band.dark .ct-eyebrow { color: var(--gold); }
+.ct-band.dark .ct-head h2::after { background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.25)); }
+.ct-note { text-align: center; font-size: 14px; color: var(--muted); line-height: 1.75; max-width: 620px; margin: -24px auto 36px; }
+.ct-note.dark { color: rgba(255,255,255,0.62); }
+
+.rbtn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 4px;
+  font: inherit; font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+  border: 1px solid transparent; cursor: pointer; transition: all 0.25s ease; }
+.rbtn.gold { background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--brand); }
+.rbtn.gold:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(212,175,55,0.35); }
+.rbtn.line { background: transparent; color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.28); }
+.rbtn.line:hover { border-color: var(--gold); color: var(--gold); }
+
+/* 01 — direct lines */
+.lines { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 22px; }
+.line { display: grid; grid-template-columns: 1fr auto; grid-template-areas: 'role go' 'name go' 'num go';
+  gap: 4px 20px; align-items: center; padding: 26px 28px; background: #fff;
+  border: 1px solid var(--border); border-left: 3px solid var(--purple);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-left-color 0.28s ease; }
+.line:hover { transform: translateY(-4px); border-left-color: var(--gold); box-shadow: 0 16px 38px rgba(33,16,33,0.12); }
+.ln-role { grid-area: role; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple); }
+.ln-name { grid-area: name; font-size: 17px; font-weight: 800; letter-spacing: -0.01em; color: var(--brand); }
+.ln-num { grid-area: num; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.ln-go { grid-area: go; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+
+.mails { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); }
+.mailcard { display: block; padding: 22px 24px; border-left: 1px solid var(--border); background: #fff; transition: background 0.26s ease; }
+.mailcard:first-child { border-left: none; }
+.mailcard:hover { background: var(--brand); }
+.mc-k { display: block; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--purple); margin-bottom: 9px; transition: color 0.26s ease; }
+.mc-v { display: block; font-size: 14.5px; font-weight: 700; color: var(--brand); word-break: break-all; transition: color 0.26s ease; }
+.mailcard:hover .mc-k { color: var(--gold); }
+.mailcard:hover .mc-v { color: #fff; }
+
+/* 02 — place */
+.place { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 0; border: 1px solid rgba(255,255,255,0.16); }
+.place-map { position: relative; min-height: 380px; }
+.place-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(0.25) contrast(1.05); }
+.place-info { padding: 34px 34px 30px; border-left: 1px solid rgba(255,255,255,0.16); }
+.pi-row { display: grid; grid-template-columns: 150px 1fr; gap: 18px; padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.14); }
+.pi-row:first-child { padding-top: 0; }
+.pi-k { font-size: 10.5px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+.pi-k i { margin-right: 7px; }
+.pi-v { font-size: 13.5px; line-height: 1.75; color: rgba(255,255,255,0.7); }
+.pi-v b { display: block; color: #fff; font-weight: 700; margin-bottom: 4px; }
+.pi-link { display: inline-flex; align-items: center; gap: 9px; margin-top: 22px; font-size: 11.5px;
+  font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+  padding-bottom: 4px; border-bottom: 1px solid transparent; transition: border-color 0.25s ease; }
+.pi-link:hover { border-bottom-color: var(--gold); }
+
+/* 03 — form */
+.enquiry { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.fld.full { grid-column: 1 / -1; }
+.fld label { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--purple); margin-bottom: 9px; }
+.fld label span { color: #d64545; }
+.fld input, .fld select, .fld textarea {
+  width: 100%; padding: 13px 15px; font: inherit; font-size: 14px; color: var(--brand);
+  background: #fff; border: 1px solid var(--border); border-radius: 4px; outline: none;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease; }
+.fld textarea { resize: vertical; line-height: 1.7; }
+.fld input:focus, .fld select:focus, .fld textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(142,36,170,0.12); }
+.fld.invalid input, .fld.invalid select, .fld.invalid textarea { border-color: #d64545; box-shadow: 0 0 0 3px rgba(214,69,69,0.12); }
+.err { display: none; margin-top: 7px; font-size: 12px; font-style: normal; color: #b03030; }
+.fld.invalid .err { display: block; }
+.fld-foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 7px; }
+.fld-foot .err { margin-top: 0; }
+.counter { margin-left: auto; font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 4px; }
+.form-note { flex: 1; min-width: 260px; font-size: 12.5px; line-height: 1.7; color: var(--muted); }
+
+/* 04 — urgent */
+.urgent { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid rgba(255,255,255,0.16); }
+.ur { display: block; padding: 26px 24px; border-left: 1px solid rgba(255,255,255,0.16); transition: background 0.28s ease; }
+.ur:first-child { border-left: none; }
+.ur:hover { background: rgba(255,255,255,0.06); }
+.ur-k { display: block; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px; }
+.ur-k i { margin-right: 7px; }
+.ur-v { display: block; font-size: 15px; font-weight: 700; color: #fff; word-break: break-word; }
+
+/* modal */
+.gate { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center;
+  padding: 20px; background: rgba(13,8,14,0.72); backdrop-filter: blur(5px);
+  opacity: 0; visibility: hidden; transition: all 0.28s ease; }
+.gate.show { opacity: 1; visibility: visible; }
+.gate-box { width: 100%; max-width: 480px; background: #16101a; border: 1px solid rgba(212,175,55,0.35);
+  border-top: 3px solid var(--gold); padding: 34px 32px 30px; text-align: center;
+  transform: translateY(16px); transition: transform 0.3s ease; }
+.gate.show .gate-box { transform: none; }
+.gate-tag { display: inline-flex; align-items: center; gap: 9px; font-size: 10px; font-weight: 800;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--brand); background: var(--gold);
+  padding: 6px 13px; margin-bottom: 18px; }
+.gate-box h3 { font-size: 23px; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 12px; }
+.gate-box > p { font-size: 13.5px; line-height: 1.75; color: rgba(255,255,255,0.68); margin-bottom: 24px; }
+.gate-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 1100px) {
+  .ct-band, .page-hero { padding-left: 32px; padding-right: 32px; }
+  .lines { grid-template-columns: 1fr; }
+  .mails { grid-template-columns: 1fr; }
+  .mailcard { border-left: none; border-top: 1px solid var(--border); }
+  .mailcard:first-child { border-top: none; }
+  .place { grid-template-columns: 1fr; }
+  .place-info { border-left: none; border-top: 1px solid rgba(255,255,255,0.16); }
+  .urgent { grid-template-columns: repeat(2, 1fr); }
+  .ur:nth-child(3) { border-left: none; }
+  .ur:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,0.16); }
+}
+@media (max-width: 768px) {
+  .ct-band { padding: 58px 20px; }
+  .page-hero { padding: 48px 20px 44px; }
+  .enquiry { grid-template-columns: 1fr; }
+  .pi-row { grid-template-columns: 1fr; gap: 8px; }
+  .urgent { grid-template-columns: 1fr; }
+  .ur { border-left: none; border-top: 1px solid rgba(255,255,255,0.16); }
+  .ur:first-child { border-top: none; }
+  .rbtn { width: 100%; justify-content: center; }
+  .line { grid-template-columns: 1fr; grid-template-areas: 'role' 'name' 'num' 'go'; gap: 6px; }
+}
 </style>
 
 <script>
-(function(){
-  var btn = document.getElementById('sendBtn');
-  if(!btn) return;
-  btn.addEventListener('click', function(){
-    var name=document.getElementById('f-name').value.trim();
-    var org=document.getElementById('f-org').value.trim();
-    var email=document.getElementById('f-email').value.trim();
-    var phone=document.getElementById('f-phone').value.trim();
-    var subject=document.getElementById('f-subject').value;
-    var msg=document.getElementById('f-msg').value.trim();
-    var err=document.getElementById('formError');
-    var problems=[];
-    if(!name) problems.push('full name');
-    if(!org) problems.push('organization');
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) problems.push('a valid email');
-    if(!phone) problems.push('phone number');
-    if(!subject) problems.push('a subject');
-    if(msg.length<10) problems.push('a message (min 10 characters)');
-    if(problems.length){
-      err.style.display='block';
-      err.innerHTML='<i class="fas fa-triangle-exclamation"></i> Please provide: '+problems.join(', ')+'.';
-      return;
-    }
-    err.style.display='none';
-    document.getElementById('contactForm').style.display='none';
-    document.getElementById('formSuccess').style.display='block';
-    document.getElementById('formSuccess').scrollIntoView({behavior:'smooth',block:'center'});
+(function () {
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+  var subject = document.getElementById('fSubject'),
+      otherWrap = document.getElementById('otherWrap'),
+      other = document.getElementById('fOther'),
+      msg = document.getElementById('fMsg'),
+      counter = document.getElementById('counter'),
+      modal = document.getElementById('sentModal'),
+      close = document.getElementById('sentClose');
+
+  function fld(el) { return el.closest('.fld'); }
+  function mark(el, ok) { fld(el).classList.toggle('invalid', !ok); return ok; }
+
+  subject.addEventListener('change', function () {
+    var isOther = subject.value === 'Other';
+    otherWrap.hidden = !isOther;
+    if (!isOther) { other.value = ''; fld(other).classList.remove('invalid'); }
   });
+
+  msg.addEventListener('input', function () {
+    counter.textContent = msg.value.length + ' / 1000 characters';
+  });
+
+  form.addEventListener('input', function (e) {
+    if (e.target.matches('input, textarea, select')) fld(e.target).classList.remove('invalid');
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true;
+    ok = mark(document.getElementById('fName'), document.getElementById('fName').value.trim().length > 1) && ok;
+    ok = mark(document.getElementById('fOrg'), document.getElementById('fOrg').value.trim().length > 1) && ok;
+    ok = mark(document.getElementById('fEmail'), /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('fEmail').value.trim())) && ok;
+    ok = mark(document.getElementById('fPhone'), document.getElementById('fPhone').value.replace(/\D/g, '').length >= 8) && ok;
+    ok = mark(subject, subject.value !== '') && ok;
+    if (subject.value === 'Other') ok = mark(other, other.value.trim().length > 1) && ok;
+    ok = mark(msg, msg.value.trim().length >= 10) && ok;
+    if (!ok) { form.querySelector('.fld.invalid input, .fld.invalid select, .fld.invalid textarea').focus(); return; }
+
+    form.reset();
+    otherWrap.hidden = true;
+    counter.textContent = '0 / 1000 characters';
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function hide() { modal.classList.remove('show'); document.body.style.overflow = ''; }
+  close.addEventListener('click', hide);
+  modal.addEventListener('click', function (e) { if (e.target === modal) hide(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('show')) hide(); });
 })();
 </script>
-
 </main>
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <img src="assets/img/iprecon27 white.png" alt="IPRECON 2027" onerror="this.style.display='none'">
-      <p>2027 IEEE International Power and Renewable Energy Conference — 5th edition. Organized by IEEE Student Branch, College of Engineering Karunagappally, Kerala, India.</p>
-      <div class="footer-socials">
-        <a href="https://www.facebook.com/ieeeceksb/"       class="soc-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://x.com/IEEE_SB_CEK"                 class="soc-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.linkedin.com/company/ieeesbcek/" class="soc-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/ieee_sb_cek/"    class="soc-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>For Authors</h4>
-      <ul>
-        <li><a href="./cfp.html">Call for Papers</a></li>
-        <li><a href="./submissions.html">Submit a Paper</a></li>
-        <li><a href="./important-dates.html">Important Dates</a></li>
-        <li><a href="https://www.ieee.org/conferences/publishing/templates" target="_blank" rel="noopener">IEEE Paper Template</a></li>
-        <li><a href="./camera-ready.html">Camera Ready</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Conference</h4>
-      <ul>
-        <li><a href="./about-iprecon.html">About IPRECON</a></li>
-        <li><a href="./organizers.html">Organizers</a></li>
-        <li><a href="./committee.html">Committee</a></li>
-        <li><a href="./speakers.html">Speakers</a></li>
-        <li><a href="./sponsors.html">Sponsors</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Travel &amp; Info</h4>
-      <ul>
-        <li><a href="./venue.html">Venue &amp; Directions</a></li>
-        <li><a href="./accommodation.html">Accommodation</a></li>
-        <li><a href="./visa.html">Visa Information</a></li>
-        <li><a href="./kerala.html">Kerala Tourism</a></li>
-        <li><a href="./contact.html">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>Built with &#10084;&#65039; &nbsp;|&nbsp; IEEE Student Branch CEK &copy; 2027</span>
-    <span>College of Engineering Karunagappally, Kerala, India</span>
-  </div>
-</footer>
+<esi:include src="/includes/footer.html" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -615,6 +907,21 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+
+/* drawer close button */
+(function () {
+  var btn = document.getElementById('mobClose');
+  var nav = document.getElementById('mobileNav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function () {
+    nav.classList.remove('open');
+    document.body.classList.remove('nav-open');
+    var ov = document.getElementById('mobileNavOverlay');
+    if (ov) ov.classList.remove('open');
+    var mb = document.getElementById('menuBtn');
+    if (mb) { mb.classList.remove('active'); mb.setAttribute('aria-expanded', 'false'); }
+  });
+})();
 </script>
 
 </body>

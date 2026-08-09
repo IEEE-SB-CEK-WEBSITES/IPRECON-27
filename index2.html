@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon.png" />
   <title>IPRECON 2027 — IEEE International Power and Renewable Energy Conference</title>
   <meta name="description" content="5th IEEE International Power and Renewable Energy Conference — 15–17 October 2027, College of Engineering Karunagappally, Kerala, India." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -141,7 +144,7 @@
     }
     .brand-label span { display: block; font-size: 10px; font-weight: 400; color: rgba(255,255,255,0.55); letter-spacing: 0.04em; }
 
-    .nav-items { display: flex; list-style: none; }
+    .nav-items { display: flex; list-style: none; margin-left: auto; }
 
     .nav-item { position: relative; }
     .nav-item > a,
@@ -195,13 +198,13 @@
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .mobile-nav {
-      position: fixed; top: 0; right: 0; bottom: 0;
-      width: min(82%, 330px);
+      position: fixed; top: 58px; left: 0; right: 0; bottom: 0;
       background: var(--brand); z-index: 1003;
-      overflow-y: auto; padding: 0 0 40px;
-      transform: translateX(100%); visibility: hidden;
-      transition: transform 0.32s cubic-bezier(0.22,0.61,0.36,1);
-      box-shadow: -12px 0 32px rgba(0,0,0,0.45);
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: 8px 0 40px;
+      border-top: 1px solid rgba(212,175,55,0.35);
+      transform: translateY(-8px); opacity: 0; visibility: hidden;
+      transition: transform 0.28s ease, opacity 0.28s ease, visibility 0.28s;
     }
     .mobile-nav-head {
       display: flex; align-items: center; justify-content: space-between;
@@ -214,27 +217,47 @@
       cursor: pointer; padding: 4px 8px; line-height: 1;
     }
     .mobile-nav-close:hover { color: var(--gold); }
-    .mobile-nav.open { transform: translateX(0); visibility: visible; }
-    .mobile-nav-overlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.5); z-index: 1002;
-      opacity: 0; visibility: hidden; transition: opacity 0.3s;
-    }
+    .mobile-nav.open { transform: none; opacity: 1; visibility: visible; }
+    .mobile-nav-overlay { display: none; }   /* full-width drawer needs no scrim */
     .mobile-nav-overlay.open { opacity: 1; visibility: visible; }
     /* when the drawer is open, hide marquee so nothing bleeds over it */
     body.nav-open .nav-marquee { visibility: hidden; }
     body.nav-open .marquee-strip-mobile { display: none !important; }
     .mobile-nav a {
-      display: block; padding: 11px 14px;
-      color: rgba(255,255,255,0.78); font-size: 12.5px;
-      font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
-      border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s;
+      display: flex; align-items: center; justify-content: flex-start;
+      padding: 14px 22px;
+      color: rgba(255,255,255,0.82); font-size: 12.5px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.2s, color 0.2s, padding-left 0.2s;
     }
-    .mobile-nav a:hover { color: var(--gold); }
+    .mobile-nav a:hover, .mobile-nav a:active { color: var(--gold); background: rgba(255,255,255,0.05); padding-left: 28px; }
+    .mob-close {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      width: 100%; padding: 15px 20px; margin-bottom: 4px;
+      background: rgba(255,255,255,0.06); border: none; border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: var(--gold); font: inherit; font-size: 11px; font-weight: 800;
+      letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .mob-close:hover { background: rgba(212,175,55,0.16); color: #fff; }
+    .mob-close i { font-size: 15px; flex-shrink: 0; }
+    .mobile-nav a.mob-sub {
+      padding-left: 34px; font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.68); display: flex; align-items: center;
+    }
+    .mobile-nav a.mob-sub::before {
+      content: ''; width: 10px; height: 1px; background: rgba(212,175,55,0.6);
+      margin-right: 12px; flex-shrink: 0;
+    }
+    .mobile-nav a.mob-sub:hover { padding-left: 40px; color: var(--gold); }
     .mob-section {
+      display: block; margin-top: 10px;
+      padding: 14px 22px 8px;
       font-size: 10px; color: var(--gold);
-      padding: 14px 14px 4px; letter-spacing: 0.14em;
-      font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.2em; font-weight: 800; text-transform: uppercase;
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
 
     /* Scrolling marquee inside the navbar (mobile only — hidden on desktop) */
@@ -255,21 +278,18 @@
     .nav-marquee-item strong { color: #fff; font-weight: 600; }
     .nav-marquee-sep { color: rgba(212,175,55,0.7); font-size: 10px; }
 
-    /* ════════════════════════════════════════════
-       ANNOUNCEMENTS STRIP
-    ════════════════════════════════════════════ */
+    /* mobile-only marquee strip (hidden on desktop) */
+    .marquee-strip-mobile {
+      display: none;
+      background: var(--off); border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
     .marquee-strip {
       background: var(--off); border-bottom: 1px solid var(--border);
       padding: 10px 0; overflow: hidden;
       position: sticky;
       top: 58px;
       z-index: 999;
-    }
-    /* mobile-only marquee strip (hidden on desktop) */
-    .marquee-strip-mobile {
-      display: none;
-      background: var(--off); border-bottom: 1px solid var(--border);
-      overflow: hidden;
     }
     .marquee-track {
       display: flex; gap: 52px;
@@ -284,6 +304,7 @@
     .marquee-item i    { color: var(--purple); font-size: 11px; }
     .marquee-item strong { color: var(--brand); font-weight: 600; }
     .marquee-sep { color: #d0b0d0; }
+
 
     /* ════════════════════════════════════════════
        HERO — split-panel design
@@ -875,9 +896,8 @@
     }
 
     @media (max-width: 768px) {
-      .header-top-bar { padding: 6px 14px; font-size: 10px; }
+      .header-top-bar { padding: 6px 18px; font-size: 11px; }
       .header-top-bar .htb-right { display: none; }
-      .header-top-bar span { gap: 6px; flex-wrap: wrap; }
 
       .site-header { padding: 10px 12px; gap: 8px; }
       .header-brand { gap: 8px; flex: 1; min-width: 0; }
@@ -895,14 +915,17 @@
 
       .brand-label { display: none; }
       .nav-items { display: none; }
+      /* collapse the logo slot so the marquee runs the full bar; it returns on scroll */
+      .brand-logo-wrap { gap: 8px; width: 0; overflow: hidden; }
+      .navbar.scrolled .brand-logo-wrap { width: auto; margin-right: 8px; }
       .hamburger { display: flex; flex-shrink: 0; order: 3; margin-left: auto; }
       .nav-container { padding: 0 12px; justify-content: flex-start; gap: 8px; height: 58px; }
       .navbar { height: 58px; }
 
-      /* marquee flows through the FULL nav bar (top of page) */
-      .nav-marquee { display: block; order: 2; }
+      /* marquee runs inside the nav bar at the top of the page … */
+      .nav-marquee { display: block; order: 2; flex: 1 1 auto; min-width: 0; }
       .marquee-strip { display: none; }
-      /* strip pinned directly under the nav once scrolled (fixed, never below hero) */
+      /* … then pins directly under the nav once scrolled */
       .marquee-strip-mobile {
         display: none; position: fixed; top: 58px; left: 0; right: 0;
         padding: 9px 0; z-index: 997;
@@ -1050,30 +1073,7 @@
       <li class="nav-item"><a href="./registration.html">REGISTRATION</a></li>
       <li class="nav-item"><a href="./contact.html">CONTACT</a></li>
     </ul>
-    <div class="nav-marquee">
-      <div class="nav-marquee-track">
-        <span class="nav-marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening November 2026</span>
-        <span class="nav-marquee-sep">◆</span>
-        <span class="nav-marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</span>
-        <span class="nav-marquee-sep">◆</span>
-        <span class="nav-marquee-item"><i class="fas fa-book"></i> Accepted papers in <strong>IEEE Xplore</strong></span>
-        <span class="nav-marquee-sep">◆</span>
-        <span class="nav-marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel</strong> grants available</span>
-        <span class="nav-marquee-sep">◆</span>
-        <span class="nav-marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong></span>
-        <span class="nav-marquee-sep">◆</span>
-        <span class="nav-marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening November 2026</span>
-        <span class="nav-marquee-sep">◆</span>
-        <span class="nav-marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</span>
-        <span class="nav-marquee-sep">◆</span>
-        <span class="nav-marquee-item"><i class="fas fa-book"></i> Accepted papers in <strong>IEEE Xplore</strong></span>
-        <span class="nav-marquee-sep">◆</span>
-        <span class="nav-marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel</strong> grants available</span>
-        <span class="nav-marquee-sep">◆</span>
-        <span class="nav-marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong></span>
-        <span class="nav-marquee-sep">◆</span>
-      </div>
-    </div>
+    <esi:include src="/includes/nav-marquee.html" />
     <button class="hamburger" id="menuBtn" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -1081,65 +1081,45 @@
 </nav>
 
 <!-- Mobile-only marquee strip: appears directly under the navbar once scrolled -->
-<div class="marquee-strip-mobile">
-  <div class="marquee-track">
-    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening November 2026</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-book"></i> Accepted papers in <strong>IEEE Xplore</strong></div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel</strong> grants available</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong></div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening November 2026</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-book"></i> Accepted papers in <strong>IEEE Xplore</strong></div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel</strong> grants available</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong></div>
-    <span class="marquee-sep">◆</span>
-  </div>
-</div>
+<esi:include src="/includes/marquee-mobile.html" />
 
 <!-- Mobile nav -->
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 <div class="mobile-nav" id="mobileNav">
+  <button type="button" class="mob-close" id="mobClose" aria-label="Close menu">
+    <span>Close menu</span><i class="fas fa-xmark"></i>
+  </button>
   <div class="mobile-nav-head">
     <span class="mobile-nav-title">MENU</span>
     <button class="mobile-nav-close" id="menuClose" aria-label="Close menu"><i class="fas fa-times"></i></button>
   </div>
   <a href="./index.html">HOME</a>
   <div class="mob-section">ABOUT</div>
-  <a href="./about-iprecon.html" style="padding-left:28px">IPRECON</a>
-  <a href="./organizers.html"    style="padding-left:28px">ORGANIZERS</a>
-  <a href="./venue.html"         style="padding-left:28px">VENUE</a>
-  <a href="./kerala.html"        style="padding-left:28px">KERALA</a>
-  <a href="./accommodation.html" style="padding-left:28px">ACCOMMODATION</a>
-  <a href="./visa.html"          style="padding-left:28px">VISA</a>
-  <a href="./sponsors.html"      style="padding-left:28px">SPONSORS &amp; EXHIBITORS</a>
-  <a href="./dei.html"           style="padding-left:28px">DEI STATEMENT</a>
+  <a class="mob-sub" href="./about-iprecon.html">IPRECON</a>
+  <a class="mob-sub" href="./organizers.html">ORGANIZERS</a>
+  <a class="mob-sub" href="./venue.html">VENUE</a>
+  <a class="mob-sub" href="./kerala.html">KERALA</a>
+  <a class="mob-sub" href="./accommodation.html">ACCOMMODATION</a>
+  <a class="mob-sub" href="./visa.html">VISA</a>
+  <a class="mob-sub" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+  <a class="mob-sub" href="./dei.html">DEI STATEMENT</a>
   <a href="./committee.html">COMMITTEE</a>
   <div class="mob-section">FOR AUTHORS</div>
-  <a href="./cfp.html"                      style="padding-left:28px">CALL FOR PAPERS</a>
-  <a href="./submissions.html"              style="padding-left:28px">SUBMISSIONS</a>
-  <a href="./important-dates.html"          style="padding-left:28px">IMPORTANT DATES</a>
-  <a href="./camera-ready.html"             style="padding-left:28px">CAMERA READY INSTRUCTIONS</a>
-  <a href="./presentation-guidelines.html" style="padding-left:28px">PRESENTATION GUIDELINES</a>
-  <a href="./housing-support.html"          style="padding-left:28px">STUDENT HOUSING SUPPORT</a>
-  <a href="./travel-support.html"           style="padding-left:28px">STUDENT TRAVEL SUPPORT</a>
+  <a class="mob-sub" href="./cfp.html">CALL FOR PAPERS</a>
+  <a class="mob-sub" href="./submissions.html">SUBMISSIONS</a>
+  <a class="mob-sub" href="./important-dates.html">IMPORTANT DATES</a>
+  <a class="mob-sub" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+  <a class="mob-sub" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+  <a class="mob-sub" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
+  <a class="mob-sub" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
   <a href="./speakers.html">SPEAKERS</a>
   <div class="mob-section">PROGRAM</div>
-  <a href="./inaugural.html"             style="padding-left:28px">INAUGURAL PROGRAM</a>
-  <a href="./distinguished-lectures.html" style="padding-left:28px">DISTINGUISHED LECTURE PROGRAM</a>
-  <a href="./tutorials.html"             style="padding-left:28px">TUTORIALS</a>
-  <a href="./tracks.html"                style="padding-left:28px">TRACKS</a>
-  <a href="./special-sessions.html"      style="padding-left:28px">SPECIAL SESSIONS</a>
-  <a href="./keynote.html"               style="padding-left:28px">KEYNOTE</a>
+  <a class="mob-sub" href="./inaugural.html">INAUGURAL PROGRAM</a>
+  <a class="mob-sub" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+  <a class="mob-sub" href="./tutorials.html">TUTORIALS</a>
+  <a class="mob-sub" href="./tracks.html">TRACKS</a>
+  <a class="mob-sub" href="./special-sessions.html">SPECIAL SESSIONS</a>
+  <a class="mob-sub" href="./keynote.html">KEYNOTE</a>
   <a href="./registration.html">REGISTRATION</a>
   <a href="./contact.html">CONTACT</a>
 </div>
@@ -1166,7 +1146,7 @@
       </h1>
       <p class="hero-fullname">IEEE International Power and Renewable Energy Conference</p>
       <div class="hero-theme-line">
-        "Advancing Power and Renewable Energy Systems through AI, Computing, and Emerging Technologies"
+        "Next-Generation Energy Systems: Intelligence, Resilience and Decarbonization"
       </div>
       <div class="hero-meta">
         <div class="hero-meta-item"><i class="fas fa-calendar-alt"></i> 15–17 October 2027</div>
@@ -1191,31 +1171,7 @@
      ANNOUNCEMENTS MARQUEE
 ══════════════════════════════════════ -->
 
-<div class="marquee-strip">
-  <div class="marquee-track">
-    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening November 2026</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
-    <span class="marquee-sep">◆</span>
-    <!-- duplicate -->
-    <div class="marquee-item"><i class="fas fa-circle-dot"></i> <strong>Paper Submission</strong> — Portal opening November 2026</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-award"></i> Top <strong>20% of presented papers</strong> eligible for IEEE-IAS Transactions &amp; Magazine</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-book"></i> All accepted papers submitted to <strong>IEEE Xplore Digital Library</strong></div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-graduation-cap"></i> <strong>Student Housing &amp; Travel Support</strong> grants available</div>
-    <span class="marquee-sep">◆</span>
-    <div class="marquee-item"><i class="fas fa-globe"></i> Researchers from <strong>30+ countries</strong> in past editions</div>
-    <span class="marquee-sep">◆</span>
-  </div>
-</div>
+<esi:include src="/includes/marquee.html" />
 
 
 <!-- Hero stats bar -->
@@ -1291,7 +1247,7 @@
         <div class="about-text">
           <p class="reveal">The <strong>IEEE International Power and Renewable Energy Conference (IPRECON 2027)</strong> is the 5th edition of India's first and only IEEE Club of 6 Technical Paper Conference, organized by the <strong>IEEE Student Branch of the College of Engineering Karunagappally (CEK)</strong>, in association with the institution.</p>
           <p class="reveal">With technical co-sponsorship from the <strong>IEEE Industry Applications Society (IAS)</strong> and the <strong>IEEE Power &amp; Energy Society (PES)</strong>, IPRECON 2027 serves as a premier platform for students, researchers, and professionals to share cutting-edge innovations in power and renewable energy systems.</p>
-          <p class="reveal">Held at the College of Engineering Karunagappally, Kerala, India from <strong>15–17 October 2027</strong>, the conference features technical sessions, keynote talks, distinguished lectures, tutorials, and workshops — all centred around the theme <em>"Advancing Power and Renewable Energy Systems through AI, Computing, and Emerging Technologies."</em></p>
+          <p class="reveal">Held at the College of Engineering Karunagappally, Kerala, India from <strong>15–17 October 2027</strong>, the conference features technical sessions, keynote talks, distinguished lectures, tutorials, and workshops — all centred around the theme <em>"Next-Generation Energy Systems: Intelligence, Resilience and Decarbonization"</em></p>
           <p class="reveal">All accepted papers will be submitted for inclusion in the <strong>IEEE Xplore® Digital Library</strong>, subject to IEEE quality standards. The conference will be conducted in <strong>hybrid mode</strong> — welcoming participants both in-person and online.</p>
         </div>
         <div class="about-side">
@@ -1392,8 +1348,8 @@
     <div class="theme-inner">
       <div class="theme-tag">Conference Theme 2027</div>
       <blockquote class="theme-quote" id="themeQuote">
-        "Advancing <span class="hl">Power and Renewable Energy Systems</span> through
-        <span class="hl2">AI, Computing,</span> and Emerging Technologies"
+        "<span class="hl">Next-Generation Energy Systems:</span>
+        <span class="hl2">Intelligence, Resilience and Decarbonization</span>"
       </blockquote>
 
       <div class="theme-pillars">
@@ -1543,55 +1499,7 @@
 <!-- ══════════════════════════════════════
      FOOTER
 ══════════════════════════════════════ -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <img src="assets/img/iprecon27 white.png"
-           alt="IPRECON 2027" onerror="this.style.display='none'">
-      <p>2027 IEEE International Power and Renewable Energy Conference — 5th edition. Organized by IEEE Student Branch, College of Engineering Karunagappally, Kerala, India.</p>
-      <div class="footer-socials">
-        <a href="https://www.facebook.com/ieeeceksb/"       class="soc-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://twitter.com/IEEE_SB_CEK"           class="soc-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.linkedin.com/company/ieeesbcek/" class="soc-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/ieee_sb_cek/"    class="soc-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>For Authors</h4>
-      <ul>
-        <li><a href="./cfp.html">Call for Papers</a></li>
-        <li><a href="./submissions.html">Submit a Paper</a></li>
-        <li><a href="./important-dates.html">Important Dates</a></li>
-        <li><a href="#">IEEE Paper Template</a></li>
-        <li><a href="./camera-ready.html">Camera Ready</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Conference</h4>
-      <ul>
-        <li><a href="./about-iprecon.html">About IPRECON</a></li>
-        <li><a href="./organizers.html">Organizers</a></li>
-        <li><a href="./committee.html">Committee</a></li>
-        <li><a href="./speakers.html">Speakers</a></li>
-        <li><a href="./sponsors.html">Sponsors</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Travel &amp; Info</h4>
-      <ul>
-        <li><a href="./venue.html">Venue &amp; Directions</a></li>
-        <li><a href="./accommodation.html">Accommodation</a></li>
-        <li><a href="./visa.html">Visa Information</a></li>
-        <li><a href="./kerala.html">Kerala Tourism</a></li>
-        <li><a href="./contact.html">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>Built with ❤️ &nbsp;|&nbsp; IEEE Student Branch CEK &copy; 2027</span>
-    <span>College of Engineering Karunagappally, Kerala, India</span>
-  </div>
-</footer>
+<esi:include src="/includes/footer.html" />
 
 <!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -1729,6 +1637,21 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+
+/* drawer close button */
+(function () {
+  var btn = document.getElementById('mobClose');
+  var nav = document.getElementById('mobileNav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function () {
+    nav.classList.remove('open');
+    document.body.classList.remove('nav-open');
+    var ov = document.getElementById('mobileNavOverlay');
+    if (ov) ov.classList.remove('open');
+    var mb = document.getElementById('menuBtn');
+    if (mb) { mb.classList.remove('active'); mb.setAttribute('aria-expanded', 'false'); }
+  });
+})();
 </script>
 </body>
 </html>
