@@ -218,6 +218,8 @@
       border-top: 1px solid rgba(212,175,55,0.35);
     }
     .mobile-nav.open { display: block; }
+    /* drawer covers the full screen here, so the scrim in /includes/mobile-nav.html stays hidden */
+    .mobile-nav-overlay { display: none; }
     body.nav-open { overflow: hidden; }
     body.nav-open .nav-marquee { visibility: hidden; }
     body.nav-open .marquee-strip-mobile { display: none !important; }
@@ -902,7 +904,15 @@
       .reveal { opacity: 1; transform: none; transition: none; }
       html { scroll-behavior: auto; }
     }
-  </style>
+  
+/* ── Current page highlight ─────────────────────────────────────
+   The .active class is applied at runtime by the script in
+   /includes/navbar.html — no page hardcodes it any more. */
+.nav-item > a.active,
+.nav-item > span.nav-link.active { color: #fff; border-bottom-color: var(--gold); }
+.dropdown-item.active { color: var(--gold); border-left-color: var(--gold); }
+.mobile-nav a.active { color: var(--gold); }
+</style>
 </head>
 <body>
 <div id="scroll-bar"></div>
@@ -910,154 +920,15 @@
 <!-- ══════════════════════════════════════
      HEADER — two-row design
 ══════════════════════════════════════ -->
-<div class="header-top-bar">
-  <span>
-    <i class="fas fa-map-marker-alt"></i> College of Engineering Karunagappally, Kerala, India
-    &nbsp;&nbsp;
-    <i class="fas fa-calendar-alt"></i> 15–17 October 2027
-    &nbsp;&nbsp;
-    <i class="fas fa-wifi"></i> Hybrid Conference
-  </span>
-  <span class="htb-right">
-    <a href="./contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
-    &nbsp;&nbsp;
-    <a href="./registration.html"><i class="fas fa-user-plus"></i> Register</a>
-  </span>
-</div>
-
-<header class="site-header">
-  <div class="header-brand">
-    <img class="header-conf-logo"
-         src="assets/img/iprecon27 black.png"
-         alt="IPRECON 2027"
-         onerror="this.style.display='none'">
-    <div class="header-brand-text">
-      <span class="conf-name">15–17 October 2027</span>
-      <span class="conf-full">College of Engineering Karunagappally, Kerala, INDIA</span>
-      <div class="header-edition-badge"><i class="fas fa-star"></i> 5th Edition</div>
-    </div>
-  </div>
-
-  <div class="header-sponsors">
-    <div class="header-sp-group">
-      <span class="sp-label">Technical Co-Sponsor</span>
-      <img src="assets/img/ias_bw.png"
-           alt="IEEE IAS"
-           onerror="this.style.display='none'">
-    </div>
-    <div class="header-sp-group">
-      <span class="sp-label">Technical Co-Sponsor</span>
-      <img src="assets/img/pes BLACK.png"
-           alt="IEEE PES"
-           onerror="this.style.display='none'">
-    </div>
-    <div class="header-sp-group">
-      <span class="sp-label">Organized under</span>
-      <img src="assets/img/ieee blk.png"
-           alt="IEEE"
-           onerror="this.style.display='none'">
-    </div>
-  </div>
-</header>
+<esi:include src="/includes/header.html" />
 
 <!-- ══════════════════════════════════════
      NAVBAR
 ══════════════════════════════════════ -->
-<nav class="navbar" id="mainNav">
-  <div class="nav-container">
-    <a href="./index.html" class="brand-logo-wrap">
-      <img class="brand-logo"
-           src="assets/img/iprecon27 white.png"
-           alt="IPRECON 2027"
-           onerror="this.style.display='none'">
-    </a>
-    <ul class="nav-items">
-      <li class="nav-item"><a href="./index.html">HOME</a></li>
-      <li class="nav-item">
-        <span class="nav-link">ABOUT</span>
-        <div class="dropdown-content">
-          <a class="dropdown-item" href="./about-iprecon.html">IPRECON</a>
-          <a class="dropdown-item" href="./organizers.html">ORGANIZERS</a>
-          <a class="dropdown-item" href="./venue.html">VENUE</a>
-          <a class="dropdown-item" href="./kerala.html">KERALA</a>
-          <a class="dropdown-item" href="./accommodation.html">ACCOMMODATION</a>
-          <a class="dropdown-item active" href="./visa.html">VISA</a>
-          <a class="dropdown-item" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
-          <a class="dropdown-item" href="./dei.html">DEI STATEMENT</a>
-        </div>
-      </li>
-      <li class="nav-item"><a href="./committee.html">COMMITTEE</a></li>
-      <li class="nav-item">
-        <span class="nav-link">FOR AUTHORS</span>
-        <div class="dropdown-content">
-          <a class="dropdown-item" href="./cfp.html">CALL FOR PAPERS</a>
-          <a class="dropdown-item" href="./submissions.html">SUBMISSIONS</a>
-          <a class="dropdown-item" href="./important-dates.html">IMPORTANT DATES</a>
-          <a class="dropdown-item" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
-          <a class="dropdown-item" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
-          <a class="dropdown-item" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
-          <a class="dropdown-item" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
-        </div>
-      </li>
-      <li class="nav-item"><a href="./speakers.html">SPEAKERS</a></li>
-      <li class="nav-item">
-        <span class="nav-link">PROGRAM</span>
-        <div class="dropdown-content">
-          <a class="dropdown-item" href="./inaugural.html">INAUGURAL PROGRAM</a>
-          <a class="dropdown-item" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
-          <a class="dropdown-item" href="./tutorials.html">TUTORIALS</a>
-          <a class="dropdown-item" href="./tracks.html">TRACKS</a>
-          <a class="dropdown-item" href="./special-sessions.html">SPECIAL SESSIONS</a>
-          <a class="dropdown-item" href="./keynote.html">KEYNOTE</a>
-        </div>
-      </li>
-      <li class="nav-item"><a href="./registration.html">REGISTRATION</a></li>
-      <li class="nav-item"><a href="./contact.html">CONTACT</a></li>
-    </ul>
-    <!-- Mobile-only marquee that flows through the navbar bar (like the old site) -->
-    <esi:include src="/includes/nav-marquee.html" />
-    <button class="hamburger" id="menuBtn" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+<esi:include src="/includes/navbar.html" />
 
 <!-- Mobile nav -->
-<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
-<div class="mobile-nav" id="mobileNav">
-  <button type="button" class="mob-close" id="mobClose" aria-label="Close menu">
-    <span>Close menu</span><i class="fas fa-xmark"></i>
-  </button>
-  <a href="./index.html">HOME</a>
-  <div class="mob-section">ABOUT</div>
-  <a class="mob-sub" href="./about-iprecon.html">IPRECON</a>
-  <a class="mob-sub" href="./organizers.html">ORGANIZERS</a>
-  <a class="mob-sub" href="./venue.html">VENUE</a>
-  <a class="mob-sub" href="./kerala.html">KERALA</a>
-  <a class="mob-sub" href="./accommodation.html">ACCOMMODATION</a>
-  <a class="mob-sub" href="./visa.html">VISA</a>
-  <a class="mob-sub" href="./sponsors.html">SPONSORS &amp; EXHIBITORS</a>
-  <a class="mob-sub" href="./dei.html">DEI STATEMENT</a>
-  <a href="./committee.html">COMMITTEE</a>
-  <div class="mob-section">FOR AUTHORS</div>
-  <a class="mob-sub" href="./cfp.html">CALL FOR PAPERS</a>
-  <a class="mob-sub" href="./submissions.html">SUBMISSIONS</a>
-  <a class="mob-sub" href="./important-dates.html">IMPORTANT DATES</a>
-  <a class="mob-sub" href="./camera-ready.html">CAMERA READY INSTRUCTIONS</a>
-  <a class="mob-sub" href="./presentation-guidelines.html">PRESENTATION GUIDELINES</a>
-  <a class="mob-sub" href="./housing-support.html">STUDENT HOUSING SUPPORT</a>
-  <a class="mob-sub" href="./travel-support.html">STUDENT TRAVEL SUPPORT</a>
-  <a href="./speakers.html">SPEAKERS</a>
-  <div class="mob-section">PROGRAM</div>
-  <a class="mob-sub" href="./inaugural.html">INAUGURAL PROGRAM</a>
-  <a class="mob-sub" href="./distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
-  <a class="mob-sub" href="./tutorials.html">TUTORIALS</a>
-  <a class="mob-sub" href="./tracks.html">TRACKS</a>
-  <a class="mob-sub" href="./special-sessions.html">SPECIAL SESSIONS</a>
-  <a class="mob-sub" href="./keynote.html">KEYNOTE</a>
-  <a href="./registration.html">REGISTRATION</a>
-  <a href="./contact.html">CONTACT</a>
-</div>
+<esi:include src="/includes/mobile-nav.html" />
 
 <!-- Mobile marquee strip: appears below navbar on scroll (hidden on desktop) -->
 <esi:include src="/includes/marquee-mobile.html" />
@@ -1454,28 +1325,6 @@ window.addEventListener('scroll', () => {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
 }, { passive: true });
 
-/* Mobile nav */
-const menuBtn    = document.getElementById('menuBtn');
-const mobileNav  = document.getElementById('mobileNav');
-const navOverlay = document.getElementById('mobileNavOverlay');
-function closeMenu() {
-  mobileNav.classList.remove('open');
-  navOverlay.classList.remove('open');
-  menuBtn.classList.remove('active');
-  document.body.classList.remove('nav-open');
-  menuBtn.setAttribute('aria-expanded', 'false');
-}
-menuBtn.addEventListener('click', () => {
-  const open = mobileNav.classList.toggle('open');
-  navOverlay.classList.toggle('open', open);
-  menuBtn.classList.toggle('active', open);
-  document.body.classList.toggle('nav-open', open);
-  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-});
-navOverlay.addEventListener('click', closeMenu);
-mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
-
 /* ── IntersectionObserver reveals ──────────────── */
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); } });
@@ -1542,20 +1391,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-/* drawer close button */
-(function () {
-  var btn = document.getElementById('mobClose');
-  var nav = document.getElementById('mobileNav');
-  if (!btn || !nav) return;
-  btn.addEventListener('click', function () {
-    nav.classList.remove('open');
-    document.body.classList.remove('nav-open');
-    var ov = document.getElementById('mobileNavOverlay');
-    if (ov) ov.classList.remove('open');
-    var mb = document.getElementById('menuBtn');
-    if (mb) { mb.classList.remove('active'); mb.setAttribute('aria-expanded', 'false'); }
-  });
-})();
+
 </script>
 </body>
 </html>

@@ -1,0 +1,101 @@
+<!-- ════════════════════════════════════════════
+     /includes/mobile-nav.html
+     The slide-out menu for phones, plus the scrim
+     behind it and the script that opens/closes it.
+
+     Keep this list in step with the desktop menu in
+     /includes/navbar.html — they are two renderings
+     of the same menu.
+
+     The scrim (.mobile-nav-overlay) is harmless on
+     pages whose drawer covers the full screen; those
+     stylesheets set it to display:none.
+
+     Paths are root-relative — a fragment is injected
+     at every URL depth, so a leading slash is required.
+     ════════════════════════════════════════════ -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <button type="button" class="mob-close" id="mobClose" aria-label="Close menu">
+    <span>Close menu</span><i class="fas fa-xmark"></i>
+  </button>
+  <a href="/index.html">HOME</a>
+  <div class="mob-section">ABOUT</div>
+  <a class="mob-sub" href="/about-iprecon.html">IPRECON</a>
+  <a class="mob-sub" href="/organizers.html">ORGANIZERS</a>
+  <a class="mob-sub" href="/venue.html">VENUE</a>
+  <a class="mob-sub" href="/kerala.html">KERALA</a>
+  <a class="mob-sub" href="/accommodation.html">ACCOMMODATION</a>
+  <a class="mob-sub" href="/visa.html">VISA</a>
+  <a class="mob-sub" href="/sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+  <a class="mob-sub" href="/dei.html">DEI STATEMENT</a>
+  <a href="/committee.html">COMMITTEE</a>
+  <div class="mob-section">FOR AUTHORS</div>
+  <a class="mob-sub" href="/cfp.html">CALL FOR PAPERS</a>
+  <a class="mob-sub" href="/submissions.html">SUBMISSIONS</a>
+  <a class="mob-sub" href="/important-dates.html">IMPORTANT DATES</a>
+  <a class="mob-sub" href="/camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+  <a class="mob-sub" href="/presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+  <a class="mob-sub" href="/housing-support.html">STUDENT HOUSING SUPPORT</a>
+  <a class="mob-sub" href="/travel-support.html">STUDENT TRAVEL SUPPORT</a>
+  <a href="/speakers.html">SPEAKERS</a>
+  <div class="mob-section">PROGRAM</div>
+  <a class="mob-sub" href="/inaugural.html">INAUGURAL PROGRAM</a>
+  <a class="mob-sub" href="/distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+  <a class="mob-sub" href="/tutorials.html">TUTORIALS</a>
+  <a class="mob-sub" href="/tracks.html">TRACKS</a>
+  <a class="mob-sub" href="/special-sessions.html">SPECIAL SESSIONS</a>
+  <a class="mob-sub" href="/keynote.html">KEYNOTE</a>
+  <a href="/registration.html">REGISTRATION</a>
+  <a href="/contact.html">CONTACT</a>
+</div>
+
+<script>
+/* ── Mobile drawer ──────────────────────────────────────────────
+   One copy of the open/close behaviour for the whole site. Pages
+   must NOT declare their own menuBtn / mobileNav handlers: two
+   top-level `const menuBtn` declarations on the same page throw a
+   SyntaxError and take the rest of that page's script down with
+   them. Everything is guarded, so this is safe on pages that leave
+   out the scrim or a close button. */
+(function () {
+  var btn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mobileNav');
+  if (!btn || !nav) return;
+
+  var scrim = document.getElementById('mobileNavOverlay');
+
+  function setOpen(open) {
+    nav.classList.toggle('open', open);
+    if (scrim) scrim.classList.toggle('open', open);
+    btn.classList.toggle('active', open);
+    document.body.classList.toggle('nav-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function close() { setOpen(false); }
+
+  btn.addEventListener('click', function () {
+    setOpen(!nav.classList.contains('open'));
+  });
+
+  if (scrim) scrim.addEventListener('click', close);
+
+  ['mobClose', 'menuClose'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('click', close);
+  });
+
+  Array.prototype.forEach.call(nav.querySelectorAll('a'), function (a) {
+    a.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' || e.keyCode === 27) close();
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 768) close();
+  });
+})();
+</script>
