@@ -96,3 +96,26 @@
     if (window.innerWidth > 768) close();
   });
 })();
+
+
+/* ── The bar's scrolled state ───────────────────────────────────
+   Adds .scrolled to #mainNav past 80px, which is what brings the
+   brand logo in on the left and moves the menu to the right.
+
+   Every page also toggles this in its own scroll handler, but that
+   handler sits after `gsap.registerPlugin(ScrollTrigger)` — if the
+   GSAP CDN is slow or blocked, that whole script throws and the
+   navbar stops responding to scroll. Doing it here as well means
+   the bar behaves no matter what happens to the page's own script.
+   Both set the same class at the same threshold, so running twice
+   is harmless. */
+(function () {
+  var nav = document.getElementById('mainNav');
+  if (!nav) return;
+  function update() {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();   // correct on load if the browser restored a scroll position
+})();
