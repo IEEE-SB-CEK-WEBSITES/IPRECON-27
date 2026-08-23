@@ -9,10 +9,10 @@
 
      Markup only — styling is in /css/chrome.css.
 
-     The three facts in the top bar each carry a full and a short
-     wording. The full strings need more width than a phone has, so
-     below 768px the short ones are shown instead and all three stay
-     on one line.
+     The three facts in the top bar keep their full wording at every
+     size. Each is nowrap so it never breaks mid-phrase; on a narrow
+     screen the row wraps and whatever does not fit drops to a second
+     line whole.
 
      Paths are root-relative — a fragment is
      injected at every URL depth, so a leading
@@ -23,18 +23,15 @@
   <span class="htb-facts">
     <span class="htb-item">
       <i class="fas fa-map-marker-alt"></i>
-      <span class="htb-full">College of Engineering Karunagappally, Kerala, India</span>
-      <span class="htb-short" style="display:none">Karunagappally, Kerala</span>
+      <span class="htb-text">College of Engineering Karunagappally, Kerala, India</span>
     </span>
     <span class="htb-item">
       <i class="fas fa-calendar-alt"></i>
-      <span class="htb-full">15&ndash;17 October 2027</span>
-      <span class="htb-short" style="display:none">15&ndash;17 Oct 2027</span>
+      <span class="htb-text">15&ndash;17 October 2027</span>
     </span>
     <span class="htb-item">
       <i class="fas fa-wifi"></i>
-      <span class="htb-full">Hybrid Conference</span>
-      <span class="htb-short" style="display:none">Hybrid</span>
+      <span class="htb-text">Hybrid Conference</span>
     </span>
   </span>
   <span class="htb-right">

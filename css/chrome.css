@@ -33,12 +33,10 @@
   letter-spacing: 0.04em;
 }
 .header-top-bar span { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-/* Each fact in the bar carries a full and a short wording. The short
-   one only appears on phones, where the full strings need more width
-   than the screen has and wrap onto a second line. */
+/* Each fact is its own inline-flex item so it can wrap as a whole
+   rather than breaking mid-phrase on a narrow screen. */
 .header-top-bar .htb-facts { gap: 18px; }
 .header-top-bar .htb-item { display: inline-flex; align-items: center; gap: 6px; }
-.header-top-bar .htb-short { display: none; }   /* also inline in the markup, see header.html */
 .header-top-bar i { color: var(--gold); font-size: 11px; }
 .header-top-bar a { color: rgba(255,255,255,0.65); transition: color 0.2s; }
 .header-top-bar a:hover { color: var(--gold); }
@@ -124,9 +122,11 @@
 .dropdown-item.active { color: var(--gold); border-left-color: var(--gold); }
 .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 10px; margin-right: -10px; }
 .hamburger span { display: block; width: 24px; height: 2px; background: rgba(255,255,255,0.85); border-radius: 2px; transition: all 0.3s; }
-.mobile-nav { position: fixed; top: var(--nav-h); right: 0; bottom: 0; width: min(82%, 340px); background: var(--brand); z-index: 1001; overflow-y: auto; padding: 16px 16px 40px; -webkit-overflow-scrolling: touch; transform: translateX(100%); transition: transform 0.32s cubic-bezier(0.22,0.61,0.36,1); box-shadow: -12px 0 32px rgba(0,0,0,0.45); visibility: hidden; }
+/* Full height — the drawer covers the header and navbar rather than
+   starting below them, so it reads as one panel instead of a strip. */
+.mobile-nav { position: fixed; top: 0; right: 0; bottom: 0; height: 100%; width: min(82%, 340px); background: var(--brand); z-index: 1001; overflow-y: auto; padding: 16px 16px 40px; -webkit-overflow-scrolling: touch; transform: translateX(100%); transition: transform 0.32s cubic-bezier(0.22,0.61,0.36,1); box-shadow: -12px 0 32px rgba(0,0,0,0.45); visibility: hidden; }
 .mobile-nav.open { transform: translateX(0); visibility: visible; }
-.mobile-nav-overlay { position: fixed; inset: 0; top: var(--nav-h); background: rgba(0,0,0,0.5); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s; }
+.mobile-nav-overlay { position: fixed; inset: 0; top: 0; background: rgba(0,0,0,0.5); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s; }
 body.nav-open { overflow: hidden; }
 body.nav-open .nav-marquee { visibility: hidden; }
 body.nav-open .marquee-strip-mobile { display: none !important; }
@@ -330,13 +330,13 @@ body.nav-open .marquee-strip { visibility: hidden; }
   footer { padding: 48px 20px 30px; }
   .marquee-strip-desktop { display: none; }
   .header-top-bar span { gap: 6px; }
-  /* all three facts on one line */
-  .header-top-bar { font-size: 10px; padding-left: 10px; padding-right: 10px; }
-  .header-top-bar .htb-facts { flex-wrap: nowrap; white-space: nowrap; width: 100%; gap: 8px; justify-content: space-between; }
-  .header-top-bar .htb-item { gap: 4px; }
+  /* Every word is kept. Each fact is nowrap so it never breaks mid-phrase;
+     the row itself wraps, so whatever does not fit on the first line drops
+     to a second one whole. */
+  .header-top-bar { font-size: 9.5px; padding: 5px 10px; line-height: 1.5; }
+  .header-top-bar .htb-facts { flex-wrap: wrap; justify-content: center; gap: 3px 14px; width: 100%; }
+  .header-top-bar .htb-item { white-space: nowrap; gap: 5px; }
   .header-top-bar i { font-size: 10px; }
-  .header-top-bar .htb-full { display: none !important; }
-  .header-top-bar .htb-short { display: inline !important; }   /* beats the inline style */
   .marquee-track { gap: 34px; animation-duration: 22s; }
   .marquee-item { font-size: 11.5px; gap: 6px; }
   .marquee-sep { font-size: 10px; }
