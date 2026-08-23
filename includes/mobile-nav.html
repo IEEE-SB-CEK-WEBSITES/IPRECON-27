@@ -9,6 +9,12 @@
      /includes/navbar.html — they are two renderings
      of the same menu.
 
+     ABOUT / FOR AUTHORS / PROGRAM are collapsible,
+     mirroring the desktop dropdowns. Each is a button
+     plus a .mob-group whose id the button names in
+     aria-controls; /scripts/nav.js wires them up and
+     opens whichever group holds the current page.
+
      Paths are root-relative — a fragment is injected
      at every URL depth, so a leading slash is required.
      ════════════════════════════════════════════ -->
@@ -18,32 +24,44 @@
     <span>Close menu</span><i class="fas fa-xmark"></i>
   </button>
   <a href="/index.html">HOME</a>
-  <div class="mob-section">ABOUT</div>
-  <a class="mob-sub" href="/about-iprecon.html">IPRECON</a>
-  <a class="mob-sub" href="/organizers.html">ORGANIZERS</a>
-  <a class="mob-sub" href="/venue.html">VENUE</a>
-  <a class="mob-sub" href="/kerala.html">KERALA</a>
-  <a class="mob-sub" href="/accommodation.html">ACCOMMODATION</a>
-  <a class="mob-sub" href="/visa.html">VISA</a>
-  <a class="mob-sub" href="/sponsors.html">SPONSORS &amp; EXHIBITORS</a>
-  <a class="mob-sub" href="/dei.html">DEI STATEMENT</a>
+  <button type="button" class="mob-section" aria-expanded="false" aria-controls="mobg-about">
+    <span>ABOUT</span><i class="fas fa-chevron-down" aria-hidden="true"></i>
+  </button>
+  <div class="mob-group" id="mobg-about">
+    <a class="mob-sub" href="/about-iprecon.html">IPRECON</a>
+    <a class="mob-sub" href="/organizers.html">ORGANIZERS</a>
+    <a class="mob-sub" href="/venue.html">VENUE</a>
+    <a class="mob-sub" href="/kerala.html">KERALA</a>
+    <a class="mob-sub" href="/accommodation.html">ACCOMMODATION</a>
+    <a class="mob-sub" href="/visa.html">VISA</a>
+    <a class="mob-sub" href="/sponsors.html">SPONSORS &amp; EXHIBITORS</a>
+    <a class="mob-sub" href="/dei.html">DEI STATEMENT</a>
+  </div>
   <a href="/committee.html">COMMITTEE</a>
-  <div class="mob-section">FOR AUTHORS</div>
-  <a class="mob-sub" href="/cfp.html">CALL FOR PAPERS</a>
-  <a class="mob-sub" href="/submissions.html">SUBMISSIONS</a>
-  <a class="mob-sub" href="/important-dates.html">IMPORTANT DATES</a>
-  <a class="mob-sub" href="/camera-ready.html">CAMERA READY INSTRUCTIONS</a>
-  <a class="mob-sub" href="/presentation-guidelines.html">PRESENTATION GUIDELINES</a>
-  <a class="mob-sub" href="/housing-support.html">STUDENT HOUSING SUPPORT</a>
-  <a class="mob-sub" href="/travel-support.html">STUDENT TRAVEL SUPPORT</a>
+  <button type="button" class="mob-section" aria-expanded="false" aria-controls="mobg-authors">
+    <span>FOR AUTHORS</span><i class="fas fa-chevron-down" aria-hidden="true"></i>
+  </button>
+  <div class="mob-group" id="mobg-authors">
+    <a class="mob-sub" href="/cfp.html">CALL FOR PAPERS</a>
+    <a class="mob-sub" href="/submissions.html">SUBMISSIONS</a>
+    <a class="mob-sub" href="/important-dates.html">IMPORTANT DATES</a>
+    <a class="mob-sub" href="/camera-ready.html">CAMERA READY INSTRUCTIONS</a>
+    <a class="mob-sub" href="/presentation-guidelines.html">PRESENTATION GUIDELINES</a>
+    <a class="mob-sub" href="/housing-support.html">STUDENT HOUSING SUPPORT</a>
+    <a class="mob-sub" href="/travel-support.html">STUDENT TRAVEL SUPPORT</a>
+  </div>
   <a href="/speakers.html">SPEAKERS</a>
-  <div class="mob-section">PROGRAM</div>
-  <a class="mob-sub" href="/inaugural.html">INAUGURAL PROGRAM</a>
-  <a class="mob-sub" href="/distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
-  <a class="mob-sub" href="/tutorials.html">TUTORIALS</a>
-  <a class="mob-sub" href="/tracks.html">TRACKS</a>
-  <a class="mob-sub" href="/special-sessions.html">SPECIAL SESSIONS</a>
-  <a class="mob-sub" href="/keynote.html">KEYNOTE</a>
+  <button type="button" class="mob-section" aria-expanded="false" aria-controls="mobg-program">
+    <span>PROGRAM</span><i class="fas fa-chevron-down" aria-hidden="true"></i>
+  </button>
+  <div class="mob-group" id="mobg-program">
+    <a class="mob-sub" href="/inaugural.html">INAUGURAL PROGRAM</a>
+    <a class="mob-sub" href="/distinguished-lectures.html">DISTINGUISHED LECTURE PROGRAM</a>
+    <a class="mob-sub" href="/tutorials.html">TUTORIALS</a>
+    <a class="mob-sub" href="/tracks.html">TRACKS</a>
+    <a class="mob-sub" href="/special-sessions.html">SPECIAL SESSIONS</a>
+    <a class="mob-sub" href="/keynote.html">KEYNOTE</a>
+  </div>
   <a href="/registration.html">REGISTRATION</a>
   <a href="/contact.html">CONTACT</a>
 </div>

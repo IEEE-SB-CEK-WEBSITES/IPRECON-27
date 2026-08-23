@@ -119,3 +119,45 @@
   window.addEventListener('resize', update);
   update();   // correct on load if the browser restored a scroll position
 })();
+
+
+/* ── Collapsible groups in the mobile drawer ────────────────────
+   ABOUT / FOR AUTHORS / PROGRAM behave like the desktop dropdowns:
+   collapsed until tapped. Each label is a <button aria-controls>
+   naming the .mob-group it opens.
+
+   Runs after the active-page marking above, so the group holding
+   the current page can be opened on load — otherwise you tap the
+   menu on, say, the Venue page and see no sign of where you are. */
+(function () {
+  var nav = document.getElementById('mobileNav');
+  if (!nav) return;
+
+  var buttons = nav.querySelectorAll('.mob-section[aria-controls]');
+  if (!buttons.length) return;
+
+  function setOpen(btn, group, open) {
+    group.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  Array.prototype.forEach.call(buttons, function (btn) {
+    var group = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!group) return;
+    btn.addEventListener('click', function () {
+      setOpen(btn, group, !group.classList.contains('open'));
+    });
+  });
+
+  var current = nav.querySelector('a.active');
+  if (current) {
+    var group = current.parentNode;
+    while (group && group !== nav && !group.classList.contains('mob-group')) {
+      group = group.parentNode;
+    }
+    if (group && group.classList && group.classList.contains('mob-group')) {
+      var btn = nav.querySelector('.mob-section[aria-controls="' + group.id + '"]');
+      if (btn) setOpen(btn, group, true);
+    }
+  }
+})();

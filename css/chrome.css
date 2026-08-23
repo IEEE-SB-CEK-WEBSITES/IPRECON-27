@@ -145,7 +145,27 @@ body.nav-open .marquee-strip-mobile { display: none !important; }
 }
 .mob-close:hover { background: rgba(212,175,55,0.16); color: #fff; }
 .mob-close i { font-size: 15px; }
-.mob-section { font-size: 10px; color: var(--gold); padding: 16px 14px 4px; letter-spacing: 0.14em; font-weight: 700; text-transform: uppercase; }
+/* ABOUT / FOR AUTHORS / PROGRAM collapse in the drawer, the way they
+   drop down on desktop. The label is a <button>, so it needs the UA
+   button styling stripped back to what the old <div> looked like. */
+.mobile-nav .mob-section {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  width: 100%; text-align: left; cursor: pointer;
+  background: none; border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font: inherit; font-size: 10px; font-weight: 700;
+  color: var(--gold); padding: 16px 14px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.mobile-nav .mob-section i { font-size: 11px; transition: transform 0.25s ease; }
+.mobile-nav .mob-section[aria-expanded="true"] i { transform: rotate(180deg); }
+.mobile-nav .mob-section:hover { color: #fff; }
+.mob-group {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.32s cubic-bezier(0.22,0.61,0.36,1);
+}
+.mob-group.open { max-height: 640px; }
 .nav-marquee {
   display: none; flex: 1; overflow: hidden; height: 58px;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
