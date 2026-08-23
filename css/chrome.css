@@ -178,7 +178,25 @@ body.nav-open .marquee-strip-mobile { display: none !important; }
 .marquee-item i { color: var(--purple); font-size: 11px; }
 .marquee-item strong { color: var(--brand); font-weight: 600; }
 .marquee-sep { color: #d0b0d0; }
-footer { background: #1a0e1a; padding: 68px 60px 36px; }
+footer {
+  background: #1a0e1a;
+  padding: 68px 60px 36px;
+  /* Keeps the footer from merging into whatever sits above it. Most
+     pages end on a light band so the join was obvious, but a few end
+     on a dark section almost the same colour as the footer (kerala,
+     for one) and the seam disappeared entirely. This accent line
+     brackets the page: same purple-to-gold sweep the cards use, and
+     it mirrors the navbar's border at the top of the page. */
+  position: relative;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--purple, #8e24aa), var(--gold, #d4af37));
+}
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; max-width: 1200px; margin: 0 auto 48px; }
 .footer-brand img { height: 44px; filter: brightness(0) invert(1); opacity: 0.78; margin-bottom: 16px; }
 .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.8; margin-bottom: 24px; }
