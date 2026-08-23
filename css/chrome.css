@@ -33,6 +33,12 @@
   letter-spacing: 0.04em;
 }
 .header-top-bar span { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+/* Each fact in the bar carries a full and a short wording. The short
+   one only appears on phones, where the full strings need more width
+   than the screen has and wrap onto a second line. */
+.header-top-bar .htb-facts { gap: 18px; }
+.header-top-bar .htb-item { display: inline-flex; align-items: center; gap: 6px; }
+.header-top-bar .htb-short { display: none; }   /* also inline in the markup, see header.html */
 .header-top-bar i { color: var(--gold); font-size: 11px; }
 .header-top-bar a { color: rgba(255,255,255,0.65); transition: color 0.2s; }
 .header-top-bar a:hover { color: var(--gold); }
@@ -324,6 +330,13 @@ body.nav-open .marquee-strip { visibility: hidden; }
   footer { padding: 48px 20px 30px; }
   .marquee-strip-desktop { display: none; }
   .header-top-bar span { gap: 6px; }
+  /* all three facts on one line */
+  .header-top-bar { font-size: 10px; padding-left: 10px; padding-right: 10px; }
+  .header-top-bar .htb-facts { flex-wrap: nowrap; white-space: nowrap; width: 100%; gap: 8px; justify-content: space-between; }
+  .header-top-bar .htb-item { gap: 4px; }
+  .header-top-bar i { font-size: 10px; }
+  .header-top-bar .htb-full { display: none !important; }
+  .header-top-bar .htb-short { display: inline !important; }   /* beats the inline style */
   .marquee-track { gap: 34px; animation-duration: 22s; }
   .marquee-item { font-size: 11.5px; gap: 6px; }
   .marquee-sep { font-size: 10px; }

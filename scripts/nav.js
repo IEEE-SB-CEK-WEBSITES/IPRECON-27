@@ -123,25 +123,49 @@
 
 /* ── Collapsible groups in the mobile drawer ────────────────────
    ABOUT / FOR AUTHORS / PROGRAM behave like the desktop dropdowns:
-   collapsed until tapped. Each label is a <button aria-controls>
-   naming the .mob-group it opens.
+   closed until tapped, and only opened by a tap.
 
-   Runs after the active-page marking above, so the group holding
-   the current page can be opened on load — otherwise you tap the
-   menu on, say, the Venue page and see no sign of where you are. */
+   The open/closed state is applied as an inline max-height rather
+   than by a class alone. /css/chrome.css is a separate file that can
+   lag a deploy or sit in a browser cache, and if its .mob-group rule
+   is missing, a class-only approach leaves every group expanded with
+   no way to close it — which is exactly what it looked like. Inline
+   styles cannot be missing.
+
+   Same reasoning for the small structural reset on the label: a
+   <button> with the browser's default styling is a narrow white box,
+   not a full-width menu row. */
 (function () {
   var nav = document.getElementById('mobileNav');
   if (!nav) return;
 
+  function resetButton(btn) {
+    var st = btn.style;
+    st.display = 'flex';
+    st.alignItems = 'center';
+    st.justifyContent = 'space-between';
+    st.width = '100%';
+    st.textAlign = 'left';
+    st.background = 'none';
+    st.border = '0';
+    st.borderRadius = '0';
+    /* only the family — an inline `font` shorthand would beat the
+       font-size in chrome.css and blow the labels up */
+    st.fontFamily = 'inherit';
+    st.cursor = 'pointer';
+    st.appearance = 'none';
+    st.webkitAppearance = 'none';
+  }
+
   /* The drawer fragment is cached at the edge for ~10 minutes, so a deploy
      can leave NEW nav.js running against the OLD flat markup — a plain
      <div class="mob-section"> followed by loose .mob-sub links, with no
-     button and no group to open. Rather than do nothing until the cache
-     expires, build the missing structure here. Works with either version
-     of the fragment, so the two can never get out of step again. */
+     button and no group to open. Build the missing structure here so the
+     two can never get out of step. */
   function buildMissingGroups() {
     var labels = nav.querySelectorAll('.mob-section:not([aria-controls])');
     Array.prototype.forEach.call(labels, function (label, i) {
+      if (label.tagName === 'BUTTON') return;
       var id = 'mobg-auto-' + i;
       var group = document.createElement('div');
       group.className = 'mob-group';
@@ -152,9 +176,8 @@
         var next = node.nextSibling;
         if (node.nodeType === 1) {
           if (!node.classList || !node.classList.contains('mob-sub')) break;
-          group.appendChild(node);              // moves it out of the flat list
+          group.appendChild(node);
         } else if (node.nodeType === 3 && !node.textContent.trim()) {
-          // whitespace between links — drop it so it can't sit outside the group
           if (node.parentNode) node.parentNode.removeChild(node);
         } else {
           break;
@@ -186,27 +209,36 @@
   if (!buttons.length) return;
 
   function setOpen(btn, group, open) {
+    group.style.overflow = 'hidden';
+    group.style.maxHeight = open ? group.scrollHeight + 'px' : '0px';
     group.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var chev = btn.querySelector('i');
+    if (chev) chev.style.transform = open ? 'rotate(180deg)' : '';
   }
 
   Array.prototype.forEach.call(buttons, function (btn) {
     var group = document.getElementById(btn.getAttribute('aria-controls'));
     if (!group) return;
+    resetButton(btn);
+    group.style.transition = 'max-height 0.3s ease';
+    setOpen(btn, group, false);          // everything starts closed
     btn.addEventListener('click', function () {
-      setOpen(btn, group, !group.classList.contains('open'));
+      setOpen(btn, group, btn.getAttribute('aria-expanded') !== 'true');
     });
   });
 
-  var current = nav.querySelector('a.active');
-  if (current) {
-    var group = current.parentNode;
-    while (group && group !== nav && !group.classList.contains('mob-group')) {
-      group = group.parentNode;
-    }
-    if (group && group.classList && group.classList.contains('mob-group')) {
-      var btn = nav.querySelector('.mob-section[aria-controls="' + group.id + '"]');
-      if (btn) setOpen(btn, group, true);
-    }
-  }
+  /* Closing the drawer resets the groups, so it always reopens tidy. */
+  var closers = [document.getElementById('menuBtn'), document.getElementById('mobClose'),
+                 document.getElementById('mobileNavOverlay')];
+  closers.forEach(function (el) {
+    if (!el) return;
+    el.addEventListener('click', function () {
+      if (nav.classList.contains('open')) return;   // it is opening, not closing
+      Array.prototype.forEach.call(buttons, function (btn) {
+        var g = document.getElementById(btn.getAttribute('aria-controls'));
+        if (g) setOpen(btn, g, false);
+      });
+    });
+  });
 })();

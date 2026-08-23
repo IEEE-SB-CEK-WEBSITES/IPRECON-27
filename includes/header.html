@@ -9,18 +9,33 @@
 
      Markup only — styling is in /css/chrome.css.
 
+     The three facts in the top bar each carry a full and a short
+     wording. The full strings need more width than a phone has, so
+     below 768px the short ones are shown instead and all three stay
+     on one line.
+
      Paths are root-relative — a fragment is
      injected at every URL depth, so a leading
      slash is required.
      ════════════════════════════════════════════ -->
 
 <div class="header-top-bar">
-  <span>
-    <i class="fas fa-map-marker-alt"></i> College of Engineering Karunagappally, Kerala, India
-    &nbsp;&nbsp;
-    <i class="fas fa-calendar-alt"></i> 15&ndash;17 October 2027
-    &nbsp;&nbsp;
-    <i class="fas fa-wifi"></i> Hybrid Conference
+  <span class="htb-facts">
+    <span class="htb-item">
+      <i class="fas fa-map-marker-alt"></i>
+      <span class="htb-full">College of Engineering Karunagappally, Kerala, India</span>
+      <span class="htb-short" style="display:none">Karunagappally, Kerala</span>
+    </span>
+    <span class="htb-item">
+      <i class="fas fa-calendar-alt"></i>
+      <span class="htb-full">15&ndash;17 October 2027</span>
+      <span class="htb-short" style="display:none">15&ndash;17 Oct 2027</span>
+    </span>
+    <span class="htb-item">
+      <i class="fas fa-wifi"></i>
+      <span class="htb-full">Hybrid Conference</span>
+      <span class="htb-short" style="display:none">Hybrid</span>
+    </span>
   </span>
   <span class="htb-right">
     <a href="/contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
