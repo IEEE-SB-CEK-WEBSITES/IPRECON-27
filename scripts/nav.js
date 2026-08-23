@@ -133,6 +133,55 @@
   var nav = document.getElementById('mobileNav');
   if (!nav) return;
 
+  /* The drawer fragment is cached at the edge for ~10 minutes, so a deploy
+     can leave NEW nav.js running against the OLD flat markup — a plain
+     <div class="mob-section"> followed by loose .mob-sub links, with no
+     button and no group to open. Rather than do nothing until the cache
+     expires, build the missing structure here. Works with either version
+     of the fragment, so the two can never get out of step again. */
+  function buildMissingGroups() {
+    var labels = nav.querySelectorAll('.mob-section:not([aria-controls])');
+    Array.prototype.forEach.call(labels, function (label, i) {
+      var id = 'mobg-auto-' + i;
+      var group = document.createElement('div');
+      group.className = 'mob-group';
+      group.id = id;
+
+      var node = label.nextSibling;
+      while (node) {
+        var next = node.nextSibling;
+        if (node.nodeType === 1) {
+          if (!node.classList || !node.classList.contains('mob-sub')) break;
+          group.appendChild(node);              // moves it out of the flat list
+        } else if (node.nodeType === 3 && !node.textContent.trim()) {
+          // whitespace between links — drop it so it can't sit outside the group
+          if (node.parentNode) node.parentNode.removeChild(node);
+        } else {
+          break;
+        }
+        node = next;
+      }
+      if (!group.children.length) return;
+
+      label.parentNode.insertBefore(group, label.nextSibling);
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'mob-section';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-controls', id);
+      var text = document.createElement('span');
+      text.textContent = label.textContent.trim();
+      var chev = document.createElement('i');
+      chev.className = 'fas fa-chevron-down';
+      chev.setAttribute('aria-hidden', 'true');
+      btn.appendChild(text);
+      btn.appendChild(chev);
+      label.parentNode.replaceChild(btn, label);
+    });
+  }
+  buildMissingGroups();
+
   var buttons = nav.querySelectorAll('.mob-section[aria-controls]');
   if (!buttons.length) return;
 
