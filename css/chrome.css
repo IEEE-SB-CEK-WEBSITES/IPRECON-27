@@ -37,6 +37,13 @@
    rather than breaking mid-phrase on a narrow screen. */
 .header-top-bar .htb-facts { gap: 18px; }
 .header-top-bar .htb-item { display: inline-flex; align-items: center; gap: 6px; }
+/* The rule above for `.header-top-bar span` matches every span in the bar,
+   including the parts of the place name — which put an 8px flex gap in
+   front of the comma. These are plain inline text, so say so. */
+.header-top-bar .htb-place,
+.header-top-bar .htb-l1,
+.header-top-bar .htb-l2,
+.header-top-bar .htb-sep { display: inline; gap: 0; }
 .header-top-bar i { color: var(--gold); font-size: 11px; }
 .header-top-bar a { color: rgba(255,255,255,0.65); transition: color 0.2s; }
 .header-top-bar a:hover { color: var(--gold); }
@@ -332,21 +339,24 @@ body.nav-open .marquee-strip { visibility: hidden; }
   .header-top-bar span { gap: 6px; }
   /* All three facts on a single line, every word kept. The strings are
      wider than a phone, so the type scales with the viewport until the
-     row fits: 1.7vw lands just inside the available width from 320px up,
-     and the 11px ceiling stops it growing past the desktop size.
+     row fits: 1.82vw lands just inside the available width from 320px
+     up, and the 11px ceiling stops it growing past the desktop size.
 
-     This is small type by necessity — the location string alone is 51
-     characters. Nothing is shortened or hidden. */
-  .header-top-bar { font-size: min(11px, 1.7vw); padding: 5px 8px; line-height: 1.6; }
+     Nothing is shortened or hidden — stacking the place name is what
+     allows the type to be bigger here than a single 51-character line
+     would ever permit. */
+  .header-top-bar { font-size: min(11px, 1.82vw); padding: 5px 8px; line-height: 1.6; }
   .header-top-bar .htb-facts {
     flex-wrap: nowrap; white-space: nowrap;
     width: 100%; gap: 6px; justify-content: space-between;
   }
   .header-top-bar .htb-item { white-space: nowrap; gap: 3px; flex: 0 0 auto; }
-  /* The pin / calendar / wifi icons are decoration, not content. At this
-     width they cost about 21px that the wording needs, so they step aside
-     on phones and every word stays on the one line. */
-  .header-top-bar .htb-item i { display: none; }
+  /* The place name stacks: "Kerala, India" drops under the college name,
+     so the widest fact is 37 characters instead of 51. That is what makes
+     room for the icons and for larger type than a single line allows. */
+  .header-top-bar .htb-place { display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1.35; }
+  .header-top-bar .htb-sep { display: none; }
+  .header-top-bar .htb-item { align-items: center; }
   .marquee-track { gap: 34px; animation-duration: 22s; }
   .marquee-item { font-size: 11.5px; gap: 6px; }
   .marquee-sep { font-size: 10px; }

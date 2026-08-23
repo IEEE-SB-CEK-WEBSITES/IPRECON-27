@@ -10,9 +10,11 @@
      Markup only — styling is in /css/chrome.css.
 
      The three facts in the top bar keep their full wording at every
-     size. Each is nowrap so it never breaks mid-phrase; on a narrow
-     screen the row wraps and whatever does not fit drops to a second
-     line whole.
+     size and stay on one row. On a phone the place name stacks —
+     "Kerala, India" sits under "College of Engineering Karunagappally"
+     — which is what buys the width for the other two facts and the
+     icons. On desktop the three parts run inline as one sentence, with
+     the comma in .htb-sep joining them.
 
      Paths are root-relative — a fragment is
      injected at every URL depth, so a leading
@@ -23,7 +25,7 @@
   <span class="htb-facts">
     <span class="htb-item">
       <i class="fas fa-map-marker-alt"></i>
-      <span class="htb-text">College of Engineering Karunagappally, Kerala, India</span>
+      <span class="htb-text htb-place"><span class="htb-l1">College of Engineering Karunagappally</span><span class="htb-sep">,&nbsp;</span><span class="htb-l2">Kerala, India</span></span>
     </span>
     <span class="htb-item">
       <i class="fas fa-calendar-alt"></i>
