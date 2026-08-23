@@ -330,13 +330,23 @@ body.nav-open .marquee-strip { visibility: hidden; }
   footer { padding: 48px 20px 30px; }
   .marquee-strip-desktop { display: none; }
   .header-top-bar span { gap: 6px; }
-  /* Every word is kept. Each fact is nowrap so it never breaks mid-phrase;
-     the row itself wraps, so whatever does not fit on the first line drops
-     to a second one whole. */
-  .header-top-bar { font-size: 9.5px; padding: 5px 10px; line-height: 1.5; }
-  .header-top-bar .htb-facts { flex-wrap: wrap; justify-content: center; gap: 3px 14px; width: 100%; }
-  .header-top-bar .htb-item { white-space: nowrap; gap: 5px; }
-  .header-top-bar i { font-size: 10px; }
+  /* All three facts on a single line, every word kept. The strings are
+     wider than a phone, so the type scales with the viewport until the
+     row fits: 1.7vw lands just inside the available width from 320px up,
+     and the 11px ceiling stops it growing past the desktop size.
+
+     This is small type by necessity — the location string alone is 51
+     characters. Nothing is shortened or hidden. */
+  .header-top-bar { font-size: min(11px, 1.7vw); padding: 5px 8px; line-height: 1.6; }
+  .header-top-bar .htb-facts {
+    flex-wrap: nowrap; white-space: nowrap;
+    width: 100%; gap: 6px; justify-content: space-between;
+  }
+  .header-top-bar .htb-item { white-space: nowrap; gap: 3px; flex: 0 0 auto; }
+  /* The pin / calendar / wifi icons are decoration, not content. At this
+     width they cost about 21px that the wording needs, so they step aside
+     on phones and every word stays on the one line. */
+  .header-top-bar .htb-item i { display: none; }
   .marquee-track { gap: 34px; animation-duration: 22s; }
   .marquee-item { font-size: 11.5px; gap: 6px; }
   .marquee-sep { font-size: 10px; }
