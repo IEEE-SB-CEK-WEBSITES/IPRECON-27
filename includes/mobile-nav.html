@@ -1,15 +1,13 @@
 <!-- ════════════════════════════════════════════
      /includes/mobile-nav.html
-     The slide-out menu for phones, plus the scrim
-     behind it and the script that opens/closes it.
+     The slide-out menu for phones and the scrim
+     behind it. Markup only — the open/close
+     behaviour is in /scripts/nav.js and the styling
+     is in /css/chrome.css.
 
      Keep this list in step with the desktop menu in
      /includes/navbar.html — they are two renderings
      of the same menu.
-
-     The scrim (.mobile-nav-overlay) is harmless on
-     pages whose drawer covers the full screen; those
-     stylesheets set it to display:none.
 
      Paths are root-relative — a fragment is injected
      at every URL depth, so a leading slash is required.
@@ -49,53 +47,3 @@
   <a href="/registration.html">REGISTRATION</a>
   <a href="/contact.html">CONTACT</a>
 </div>
-
-<script>
-/* ── Mobile drawer ──────────────────────────────────────────────
-   One copy of the open/close behaviour for the whole site. Pages
-   must NOT declare their own menuBtn / mobileNav handlers: two
-   top-level `const menuBtn` declarations on the same page throw a
-   SyntaxError and take the rest of that page's script down with
-   them. Everything is guarded, so this is safe on pages that leave
-   out the scrim or a close button. */
-(function () {
-  var btn = document.getElementById('menuBtn');
-  var nav = document.getElementById('mobileNav');
-  if (!btn || !nav) return;
-
-  var scrim = document.getElementById('mobileNavOverlay');
-
-  function setOpen(open) {
-    nav.classList.toggle('open', open);
-    if (scrim) scrim.classList.toggle('open', open);
-    btn.classList.toggle('active', open);
-    document.body.classList.toggle('nav-open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-  function close() { setOpen(false); }
-
-  btn.addEventListener('click', function () {
-    setOpen(!nav.classList.contains('open'));
-  });
-
-  if (scrim) scrim.addEventListener('click', close);
-
-  ['mobClose', 'menuClose'].forEach(function (id) {
-    var el = document.getElementById(id);
-    if (el) el.addEventListener('click', close);
-  });
-
-  Array.prototype.forEach.call(nav.querySelectorAll('a'), function (a) {
-    a.addEventListener('click', close);
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' || e.keyCode === 27) close();
-  });
-
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 768) close();
-  });
-})();
-</script>

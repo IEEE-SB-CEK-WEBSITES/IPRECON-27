@@ -4,10 +4,16 @@
      (location / dates / contact + register) and
      the white brand row with the conference logo
      and the sponsor logos.
+     The conference logo is a link back to the home
+     page, same as the one in the navbar.
+
+     Markup only — styling is in /css/chrome.css.
+
      Paths are root-relative — a fragment is
      injected at every URL depth, so a leading
      slash is required.
      ════════════════════════════════════════════ -->
+
 <div class="header-top-bar">
   <span>
     <i class="fas fa-map-marker-alt"></i> College of Engineering Karunagappally, Kerala, India
@@ -25,10 +31,12 @@
 
 <header class="site-header">
   <div class="header-brand">
-    <img class="header-conf-logo"
-         src="/assets/img/iprecon27 black.png"
-         alt="IPRECON 2027"
-         onerror="this.style.display='none'">
+    <a href="/index.html" class="header-home-link" aria-label="IPRECON 2027 — go to home page">
+      <img class="header-conf-logo"
+           src="/assets/img/iprecon27 black.png"
+           alt="IPRECON 2027"
+           onerror="this.style.display='none'">
+    </a>
     <div class="header-brand-text">
       <span class="conf-name">15&ndash;17 October 2027</span>
       <span class="conf-full">College of Engineering Karunagappally, Kerala, INDIA</span>

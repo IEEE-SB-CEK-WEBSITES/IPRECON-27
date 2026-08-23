@@ -12,14 +12,19 @@
 
      ── Active page highlighting ──────────────
      Do NOT hardcode class="active" here; it would
-     light up on every page. The script at the
-     bottom of this file adds it automatically by
-     matching the current URL.
+     light up on every page. /scripts/nav.js adds it
+     automatically by matching the current URL.
+
+     ── Where the rest of it lives ────────────
+     Markup only. Styling is in /css/chrome.css and
+     behaviour is in /scripts/nav.js, both loaded by
+     every page.
 
      Paths are root-relative — a fragment is
      injected at every URL depth, so a leading
      slash is required.
      ════════════════════════════════════════════ -->
+
 <nav class="navbar" id="mainNav">
   <div class="nav-container">
     <a href="/index.html" class="brand-logo-wrap">
@@ -89,41 +94,3 @@
     </button>
   </div>
 </nav>
-
-<script>
-/* ── Active page highlighting ───────────────────────────────────
-   Marks the link for the current page in the desktop navbar and in
-   the mobile drawer, and lights up the parent dropdown label. This
-   lives here so no page has to hardcode class="active" any more. */
-(function () {
-  function leaf(path) {
-    path = (path || '').split('?')[0].split('#')[0];
-    path = path.substring(path.lastIndexOf('/') + 1);
-    return (path === '' || path === 'index.htm') ? 'index.html' : path;
-  }
-  function mark() {
-    var here = leaf(window.location.pathname);
-    ['mainNav', 'mobileNav'].forEach(function (id) {
-      var root = document.getElementById(id);
-      if (!root) return;
-      Array.prototype.forEach.call(root.querySelectorAll('a[href]'), function (a) {
-        var href = a.getAttribute('href') || '';
-        if (a.classList.contains('brand-logo-wrap')) return;
-        if (/^(https?:|mailto:|tel:|\/\/|#)/i.test(href)) return;
-        if (leaf(href) !== here) return;
-        a.classList.add('active');
-        var item = a.closest ? a.closest('.nav-item') : null;
-        if (item) {
-          var label = item.querySelector('.nav-link');
-          if (label) label.classList.add('active');
-        }
-      });
-    });
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', mark);
-  } else {
-    mark();
-  }
-})();
-</script>

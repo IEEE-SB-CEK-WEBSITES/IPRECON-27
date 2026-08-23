@@ -67,10 +67,19 @@ The matching styles live in each page's `<style>` block under
 `/* Current page highlight */`. A new page copied from an existing one carries
 them along.
 
-## The nav scripts live in the fragments
+## Markup here, styling and behaviour elsewhere
 
-`mobile-nav.html` owns the hamburger, the scrim, the close buttons, Escape and
-the resize reset. `navbar.html` owns the active-link marking.
+These fragments are **markup only**, like the ones on the 2026 site:
+
+| What | Where |
+|---|---|
+| The markup | `/includes/*.html` (this folder) |
+| How it looks | `/css/chrome.css` |
+| What it does | `/scripts/nav.js` |
+
+`nav.js` owns the hamburger, the scrim, the close buttons, Escape, the resize
+reset, and the active-link marking. Every page loads both files with one line
+each in `<head>`.
 
 **A page must not declare its own `menuBtn` / `mobileNav` handlers.** Two
 top-level `const menuBtn` declarations on the same assembled page throw a
